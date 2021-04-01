@@ -6,3 +6,4 @@ duee_train.json
 duee_test1.json
 duee_event_schema.json
 schema.json
+*.tar
