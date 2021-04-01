@@ -73,7 +73,8 @@ class CommonSeqTagExecutor(object):
         self.optimizer.zero_grad()
 
     def get_metric(self, y_pred, y_true, average='micro'):
-        precision, recall, f1 = calc_metrics(y_true, y_pred, average=average)
+        labels = [i for i in range(1, len(self.conf.get('label')))]
+        precision, recall, f1 = calc_metrics(y_true, y_pred, labels, average=average)
         metric = f1
         return precision, recall, f1, metric
 
@@ -169,7 +170,6 @@ class CommonSeqTagExecutor(object):
             if self.early_stop > self.early_stop_threshold:
                 break
             self.epoch += 1
-            self.post_epoch(self.epoch)
 
         logging.info('  训练结束!\n')
         return True
