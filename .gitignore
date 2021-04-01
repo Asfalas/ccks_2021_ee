@@ -1,3 +1,8 @@
 *.pyc
 __pycache__/*
 .DS_Store
+duee_dev.json
+duee_train.json
+duee_test1.json
+duee_event_schema.json
+schema.json
