@@ -12,10 +12,10 @@ class CommonSeqTagModel(nn.Module):
         self.bert = BertModel.from_pretrained(self.pretrained_model_name)
         self.classifier = nn.Sequential(
             nn.Linear(self.hidden_size, len(self.label)),
-            nn.Relu()
+            nn.ReLU()
         )
 
-    def forward(self, input_ids, attention_mask=None, token_type_ids=None):
+    def forward(self, inputs):
         '''
         input_ids:  (batch_size, max_seq_length)
         attention_mask:  (batch_size, max_seq_length)
@@ -23,10 +23,10 @@ class CommonSeqTagModel(nn.Module):
 
         return: (batch_size, max_seq_length, num_labels)
         '''
+        input_ids, attention_mask = inputs
         outputs = self.bert(
             input_ids=input_ids,
-            attention_mask=attention_mask,
-            token_type_ids=token_type_ids
+            attention_mask=attention_mask
         )
         sequence_output = outputs[0]
         logits = self.classifier(sequence_output)

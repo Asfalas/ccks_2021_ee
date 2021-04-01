@@ -50,6 +50,7 @@ def main(args):
     if mode == 'train':
         train_dataset = CommonSeqTagDataSet(args.dataset, EvtTagDataHandler, conf.get("train_path"), conf, debug=args.debug)
         # test_dataset = CommonSeqTagDataSet(args.dataset, EvtTagDataHandler, conf.get("test_path"), conf, debug=args.debug)
+        test_dataset = None
         dev_dataset = CommonSeqTagDataSet(args.dataset, EvtTagDataHandler, conf.get("dev_path"), conf, debug=args.debug)
     else:
         conf = json.load(open(conf.get('best_model_config_path', "cache/ace05/best_config.json")))
