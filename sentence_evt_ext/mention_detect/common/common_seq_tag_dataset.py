@@ -78,33 +78,37 @@ class CommonSeqTagDataHandler(object):
             max_len = len(tokens) if len(tokens) > max_len else max_len
             token_ids, att_mask = self.sentence_padding(tokens)
 
-            offsets = self.get_offset_list(info)
+            if 'test' not in self.path:
+                offsets = self.get_offset_list(info)
 
-            label_list = ['O' for i in range(self.max_seq_len)]
-            for offset in offsets:
-                if offset[1] >= self.max_seq_len:
-                    valid = False
-                    offset_err += 1
-                    continue
-                label_list[offset[0]] = 'B'
-                for i in range(offset[0]+1, offset[1]+1):
-                    label_list[i] = 'I'
+                label_list = ['O' for i in range(self.max_seq_len)]
+                for offset in offsets:
+                    if offset[1] >= self.max_seq_len:
+                        valid = False
+                        offset_err += 1
+                        continue
+                    label_list[offset[0]] = 'B'
+                    for i in range(offset[0]+1, offset[1]+1):
+                        label_list[i] = 'I'
 
-            for i in range(len(label_list)):
-                if token_ids[i] == pad_id:
-                    label_list[i] = -100
-                else:
-                    label_list[i] = self.label.index(label_list[i])
+                for i in range(len(label_list)):
+                    if token_ids[i] == pad_id:
+                        label_list[i] = -100
+                    else:
+                        label_list[i] = self.label.index(label_list[i])
+                label_tensor.append(label_list)
 
             tokens_tensor.append(token_ids)
             att_mask_tensor.append(att_mask)
-            label_tensor.append(label_list)
 
 
         # transform to tensor
         tokens_tensor = torch.LongTensor(tokens_tensor)
         att_mask_tensor = torch.LongTensor(att_mask_tensor)
-        label_tensor = torch.LongTensor(label_tensor)
+        if 'test' not in self.path:
+            label_tensor = torch.LongTensor(label_tensor)
+        else:
+            None
 
         if offset_err:
             logging.warn("  越界: " + str(offset_err))

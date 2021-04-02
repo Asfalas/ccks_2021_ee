@@ -1,0 +1,24 @@
+{
+  "max_seq_len": 400,
+  "pretrained_model_name": "bert-base-chinese",
+  "label": [
+    "O",
+    "I",
+    "B"
+  ],
+  "hidden_size": 768,
+  "lr": 1e-05,
+  "epochs": 10,
+  "model_save_path": "cache/arg_men/{metric}_{epoch}.tar",
+  "best_model_save_path": "cache/arg_men/best.json",
+  "best_model_config_path": "cache/arg_men/best_config.json",
+  "train_path": "data/duee_train.json",
+  "dev_path": "data/duee_dev.json",
+  "test_path": "data/duee_test1.json",
+  "weight_decay": 0,
+  "batch_size": 16,
+  "accumulate_step": 1,
+  "lr_gamma": 0.9,
+  "early_stop_threshold": 5,
+  "use_gpu": true
+}

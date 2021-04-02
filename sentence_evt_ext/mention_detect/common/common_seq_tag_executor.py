@@ -25,10 +25,14 @@ class CommonSeqTagExecutor(object):
         self.model_save_path = conf.get('model_save_path', 'cache/ace05/{metric}_{epoch}.tar')
         self.best_model_save_path = conf.get('best_model_save_path', 'cache/ace05/best.json')
         self.best_model_config_path = conf.get('best_model_config_path', 'cache/ace05/best_config.json')
-
+        self.max_seq_len = conf.get('max_seq_len', 400)
+        self.test_path = conf.get('test_path', 'data/duee_test1.json')
+        self.label = conf.get('label', ['O', 'B', 'I'])
+        
         self.train_dataset = train_dataset
         self.test_dataset = test_dataset
         self.dev_dataset = dev_dataset
+        self.test_output_path = conf.get('test_output_path', 'output/arg_men_test.json')
         self.weight_decay = conf.get('weight_decay', 0)
         self.batch_size = conf.get('batch_size', 32)
         self.accumulate_step = conf.get('accumulate_step', 1)
@@ -199,19 +203,41 @@ class CommonSeqTagExecutor(object):
             logging.info(f"{mode}:{self.epoch}: pre:{round(precision, 3)} rec:{round(recall, 3)} f1:{round(f1, 3)}")
         return metric, pred_results
 
-    # def test(self, dataset=None, checkpoint=None):
-    #     logging.info('  测试开始')
-    #     if not dataset:
-    #         dataset = self.test_dataset
-    #     # load checkpoint
-    #     if not checkpoint:
-    #         checkpoint = self.best_model_save_path
-    #     self.load_model(checkpoint)
-    #     # load test dataset
-    #     data_loader = torch.utils.data.DataLoader(dataset=dataset, batch_size=self.batch_size,
-    #                                                    shuffle=False, num_workers=0)
-    #     # evaluate on test dataset
-    #     metric, pred_results = self.eval(self.model, data_loader, mode='test')
-    #     logging.info("  测试结果  f1: " + str(metric))
-    #     logging.info("  测试结束!\n")
-    #     return True
+    def test(self, dataset=None, checkpoint=None):
+        logging.info('  测试开始')
+        if not dataset:
+            dataset = self.test_dataset
+        # load checkpoint
+        if not checkpoint:
+            checkpoint = self.best_model_save_path
+        self.load_model(checkpoint)
+        # load test dataset
+        data_loader = torch.utils.data.DataLoader(dataset=dataset, batch_size=self.batch_size,
+                                                       shuffle=False, num_workers=0)
+        test_result = []
+        test_contents = [json.loads(line) for line in open(self.test_path)]
+        offset = 0
+        # test
+        with torch.no_grad():
+            self.model.eval()
+            bar = tqdm(list(enumerate(data_loader)))
+            for step, input_data in bar:
+                # inputs = tuple(x.to(self.device) for x in input_data[:-1])
+                inputs = input_data[:-1]
+                if self.use_gpu:
+                    inputs = tuple(x.cuda() for x in inputs)
+
+                pred = self.model(inputs)
+                if isinstance(pred, tuple):
+                    pred = pred[0]
+                proba = torch.log_softmax(pred, dim=1)
+                pred_cls = torch.argmax(proba, dim=1).cpu().numpy()
+                
+                for i in range(pred_cls.size()[0]):
+                    test_info = test_contents[offset+i]
+                    labels = []
+                    for j in range(1, self.max_seq_len):
+                        labels.append(self.label[pred_cls[i][j]])
+                    test_info['label'] = labels
+                offset += pred_cls.size()[0]
+        return True
