@@ -7,4 +7,4 @@ duee_test1.json
 duee_event_schema.json
 schema.json
 *.tar
-output/*
+sentence_evt_ext/output/*
