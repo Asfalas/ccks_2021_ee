@@ -230,14 +230,30 @@ class CommonSeqTagExecutor(object):
                 pred = self.model(inputs)
                 if isinstance(pred, tuple):
                     pred = pred[0]
-                proba = torch.log_softmax(pred, dim=1)
-                pred_cls = torch.argmax(proba, dim=1).cpu().numpy()
-                
-                for i in range(pred_cls.size()[0]):
+                proba = torch.log_softmax(pred, dim=-1)
+                pred_cls = torch.argmax(proba, dim=-1).cpu().numpy()
+                for i in range(pred_cls.shape[0]):
                     test_info = test_contents[offset+i]
                     labels = []
                     for j in range(1, self.max_seq_len):
                         labels.append(self.label[pred_cls[i][j]])
-                    test_info['label'] = labels
-                offset += pred_cls.size()[0]
+                    test_info['mention'] = self.get_mention(test_info['text'], labels)
+                offset += pred_cls.shape[0]
+        json.dump(test_contents, open(self.test_output_path, 'w'), indent=2, ensure_ascii=False)
         return True
+
+    def get_mention(self, text, label):
+        label = label[:len(text)]
+        idx = 0
+        mention = []
+        while idx < len(label):
+            if label[idx] == 'B':
+                beg = idx
+                idx += 1
+                while idx < len(label) and label[idx] == 'I':
+                    idx += 1
+                end = idx
+                mention.append(text[beg: end])
+            else:
+                idx += 1
+        return mention

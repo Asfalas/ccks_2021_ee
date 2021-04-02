@@ -61,7 +61,7 @@ class CommonSeqTagDataHandler(object):
 
     def get_offset_list(self, info):
         raise NotImplementedError()
-
+        
     def _load_data(self):
         # for output tensor
         max_len = 0
@@ -108,7 +108,7 @@ class CommonSeqTagDataHandler(object):
         if 'test' not in self.path:
             label_tensor = torch.LongTensor(label_tensor)
         else:
-            None
+            label_tensor = [0] * tokens_tensor.size()[0]
 
         if offset_err:
             logging.warn("  越界: " + str(offset_err))
