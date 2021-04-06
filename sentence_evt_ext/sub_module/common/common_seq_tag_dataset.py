@@ -9,7 +9,7 @@ from torch.utils.data import Dataset
 from tqdm import tqdm
 from _functools import reduce
 
-class CommonSeqTagDataSet(Dataset):
+class CommonDataSet(Dataset):
     def __init__(self, dataset_name, data_handler, path, conf, debug=0):
         logging.info('  数据处理开始: ' + dataset_name + ' --> ' + path)
         dh = data_handler(path=path, conf=conf, debug=debug)

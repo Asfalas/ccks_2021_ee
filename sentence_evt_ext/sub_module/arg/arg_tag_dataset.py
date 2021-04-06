@@ -7,7 +7,7 @@ from transformers import BertTokenizer
 from torch.utils.data import Dataset
 from tqdm import tqdm
 from _functools import reduce
-from mention_detect.common.common_seq_tag_dataset import *
+from sub_module.common.common_seq_tag_dataset import *
 
 class ArgTagDataHandler(CommonSeqTagDataHandler):
     def get_offset_list(self, info):

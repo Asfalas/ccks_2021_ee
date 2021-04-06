@@ -6,11 +6,14 @@ import torch
 
 from common.utils import *
 from common.const import *
-from mention_detect.common.common_seq_tag_model import CommonSeqTagModel
-from mention_detect.common.common_seq_tag_dataset import CommonSeqTagDataSet
-from mention_detect.common.common_seq_tag_executor import CommonSeqTagExecutor
-from mention_detect.evt.evt_tag_dataset import EvtTagDataHandler
-from mention_detect.arg.arg_tag_dataset import ArgTagDataHandler
+from sub_module.common.common_seq_tag_model import CommonSeqTagModel
+from sub_module.common.common_seq_tag_dataset import CommonDataSet
+from sub_module.common.common_seq_tag_executor import CommonSeqTagExecutor
+from sub_module.evt.evt_tag_dataset import EvtTagDataHandler
+from sub_module.arg.arg_tag_dataset import ArgTagDataHandler
+from sub_module.cls.cls_dataset import ClsDataHandler
+from sub_module.cls.cls_model import ClsModel
+from sub_module.cls.cls_model_executor import ClsModelExecutor
 
 logging.basicConfig(level=logging.INFO)
 parser = argparse.ArgumentParser()
@@ -24,26 +27,30 @@ parser.add_argument('--use_cpu', type=int, default=0)
 parser.add_argument('--epochs', type=int, default=0)
 parser.add_argument('--batch_size', type=int, default=0)
 parser.add_argument('--accumulate_step', type=int, default=0)
-parser.add_argument('--task', type=str, default='evt_men_detect', choices=['evt_men_detect', 'arg_men_detect'])
+parser.add_argument('--task', type=str, default='evt_men_detect', choices=['evt_men_detect', 'arg_men_detect', 'men_cls'])
 
 handler_map = {
     'evt_men_detect': EvtTagDataHandler,
-    'arg_men_detect': ArgTagDataHandler
+    'arg_men_detect': ArgTagDataHandler,
+    'men_cls': ClsDataHandler
 }
 
 model_map = {
     'evt_men_detect': CommonSeqTagModel,
-    'arg_men_detect': CommonSeqTagModel
+    'arg_men_detect': CommonSeqTagModel,
+    'men_cls': ClsModel
 }
 
 dataset_map = {
-    'evt_men_detect': CommonSeqTagDataSet,
-    'arg_men_detect': CommonSeqTagDataSet    
+    'evt_men_detect': CommonDataSet,
+    'arg_men_detect': CommonDataSet,
+    'men_cls': CommonDataSet
 }
 
 executor_map = {
     'evt_men_detect': CommonSeqTagExecutor,
-    'arg_men_detect': CommonSeqTagExecutor    
+    'arg_men_detect': CommonSeqTagExecutor,
+    'men_cls': ClsModelExecutor
 }
 
 args = parser.parse_args()
