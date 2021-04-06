@@ -253,7 +253,7 @@ class CommonSeqTagExecutor(object):
                 while idx < len(label) and label[idx] == 'I':
                     idx += 1
                 end = idx
-                mention.append(text[beg: end])
+                mention.append(str(beg) + '@#@' + text[beg: end])
             else:
                 idx += 1
         return mention
