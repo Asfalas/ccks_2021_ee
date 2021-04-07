@@ -10,4 +10,7 @@ duee_cls_train.json
 duee_cls_test.json
 schema.json
 *.tar
-sentence_evt_ext/output/*
+arg_men_test.json
+duee.json
+evt_men_test.json
+men_cls_test.json
