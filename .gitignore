@@ -7,6 +7,7 @@ duee_test1.json
 duee_event_schema.json
 duee_cls_dev.json
 duee_cls_train.json
+duee_cls_test.json
 schema.json
 *.tar
 sentence_evt_ext/output/*

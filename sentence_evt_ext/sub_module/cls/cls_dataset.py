@@ -72,9 +72,9 @@ class ClsDataHandler(CommonSeqTagDataHandler):
             valid = True
             if len(event.get('argument', [])) == 0:
                 empty_arg_err += 1
-                continue
+#                 continue
 
-            for arg in event['argument']:
+            for arg in event.get('argument', []):
                 offsets = [arg['argument_start_index'] +1, arg['argument_start_index'] + len(arg['argument']) + 1]
 
                 valid = True

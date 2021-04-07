@@ -239,6 +239,7 @@ class CommonSeqTagExecutor(object):
                         labels.append(self.label[pred_cls[i][j]])
                     test_info['mention'] = self.get_mention(test_info['text'], labels)
                 offset += pred_cls.shape[0]
+        logging.info("存储test结果：" + self.test_output_path)
         json.dump(test_contents, open(self.test_output_path, 'w'), indent=2, ensure_ascii=False)
         return True
 

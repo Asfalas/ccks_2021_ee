@@ -31,6 +31,8 @@ class ClsModelExecutor(object):
         self.event_num = conf.get('event_num', 66)
         self.test_path = conf.get('test_path', 'data/duee_test1.json')
         self.label = conf.get('label', ['O', 'B', 'I'])
+        self.event_schema = conf.get('event_schema', {})
+        self.event_list = conf.get('event_list', [])
         
         self.train_dataset = train_dataset
         self.test_dataset = test_dataset
@@ -231,42 +233,58 @@ class ClsModelExecutor(object):
         return metric, pred_results
 
     def test(self, dataset=None, checkpoint=None):
-        pass
-        # logging.info('  测试开始')
-        # if not dataset:
-        #     dataset = self.test_dataset
-        # # load checkpoint
-        # if not checkpoint:
-        #     checkpoint = self.best_model_save_path
-        # self.load_model(checkpoint)
-        # # load test dataset
-        # data_loader = torch.utils.data.DataLoader(dataset=dataset, batch_size=self.batch_size,
-        #                                                shuffle=False, num_workers=0)
-        # test_result = []
-        # test_contents = [json.loads(line) for line in open(self.test_path)]
-        # offset = 0
-        # # test
-        # with torch.no_grad():
-        #     self.model.eval()
-        #     bar = tqdm(list(enumerate(data_loader)))
-        #     for step, input_data in bar:
-        #         # inputs = tuple(x.to(self.device) for x in input_data[:-1])
-        #         inputs = input_data[:-1]
-        #         if self.use_gpu:
-        #             inputs = tuple(x.cuda() for x in inputs)
+        logging.info('  测试开始')
+        if not dataset:
+            dataset = self.test_dataset
+        # load checkpoint
+        if not checkpoint:
+            checkpoint = self.best_model_save_path
+        self.load_model(checkpoint)
+        # load test dataset
+        data_loader = torch.utils.data.DataLoader(dataset=dataset, batch_size=self.batch_size,
+                                                       shuffle=False, num_workers=0)
+        test_result = []
+        test_contents = json.load(open(self.test_path))
+        offset = 0
+        # test
+        with torch.no_grad():
+            self.model.eval()
+            bar = tqdm(list(enumerate(data_loader)))
+            for step, input_data in bar:
+                inputs = input_data[:-2]
+                labels = input_data[-2:]
+                if self.use_gpu:
+                    inputs = tuple(x.cuda() for x in inputs)
+                    labels = tuple(x.cuda() for x in labels)
 
-        #         pred = self.model(inputs)
-        #         if isinstance(pred, tuple):
-        #             pred = pred[0]
-        #         proba = torch.log_softmax(pred, dim=-1)
-        #         pred_cls = torch.argmax(proba, dim=-1).cpu().numpy()
-        #         for i in range(pred_cls.shape[0]):
-        #             test_info = test_contents[offset+i]
-        #             labels = []
-        #             for j in range(1, self.max_seq_len):
-        #                 labels.append(self.label[pred_cls[i][j]])
-        #             test_info['mention'] = self.get_mention(test_info['text'], labels)
-        #         offset += pred_cls.shape[0]
-        # json.dump(test_contents, open(self.test_output_path, 'w'), indent=2, ensure_ascii=False)
-        # return True
+                evt_logits, arg_logits = self.model(inputs)
+                evt_labels, arg_labels = labels
+
+                evt_labels = evt_labels.view(-1)
+                evt_pred = evt_logits.view(evt_labels.size()[0], -1)
+                evt_proba = torch.log_softmax(evt_pred, dim=1)
+                evt_pred_cls = torch.argmax(evt_proba, dim=1)
+
+                evt_pred_cls = evt_pred_cls.cpu().view(-1).numpy()
+
+                arg_labels = arg_labels.view(-1, 1).squeeze()
+                arg_pred = arg_logits.view(arg_labels.size()[0], -1)
+                arg_proba = torch.log_softmax(arg_pred, dim=1)
+#                 arg_pred_cls = torch.argmax(arg_proba, dim=1)
+
+                arg_pred_cls = arg_proba.cpu()
+                
+                for i in range(len(evt_pred_cls)):
+                    event_info = test_contents[i+offset]
+                    event_type = self.event_list[evt_pred_cls[i]]
+                    event_info['event']['event_type'] = event_type
+                    for j in range(len(event_info['event']['argument'])):
+                        role_list = self.event_schema[event_type]
+                        proba = arg_pred_cls[i*self.max_ent_len+j][:len(role_list)]
+                        role_index = torch.argmax(proba).cpu().numpy()
+                        role = role_list[role_index]
+                        event_info['event']['argument'][j]['role'] = role
+                offset += len(evt_pred_cls)
+        json.dump(test_contents, open(self.test_output_path, 'w'), indent=2, ensure_ascii=False)
+        return True
 

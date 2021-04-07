@@ -87,7 +87,7 @@ def main(args):
         test_dataset = None
         dev_dataset = Dataset(args.dataset, Handler, conf.get("dev_path"), conf, debug=args.debug)
     else:
-        conf = json.load(open(conf.get('best_model_config_path', "cache/evt_men/best_config.json")))
+        conf.update(json.load(open(conf.get('best_model_config_path', "cache/evt_men/best_config.json"))))
         train_dataset = None
         dev_dataset = None
         test_dataset = Dataset(args.dataset, Handler, conf.get("test_path"), conf, debug=args.debug)
