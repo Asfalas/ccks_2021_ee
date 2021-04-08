@@ -84,12 +84,14 @@ class CommonSeqTagExecutor(object):
 
     def get_result(self, pred, label, input_data, ignore_index=-100):
         label = label.view(-1)
-        pred = pred.view(label.size()[0], -1)
-        proba = torch.log_softmax(pred, dim=1)
-        pred_cls = torch.argmax(proba, dim=1)
+        # pred = pred.view(label.size()[0], -1)
+        # proba = torch.log_softmax(pred, dim=1)
+        # pred_cls = torch.argmax(proba, dim=1)
+        pred_cls = self.model.decode(pred)
 
         label = label.cpu().view(-1).numpy()
-        pred_cls = pred_cls.cpu().view(-1).numpy()
+        # pred_cls = pred_cls.cpu().view(-1).numpy()
+        pred_cls = [i for l in pred_cls for i in l]
         # event_types = input_data[1].cpu().numpy()
 
         preds, labels = [], []
@@ -140,12 +142,13 @@ class CommonSeqTagExecutor(object):
                     inputs = tuple(x.cuda() for x in inputs)
                     label = label.cuda()
 
-                pred = self.model(inputs)
+                # pred = self.model(inputs)
+                pred, loss = self.model(inputs, label)
                 if isinstance(pred, tuple):
                     pred = pred[0]
 
                 # loss calculation
-                loss = self.get_loss(pred, label)
+                # loss = self.get_loss(pred, label)
 
                 loss.backward()
                 
@@ -192,7 +195,8 @@ class CommonSeqTagExecutor(object):
                 if self.use_gpu:
                     inputs = tuple(x.cuda() for x in inputs)
 
-                pred = model(inputs)
+                # pred = model(inputs)
+                pred, _ = model(inputs, label)
                 if isinstance(pred, tuple):
                     pred = pred[0]
                 y_pred, y_true = self.get_result(pred, label, input_data)

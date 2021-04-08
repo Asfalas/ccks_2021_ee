@@ -46,16 +46,16 @@ class CommonSeqTagDataHandler(object):
         pad_id = self.tokenizer.convert_tokens_to_ids("[PAD]")
         cls_id = self.tokenizer.convert_tokens_to_ids("[CLS]")
         sep_id = self.tokenizer.convert_tokens_to_ids("[SEP]")
-        att_mask = [1.0 for i in token_ids]
+        att_mask = [1 for i in token_ids]
         length = len(token_ids)
         if length <= self.max_seq_len - 2:
             token_ids = token_ids + [sep_id] + [pad_id] * (self.max_seq_len - 2 - length)
-            att_mask = att_mask + [1.0] + [0.0] * (self.max_seq_len - 2 - length)
+            att_mask = att_mask + [1] + [0] * (self.max_seq_len - 2 - length)
         else:
             token_ids = token_ids[:self.max_seq_len - 2] + [sep_id]
             att_mask = att_mask[:self.max_seq_len - 2] + [1.0]
         token_ids = [cls_id] + token_ids
-        att_mask = [1.0] + att_mask
+        att_mask = [1] + att_mask
         assert len(token_ids) == len(att_mask)
         return token_ids, att_mask
 
@@ -93,7 +93,8 @@ class CommonSeqTagDataHandler(object):
 
                 for i in range(len(label_list)):
                     if token_ids[i] == pad_id:
-                        label_list[i] = -100
+                        # label_list[i] = -100
+                        label_list[i] = 0
                     else:
                         label_list[i] = self.label.index(label_list[i])
                 label_tensor.append(label_list)
@@ -104,7 +105,7 @@ class CommonSeqTagDataHandler(object):
 
         # transform to tensor
         tokens_tensor = torch.LongTensor(tokens_tensor)
-        att_mask_tensor = torch.LongTensor(att_mask_tensor)
+        att_mask_tensor = torch.ByteTensor(att_mask_tensor)
         if 'test' not in self.path:
             label_tensor = torch.LongTensor(label_tensor)
         else:

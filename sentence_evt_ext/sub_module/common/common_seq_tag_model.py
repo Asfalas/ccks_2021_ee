@@ -2,6 +2,7 @@ import sys
 sys.path.append("./")
 import torch.nn as nn
 from transformers import BertModel
+from torchcrf import CRF
 
 class CommonSeqTagModel(nn.Module):
     def __init__(self, conf):
@@ -14,8 +15,9 @@ class CommonSeqTagModel(nn.Module):
             nn.Linear(self.hidden_size, len(self.label)),
             nn.ReLU()
         )
+        self.crf_layer = CRF(len(self.label), batch_first=True)
 
-    def forward(self, inputs):
+    def forward(self, inputs, labels):
         '''
         input_ids:  (batch_size, max_seq_length)
         attention_mask:  (batch_size, max_seq_length)
@@ -29,5 +31,10 @@ class CommonSeqTagModel(nn.Module):
             attention_mask=attention_mask
         )
         sequence_output = outputs[0]
-        logits = self.classifier(sequence_output)
-        return logits
+        emissions = self.classifier(sequence_output)
+        negloglike = -self.crf_layer(emissions, labels, mask=attention_mask)
+
+        return emissions, negloglike
+
+    def decode(self, emissions):
+        return self.crf_layer.decode(emissions)
