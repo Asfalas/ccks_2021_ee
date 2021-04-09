@@ -47,7 +47,7 @@ class JointModelExecutor(CommonSeqTagExecutor):
         precision1, recall1, f11 = calc_metrics(y_true[0], y_pred[0], labels1, average=average)
         precision2, recall2, f12 = calc_metrics(y_true[1], y_pred[1], labels2, average=average)
         precision = (precision1 + precision2) / 2
-        recall = (recall1 + recall2) /2
+        recall = (recall1 + recall2) / 2
         if precision + recall == 0:
             f1 = 0
         else:
@@ -163,15 +163,13 @@ class JointModelExecutor(CommonSeqTagExecutor):
             for step, input_data in bar:
                 # inputs = tuple(x.to(self.device) for x in input_data[:-1])
                 inputs = input_data[:-2]
-                label = input_data[-2]
+                label = input_data[-2:]
                 if self.use_gpu:
                     inputs = tuple(x.cuda() for x in inputs)
                     label = tuple(x.cuda() for x in label)
 
                 if not self.use_crf:
                     pred = self.model(inputs)
-                    # loss calculation
-                    loss = self.get_loss(pred, label)
                 else:
                     pred, loss = self.model(inputs, label)
 

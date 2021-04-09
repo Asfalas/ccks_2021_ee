@@ -51,6 +51,7 @@ class JointDataHandler(CommonSeqTagDataHandler):
                 arg_offsets_map[offset_str].append(key)
         for k, v in arg_offsets_map.items():
             key_list.append(v)
+            beg, end = int(k.split('_')[0]), int(k.split('_')[1])
             arg_offsets.append([beg+1, end+1])
         return arg_offsets, key_list
         
@@ -88,6 +89,7 @@ class JointDataHandler(CommonSeqTagDataHandler):
                             label_list1[offset[0]] = 'B-' + key
                             for i in range(offset[0]+1, offset[1]+1):
                                 label_list1[i] = 'I-' + key
+                        
                         if 'B-' + key in self.label2:
                             label_list2[offset[0]] = 'B-' + key
                             for i in range(offset[0]+1, offset[1]+1):
@@ -110,6 +112,7 @@ class JointDataHandler(CommonSeqTagDataHandler):
                             label_list2[i] = 0
                     else:
                         label_list2[i] = self.label2.index(label_list2[i])
+                        
                 label_tensor1.append(label_list1)
                 label_tensor2.append(label_list2)
 
