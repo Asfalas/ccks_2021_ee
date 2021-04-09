@@ -15,7 +15,9 @@ class CommonSeqTagModel(nn.Module):
             nn.Linear(self.hidden_size, len(self.label)),
             nn.ReLU()
         )
-        self.crf_layer = CRF(len(self.label), batch_first=True)
+        self.use_crf = conf.get('use_crf', 0)
+        if self.use_crf:
+            self.crf_layer = CRF(len(self.label), batch_first=True)
 
     def forward(self, inputs, labels):
         '''
@@ -32,9 +34,14 @@ class CommonSeqTagModel(nn.Module):
         )
         sequence_output = outputs[0]
         emissions = self.classifier(sequence_output)
-        negloglike = -self.crf_layer(emissions, labels, mask=attention_mask)
-
-        return emissions, negloglike
+        if self.use_crf:
+            negloglike = -self.crf_layer(emissions, labels, mask=attention_mask)
+            return emissions, negloglike
+        else:
+            return emissions
 
     def decode(self, emissions):
-        return self.crf_layer.decode(emissions)
+        if hasattr(self, "crf_layer"):
+            return getattr(self, "crf_layer").decode(emissions)
+        else:
+            return None

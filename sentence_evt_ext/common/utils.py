@@ -17,8 +17,8 @@ def setup_seed(seed):
 
 
 def calc_metrics(ground_truth, pred_label, labels, average='micro'):
-    precision = precision_score(ground_truth, pred_label, labels=labels, average=average)
-    recall = recall_score(ground_truth, pred_label, labels=labels, average=average)
+    precision = precision_score(ground_truth, pred_label, labels=labels, average=average, zero_division=0)
+    recall = recall_score(ground_truth, pred_label, labels=labels, average=average, zero_division=0)
     # f1 = f1_score(ground_truth, pred_label, average=average, zero_division=0)
     if precision + recall == 0:
         return precision, recall, 0.0

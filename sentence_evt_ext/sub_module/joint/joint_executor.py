@@ -11,65 +11,29 @@ from common.utils import *
 from torch.utils.data.distributed import DistributedSampler
 from torch import nn
 from torch.optim import lr_scheduler
+from sub_module.common.common_seq_tag_executor import *
 
-
-class CommonSeqTagExecutor(object):
+class JointModelExecutor(CommonSeqTagExecutor):
     def __init__(self, model, train_dataset, dev_dataset, test_dataset, conf):
-        self.use_gpu = conf.get('use_gpu', 0)
-        if self.use_gpu:
-            model = nn.DataParallel(model)
-            model = model.cuda()
-        self.model = model
-        self.lr = conf.get('lr', 1e-5)
-        self.epochs = conf.get('epochs', 20)
-        self.model_save_path = conf.get('model_save_path', 'cache/ace05/{metric}_{epoch}.tar')
-        self.best_model_save_path = conf.get('best_model_save_path', 'cache/ace05/best.json')
-        self.best_model_config_path = conf.get('best_model_config_path', 'cache/ace05/best_config.json')
-        self.max_seq_len = conf.get('max_seq_len', 400)
-        self.test_path = conf.get('test_path', 'data/duee_test1.json')
-        self.label = conf.get('label', ['O', 'B', 'I'])
-        self.use_crf = conf.get('use_crf', 0)
-        
-        self.train_dataset = train_dataset
-        self.test_dataset = test_dataset
-        self.dev_dataset = dev_dataset
-        self.test_output_path = conf.get('test_output_path', 'output/arg_men_test.json')
-        self.weight_decay = conf.get('weight_decay', 0)
-        self.batch_size = conf.get('batch_size', 32)
-        self.accumulate_step = conf.get('accumulate_step', 1)
-        self.lr_gamma = conf.get('lr_gamma', 0.9)
-        self.early_stop_threshold = conf.get('early_stop_threshold', 5)
-        self.best_metric = 0
-        self.optimizer = None
-        self.scheduler = None
-        self.loss_function = None
-        self.epoch = 0
-        self.early_stop = 0
-        self.conf = conf
-        setup_seed(seed)
+        super(JointModelExecutor, self).__init__(model, train_dataset, dev_dataset, test_dataset, conf)
+        label1 = conf.get('schema', {}).get('label1', [])
+        self.label1 = ['O']
+        for i in label1:
+            self.label1 += ['B-' + i, 'I-' + i]
 
-    def setup(self):
-        total_params = self.model.parameters() if not self.use_gpu else self.model.module.parameters()
-        self.optimizer = torch.optim.Adam(total_params, lr=self.lr)
-        self.scheduler = lr_scheduler.ExponentialLR(self.optimizer, gamma=self.lr_gamma)
-        self.loss_function = nn.CrossEntropyLoss()
-    
-    def load_model(self, checkpoint):
-        if 'json' in checkpoint:
-            real_model = json.load(open(checkpoint))['best_model']
-        else:
-            real_model = checkpoint
-        logging.info('  加载模型参数: ' + str(real_model))
-        checkpoint_info = torch.load(real_model, map_location=torch.device('cpu'))
-        if self.use_gpu:
-            self.model.module.load_state_dict(checkpoint_info['model_state_dict'])
-        else:
-            self.model.load_state_dict(checkpoint_info['model_state_dict'])
+        label2 = conf.get('schema', {}).get('label2', [])
+        self.label2 = ['O']
+        for i in label2:
+            self.label2 += ['B-' + i, 'I-' + i]
+
 
     def get_loss(self, pred, label):
-        label = label.view(-1)
-        pred = pred.view(label.size()[0], -1)
-        loss = self.loss_function(pred, label)
+        label1 = label[0].view(-1)
+        label2 = label[1].view(-1)
+        pred1 = pred[0].view(label1.size()[0], -1)
+        pred2 = pred[1].view(label2.size()[0], -1)
+        loss = 0.5 * self.loss_function(pred1, label1)
+        loss += 0.5 * self.loss_function(pred2, label2)
         return loss
     
     def optimize(self):
@@ -78,43 +42,49 @@ class CommonSeqTagExecutor(object):
         self.optimizer.zero_grad()
 
     def get_metric(self, y_pred, y_true, average='micro'):
-        labels = [i for i in range(1, len(self.conf.get('label')))]
-        precision, recall, f1 = calc_metrics(y_true, y_pred, labels, average=average)
+        labels1 = [i for i in range(1, len(self.label1))]
+        labels2 = [i for i in range(1, len(self.label2))]
+        precision1, recall1, f11 = calc_metrics(y_true[0], y_pred[0], labels1, average=average)
+        precision2, recall2, f12 = calc_metrics(y_true[1], y_pred[1], labels2, average=average)
+        precision = (precision1 + precision2) / 2
+        recall = (recall1 + recall2) /2
+        if precision + recall == 0:
+            f1 = 0
+        else:
+            f1 = 2 * precision * recall / (precision + recall)
         metric = f1
         return precision, recall, f1, metric
 
     def get_result(self, pred, label, input_data, ignore_index=-100):
-        label = label.view(-1)
+        label1 = label[0].view(-1)
+        label2 = label[1].view(-1)
         if not self.use_crf:
-            pred = pred.view(label.size()[0], -1)
-            proba = torch.log_softmax(pred, dim=1)
-            pred_cls = torch.argmax(proba, dim=1)
-            pred_cls = pred_cls.cpu().view(-1).numpy()
+            pred1 = pred[0].view(label1.size()[0], -1)
+            pred2 = pred[1].view(label2.size()[0], -1)
+            proba1 = torch.log_softmax(pred1, dim=1)
+            proba2 = torch.log_softmax(pred2, dim=1)
+            pred_cls1 = torch.argmax(proba1, dim=1)
+            pred_cls2 = torch.argmax(proba2, dim=1)
+            pred_cls1 = pred_cls1.cpu().view(-1).numpy()
+            pred_cls2 = pred_cls2.cpu().view(-1).numpy()
         else:
             pred_cls = self.model.decode(pred)
-        pred_cls = [i for l in pred_cls for i in l]
+            pred_cls1 = [i for l in pred_cls[0] for i in l]
+            pred_cls2 = [i for l in pred_cls[1] for i in l]
 
-        label = label.cpu().view(-1).numpy()
+        label1 = label1.cpu().view(-1).numpy()
+        label2 = label2.cpu().view(-1).numpy()
         # event_types = input_data[1].cpu().numpy()
 
-        preds, labels = [], []
-        for idx, (p, l) in enumerate(zip(pred_cls, label)):
-            if l == ignore_index:
-                continue
-            preds.append(p)
-            labels.append(l)
+        preds = [[], []]
+        labels = [[], []]
+        for idx, (pred_cls, label) in enumerate(zip([pred_cls1, pred_cls2], [label1, label2])):
+            for p, l in zip(pred_cls, label):
+                if l == ignore_index:
+                    continue
+                preds[idx].append(p)
+                labels[idx].append(l)
         return preds, labels
-
-    def save_checkpoint(self, model, metric):
-        path = self.model_save_path.format(metric=round(metric, 4), epoch=self.epoch)
-        model_state_dict = model.state_dict() if not self.use_gpu else model.module.state_dict()
-        logging.info('  存储模型参数: ' + str(path))
-        result = {
-            'model_state_dict': model_state_dict,
-        }
-        torch.save(result, path)
-        json.dump({'best_model': path}, open(self.best_model_save_path, 'w', encoding='utf-8'))
-        json.dump(self.conf, open(self.best_model_config_path, 'w', encoding='utf-8'), indent=2, ensure_ascii=False)
 
     def train(self, checkpoint=None):
         logging.info('  开始训练')
@@ -139,11 +109,12 @@ class CommonSeqTagExecutor(object):
             # training loop
             bar = tqdm(list(enumerate(train_data_loader)))
             for step, input_data in bar:
-                inputs = input_data[:-1]
-                label = input_data[-1]
+                inputs = input_data[:-2]
+                label = input_data[-2:]
+                # print(input_data)
                 if self.use_gpu:
                     inputs = tuple(x.cuda() for x in inputs)
-                    label = label.cuda()
+                    label = tuple(x.cuda() for x in label)
 
                 if not self.use_crf:
                     pred = self.model(inputs)
@@ -151,8 +122,6 @@ class CommonSeqTagExecutor(object):
                     loss = self.get_loss(pred, label)
                 else:
                     pred, loss = self.model(inputs, label)
-                if isinstance(pred, tuple):
-                    pred = pred[0]
 
                 loss.backward()
                 
@@ -189,29 +158,31 @@ class CommonSeqTagExecutor(object):
         with torch.no_grad():
             model.eval()
             bar = tqdm(list(enumerate(data_loader)))
-            ground_truth = []
-            pred_label = []
-            pred_results = []
+            ground_truth = [[], []]
+            pred_label = [[], []]
             for step, input_data in bar:
                 # inputs = tuple(x.to(self.device) for x in input_data[:-1])
-                inputs = input_data[:-1]
-                label = input_data[-1]
+                inputs = input_data[:-2]
+                label = input_data[-2]
                 if self.use_gpu:
                     inputs = tuple(x.cuda() for x in inputs)
+                    label = tuple(x.cuda() for x in label)
 
                 if not self.use_crf:
-                    pred = model(inputs)
+                    pred = self.model(inputs)
+                    # loss calculation
+                    loss = self.get_loss(pred, label)
                 else:
-                    pred, _ = model(inputs, label)
-                if isinstance(pred, tuple):
-                    pred = pred[0]
+                    pred, loss = self.model(inputs, label)
+
                 y_pred, y_true = self.get_result(pred, label, input_data)
-                ground_truth += y_true
-                pred_label += y_pred
-                pred_results.append(y_pred)
+                ground_truth[0] += y_true[0]
+                pred_label[0] += y_pred[0]
+                ground_truth[1] += y_true[1]
+                pred_label[1] += y_pred[1]
             precision, recall, f1, metric = self.get_metric(pred_label, ground_truth)
             logging.info(f"{mode}:{self.epoch}: pre:{round(precision, 3)} rec:{round(recall, 3)} f1:{round(f1, 3)}")
-        return metric, pred_results
+        return metric, None
 
     def test(self, dataset=None, checkpoint=None):
         logging.info('  测试开始')

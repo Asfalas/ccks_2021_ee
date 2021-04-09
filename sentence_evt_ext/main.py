@@ -14,6 +14,9 @@ from sub_module.arg.arg_tag_dataset import ArgTagDataHandler
 from sub_module.cls.cls_dataset import ClsDataHandler
 from sub_module.cls.cls_model import ClsModel
 from sub_module.cls.cls_model_executor import ClsModelExecutor
+from sub_module.joint.joint_dataset import *
+from sub_module.joint.joint_executor import *
+from sub_module.joint.joint_model import *
 
 logging.basicConfig(level=logging.INFO)
 parser = argparse.ArgumentParser()
@@ -27,30 +30,34 @@ parser.add_argument('--use_cpu', type=int, default=0)
 parser.add_argument('--epochs', type=int, default=0)
 parser.add_argument('--batch_size', type=int, default=0)
 parser.add_argument('--accumulate_step', type=int, default=0)
-parser.add_argument('--task', type=str, default='evt_men_detect', choices=['evt_men_detect', 'arg_men_detect', 'men_cls'])
+parser.add_argument('--task', type=str, default='evt_men_detect', choices=['evt_men_detect', 'arg_men_detect', 'men_cls', 'joint'])
 
 handler_map = {
     'evt_men_detect': EvtTagDataHandler,
     'arg_men_detect': ArgTagDataHandler,
-    'men_cls': ClsDataHandler
+    'men_cls': ClsDataHandler,
+    'joint': JointDataHandler
 }
 
 model_map = {
     'evt_men_detect': CommonSeqTagModel,
     'arg_men_detect': CommonSeqTagModel,
-    'men_cls': ClsModel
+    'men_cls': ClsModel,
+    'joint': JointModel
 }
 
 dataset_map = {
     'evt_men_detect': CommonDataSet,
     'arg_men_detect': CommonDataSet,
-    'men_cls': CommonDataSet
+    'men_cls': CommonDataSet,
+    'joint': CommonDataSet
 }
 
 executor_map = {
     'evt_men_detect': CommonSeqTagExecutor,
     'arg_men_detect': CommonSeqTagExecutor,
-    'men_cls': ClsModelExecutor
+    'men_cls': ClsModelExecutor,
+    'joint': JointModelExecutor
 }
 
 args = parser.parse_args()

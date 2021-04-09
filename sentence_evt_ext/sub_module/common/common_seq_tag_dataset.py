@@ -33,6 +33,7 @@ class CommonSeqTagDataHandler(object):
         self.pretrained_model_name = conf.get('pretrained_model_name', 'bert-base-chinese')
         self.tokenizer = BertTokenizer.from_pretrained(self.pretrained_model_name)
         self.label = conf.get('label', ['O', 'B', 'I'])
+        self.use_crf = conf.get('use_crf', 0)
         self.conf = conf
 
     def convert_tokens_to_ids(self, tokens):
@@ -93,8 +94,10 @@ class CommonSeqTagDataHandler(object):
 
                 for i in range(len(label_list)):
                     if token_ids[i] == pad_id:
-                        # label_list[i] = -100
-                        label_list[i] = 0
+                        if not self.use_crf:
+                            label_list[i] = -100
+                        else:
+                            label_list[i] = 0
                     else:
                         label_list[i] = self.label.index(label_list[i])
                 label_tensor.append(label_list)
