@@ -195,6 +195,7 @@ class JointModelExecutor(CommonSeqTagExecutor):
                                                        shuffle=False, num_workers=0)
         test_result = []
         test_contents = [json.loads(line) for line in open(self.test_path)]
+        test_evts = json.load(open("output/evt_men_test.json"))
         offset = 0
         # test
         with torch.no_grad():
@@ -202,22 +203,43 @@ class JointModelExecutor(CommonSeqTagExecutor):
             bar = tqdm(list(enumerate(data_loader)))
             for step, input_data in bar:
                 # inputs = tuple(x.to(self.device) for x in input_data[:-1])
-                inputs = input_data[:-1]
+                inputs = input_data[:-2]
+                label = input_data[-2:]
                 if self.use_gpu:
                     inputs = tuple(x.cuda() for x in inputs)
+                    label = tuple(x.cuda() for x in label)
 
-                pred = self.model(inputs)
-                if isinstance(pred, tuple):
-                    pred = pred[0]
-                proba = torch.log_softmax(pred, dim=-1)
-                pred_cls = torch.argmax(proba, dim=-1).cpu().numpy()
-                for i in range(pred_cls.shape[0]):
+                if not self.use_crf:
+                    pred = self.model(inputs)
+                else:
+                    pred, loss = self.model(inputs, label)
+
+                proba1 = torch.softmax(pred[0], dim=-1)
+                pred_cls1 = torch.argmax(proba1, dim=-1).cpu().numpy()
+
+                proba2 = torch.softmax(pred[1], dim=-1)
+                pred_cls2 = torch.argmax(proba2, dim=-1).cpu().numpy()
+                
+                proba1 = proba1.cpu().numpy()
+                proba2 = proba2.cpu().numpy()
+                
+                mention1, mention2 = [], []
+                for i in range(pred_cls1.shape[0]):
                     test_info = test_contents[offset+i]
+                    test_evt_info = test_evts[offset+i]
+                    
                     labels = []
                     for j in range(1, self.max_seq_len):
-                        labels.append(self.label[pred_cls[i][j]])
-                    test_info['mention'] = self.get_mention(test_info['text'], labels)
-                offset += pred_cls.shape[0]
+                        labels.append([self.label1[pred_cls1[i][j]], proba1[i][j][pred_cls1[i][j]]])
+                    mention1 = self.get_mention(test_info['text'], labels)
+
+                    for j in range(1, self.max_seq_len):
+                        labels.append([self.label2[pred_cls2[i][j]], proba2[i][j][pred_cls2[i][j]]])
+                    mention2 = self.get_mention(test_info['text'], labels)
+                    
+                    test_info['event'] = merge_mention(mention1, mention2, test_evt_info)
+                
+                offset += pred_cls1.shape[0]
         logging.info("存储test结果：" + self.test_output_path)
         json.dump(test_contents, open(self.test_output_path, 'w'), indent=2, ensure_ascii=False)
         return True
@@ -227,13 +249,51 @@ class JointModelExecutor(CommonSeqTagExecutor):
         idx = 0
         mention = []
         while idx < len(label):
-            if label[idx] == 'B':
+            if label[idx][0][0] == 'B':
+                arg_type = label[idx][0][2:]
                 beg = idx
                 idx += 1
-                while idx < len(label) and label[idx] == 'I':
+                while idx < len(label) and label[idx][0] == 'I-' + arg_type:
                     idx += 1
                 end = idx
-                mention.append(str(beg) + '@#@' + text[beg: end])
+                
+                score = 0
+                for i in range(beg, end):
+                    score += label[i][1]
+                score /= end-beg
+                score = round(score, 4)
+                mention.append(str(beg) + '$%$' + text[beg: end] + '$%$' + arg_type + '$%$' + str(score))
             else:
                 idx += 1
         return mention
+    
+    def merge_mention(mention1, mention2, evt_info):
+        candidate_evt_types = [x.split("@#@")[0] for x in evt_info.get("mention", [])]
+        offsets = []
+        evt_type_map = {}
+        for x in mention1:
+            beg, mention, arg_type, score = *x.split('$%$')
+            beg = int(beg)
+            end = beg + len(mention)
+            score = float(score)
+            new_offsets = []
+            
+            is_valid = True
+            for o in offsets:
+                if end <= o[1] or beg >= o[2]:
+                    new_offsets.append(o)
+                else:
+                    if score < o[3]:
+                        new_offsets.append(o)
+                        is_valid = False
+            if is_valid:
+                new_offsets.append([beg, end, score, arg_type])
+                
+            offsets = new_offsets
+        for o in offsets:
+            
+                    
+                    
+            
+        
+        

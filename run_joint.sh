@@ -1,7 +1,7 @@
 cd sentence_evt_ext/
 pwd
 CUDA_VISIBLE_DEVICES=0 python -u main.py \
-    --mode train \
+    --mode test \
     --task joint \
     --debug 0 \
     --dataset duee \
