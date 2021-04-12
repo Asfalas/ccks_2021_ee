@@ -237,7 +237,7 @@ class JointModelExecutor(CommonSeqTagExecutor):
                         labels.append([self.label2[pred_cls2[i][j]], proba2[i][j][pred_cls2[i][j]]])
                     mention2 = self.get_mention(test_info['text'], labels)
                     
-                    test_info['event'] = merge_mention(mention1, mention2, test_evt_info)
+                    test_info['event_list'] = merge_mention(mention1, mention2, test_evt_info)
                 
                 offset += pred_cls1.shape[0]
         logging.info("存储test结果：" + self.test_output_path)
@@ -287,10 +287,50 @@ class JointModelExecutor(CommonSeqTagExecutor):
                         new_offsets.append(o)
                         is_valid = False
             if is_valid:
-                new_offsets.append([beg, end, score, arg_type])
+                new_offsets.append([beg, end, score, arg_type, mention])
                 
             offsets = new_offsets
+        time_args = []
         for o in offsets:
+            beg, end, score, arg_type, mention = *o
+            if arg_type == '时间':
+                time_args.append(o)
+                continue
+            evt_type, role = *arg_type.split('@#@')
+            if evt_type not in evt_type_map:
+                evt_type_map[evt_type] = []
+            evt_type_map[evt_type].append({
+                'argument': mention,
+                'argument_role': role,
+                'argument_start_index': int(beg)
+            })
+        if evt_type_map:
+            for ta in time_args:
+                beg, end, score, arg_type, mention = *ta
+                for e in evt_type_map:
+                    evt_type_map[e].append({
+                        'argument': mention,
+                        'argument_role': '时间',
+                        'argument_start_index': int(beg)
+                    })
+        else:
+            for e in candidate_evt_types:
+                for ta in time_args:
+                    beg, end, score, arg_type, mention = *ta
+                    if e not in evt_type_map:
+                        evt_type_map[e] = []
+                    evt_type_map[e].append({
+                        'argument': mention,
+                        'argument_role': '时间',
+                        'argument_start_index': int(beg)
+                    })
+        event_list = []
+        for k, v in evt_type_map.items():
+            event_list.append({
+                "event_type": k,
+                "arguments": v
+            })
+        return event_list
             
                     
                     
