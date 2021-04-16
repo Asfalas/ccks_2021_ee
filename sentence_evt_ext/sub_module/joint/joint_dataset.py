@@ -3,6 +3,7 @@ sys.path.append('./')
 import json
 import logging
 import torch
+import copy
 
 from transformers import BertTokenizer
 from torch.utils.data import Dataset
@@ -13,137 +14,141 @@ from sub_module.common.common_seq_tag_dataset import *
 class JointDataHandler(CommonSeqTagDataHandler):
     def __init__(self, path, conf, debug=0):
         self.path = path
-        self.data = [line for line in open(path).readlines()]
+        if 'test' in path:
+            self.data = [line for line in open(path).readlines()]
+        else:
+            self.data = json.load(open(path))
         logging.info('  debug 模式:' + ("True" if debug else "False"))
         if debug:
             self.data = self.data[:200]
         self.max_seq_len = conf.get('max_seq_len', 256)
         self.pretrained_model_name = conf.get('pretrained_model_name', 'bert-base-chinese')
         self.tokenizer = BertTokenizer.from_pretrained(self.pretrained_model_name)
-        
-        event_schema = conf.get('event_schema', {})
-        label1 = conf.get('schema', {}).get('label1', [])
-        self.label1 = ['O']
-        for i in label1:
-            for a in event_schema[i]:
-                if a=='None':
-                    continue
-                key = i + '@#@' + a if a != '时间' else '时间'
-                self.label1 += ['B-' + key, 'I-' + key]
-
-        label2 = conf.get('schema', {}).get('label2', [])
-        self.label2 = ['O']
-        for i in label2:
-            for a in event_schema[i]:
-                if a=='None':
-                    continue
-                key = i + '@#@' + a if a != '时间' else '时间'
-                self.label2 += ['B-' + key, 'I-' + key]
-                
+        self.max_ent_len = conf.get("max_ent_len", 10)
+        self.max_evt_len = conf.get("max_evt_len", 3)
+        self.role_list = conf.get("role_list", [])
         self.use_crf = conf.get('use_crf', 0)
         self.conf = conf
 
-    def get_offset_list(self, info):
-        arg_offsets_map = {}
-        arg_offsets = []
-        key_list = []
-        for event_info in info['event_list']:
-            et = event_info['event_type']
-            for arg_info in event_info.get('arguments', []):
-                beg = arg_info['argument_start_index']
-                arg = arg_info['argument']
-                end = beg + len(arg) - 1
-                role = arg_info['role']
-                key = et + '@#@' + role
-                assert info['text'][beg: end+1] == arg
-                offset_str = str(beg) + '_' + str(end)
-                if offset_str not in arg_offsets_map:
-                    arg_offsets_map[offset_str] = []
-                arg_offsets_map[offset_str].append(key)
-        for k, v in arg_offsets_map.items():
-            key_list.append(v)
-            beg, end = int(k.split('_')[0]), int(k.split('_')[1])
-            arg_offsets.append([beg+1, end+1])
-        return arg_offsets, key_list
-        
     def _load_data(self):
         # for output tensor
         max_len = 0
         tokens_tensor = []
         att_mask_tensor = []
-        label_tensor1 = []
-        label_tensor2 = []
+        tri_seq_label_tensor = []
+        ent_seq_label_tensor = []
+        tri_seq_mention_mask_tensor = []
+        ent_seq_mention_mask_tensor = []
+        arg_role_label_tensor = []
 
         offset_err = 0
         pad_id = self.tokenizer.convert_tokens_to_ids("[PAD]")
 
+        mask_template = [0.0 for i in range(self.max_seq_len)]
+
         for info in tqdm(self.data):
-            info = json.loads(info)
             tokens = info['text']
             max_len = len(tokens) if len(tokens) > max_len else max_len
             token_ids, att_mask = self.sentence_padding(tokens)
 
-            if 'test' not in self.path:
-                offsets, key_list = self.get_offset_list(info)
-                label_list1 = ['O' for i in range(self.max_seq_len)]
-                label_list2 = ['O' for i in range(self.max_seq_len)]
-                
-                for offset, keys in zip(offsets, key_list):
-                    if offset[1] >= self.max_seq_len:
-                        valid = False
-                        offset_err += 1
-                        continue
-                    for key in keys:
-                        if '时间' in key:
-                            key = '时间'
-                        if 'B-' + key in self.label1:
-                            label_list1[offset[0]] = 'B-' + key
-                            for i in range(offset[0]+1, offset[1]+1):
-                                label_list1[i] = 'I-' + key
-                        
-                        if 'B-' + key in self.label2:
-                            label_list2[offset[0]] = 'B-' + key
-                            for i in range(offset[0]+1, offset[1]+1):
-                                label_list2[i] = 'I-' + key
-
-                for i in range(len(label_list1)):
-                    if token_ids[i] == pad_id:
-                        if not self.use_crf:
-                            label_list1[i] = -100
-                        else:
-                            label_list1[i] = 0
-                    else:
-                        label_list1[i] = self.label1.index(label_list1[i])
-                
-                for i in range(len(label_list2)):
-                    if token_ids[i] == pad_id:
-                        if not self.use_crf:
-                            label_list2[i] = -100
-                        else:
-                            label_list2[i] = 0
-                    else:
-                        label_list2[i] = self.label2.index(label_list2[i])
-                        
-                label_tensor1.append(label_list1)
-                label_tensor2.append(label_list2)
+            seq_label_template = [0 for i in range(self.max_seq_len)]
+            for idx, ids in enumerate(token_ids):
+                if ids == pad_id:
+                    seq_label_template[idx] = -100
 
             tokens_tensor.append(token_ids)
             att_mask_tensor.append(att_mask)
 
+            if 'test' not in self.path:
+                ent_seq_mention_mask_unit = []
+                ent_seq_label = copy.copy(seq_label_template)
+                for ent in info['ent_list']:
+                    beg, mention = ent.split('@#@')[0], ent.split('@#@')[1]
+                    beg = int(beg)
+                    
+                    if beg+len(mention)+1 >= self.max_seq_len:
+                        offset_err += 1
+                        continue
+                    
+                    tmp_mask = copy.copy(mask_template)
+                    for i in range(beg+1, beg+len(mention)+1):
+                        tmp_mask[i] = 1.0 / len(mention)
+                        ent_seq_label[i] = 2
+                    ent_seq_label[beg+1] = 1
+                    ent_seq_mention_mask_unit.append(tmp_mask)
+
+                ent_seq_mention_mask_unit = ent_seq_mention_mask_unit[:self.max_ent_len]
+                for i in range(len(ent_seq_mention_mask_unit), self.max_ent_len):
+                    ent_seq_mention_mask_unit.append(copy.copy(mask_template))
+                
+                tri_seq_mention_mask_unit = []
+                tri_seq_label = copy.copy(seq_label_template)
+                arg_role_label_unit = []
+
+                for evt in info['event_list']:
+                    evt_type = evt['event_type']
+                    beg = evt['trigger_start_index']
+                    mention = evt['trigger']
+                    if beg+len(mention)+1 >= self.max_seq_len:
+                        offset_err += 1
+                        continue
+                    tmp_mask = copy.copy(mask_template)
+                    for i in range(beg+1, beg+len(mention)+1):
+                        tmp_mask[i] = 1.0 / len(mention)
+                        tri_seq_label[i] = 2
+                    tri_seq_label[beg+1] = 1
+                    tri_seq_mention_mask_unit.append(tmp_mask)
+
+                    arg_role_map = {}
+                    for a in evt['arguments']:
+                        beg = a['argument_start_index']
+                        mention = a['argument']
+                        role = evt_type + '@#@' + a['role']
+                        arg_role_map[str(beg) + '@#@' + mention] = role
+
+                    tmp_role_label = []
+                    for ent in info['ent_list']:
+                        if ent in arg_role_map:
+                            tmp_role_label.append(self.role_list.index(arg_role_map[ent]))
+                        else:
+                            tmp_role_label.append(0)
+                    tmp_role_label = tmp_role_label[:self.max_ent_len]
+                    for i in range(len(tmp_role_label), self.max_ent_len):
+                        tmp_role_label.append(-100)
+                    arg_role_label_unit.append(tmp_role_label)
+
+                tri_seq_mention_mask_unit = tri_seq_mention_mask_unit[:self.max_evt_len]
+                arg_role_label_unit = arg_role_label_unit[:self.max_evt_len]
+                for i in range(len(tri_seq_mention_mask_unit), self.max_evt_len):
+                    tri_seq_mention_mask_unit.append(copy.copy(mask_template))
+                    arg_role_label_unit.append([-100] * self.max_ent_len)
+                
+                tri_seq_label_tensor.append(tri_seq_label)
+                ent_seq_label_tensor.append(ent_seq_label)
+                arg_role_label_tensor.append(arg_role_label_unit)
+                tri_seq_mention_mask_tensor.append(tri_seq_mention_mask_unit)
+                ent_seq_mention_mask_tensor.append(ent_seq_mention_mask_unit)
+                # print(tokens)
+                # print(tri_seq_label_tensor)
+                # print(ent_seq_label_tensor)
+                # print(arg_role_label_tensor)
+                # print(tri_seq_mention_mask_tensor)
+                # print(ent_seq_mention_mask_tensor)
+                # input()
 
         # transform to tensor
         tokens_tensor = torch.LongTensor(tokens_tensor)
         att_mask_tensor = torch.ByteTensor(att_mask_tensor)
         if 'test' not in self.path:
-            label_tensor1 = torch.LongTensor(label_tensor1)
-            label_tensor2 = torch.LongTensor(label_tensor2)
-        else:
-            label_tensor1 = [0] * tokens_tensor.size()[0]
-            label_tensor2 = [0] * tokens_tensor.size()[0]
+           tri_seq_label_tensor = torch.LongTensor(tri_seq_label_tensor)
+           ent_seq_label_tensor = torch.LongTensor(ent_seq_label_tensor)
+           tri_seq_mention_mask_tensor = torch.FloatTensor(tri_seq_mention_mask_tensor)
+           ent_seq_mention_mask_tensor = torch.FloatTensor(ent_seq_mention_mask_tensor)
+           arg_role_label_tensor = torch.LongTensor(arg_role_label_tensor)
 
         if offset_err:
             logging.warn("  越界: " + str(offset_err))
-        if max_len:
-            logging.info("  最大句长: " + str(max_len))
-        
-        return tokens_tensor, att_mask_tensor, label_tensor1, label_tensor2
+        if 'test' not in self.path:
+            return tokens_tensor, att_mask_tensor, tri_seq_mention_mask_tensor, ent_seq_mention_mask_tensor, tri_seq_label_tensor, ent_seq_label_tensor, arg_role_label_tensor
+
+        return tokens_tensor, att_mask_tensor
