@@ -92,7 +92,7 @@ class CommonSeqTagExecutor(object):
             pred_cls = pred_cls.cpu().view(-1).numpy()
         else:
             pred_cls = self.model.decode(pred)
-        pred_cls = [i for l in pred_cls for i in l]
+            pred_cls = [i for l in pred_cls for i in l]
 
         label = label.cpu().view(-1).numpy()
         # event_types = input_data[1].cpu().numpy()

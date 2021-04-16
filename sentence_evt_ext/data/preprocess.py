@@ -34,11 +34,13 @@ for line in data:
         for a in e['arguments']:
             beg = str(a['argument_start_index'])
             argument = a['argument']
-            role = et + '@#@' + a['role']
+#             role = et + '@#@' + a['role']
+            if a['role'] == '时间':
+                continue
             key = beg + '@#@' + argument
             if key not in overlap_map:
                 overlap_map[key] = []
-            overlap_map[key].append(role)
+            overlap_map[key].append(et)
             total += 1
 
     for k, v in overlap_map.items():
@@ -47,8 +49,6 @@ for line in data:
             sorted(v)
             for i in range(len(v)-1):
                 for j in range(i, len(v)):
-                    if v[j] == v[i] or '时间' in v[i] or '时间' in v[j]:
-                        continue
                     if v[i] not in total_map:
                         total_map[v[i]] = set()
                     total_map[v[i]].add(v[j])
@@ -85,33 +85,39 @@ print(total)
 
 
 schema = json.load(open("schema.json"))
-label_list1 = []
-label_list2 = []
 for k, v in schema.items():
     if k=='None':
         continue
-    for a in v:
-        if a == 'None':
-            continue
-        t = k+'@#@'+a
-        if '时间' in t:
-            if '时间' not in label_list1:
-                label_list1.append('时间')
-            if '时间' not in label_list2:
-                label_list2.append('时间')
-        else:
-            if t not in set_list[1] and t not in set_list[0]:
-                label_list1.append(t)
-                label_list2.append(t)
-            elif t in set_list[0]:
-                label_list1.append(t)
-            else:
-                label_list2.append(t)
+    if k in set_list[0] and k in set_list[1]:
+        raise Exception('error')
+    if k in set_list[0] or k in set_list[1]:
+        continue
+    if len(set_list[0]) < len(set_list[1]):
+        set_list[0].add(k)
+    else:
+        set_list[1].add(k)
+#     for a in v:
+#         if a == 'None':
+#             continue
+#         t = k+'@#@'+a
+#         if '时间' in t:
+#             if '时间' not in label_list1:
+#                 label_list1.append('时间')
+#             if '时间' not in label_list2:
+#                 label_list2.append('时间')
+#         else:
+#             if t not in set_list[1] and t not in set_list[0]:
+#                 label_list1.append(t)
+#                 label_list2.append(t)
+#             elif t in set_list[0]:
+#                 label_list1.append(t)
+#             else:
+#                 label_list2.append(t)
 res = {
-    'label1': label_list1,
-    'label2': label_list2
+    'label1': list(set_list[0]),
+    'label2': list(set_list[1])
 }
 
-json.dump(res, open("./joint_schema.json", 'w'), indent=2, ensure_ascii=False)
+json.dump(res, open("./joint_evt_schema.json", 'w'), indent=2, ensure_ascii=False)
 
             

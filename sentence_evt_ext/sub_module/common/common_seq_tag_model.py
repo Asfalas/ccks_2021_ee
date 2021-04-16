@@ -19,7 +19,7 @@ class CommonSeqTagModel(nn.Module):
         if self.use_crf:
             self.crf_layer = CRF(len(self.label), batch_first=True)
 
-    def forward(self, inputs, labels):
+    def forward(self, inputs, labels=None):
         '''
         input_ids:  (batch_size, max_seq_length)
         attention_mask:  (batch_size, max_seq_length)

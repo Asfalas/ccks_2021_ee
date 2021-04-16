@@ -1,6 +1,6 @@
 {
     "max_seq_len": 400,
-    "pretrained_model_name": "bert-base-chinese",
+    "pretrained_model_name": "hfl/chinese-roberta-wwm-ext",
     "test_output_path": "output/evt_men_test.json",
     "label": ["O", "I", "B"],
     "hidden_size": 768,

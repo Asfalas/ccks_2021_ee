@@ -7,6 +7,6 @@ CUDA_VISIBLE_DEVICES=0 python -u main.py \
     --dataset duee \
     --conf conf/duee_arg_men.json \
     --use_cpu 0 \
-    --epochs 10 \
+    --epochs 20 \
     --accumulate_step 1 \
     --batch_size 16

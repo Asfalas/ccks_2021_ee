@@ -20,15 +20,26 @@ class JointDataHandler(CommonSeqTagDataHandler):
         self.max_seq_len = conf.get('max_seq_len', 256)
         self.pretrained_model_name = conf.get('pretrained_model_name', 'bert-base-chinese')
         self.tokenizer = BertTokenizer.from_pretrained(self.pretrained_model_name)
+        
+        event_schema = conf.get('event_schema', {})
         label1 = conf.get('schema', {}).get('label1', [])
         self.label1 = ['O']
         for i in label1:
-            self.label1 += ['B-' + i, 'I-' + i]
+            for a in event_schema[i]:
+                if a=='None':
+                    continue
+                key = i + '@#@' + a if a != '时间' else '时间'
+                self.label1 += ['B-' + key, 'I-' + key]
 
         label2 = conf.get('schema', {}).get('label2', [])
         self.label2 = ['O']
         for i in label2:
-            self.label2 += ['B-' + i, 'I-' + i]
+            for a in event_schema[i]:
+                if a=='None':
+                    continue
+                key = i + '@#@' + a if a != '时间' else '时间'
+                self.label2 += ['B-' + key, 'I-' + key]
+                
         self.use_crf = conf.get('use_crf', 0)
         self.conf = conf
 

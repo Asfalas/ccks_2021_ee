@@ -9,4 +9,4 @@ CUDA_VISIBLE_DEVICES=0 python -u main.py \
     --use_cpu 0 \
     --epochs 20 \
     --accumulate_step 1 \
-    --batch_size 20
+    --batch_size 16

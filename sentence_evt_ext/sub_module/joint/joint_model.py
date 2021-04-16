@@ -8,15 +8,25 @@ class JointModel(nn.Module):
     def __init__(self, conf):
         super(JointModel, self).__init__()
         self.pretrained_model_name = conf.get("pretrained_model_name", 'bert-base-chinese')
+        
+        event_schema = conf.get('event_schema', {})
         label1 = conf.get('schema', {}).get('label1', [])
         self.label1 = ['O']
         for i in label1:
-            self.label1 += ['B-' + i, 'I-' + i]
+            for a in event_schema[i]:
+                if a=='None':
+                    continue
+                key = i + '@#@' + a if a != '时间' else '时间'
+                self.label1 += ['B-' + key, 'I-' + key]
 
         label2 = conf.get('schema', {}).get('label2', [])
         self.label2 = ['O']
         for i in label2:
-            self.label2 += ['B-' + i, 'I-' + i]
+            for a in event_schema[i]:
+                if a=='None':
+                    continue
+                key = i + '@#@' + a if a != '时间' else '时间'
+                self.label2 += ['B-' + key, 'I-' + key]
         
         self.hidden_size = conf.get('hidden_size', 0)
         self.bert = BertModel.from_pretrained(self.pretrained_model_name)
