@@ -14,43 +14,43 @@ import sys
 # # print(list(schema.keys()).index('财经/交易-出售/收购'))
 # event_list = list(schema.keys())
 # json.dump(event_list, sys.stdout, indent=2, ensure_ascii=False)
+#
+# schema = json.load(open("schema.json"))
+# role_list = ['None']
+# for k, v in schema.items():
+#     if k == 'None':
+#         continue
+#     for a in v:
+#         if a == 'None':
+#             continue
+#         role_list.append(k + "@#@" + a)
+# json.dump(role_list, sys.stdout, indent=2, ensure_ascii=False)
+#
 
-schema = json.load(open("schema.json"))
-role_list = ['None']
-for k, v in schema.items():
-    if k == 'None':
-        continue
-    for a in v:
-        if a == 'None':
-            continue
-        role_list.append(k + "@#@" + a)
-json.dump(role_list, sys.stdout, indent=2, ensure_ascii=False)
-        
 
+data = [line for line in open("duee_train.json", encoding='utf-8')]
+new_data = []
+for line in data:
+    d = json.loads(line)
+    arg_set = set()
+    for e in d['event_list']:
+        for a in e['arguments']:
+            arg_set.add(str(a['argument_start_index']) + "@#@" + str(a['argument']))
+    d['ent_list'] = list(arg_set)
+    new_data.append(d)
+json.dump(new_data, open("./duee_joint_train.json", 'w', encoding='utf-8'), indent=2, ensure_ascii=False)
 
-# data = [line for line in open("duee_train.json")]
-# new_data = []
-# for line in data:
-#     d = json.loads(line)
-#     arg_set = set()
-#     for e in d['event_list']:
-#         for a in e['arguments']:
-#             arg_set.add(str(a['argument_start_index']) + "@#@" + str(a['argument']))
-#     d['ent_list'] = list(arg_set)
-#     new_data.append(d)
-# json.dump(new_data, open("./duee_joint_train.json", 'w'), indent=2, ensure_ascii=False)
-
-# data = [line for line in open("duee_dev.json")]
-# new_data = []
-# for line in data:
-#     d = json.loads(line)
-#     arg_set = set()
-#     for e in d['event_list']:
-#         for a in e['arguments']:
-#             arg_set.add(str(a['argument_start_index']) + "@#@" + str(a['argument']))
-#     d['ent_list'] = list(arg_set)
-#     new_data.append(d)
-# json.dump(new_data, open("./duee_joint_dev.json", 'w'), indent=2, ensure_ascii=False)
+data = [line for line in open("duee_dev.json", encoding='utf-8')]
+new_data = []
+for line in data:
+    d = json.loads(line)
+    arg_set = set()
+    for e in d['event_list']:
+        for a in e['arguments']:
+            arg_set.add(str(a['argument_start_index']) + "@#@" + str(a['argument']))
+    d['ent_list'] = list(arg_set)
+    new_data.append(d)
+json.dump(new_data, open("./duee_joint_dev.json", 'w', encoding='utf-8'), indent=2, ensure_ascii=False)
 
 
 # data = [line for line in open("duee_train.json")] + [line for line in open("duee_dev.json")]

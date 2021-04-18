@@ -66,7 +66,7 @@ class JointModel(nn.Module):
                 ent_mention_embeds.unsqueeze(dim=1).expand(-1, self.max_evt_len, -1, -1), 
             ),
             dim=-1).view(-1, self.max_ent_len*self.max_evt_len, self.hidden_size * 2)
-        
+        merged_mention_embeds = self.mention_merge_layer(merged_mention_embeds)
         role_logits = self.role_classification_layer(merged_mention_embeds)
 
         return (evt_logits, ent_logits, role_logits)

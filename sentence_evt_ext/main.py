@@ -65,7 +65,7 @@ args = parser.parse_args()
 def main(args):
     logging.info("-" * 100)
     setup_seed(seed)
-    conf = json.load(open(args.conf))
+    conf = json.load(open(args.conf, encoding='utf-8'))
     
     if args.use_cpu:
         conf['use_gpu'] = 0

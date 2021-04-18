@@ -25,7 +25,7 @@ class CommonDataSet(Dataset):
 class CommonSeqTagDataHandler(object):
     def __init__(self, path, conf, debug=0):
         self.path = path
-        self.data = [line for line in open(path).readlines()]
+        self.data = [line for line in open(path, encoding='utf-8').readlines()]
         logging.info('  debug 模式:' + ("True" if debug else "False"))
         if debug:
             self.data = self.data[:200]
