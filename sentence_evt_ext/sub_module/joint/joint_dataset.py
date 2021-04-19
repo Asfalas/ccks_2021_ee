@@ -47,6 +47,8 @@ class JointDataHandler(CommonSeqTagDataHandler):
         mask_template = [0.0 for i in range(self.max_seq_len)]
 
         for info in tqdm(self.data):
+            if 'test' in self.path:
+                info = json.loads(info)
             tokens = info['text']
             max_len = len(tokens) if len(tokens) > max_len else max_len
             token_ids, att_mask = self.sentence_padding(tokens)

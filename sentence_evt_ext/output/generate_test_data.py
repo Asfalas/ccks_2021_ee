@@ -71,9 +71,23 @@ def generate_joint_submit_data():
         for i in res:
             writer.write(i)
 
+
+def handle_joint_data():
+    new_data = []
+    data = [line for line in open("./joint_test.json")]
+    for line in data:
+        d = json.loads(line)
+        if d.get("event_list", []):
+            del d['text']
+            new_data.append(d)
+    with jsonlines.open("./duee.json", mode='w') as writer:
+        for i in new_data:
+            writer.write(i)
+            
     
 if __name__ == "__main__":
 #     generate_joint_submit_data()
 #     generate_test_data()
-    generate_submit_data()
+#     generate_submit_data()
+    handle_joint_data()
         

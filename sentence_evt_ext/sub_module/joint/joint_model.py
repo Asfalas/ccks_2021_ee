@@ -4,6 +4,7 @@ import torch.nn as nn
 from transformers import BertModel
 from torchcrf import CRF
 import torch
+import copy
 
 class JointModel(nn.Module):
     def __init__(self, conf):
@@ -71,20 +72,85 @@ class JointModel(nn.Module):
 
         return (evt_logits, ent_logits, role_logits)
 
+    def predict(self, inputs, use_gpu=True):
+        with torch.no_grad():
+            input_ids, attention_mask = inputs
+            batch_size = input_ids.size()[0]
+            outputs = self.bert(
+                input_ids=input_ids,
+                attention_mask=attention_mask
+            )
+            sequence_output = outputs[0]
+            evt_logits = self.evt_tagger(sequence_output)
+            ent_logits = self.ent_tagger(sequence_output)
+            
+            evt_label = torch.softmax(evt_logits, dim=-1)
+            evt_label = torch.argmax(evt_label, dim=-1)
+            evt_label = evt_label.squeeze().cpu().numpy()
+            
+            ent_label = torch.softmax(ent_logits, dim=-1)
+            ent_label = torch.argmax(ent_label, dim=-1)
+            ent_label = ent_label.squeeze().cpu().numpy()
+            
+            result = []
+            for i in range(batch_size):
+                ent_seq_mention_mask_tensor = []
+                evt_seq_mention_mask_tensor = []
+                tmp_ents, tmp_evts = [], []
+                
+                self.calc_mention_mask(evt_label, evt_seq_mention_mask_tensor, i, tmp_evts)
+                self.calc_mention_mask(ent_label, ent_seq_mention_mask_tensor, i, tmp_ents)
+                ent_num = len(tmp_ents)
+                evt_num = len(tmp_evts)
+                if not ent_num or not evt_num:
+                    result.append([])
+                    continue
+                ent_seq_mention_mask_tensor = torch.FloatTensor([ent_seq_mention_mask_tensor])
+                evt_seq_mention_mask_tensor = torch.FloatTensor([evt_seq_mention_mask_tensor])
+                
+                if use_gpu:
+                    ent_seq_mention_mask_tensor = ent_seq_mention_mask_tensor.cuda()
+                    evt_seq_mention_mask_tensor = evt_seq_mention_mask_tensor.cuda()
+                
+                seq_embeds = sequence_output[i].unsqueeze(dim=0)
 
-        # if self.use_crf:
-        #     negloglike1 = -self.crf_layer1(emissions1, labels[0], mask=attention_mask)
-        #     negloglike2 = -self.crf_layer2(emissions2, labels[1], mask=attention_mask)
-        #     negloglike = 0.5 * negloglike1 + 0.5 * negloglike2
-        #     return (emissions1, emissions2), negloglike
-        # else:
-        #     return (emissions1, emissions2)
+                evt_mention_embeds = torch.bmm(evt_seq_mention_mask_tensor, seq_embeds)
+                ent_mention_embeds = torch.bmm(ent_seq_mention_mask_tensor, seq_embeds)
+                merged_mention_embeds = torch.cat(
+                    (
+                        evt_mention_embeds.unsqueeze(dim=2).expand(-1, -1, ent_num, -1),
+                        ent_mention_embeds.unsqueeze(dim=1).expand(-1, evt_num, -1, -1), 
+                    ),
+                    dim=-1).view(-1, ent_num * evt_num, self.hidden_size * 2)
+                merged_mention_embeds = self.mention_merge_layer(merged_mention_embeds)
+                role_logits = self.role_classification_layer(merged_mention_embeds).view(1, evt_num, ent_num, len(self.role_list))
+                role_logits = torch.softmax(role_logits, dim=-1)
+                role_logits = torch.argmax(role_logits, dim=-1).squeeze(dim=0).cpu().numpy()
 
-    # def decode(self, emissions):
-    #     res = tuple()
-    #     for emission, layer in zip(emissions, ['crf_layer1', 'crf_layer2']):
-    #         if hasattr(self, layer):
-    #             res += (getattr(self, layer).decode(emission), )
-    #         else:
-    #             res += (None, )
-    #     return res
+                tmp_result = []
+                for x in range(evt_num):
+                    tmp = []
+                    for y in range(ent_num):
+                        tmp.append([tmp_evts[x], tmp_ents[y], role_logits[x][y]])
+                    tmp_result.append(tmp)
+                result.append(tmp_result)
+                
+            return result
+    
+    def calc_mention_mask(self, labels, masks, i, tmp_vector):
+        j = 0
+        mask_template = [0.0] * self.max_seq_len
+        while j < self.max_seq_len:
+            if labels[i][j] == 1:
+                beg = j
+                j += 1
+                while j < self.max_seq_len and labels[i][j] == 2:
+                    j += 1
+                end = j
+                tmp_mask = copy.copy(mask_template)
+                for x in range(beg, end):
+                    tmp_mask[x] = 1.0 / (end - beg)
+                masks.append(tmp_mask)
+                tmp_vector.append([beg-1, end-1])
+            else:
+                j += 1

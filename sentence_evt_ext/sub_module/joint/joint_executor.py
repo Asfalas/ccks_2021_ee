@@ -12,6 +12,7 @@ from torch.utils.data.distributed import DistributedSampler
 from torch import nn
 from torch.optim import lr_scheduler
 from sub_module.common.common_seq_tag_executor import *
+from collections import Counter
 
 class JointModelExecutor(CommonSeqTagExecutor):
     def __init__(self, model, train_dataset, dev_dataset, test_dataset, conf):
@@ -194,7 +195,7 @@ class JointModelExecutor(CommonSeqTagExecutor):
                                                        shuffle=False, num_workers=0)
         test_result = []
         test_contents = [json.loads(line) for line in open(self.test_path)]
-        test_evts = json.load(open("output/evt_men_test.json"))
+        
         offset = 0
         # test
         with torch.no_grad():
@@ -202,43 +203,20 @@ class JointModelExecutor(CommonSeqTagExecutor):
             bar = tqdm(list(enumerate(data_loader)))
             for step, input_data in bar:
                 # inputs = tuple(x.to(self.device) for x in input_data[:-1])
-                inputs = input_data[:-2]
-                label = input_data[-2:]
+                inputs = input_data
                 if self.use_gpu:
                     inputs = tuple(x.cuda() for x in inputs)
-                    label = tuple(x.cuda() for x in label)
-
-                if not self.use_crf:
-                    pred = self.model(inputs)
+                    result = self.model.module.predict(inputs)
                 else:
-                    pred, loss = self.model(inputs, label)
+                    result = self.model.predict(inputs, use_gpu=False)
 
-                proba1 = torch.softmax(pred[0], dim=-1)
-                pred_cls1 = torch.argmax(proba1, dim=-1).cpu().numpy()
-
-                proba2 = torch.softmax(pred[1], dim=-1)
-                pred_cls2 = torch.argmax(proba2, dim=-1).cpu().numpy()
-                
-                proba1 = proba1.cpu().numpy()
-                proba2 = proba2.cpu().numpy()
-                
-                mention1, mention2 = [], []
-                for i in range(pred_cls1.shape[0]):
+                for i in range(len(result)):
                     test_info = test_contents[offset+i]
-                    test_evt_info = test_evts[offset+i]
-                    
-                    labels = []
-                    for j in range(1, self.max_seq_len):
-                        labels.append([self.label1[pred_cls1[i][j]], proba1[i][j][pred_cls1[i][j]]])
-                    mention1 = self.get_mention(test_info['text'], labels)
-
-                    for j in range(1, self.max_seq_len):
-                        labels.append([self.label2[pred_cls2[i][j]], proba2[i][j][pred_cls2[i][j]]])
-                    mention2 = self.get_mention(test_info['text'], labels)
-                    
-                    test_info['event_list'] = self.merge_mention(mention1, mention2, test_evt_info)
+                    event_list = self.handle_result(result[i], test_info)
+                    if event_list:
+                        test_info['event_list'] = event_list
                 
-                offset += pred_cls1.shape[0]
+                offset += len(result)
         logging.info("存储test结果：" + self.test_output_path)
         import jsonlines
         with jsonlines.open(self.test_output_path, mode='w') as writer:
@@ -246,96 +224,135 @@ class JointModelExecutor(CommonSeqTagExecutor):
                 writer.write(i)
 #         json.dump(test_contents, open(self.test_output_path, 'w'), indent=2, ensure_ascii=False)
         return True
-
-    def get_mention(self, text, label):
-        label = label[:len(text)]
-        idx = 0
-        mention = []
-        while idx < len(label):
-            if label[idx][0][0] == 'B':
-                arg_type = label[idx][0][2:]
-                beg = idx
-                idx += 1
-                while idx < len(label) and label[idx][0] == 'I-' + arg_type:
-                    idx += 1
-                end = idx
-                
-                score = 0
-                for i in range(beg, end):
-                    score += label[i][1]
-                score /= end-beg
-                score = round(score, 4)
-                mention.append(str(beg) + '$%$' + text[beg: end] + '$%$' + arg_type + '$%$' + str(score))
-            else:
-                idx += 1
-        return mention
     
-    def merge_mention(self, mention1, mention2, evt_info):
-        candidate_evt_types = [x.split("@#@")[1] for x in evt_info.get("mention", [])]
-        offsets = []
-        evt_type_map = {}
-        for x in mention1:
-            d = x.split('$%$')
-            beg, mention, arg_type, score = d[0], d[1], d[2], d[3]
-            beg = int(beg)
-            end = beg + len(mention)
-            score = float(score)
-            new_offsets = []
-            role = 'B-' + arg_type
-            
-            is_valid = True
-            offsets.append([beg, end, score, arg_type, mention])
-#             for o in offsets:
-#                 if end <= o[1] or beg >= o[2]:
-#                     new_offsets.append(o)
-#                 else:
-#                     if role in self.label1 and role in self.label2 and score < o[3]:
-#                         new_offsets.append(o)
-#                         is_valid = False
-#             if is_valid:
-#                 new_offsets.append([beg, end, score, arg_type, mention])
+    def handle_result(self, result, test_info):
+        text = test_info['text']
+        event_list = []
+        if not result:
+            return []
+        evt_arg_map = {}
+        for k in result:
+            for j in k:
+                evt_ofs, ent_ofs, role_info = j[0], j[1], j[2]
+                if role_info == 0:
+                    continue
+                role_info = self.role_list[role_info]
+                evt_type, role = role_info.split('@#@')[0], role_info.split('@#@')[1]
+                trigger = text[evt_ofs[0]: evt_ofs[1]]
+                if not trigger:
+                    continue
+                argument = text[ent_ofs[0]: ent_ofs[1]]
+                if not argument:
+                    continue
+                if evt_type not in evt_arg_map:
+                    evt_arg_map[evt_type] = set()
+                evt_arg_map[evt_type].add('@#@'.join([argument, role]))
+        for et, arg_set in evt_arg_map.items():
+            arguments = []
+            for arg_info in arg_set:
+                argument, role = arg_info.split('@#@')[0], arg_info.split('@#@')[1]
+                arguments.append({
+                    "argument": argument,
+                    "role": role
+                })
+            event = {
+                "event_type": et,
+                "arguments": arguments
+            }
+            event_list.append(event)
+
+        return event_list
                 
-#             offsets = new_offsets
-        time_args = []
-        for o in offsets:
-            beg, end, score, arg_type, mention = o[0], o[1], o[2], o[3], o[4]
-            if arg_type == '时间':
-                time_args.append(o)
-                continue
-            d = arg_type.split('@#@')
-            evt_type, role = d[0], d[1]
-            if evt_type not in evt_type_map:
-                evt_type_map[evt_type] = []
-            evt_type_map[evt_type].append({
-                'argument': mention,
-                'role': role
-            })
-        if evt_type_map:
-            for ta in time_args:
-                beg, end, score, arg_type, mention = ta[0], ta[1], ta[2], ta[3], ta[4]
-                for e in evt_type_map:
-                    evt_type_map[e].append({
-                        'argument': mention,
-                        'role': '时间'
-                    })
-#         else:
-#             for e in candidate_evt_types:
-#                 for ta in time_args:
-#                     beg, end, score, arg_type, mention = ta[0], ta[1], ta[2], ta[3], ta[4]
-#                     e = self.event_list[e]
-#                     if e not in evt_type_map:
-#                         evt_type_map[e] = []
+            
+#     def get_mention(self, text, label):
+#         label = label[:len(text)]
+#         idx = 0
+#         mention = []
+#         while idx < len(label):
+#             if label[idx][0][0] == 'B':
+#                 arg_type = label[idx][0][2:]
+#                 beg = idx
+#                 idx += 1
+#                 while idx < len(label) and label[idx][0] == 'I-' + arg_type:
+#                     idx += 1
+#                 end = idx
+                
+#                 score = 0
+#                 for i in range(beg, end):
+#                     score += label[i][1]
+#                 score /= end-beg
+#                 score = round(score, 4)
+#                 mention.append(str(beg) + '$%$' + text[beg: end] + '$%$' + arg_type + '$%$' + str(score))
+#             else:
+#                 idx += 1
+#         return mention
+    
+#     def merge_mention(self, mention1, mention2, evt_info):
+#         candidate_evt_types = [x.split("@#@")[1] for x in evt_info.get("mention", [])]
+#         offsets = []
+#         evt_type_map = {}
+#         for x in mention1:
+#             d = x.split('$%$')
+#             beg, mention, arg_type, score = d[0], d[1], d[2], d[3]
+#             beg = int(beg)
+#             end = beg + len(mention)
+#             score = float(score)
+#             new_offsets = []
+#             role = 'B-' + arg_type
+            
+#             is_valid = True
+#             offsets.append([beg, end, score, arg_type, mention])
+# #             for o in offsets:
+# #                 if end <= o[1] or beg >= o[2]:
+# #                     new_offsets.append(o)
+# #                 else:
+# #                     if role in self.label1 and role in self.label2 and score < o[3]:
+# #                         new_offsets.append(o)
+# #                         is_valid = False
+# #             if is_valid:
+# #                 new_offsets.append([beg, end, score, arg_type, mention])
+                
+# #             offsets = new_offsets
+#         time_args = []
+#         for o in offsets:
+#             beg, end, score, arg_type, mention = o[0], o[1], o[2], o[3], o[4]
+#             if arg_type == '时间':
+#                 time_args.append(o)
+#                 continue
+#             d = arg_type.split('@#@')
+#             evt_type, role = d[0], d[1]
+#             if evt_type not in evt_type_map:
+#                 evt_type_map[evt_type] = []
+#             evt_type_map[evt_type].append({
+#                 'argument': mention,
+#                 'role': role
+#             })
+#         if evt_type_map:
+#             for ta in time_args:
+#                 beg, end, score, arg_type, mention = ta[0], ta[1], ta[2], ta[3], ta[4]
+#                 for e in evt_type_map:
 #                     evt_type_map[e].append({
 #                         'argument': mention,
 #                         'role': '时间'
 #                     })
-        event_list = []
-        for k, v in evt_type_map.items():
-            event_list.append({
-                "event_type": k,
-                "arguments": v
-            })
-        return event_list
+# #         else:
+# #             for e in candidate_evt_types:
+# #                 for ta in time_args:
+# #                     beg, end, score, arg_type, mention = ta[0], ta[1], ta[2], ta[3], ta[4]
+# #                     e = self.event_list[e]
+# #                     if e not in evt_type_map:
+# #                         evt_type_map[e] = []
+# #                     evt_type_map[e].append({
+# #                         'argument': mention,
+# #                         'role': '时间'
+# #                     })
+#         event_list = []
+#         for k, v in evt_type_map.items():
+#             event_list.append({
+#                 "event_type": k,
+#                 "arguments": v
+#             })
+#         return event_list
             
                     
                     
