@@ -2,7 +2,7 @@
   "max_ent_len": 10,
   "max_evt_len": 3,
   "max_seq_len": 400,
-  "pretrained_model_name": "hfl/chinese-roberta-wwm-ext",
+  "pretrained_model_name": "bert-base-chinese",
   "test_output_path": "output/joint_test.json",
   "hidden_size": 768,
   "merged_embed_dim": 1024,
