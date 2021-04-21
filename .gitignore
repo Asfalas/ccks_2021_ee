@@ -18,3 +18,9 @@ joint_test.json
 duee_joint_dev.json
 duee_joint_train.json
 .idea/*
+
+duee*train.json
+duee*dev.json
+duee*test1.json
+duee_fin_role_list.json
+duee*schema.json
