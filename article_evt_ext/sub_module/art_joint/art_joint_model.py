@@ -105,9 +105,9 @@ class ArtJointModel(nn.Module):
             so1 = outputs_0[:, 1:511, :]
             so2 = outputs_1[:, 1:511, :]
             sequence_output = torch.cat((so1, so2), dim=1)
-            sequence_output, (_, _) = self.lstm_layer(sequence_output)
+#             sequence_output, (_, _) = self.lstm_layer(sequence_output)
             
-            tokens = torch.cat((input_ids_0[:, 1:512], input_ids_1[:, 1:512]), dim=-1)
+            tokens = torch.cat((input_ids_0[:, 1:511], input_ids_1[:, 1:511]), dim=-1)
             
             evt_logits = self.evt_tagger(sequence_output)
             ent_logits = self.ent_tagger(sequence_output)
