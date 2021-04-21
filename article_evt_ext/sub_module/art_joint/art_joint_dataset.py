@@ -23,6 +23,7 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
         if debug:
             self.data = self.data[:200]
         self.max_seq_len = conf.get('max_seq_len', 768)
+        self.real_max_seq_len = self.max_seq_len - 4
         self.pretrained_model_name = conf.get('pretrained_model_name', 'bert-base-chinese')
         self.tokenizer = BertTokenizer.from_pretrained(self.pretrained_model_name)
         self.max_ent_len = conf.get("max_ent_len", 10)
@@ -32,10 +33,12 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
         self.conf = conf
 
     def sentence_padding(self, tokens):
+        if not tokens:
+            tokens = ' '
         if len(tokens) <= 512:
             token_ids = self.convert_tokens_to_ids(tokens)
         else:
-            tokens = tokens[:self.max_seq_len]
+            tokens = tokens[:self.real_max_seq_len]
             token_ids = []
             token_ids += self.convert_tokens_to_ids(tokens[:512])
             token_ids += self.convert_tokens_to_ids(tokens[512:])
@@ -45,18 +48,18 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
         sep_id = self.tokenizer.convert_tokens_to_ids("[SEP]")
         att_mask = [1 for i in token_ids]
         length = len(token_ids)
-        if length <= self.max_seq_len - 3:
-            token_ids = token_ids + [pad_id] * (self.max_seq_len - 3 - length)
-            att_mask = att_mask + [0] * (self.max_seq_len - 3 - length)
+        if length <= self.real_max_seq_len:
+            token_ids = token_ids + [pad_id] * (self.real_max_seq_len - length)
+            att_mask = att_mask + [0] * (self.real_max_seq_len - length)
         else:
-            token_ids = token_ids[:self.max_seq_len - 3]
-            att_mask = att_mask[:self.max_seq_len - 3]
+            token_ids = token_ids[:self.real_max_seq_len]
+            att_mask = att_mask[:self.real_max_seq_len]
         
-        token_ids_0 = [cls_id] + token_ids[:255] + [sep_id] + token_ids[255:510]
-        att_mask_0 = [0] + att_mask[:255] + [0] + att_mask[255:510]
+        token_ids_0 = [cls_id] + token_ids[:510] + [sep_id]
+        att_mask_0 = [0] + att_mask[:510] + [0]
 
-        token_ids_1 = [cls_id] + token_ids[255:510] + [sep_id] + token_ids[510:765]
-        att_mask_1 = [0] + att_mask[255:510] + [0] + att_mask[510:765]
+        token_ids_1 = [cls_id] + token_ids[510:] + [sep_id]
+        att_mask_1 = [0] + att_mask[510:] + [0]
         
         assert len(token_ids_0) == len(att_mask_0) and len(token_ids_1) == len(att_mask_1)
 
@@ -80,7 +83,7 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
         offset_err = 0
         pad_id = self.tokenizer.convert_tokens_to_ids("[PAD]")
 
-        mask_template = [0.0 for i in range(self.max_seq_len - 3)]
+        mask_template = [0.0 for i in range(self.real_max_seq_len)]
 
         for info in tqdm(self.data):
             if 'test' in self.path:
@@ -89,7 +92,7 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
             max_len = len(tokens) if len(tokens) > max_len else max_len
             token_ids_0, token_ids_1, att_mask_0, att_mask_1, token_ids = self.sentence_padding(tokens)
 
-            seq_label_template = [0 for i in range(self.max_seq_len - 3)]
+            seq_label_template = [0 for i in range(self.real_max_seq_len)]
             for idx, ids in enumerate(token_ids):
                 if ids == pad_id:
                     seq_label_template[idx] = -100
@@ -110,7 +113,7 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
                     num = len(mention) * len(begs)
                     tmp_mask = copy.copy(mask_template)
                     for beg in begs:
-                        if beg + len(mention) >= self.max_seq_len-3:
+                        if beg + len(mention) >= self.real_max_seq_len:
                             offset_err += 1
                             continue
 
@@ -136,7 +139,7 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
                     tmp_mask = copy.copy(mask_template)
 
                     for beg in begs:
-                        if beg + len(mention) >= self.max_seq_len-3:
+                        if beg + len(mention) >= self.real_max_seq_len:
                             offset_err += 1
                             continue
                         for i in range(beg, beg + len(mention)):
@@ -154,7 +157,7 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
 
                     tmp_role_label = []
                     for ent in info['ent_list']:
-                        s = str(ent['indexs']) + ent['ent']
+                        s = str(ent['indexs']) + '@#@' + ent['ent']
                         if s in arg_role_map:
                             tmp_role_label.append(self.role_list.index(arg_role_map[s]))
                         else:
@@ -175,13 +178,13 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
                 arg_role_label_tensor.append(arg_role_label_unit)
                 tri_seq_mention_mask_tensor.append(tri_seq_mention_mask_unit)
                 ent_seq_mention_mask_tensor.append(ent_seq_mention_mask_unit)
-                # print(tokens)
-                # print(tri_seq_label_tensor)
-                # print(ent_seq_label_tensor)
-                # print(arg_role_label_tensor)
-                # print(tri_seq_mention_mask_tensor)
-                # print(ent_seq_mention_mask_tensor)
-                # input()
+#                 print(tokens)
+#                 print(tri_seq_label_tensor)
+#                 print(ent_seq_label_tensor)
+#                 print(arg_role_label_tensor)
+#                 print(tri_seq_mention_mask_tensor)
+#                 print(ent_seq_mention_mask_tensor)
+#                 input()
 
         # transform to tensor
         front_tokens_tensor = torch.LongTensor(front_tokens_tensor)

@@ -12,11 +12,12 @@ class ArtJointModel(nn.Module):
         self.pretrained_model_name = conf.get("pretrained_model_name", 'bert-base-chinese')
         self.hidden_size = conf.get('hidden_size', 0)
         self.max_seq_len = conf.get('max_seq_len', 512)
+        self.real_max_seq_len = self.max_seq_len - 4
         # self.tokenizer = BertTokenizer.from_pretrained(self.pretrained_model_name)
         self.max_ent_len = conf.get("max_ent_len", 10)
         self.max_evt_len = conf.get("max_evt_len", 3)
         self.merged_embed_dim = conf.get("merged_embed_dim", 1024)
-        self.lstm_hidden_dim = conf.get("lstm_hidden_dim", 1024)
+        self.lstm_hidden_dim = conf.get("lstm_hidden_size", 1024)
         self.role_list = conf.get("role_list", [])
         self.use_crf = conf.get('use_crf', 0)
 
@@ -60,12 +61,13 @@ class ArtJointModel(nn.Module):
             attention_mask=attention_mask_1
         )[0]
 
-        so1 = outputs_0[:, 1:256, :]
-        so2 = outputs_0[:, 257:512, :]
-        so3 = outputs_1[:, 257:512, :]
-        sequence_output = torch.cat((so1, so2, so3), dim=1)
-        sequence_output, (_, _) = self.lstm_layer(sequence_output)
-
+#         so1 = outputs_0[:, 1:256, :]
+#         so2 = torch.mean(torch.stack([outputs_0[:, 257:512, :], outputs_1[:, 1:256, :]]), dim=0)
+#         so3 = outputs_1[:, 257:512, :]
+        so1 = outputs_0[:, 1:511, :]
+        so2 = outputs_1[:, 1:511, :]
+        sequence_output = torch.cat((so1, so2), dim=1)
+#         sequence_output, (_, _) = self.lstm_layer(sequence_output)
         evt_logits = self.evt_tagger(sequence_output)
         ent_logits = self.ent_tagger(sequence_output)
 
@@ -88,13 +90,25 @@ class ArtJointModel(nn.Module):
 
     def predict(self, inputs, use_gpu=True):
         with torch.no_grad():
-            input_ids, attention_mask = inputs
-            batch_size = input_ids.size()[0]
-            outputs = self.bert(
-                input_ids=input_ids,
-                attention_mask=attention_mask
-            )
-            sequence_output = outputs[0]
+            input_ids_0, input_ids_1, attention_mask_0, attention_mask_1 = inputs
+            batch_size = input_ids_0.size()[0]
+            outputs_0 = self.bert(
+                input_ids=input_ids_0,
+                attention_mask=attention_mask_0
+            )[0]
+
+            outputs_1 = self.bert(
+                input_ids=input_ids_1,
+                attention_mask=attention_mask_1
+            )[0]
+
+            so1 = outputs_0[:, 1:511, :]
+            so2 = outputs_1[:, 1:511, :]
+            sequence_output = torch.cat((so1, so2), dim=1)
+            sequence_output, (_, _) = self.lstm_layer(sequence_output)
+            
+            tokens = torch.cat((input_ids_0[:, 1:512], input_ids_1[:, 1:512]), dim=-1)
+            
             evt_logits = self.evt_tagger(sequence_output)
             ent_logits = self.ent_tagger(sequence_output)
             
@@ -112,8 +126,8 @@ class ArtJointModel(nn.Module):
                 evt_seq_mention_mask_tensor = []
                 tmp_ents, tmp_evts = [], []
                 
-                self.calc_mention_mask(evt_label, evt_seq_mention_mask_tensor, i, tmp_evts)
-                self.calc_mention_mask(ent_label, ent_seq_mention_mask_tensor, i, tmp_ents)
+                self.calc_mention_mask(evt_label, evt_seq_mention_mask_tensor, i, tmp_evts, tokens)
+                self.calc_mention_mask(ent_label, ent_seq_mention_mask_tensor, i, tmp_ents, tokens)
                 ent_num = len(tmp_ents)
                 evt_num = len(tmp_evts)
                 if not ent_num or not evt_num:
@@ -151,20 +165,28 @@ class ArtJointModel(nn.Module):
                 
             return result
     
-    def calc_mention_mask(self, labels, masks, i, tmp_vector):
+    def calc_mention_mask(self, labels, masks, i, tmp_vector, tokens):
         j = 0
-        mask_template = [0.0] * self.max_seq_len
-        while j < self.max_seq_len:
+        mask_template = [0.0] * (self.real_max_seq_len)
+        token_list = tokens[i]
+        tokens_map = {}
+        while j < self.real_max_seq_len:
             if labels[i][j] == 1:
                 beg = j
                 j += 1
-                while j < self.max_seq_len and labels[i][j] == 2:
+                while j < self.real_max_seq_len and labels[i][j] == 2:
                     j += 1
                 end = j
-                tmp_mask = copy.copy(mask_template)
-                for x in range(beg, end):
-                    tmp_mask[x] = 1.0 / (end - beg)
-                masks.append(tmp_mask)
-                tmp_vector.append([beg-1, end-1])
+                mention = str(token_list[beg: end])
+                if mention not in tokens_map:
+                    tokens_map[mention] = []
+                tokens_map[mention].append((beg, end))
             else:
                 j += 1
+        for mention, offs in tokens_map.items():
+            tmp_mask = copy.copy(mask_template)
+            for beg, end in offs:
+                for x in range(beg, end):
+                    tmp_mask[x] = 1.0 / (end - beg)
+            masks.append(tmp_mask)
+            tmp_vector.append([offs[0][0], offs[0][1]])

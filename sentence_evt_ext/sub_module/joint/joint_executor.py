@@ -221,6 +221,8 @@ class JointModelExecutor(CommonSeqTagExecutor):
         import jsonlines
         with jsonlines.open(self.test_output_path, mode='w') as writer:
             for i in test_contents:
+                if 'text' in i:
+                    del i['text']
                 writer.write(i)
 #         json.dump(test_contents, open(self.test_output_path, 'w'), indent=2, ensure_ascii=False)
         return True
