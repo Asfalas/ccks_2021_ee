@@ -112,10 +112,23 @@ def generate_role_list():
             role_list.append(et+"@#@"+r['role'])
     json.dump(role_list, open("article_evt_ext/data/duee_fin_role_list.json", 'w'), indent=2, ensure_ascii=False)
 
+def generate_multi_tagger_label_list():
+    data = [line for line in open("article_evt_ext/data/duee_fin_event_schema.json")]
+    res_map = {}
+    for line in data:
+        d = json.loads(line)
+        et = d['event_type']
+        res_map[et] = []
+        for r in d['role_list']:
+            if r['role'] == "环节":
+                continue
+            res_map[et].append(r['role'])
+    json.dump(res_map, open("article_evt_ext/data/duee_fin_label_map.json", 'w'), indent=2, ensure_ascii=False)
 
 if __name__ == "__main__":
     # statistics()
 #     generate_role_list()
-    generate_training_data()
-    generate_training_data("article_evt_ext/data/duee_fin_dev.json", "article_evt_ext/data/duee_fin_joint_dev.json")
+    # generate_training_data()
+    # generate_training_data("article_evt_ext/data/duee_fin_dev.json", "article_evt_ext/data/duee_fin_joint_dev.json")
+    generate_multi_tagger_label_list()
 

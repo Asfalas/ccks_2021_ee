@@ -11,6 +11,9 @@ from sub_module.common.common_seq_tag_dataset import CommonDataSet
 from sub_module.art_joint.art_joint_dataset import *
 from sub_module.art_joint.art_joint_executor import *
 from sub_module.art_joint.art_joint_model import *
+from sub_module.art_multi_tagger.art_multi_tagger_dataset import *
+from sub_module.art_multi_tagger.art_multi_tagger_executor import *
+from sub_module.art_multi_tagger.art_multi_tagger_model import *
 
 logging.basicConfig(level=logging.INFO)
 parser = argparse.ArgumentParser()
@@ -24,22 +27,26 @@ parser.add_argument('--use_cpu', type=int, default=0)
 parser.add_argument('--epochs', type=int, default=0)
 parser.add_argument('--batch_size', type=int, default=0)
 parser.add_argument('--accumulate_step', type=int, default=0)
-parser.add_argument('--task', type=str, default='evt_men_detect', choices=['joint'])
+parser.add_argument('--task', type=str, default='evt_men_detect', choices=['joint', 'multi_tagger'])
 
 handler_map = {
-    'joint': ArtJointDataHandler
+    'joint': ArtJointDataHandler,
+    'multi_tagger': ArtMultiTaggerDataHandler
 }
 
 model_map = {
-    'joint': ArtJointModel
+    'joint': ArtJointModel,
+    'multi_tagger': ArtMultiTaggerModel
 }
 
 dataset_map = {
-    'joint': CommonDataSet
+    'joint': CommonDataSet,
+    'multi_tagger': CommonDataSet
 }
 
 executor_map = {
-    'joint': ArtJointModelExecutor
+    'joint': ArtJointModelExecutor,
+    'multi_tagger': ArtMultiTaggerModelExecutor
 }
 
 args = parser.parse_args()
