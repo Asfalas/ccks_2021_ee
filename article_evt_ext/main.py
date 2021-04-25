@@ -9,7 +9,7 @@ from common.utils import *
 from common.const import *
 from sub_module.common.common_seq_tag_dataset import CommonDataSet
 from sub_module.art_joint.art_joint_dataset import *
-from sub_module.joint.joint_executor import *
+from sub_module.art_joint.art_joint_executor import *
 from sub_module.art_joint.art_joint_model import *
 
 logging.basicConfig(level=logging.INFO)
@@ -39,7 +39,7 @@ dataset_map = {
 }
 
 executor_map = {
-    'joint': JointModelExecutor
+    'joint': ArtJointModelExecutor
 }
 
 args = parser.parse_args()

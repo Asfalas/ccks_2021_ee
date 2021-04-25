@@ -30,6 +30,7 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
         self.max_evt_len = conf.get("max_evt_len", 3)
         self.role_list = conf.get("role_list", [])
         self.use_crf = conf.get('use_crf', 0)
+        self.enum_list = conf.get("enum_list", [])
         self.conf = conf
 
     def sentence_padding(self, tokens):
@@ -42,7 +43,7 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
             token_ids = []
             token_ids += self.convert_tokens_to_ids(tokens[:512])
             token_ids += self.convert_tokens_to_ids(tokens[512:])
-        
+
         pad_id = self.tokenizer.convert_tokens_to_ids("[PAD]")
         cls_id = self.tokenizer.convert_tokens_to_ids("[CLS]")
         sep_id = self.tokenizer.convert_tokens_to_ids("[SEP]")
@@ -54,13 +55,13 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
         else:
             token_ids = token_ids[:self.real_max_seq_len]
             att_mask = att_mask[:self.real_max_seq_len]
-        
+
         token_ids_0 = [cls_id] + token_ids[:510] + [sep_id]
         att_mask_0 = [0] + att_mask[:510] + [0]
 
         token_ids_1 = [cls_id] + token_ids[510:] + [sep_id]
         att_mask_1 = [0] + att_mask[510:] + [0]
-        
+
         assert len(token_ids_0) == len(att_mask_0) and len(token_ids_1) == len(att_mask_1)
 
         return token_ids_0, token_ids_1, att_mask_0, att_mask_1, token_ids
@@ -73,7 +74,9 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
 
         front_att_mask_tensor = []
         last_att_mask_tensor = []
-
+        
+        enum_type_tensor = []
+        
         tri_seq_label_tensor = []
         ent_seq_label_tensor = []
         tri_seq_mention_mask_tensor = []
@@ -91,12 +94,15 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
             tokens = info['text']
             max_len = len(tokens) if len(tokens) > max_len else max_len
             token_ids_0, token_ids_1, att_mask_0, att_mask_1, token_ids = self.sentence_padding(tokens)
-
+            
             seq_label_template = [0 for i in range(self.real_max_seq_len)]
             for idx, ids in enumerate(token_ids):
                 if ids == pad_id:
                     seq_label_template[idx] = -100
-
+            enum = info['enum']
+            
+            enum_type_tensor.append(self.enum_list.index(enum))
+            
             front_tokens_tensor.append(token_ids_0)
             front_att_mask_tensor.append(att_mask_0)
 
@@ -109,7 +115,7 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
                 for ent in info['ent_list']:
                     begs = ent['indexs']
                     mention = ent['ent']
-                    
+
                     num = len(mention) * len(begs)
                     tmp_mask = copy.copy(mask_template)
                     for beg in begs:
@@ -126,7 +132,7 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
                 ent_seq_mention_mask_unit = ent_seq_mention_mask_unit[:self.max_ent_len]
                 for i in range(len(ent_seq_mention_mask_unit), self.max_ent_len):
                     ent_seq_mention_mask_unit.append(copy.copy(mask_template))
-                    
+
                 tri_seq_mention_mask_unit = []
                 tri_seq_label = copy.copy(seq_label_template)
                 arg_role_label_unit = []
@@ -172,7 +178,7 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
                 for i in range(len(tri_seq_mention_mask_unit), self.max_evt_len):
                     tri_seq_mention_mask_unit.append(copy.copy(mask_template))
                     arg_role_label_unit.append([-100] * self.max_ent_len)
-                
+
                 tri_seq_label_tensor.append(tri_seq_label)
                 ent_seq_label_tensor.append(ent_seq_label)
                 arg_role_label_tensor.append(arg_role_label_unit)
@@ -191,6 +197,8 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
         last_tokens_tensor = torch.LongTensor(last_tokens_tensor)
         front_att_mask_tensor = torch.ByteTensor(front_att_mask_tensor)
         last_att_mask_tensor = torch.ByteTensor(last_att_mask_tensor)
+        enum_type_tensor = torch.LongTensor(enum_type_tensor)
+
         if 'test' not in self.path:
            tri_seq_label_tensor = torch.LongTensor(tri_seq_label_tensor)
            ent_seq_label_tensor = torch.LongTensor(ent_seq_label_tensor)
@@ -201,6 +209,6 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
         if offset_err:
             logging.warn("  越界: " + str(offset_err))
         if 'test' not in self.path:
-            return front_tokens_tensor, last_tokens_tensor, front_att_mask_tensor, last_att_mask_tensor, tri_seq_mention_mask_tensor, ent_seq_mention_mask_tensor, tri_seq_label_tensor, ent_seq_label_tensor, arg_role_label_tensor
+            return front_tokens_tensor, last_tokens_tensor, front_att_mask_tensor, last_att_mask_tensor, tri_seq_mention_mask_tensor, ent_seq_mention_mask_tensor, tri_seq_label_tensor, ent_seq_label_tensor, arg_role_label_tensor, enum_type_tensor
 
         return front_tokens_tensor, last_tokens_tensor, front_att_mask_tensor, last_att_mask_tensor

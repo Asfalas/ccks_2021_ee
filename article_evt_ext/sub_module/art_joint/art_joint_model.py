@@ -5,6 +5,7 @@ from transformers import BertModel
 from torchcrf import CRF
 import torch
 import copy
+import logging
 
 class ArtJointModel(nn.Module):
     def __init__(self, conf):
@@ -18,17 +19,34 @@ class ArtJointModel(nn.Module):
         self.max_evt_len = conf.get("max_evt_len", 3)
         self.merged_embed_dim = conf.get("merged_embed_dim", 1024)
         self.lstm_hidden_dim = conf.get("lstm_hidden_size", 1024)
+        self.use_lstm = conf.get("use_lstm", 0)
         self.role_list = conf.get("role_list", [])
+        self.enum_list = conf.get("enum_list", [])
         self.use_crf = conf.get('use_crf', 0)
+        logging.info("  use_crf: " + str(self.use_crf))
+        self.use_tag_window = conf.get("use_tag_window", 0)
+        logging.info("  use_tag_window: " + str(self.use_tag_window))
+        
+        self.tagger_embed_dim = self.lstm_hidden_dim if self.use_lstm else self.hidden_size
 
         self.bert = BertModel.from_pretrained(self.pretrained_model_name)
         self.evt_tagger = nn.Sequential(
-            nn.Linear(self.lstm_hidden_dim, 3),
+            nn.Linear(self.tagger_embed_dim, 128),
+            nn.ReLU(),
+            nn.Linear(128, 3),
             nn.ReLU()
         )
         self.ent_tagger = nn.Sequential(
-            nn.Linear(self.lstm_hidden_dim, 3),
+            nn.Linear(self.tagger_embed_dim, 128),
+            nn.ReLU(),
+            nn.Linear(128, 3),
             nn.ReLU()
+        )
+        
+        self.enum_classify_layer = nn.Sequential(
+            nn.Linear(self.hidden_size * 2, 128),
+            nn.ReLU(),
+            nn.Linear(128, len(self.enum_list))
         )
 
         self.lstm_layer = nn.LSTM(input_size=self.hidden_size, hidden_size= self.lstm_hidden_dim // 2, num_layers=1,
@@ -36,7 +54,7 @@ class ArtJointModel(nn.Module):
                                      batch_first=True)
     
         self.mention_merge_layer = nn.Sequential(
-            nn.Linear(self.lstm_hidden_dim * 2, self.merged_embed_dim),
+            nn.Linear(self.tagger_embed_dim * 2, self.merged_embed_dim),
             nn.ReLU()
         )
 
@@ -61,15 +79,27 @@ class ArtJointModel(nn.Module):
             attention_mask=attention_mask_1
         )[0]
 
-#         so1 = outputs_0[:, 1:256, :]
-#         so2 = torch.mean(torch.stack([outputs_0[:, 257:512, :], outputs_1[:, 1:256, :]]), dim=0)
-#         so3 = outputs_1[:, 257:512, :]
-        so1 = outputs_0[:, 1:511, :]
-        so2 = outputs_1[:, 1:511, :]
-        sequence_output = torch.cat((so1, so2), dim=1)
-#         sequence_output, (_, _) = self.lstm_layer(sequence_output)
+        if not self.use_tag_window:
+            so1 = outputs_0[:, 1:511, :]
+            so2 = outputs_1[:, 1:511, :]
+            sequence_output = torch.cat((so1, so2), dim=1)
+        else:
+            so1 = outputs_0[:, :511, :]
+            so2 = outputs_1[:, 1:, :]
+            so = torch.cat((so1, so2), dim=1)
+            s0 = so[:, :-2, :]
+            s1 = so[:, 2:, :]
+            s2 = so[:, 1:-1, :]
+            sequence_output = 0.2 * s0 + 0.2 * s1 + 0.6 * s2
+        
+        if self.use_lstm:
+            sequence_output, (_, _) = self.lstm_layer(sequence_output)
+        
         evt_logits = self.evt_tagger(sequence_output)
         ent_logits = self.ent_tagger(sequence_output)
+        
+        enum_classify_input = torch.cat((outputs_0[:, 0, :], outputs_1[:, 0, :]), dim=-1)
+        enum_logits = self.enum_classify_layer(enum_classify_input)
 
         # batch_size * 3 * max_seq_len, batch_size * max_seq_len * 768 --> batch_size * 3 * 768
         event_mention_embeds = torch.bmm(tri_seq_mention_mask_tensor, sequence_output)
@@ -82,11 +112,11 @@ class ArtJointModel(nn.Module):
                 event_mention_embeds.unsqueeze(dim=2).expand(-1, -1, self.max_ent_len, -1),
                 ent_mention_embeds.unsqueeze(dim=1).expand(-1, self.max_evt_len, -1, -1), 
             ),
-            dim=-1).view(-1, self.max_ent_len*self.max_evt_len, self.lstm_hidden_dim * 2)
+            dim=-1).view(-1, self.max_ent_len*self.max_evt_len, self.tagger_embed_dim * 2)
         merged_mention_embeds = self.mention_merge_layer(merged_mention_embeds)
         role_logits = self.role_classification_layer(merged_mention_embeds)
 
-        return (evt_logits, ent_logits, role_logits)
+        return (evt_logits, ent_logits, role_logits, enum_logits)
 
     def predict(self, inputs, use_gpu=True):
         with torch.no_grad():
@@ -102,10 +132,20 @@ class ArtJointModel(nn.Module):
                 attention_mask=attention_mask_1
             )[0]
 
-            so1 = outputs_0[:, 1:511, :]
-            so2 = outputs_1[:, 1:511, :]
-            sequence_output = torch.cat((so1, so2), dim=1)
-#             sequence_output, (_, _) = self.lstm_layer(sequence_output)
+            if not self.use_tag_window:
+                so1 = outputs_0[:, 1:511, :]
+                so2 = outputs_1[:, 1:511, :]
+                sequence_output = torch.cat((so1, so2), dim=1)
+            else:
+                so1 = outputs_0[:, :511, :]
+                so2 = outputs_1[:, 1:, :]
+                so = torch.cat((so1, so2), dim=1)
+                s0 = so[:, :-2, :]
+                s1 = so[:, 2:, :]
+                s2 = so[:, 1:-1, :]
+                sequence_output = 0.2 * s0 + 0.2 * s1 + 0.6 * s2
+            if self.use_lstm:
+                sequence_output, (_, _) = self.lstm_layer(sequence_output)
             
             tokens = torch.cat((input_ids_0[:, 1:511], input_ids_1[:, 1:511]), dim=-1)
             
@@ -120,6 +160,14 @@ class ArtJointModel(nn.Module):
             ent_label = torch.argmax(ent_label, dim=-1)
             ent_label = ent_label.squeeze().cpu().numpy()
             
+            
+            enum_classify_input = torch.cat((outputs_0[:, 0, :], outputs_1[:, 0, :]), dim=-1)
+            enum_logits = self.enum_classify_layer(enum_classify_input)
+            
+            enum_label = torch.softmax(enum_logits, dim=-1)
+            enum_label = torch.argmax(enum_logits, dim=-1)
+            enum_label = torch.squeeze().cpu().numpy()
+
             result = []
             for i in range(batch_size):
                 ent_seq_mention_mask_tensor = []
@@ -149,12 +197,14 @@ class ArtJointModel(nn.Module):
                         evt_mention_embeds.unsqueeze(dim=2).expand(-1, -1, ent_num, -1),
                         ent_mention_embeds.unsqueeze(dim=1).expand(-1, evt_num, -1, -1), 
                     ),
-                    dim=-1).view(-1, ent_num * evt_num, self.hidden_size * 2)
+                    dim=-1).view(-1, ent_num * evt_num, self.tagger_embed_dim * 2)
                 merged_mention_embeds = self.mention_merge_layer(merged_mention_embeds)
                 role_logits = self.role_classification_layer(merged_mention_embeds).view(1, evt_num, ent_num, len(self.role_list))
                 role_logits = torch.softmax(role_logits, dim=-1)
                 role_logits = torch.argmax(role_logits, dim=-1).squeeze(dim=0).cpu().numpy()
-
+                
+                
+                
                 tmp_result = []
                 for x in range(evt_num):
                     tmp = []
@@ -163,7 +213,7 @@ class ArtJointModel(nn.Module):
                     tmp_result.append(tmp)
                 result.append(tmp_result)
                 
-            return result
+            return result, enum_label
     
     def calc_mention_mask(self, labels, masks, i, tmp_vector, tokens):
         j = 0

@@ -1,5 +1,6 @@
 import sys
 sys.path.append('./')
+sys.path.append('../sentence_evt_ext/')
 import time
 import torch
 import json
@@ -14,9 +15,9 @@ from torch.optim import lr_scheduler
 from sub_module.common.common_seq_tag_executor import *
 from collections import Counter
 
-class JointModelExecutor(CommonSeqTagExecutor):
+class ArtJointModelExecutor(CommonSeqTagExecutor):
     def __init__(self, model, train_dataset, dev_dataset, test_dataset, conf):
-        super(JointModelExecutor, self).__init__(model, train_dataset, dev_dataset, test_dataset, conf)
+        super(ArtJointModelExecutor, self).__init__(model, train_dataset, dev_dataset, test_dataset, conf)
         self.max_seq_len = conf.get('max_seq_len', 256)
         self.pretrained_model_name = conf.get('pretrained_model_name', 'bert-base-chinese')
         # self.tokenizer = BertTokenizer.from_pretrained(self.pretrained_model_name)
@@ -26,23 +27,27 @@ class JointModelExecutor(CommonSeqTagExecutor):
         self.use_crf = conf.get('use_crf', 0)
         self.use_lstm = conf.get('use_lstm', 0)
         self.retrain = conf.get("retrain", 0)
+        self.enum_list = conf.get("enum_list", [])
 
     def get_loss(self, logits, labels):
-        evt_logit, ent_logit, role_logit = logits
-        evt_label, ent_label, role_label = labels
+        evt_logit, ent_logit, role_logit, enum_logit = logits
+        evt_label, ent_label, role_label, enum_label = labels
         
         evt_label = evt_label.view(-1)
         ent_label = ent_label.view(-1)
+        enum_label = enum_label.view(-1)
         evt_logit = evt_logit.view(evt_label.size()[0], -1)
         ent_logit = ent_logit.view(ent_label.size()[0], -1)
+        enum_logit = enum_logit.view(enum_label.size()[0], -1)
 
-        loss = 0.3 * self.loss_function(evt_logit, evt_label)
-        loss += 0.35 * self.loss_function(ent_logit, ent_label)
+        loss = 0.18 * self.loss_function(evt_logit, evt_label)
+        loss += 0.24 * self.loss_function(ent_logit, ent_label)
 
         role_label = role_label.view(-1)
         role_logit = role_logit.view(role_label.size()[0], -1)
 
-        loss += 0.35 * self.loss_function(role_logit, role_label)
+        loss += 0.24 * self.loss_function(role_logit, role_label)
+        loss += 0.24 * self.loss_function(enum_logit, enum_label)
         return loss
     
     def optimize(self):
@@ -51,17 +56,18 @@ class JointModelExecutor(CommonSeqTagExecutor):
         self.optimizer.zero_grad()
 
     def get_metric(self, y_pred, y_true, average='micro'):
-        evt_pred, ent_pred, role_pred = y_pred
-        evt_true, ent_true, role_true = y_true
+        evt_pred, ent_pred, role_pred, enum_pred = y_pred
+        evt_true, ent_true, role_true, enum_true = y_true
         evt_p, evt_r, evt_f1 = calc_metrics(evt_true, evt_pred, [1, 2], average=average)
         ent_p, ent_r, ent_f1 = calc_metrics(ent_true, ent_pred, [1, 2], average=average)
         role_p, role_r, role_f1 = calc_metrics(role_true, role_pred, [i for i in range(1, len(self.role_list))], average=average)
+        enum_p, enum_r, enum_f1 = calc_metrics(enum_true, enum_pred, [i for i in range(1, len(self.enum_list))], average=average)
 
-        precision = (evt_p, ent_p, role_p)
-        recall = (evt_r, ent_r, role_r)
-        f1 = (evt_f1, ent_f1, role_f1)
+        precision = (evt_p, ent_p, role_p, enum_p)
+        recall = (evt_r, ent_r, role_r, enum_r)
+        f1 = (evt_f1, ent_f1, role_f1, enum_f1)
 
-        metric = (evt_f1 + ent_f1 + role_f1) / 3
+        metric = (evt_f1 + ent_f1 + role_f1) / 4
         return precision, recall, f1, metric
 
     def get_result(self, logits, labels, input_data=None, ignore_index=-100):
@@ -124,8 +130,8 @@ class JointModelExecutor(CommonSeqTagExecutor):
             # training loop
             bar = tqdm(list(enumerate(train_data_loader)))
             for step, input_data in bar:
-                inputs = input_data[:-3]
-                labels = input_data[-3:]
+                inputs = input_data[:-4]
+                labels = input_data[-4:]
                 # print(input_data)
                 if self.use_gpu:
                     inputs = tuple(x.cuda() for x in inputs)
@@ -168,11 +174,11 @@ class JointModelExecutor(CommonSeqTagExecutor):
         with torch.no_grad():
             model.eval()
             bar = tqdm(list(enumerate(data_loader)))
-            ground_truth = [[], [], []]
-            pred_label = [[], [], []]
+            ground_truth = [[], [], [], []]
+            pred_label = [[], [], [], []]
             for step, input_data in bar:
-                inputs = input_data[:-3]
-                labels = input_data[-3:]
+                inputs = input_data[:-4]
+                labels = input_data[-4:]
                 # print(input_data)
                 if self.use_gpu:
                     inputs = tuple(x.cuda() for x in inputs)
@@ -182,11 +188,11 @@ class JointModelExecutor(CommonSeqTagExecutor):
 
                 y_pred, y_true = self.get_result(logits, labels, input_data)
 
-                for i in range(3):
+                for i in range(4):
                     ground_truth[i] += y_true[i]
                     pred_label[i] += y_pred[i]
             precision, recall, f1, metric = self.get_metric(pred_label, ground_truth)
-            for i, name in enumerate(['evt', 'ent', 'role']):
+            for i, name in enumerate(['evt', 'ent', 'role', 'enum']):
                 logging.info(f"{name}:{self.epoch}: pre:{round(precision[i], 3)} rec:{round(recall[i], 3)} f1:{round(f1[i], 3)}")
             logging.info(f"{mode}:{self.epoch}: {round(metric, 3)}")
         return metric, None
@@ -215,13 +221,13 @@ class JointModelExecutor(CommonSeqTagExecutor):
                 inputs = input_data
                 if self.use_gpu:
                     inputs = tuple(x.cuda() for x in inputs)
-                    result = self.model.module.predict(inputs)
+                    result, enum_label = self.model.module.predict(inputs)
                 else:
-                    result = self.model.predict(inputs, use_gpu=False)
+                    result, enum_label = self.model.predict(inputs, use_gpu=False)
 
                 for i in range(len(result)):
                     test_info = test_contents[offset+i]
-                    event_list = self.handle_result(result[i], test_info)
+                    event_list = self.handle_result(result[i], test_info, enum_label[i])
                     if event_list:
                         test_info['event_list'] = event_list
                 
@@ -236,7 +242,7 @@ class JointModelExecutor(CommonSeqTagExecutor):
 #         json.dump(test_contents, open(self.test_output_path, 'w'), indent=2, ensure_ascii=False)
         return True
     
-    def handle_result(self, result, test_info):
+    def handle_result(self, result, test_info, enum_label):
         text = test_info['text']
         event_list = []
         if not result:
@@ -258,6 +264,8 @@ class JointModelExecutor(CommonSeqTagExecutor):
                 if evt_type not in evt_arg_map:
                     evt_arg_map[evt_type] = set()
                 evt_arg_map[evt_type].add('@#@'.join([argument, role]))
+        if enum_label != 0:
+            evt_arg_map['公司上市'] = self.enum_list[enum_label] + '@#@' + "环节"
         for et, arg_set in evt_arg_map.items():
             arguments = []
             for arg_info in arg_set:
@@ -273,100 +281,3 @@ class JointModelExecutor(CommonSeqTagExecutor):
             event_list.append(event)
 
         return event_list
-                
-            
-#     def get_mention(self, text, label):
-#         label = label[:len(text)]
-#         idx = 0
-#         mention = []
-#         while idx < len(label):
-#             if label[idx][0][0] == 'B':
-#                 arg_type = label[idx][0][2:]
-#                 beg = idx
-#                 idx += 1
-#                 while idx < len(label) and label[idx][0] == 'I-' + arg_type:
-#                     idx += 1
-#                 end = idx
-                
-#                 score = 0
-#                 for i in range(beg, end):
-#                     score += label[i][1]
-#                 score /= end-beg
-#                 score = round(score, 4)
-#                 mention.append(str(beg) + '$%$' + text[beg: end] + '$%$' + arg_type + '$%$' + str(score))
-#             else:
-#                 idx += 1
-#         return mention
-    
-#     def merge_mention(self, mention1, mention2, evt_info):
-#         candidate_evt_types = [x.split("@#@")[1] for x in evt_info.get("mention", [])]
-#         offsets = []
-#         evt_type_map = {}
-#         for x in mention1:
-#             d = x.split('$%$')
-#             beg, mention, arg_type, score = d[0], d[1], d[2], d[3]
-#             beg = int(beg)
-#             end = beg + len(mention)
-#             score = float(score)
-#             new_offsets = []
-#             role = 'B-' + arg_type
-            
-#             is_valid = True
-#             offsets.append([beg, end, score, arg_type, mention])
-# #             for o in offsets:
-# #                 if end <= o[1] or beg >= o[2]:
-# #                     new_offsets.append(o)
-# #                 else:
-# #                     if role in self.label1 and role in self.label2 and score < o[3]:
-# #                         new_offsets.append(o)
-# #                         is_valid = False
-# #             if is_valid:
-# #                 new_offsets.append([beg, end, score, arg_type, mention])
-                
-# #             offsets = new_offsets
-#         time_args = []
-#         for o in offsets:
-#             beg, end, score, arg_type, mention = o[0], o[1], o[2], o[3], o[4]
-#             if arg_type == '时间':
-#                 time_args.append(o)
-#                 continue
-#             d = arg_type.split('@#@')
-#             evt_type, role = d[0], d[1]
-#             if evt_type not in evt_type_map:
-#                 evt_type_map[evt_type] = []
-#             evt_type_map[evt_type].append({
-#                 'argument': mention,
-#                 'role': role
-#             })
-#         if evt_type_map:
-#             for ta in time_args:
-#                 beg, end, score, arg_type, mention = ta[0], ta[1], ta[2], ta[3], ta[4]
-#                 for e in evt_type_map:
-#                     evt_type_map[e].append({
-#                         'argument': mention,
-#                         'role': '时间'
-#                     })
-# #         else:
-# #             for e in candidate_evt_types:
-# #                 for ta in time_args:
-# #                     beg, end, score, arg_type, mention = ta[0], ta[1], ta[2], ta[3], ta[4]
-# #                     e = self.event_list[e]
-# #                     if e not in evt_type_map:
-# #                         evt_type_map[e] = []
-# #                     evt_type_map[e].append({
-# #                         'argument': mention,
-# #                         'role': '时间'
-# #                     })
-#         event_list = []
-#         for k, v in evt_type_map.items():
-#             event_list.append({
-#                 "event_type": k,
-#                 "arguments": v
-#             })
-#         return event_list
-            
-                    
-                    
-            
-        
-        
