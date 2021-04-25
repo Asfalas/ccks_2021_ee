@@ -1,6 +1,6 @@
 {
-  "max_ent_len": 25,
-  "max_evt_len": 8,
+  "max_ent_len": 20,
+  "max_evt_len": 6,
   "max_seq_len": 1024,
   "use_lstm": 0,
   "retrain": 0,
@@ -11,7 +11,7 @@
   "merged_embed_dim": 1024,
   "lstm_hidden_size": 1024,
   "use_crf": 0,
-  "lr": 1e-05,
+  "lr": 5e-05,
   "epochs": 20,
   "model_save_path": "cache/art_joint/{metric}_{epoch}.tar",
   "best_model_save_path": "cache/art_joint/best.json",
@@ -29,6 +29,13 @@
   "accumulate_step": 2,
   "lr_gamma": 0.9,
   "early_stop_threshold": 5,
+  "enum_list": [
+    "None",
+    "筹备上市",
+    "暂停上市",
+    "正式上市",
+    "终止上市"
+  ],
   "role_list": [
     "None",
     "解除质押@#@质押方",

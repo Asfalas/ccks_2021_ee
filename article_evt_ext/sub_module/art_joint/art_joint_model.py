@@ -166,7 +166,7 @@ class ArtJointModel(nn.Module):
             
             enum_label = torch.softmax(enum_logits, dim=-1)
             enum_label = torch.argmax(enum_logits, dim=-1)
-            enum_label = torch.squeeze().cpu().numpy()
+            enum_label = enum_label.squeeze().cpu().numpy()
 
             result = []
             for i in range(batch_size):
@@ -202,8 +202,6 @@ class ArtJointModel(nn.Module):
                 role_logits = self.role_classification_layer(merged_mention_embeds).view(1, evt_num, ent_num, len(self.role_list))
                 role_logits = torch.softmax(role_logits, dim=-1)
                 role_logits = torch.argmax(role_logits, dim=-1).squeeze(dim=0).cpu().numpy()
-                
-                
                 
                 tmp_result = []
                 for x in range(evt_num):

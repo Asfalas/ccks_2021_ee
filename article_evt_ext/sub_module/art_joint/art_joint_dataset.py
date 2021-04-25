@@ -99,9 +99,7 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
             for idx, ids in enumerate(token_ids):
                 if ids == pad_id:
                     seq_label_template[idx] = -100
-            enum = info['enum']
-            
-            enum_type_tensor.append(self.enum_list.index(enum))
+           
             
             front_tokens_tensor.append(token_ids_0)
             front_att_mask_tensor.append(att_mask_0)
@@ -110,6 +108,8 @@ class ArtJointDataHandler(CommonSeqTagDataHandler):
             last_att_mask_tensor.append(att_mask_1)
 
             if 'test' not in self.path:
+                enum = info['enum']
+                enum_type_tensor.append(self.enum_list.index(enum))
                 ent_seq_mention_mask_unit = []
                 ent_seq_label = copy.copy(seq_label_template)
                 for ent in info['ent_list']:

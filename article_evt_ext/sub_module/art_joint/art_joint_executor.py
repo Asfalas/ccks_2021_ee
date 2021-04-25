@@ -40,14 +40,14 @@ class ArtJointModelExecutor(CommonSeqTagExecutor):
         ent_logit = ent_logit.view(ent_label.size()[0], -1)
         enum_logit = enum_logit.view(enum_label.size()[0], -1)
 
-        loss = 0.18 * self.loss_function(evt_logit, evt_label)
-        loss += 0.24 * self.loss_function(ent_logit, ent_label)
+        loss = 0.2 * self.loss_function(evt_logit, evt_label)
+        loss += 0.2 * self.loss_function(ent_logit, ent_label)
 
         role_label = role_label.view(-1)
         role_logit = role_logit.view(role_label.size()[0], -1)
 
-        loss += 0.24 * self.loss_function(role_logit, role_label)
-        loss += 0.24 * self.loss_function(enum_logit, enum_label)
+        loss += 0.3 * self.loss_function(role_logit, role_label)
+        loss += 0.3 * self.loss_function(enum_logit, enum_label)
         return loss
     
     def optimize(self):
@@ -265,7 +265,9 @@ class ArtJointModelExecutor(CommonSeqTagExecutor):
                     evt_arg_map[evt_type] = set()
                 evt_arg_map[evt_type].add('@#@'.join([argument, role]))
         if enum_label != 0:
-            evt_arg_map['公司上市'] = self.enum_list[enum_label] + '@#@' + "环节"
+            if '公司上市' not in evt_arg_map:
+                evt_arg_map['公司上市'] = set()
+            evt_arg_map['公司上市'].add(self.enum_list[enum_label] + '@#@' + "环节")
         for et, arg_set in evt_arg_map.items():
             arguments = []
             for arg_info in arg_set:
