@@ -78,7 +78,7 @@ class ArtMultiTaggerDataHandler(CommonSeqTagDataHandler):
         front_att_mask_tensor = []
         last_att_mask_tensor = []
         
-        enum_type_tensor = []
+#         enum_type_tensor = []
         arg_seq_labels_tensor = []
         sample_flag_tensor = []
 
@@ -106,8 +106,8 @@ class ArtMultiTaggerDataHandler(CommonSeqTagDataHandler):
             last_att_mask_tensor.append(att_mask_1)
 
             if 'test' not in self.path:
-                enum = info['enum']
-                enum_type_tensor.append(self.enum_list.index(enum))
+#                 enum = info['enum']
+#                 enum_type_tensor.append(self.enum_list.index(enum))
 
                 for evt in info['event_list']:
                     evt_type = evt['event_type']
@@ -155,13 +155,13 @@ class ArtMultiTaggerDataHandler(CommonSeqTagDataHandler):
         last_att_mask_tensor = torch.ByteTensor(last_att_mask_tensor)
 
         if 'test' not in self.path:
-            enum_type_tensor = torch.LongTensor(enum_type_tensor)
+#             enum_type_tensor = torch.LongTensor(enum_type_tensor)
             arg_seq_labels_tensor = torch.LongTensor(arg_seq_labels_tensor)
             sample_flag_tensor = torch.BoolTensor(sample_flag_tensor)
 
         if offset_err:
             logging.warn("  越界: " + str(offset_err))
         if 'test' not in self.path:
-            return front_tokens_tensor, last_tokens_tensor, front_att_mask_tensor, last_att_mask_tensor, sample_flag_tensor, enum_type_tensor, arg_seq_labels_tensor
+            return front_tokens_tensor, last_tokens_tensor, front_att_mask_tensor, last_att_mask_tensor, sample_flag_tensor, arg_seq_labels_tensor
 
         return front_tokens_tensor, last_tokens_tensor, front_att_mask_tensor, last_att_mask_tensor

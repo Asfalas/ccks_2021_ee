@@ -68,9 +68,9 @@ def generate_training_data(input_file="article_evt_ext/data/duee_fin_train.json"
             for a in e.get("arguments"):
                 argument = a['argument']
                 ent_set.add(argument)
-                if a['role'] == "环节":
-                    enum = argument
-                    continue
+#                 if a['role'] == "环节":
+#                     enum = argument
+#                     continue
                 indexs = find_all(argument, text)
                 if not indexs:
                     continue
@@ -95,9 +95,10 @@ def generate_training_data(input_file="article_evt_ext/data/duee_fin_train.json"
             "text": text,
             "id": d['id'],
             "event_list": new_event_list,
-            "ent_list": new_ent_list,
-            "enum": enum
+            "ent_list": new_ent_list
         }
+#             "enum": enum
+        
         new_data.append(new_d)
     json.dump(new_data, open(output_file, 'w'), indent=2, ensure_ascii=False)
             
@@ -120,15 +121,15 @@ def generate_multi_tagger_label_list():
         et = d['event_type']
         res_map[et] = []
         for r in d['role_list']:
-            if r['role'] == "环节":
-                continue
+#             if r['role'] == "环节":
+#                 continue
             res_map[et].append(r['role'])
     json.dump(res_map, open("article_evt_ext/data/duee_fin_label_map.json", 'w'), indent=2, ensure_ascii=False)
 
 if __name__ == "__main__":
     # statistics()
 #     generate_role_list()
-    generate_training_data()
-    generate_training_data("article_evt_ext/data/duee_fin_dev.json", "article_evt_ext/data/duee_fin_joint_dev.json")
-    # generate_multi_tagger_label_list()
+#     generate_training_data()
+#     generate_training_data("article_evt_ext/data/duee_fin_dev.json", "article_evt_ext/data/duee_fin_joint_dev.json")
+    generate_multi_tagger_label_list()
 

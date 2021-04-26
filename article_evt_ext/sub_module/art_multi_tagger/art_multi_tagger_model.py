@@ -43,12 +43,6 @@ class ArtMultiTaggerModel(nn.Module):
             for i in range(len(self.event_list))
         )
        
-        self.enum_classify_layer = nn.Sequential(
-            nn.Linear(self.hidden_size * 2, 128),
-            nn.ReLU(),
-            nn.Linear(128, len(self.enum_list))
-        )
-
         self.lstm_layer = nn.LSTM(input_size=self.hidden_size, hidden_size= self.lstm_hidden_dim // 2, num_layers=1,
                                      bidirectional=True,
                                      batch_first=True)
@@ -69,9 +63,6 @@ class ArtMultiTaggerModel(nn.Module):
             attention_mask=attention_mask_1
         )[0]
 
-        enum_classify_input = torch.cat((outputs_0[:, 0, :], outputs_1[:, 0, :]), dim=-1)
-        enum_logits = self.enum_classify_layer(enum_classify_input)
-
         if not self.use_tag_window:
             so1 = outputs_0[:, 1:511, :]
             so2 = outputs_1[:, 1:511, :]
@@ -90,7 +81,7 @@ class ArtMultiTaggerModel(nn.Module):
         
         logits = [tagger(sequence_output) for tagger in self.tagger_list]
         
-        return enum_logits, logits
+        return logits
 
     # def predict(self, inputs, use_gpu=True):
     #     with torch.no_grad():

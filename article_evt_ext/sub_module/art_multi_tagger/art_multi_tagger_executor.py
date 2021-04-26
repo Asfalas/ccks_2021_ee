@@ -58,20 +58,26 @@ class ArtMultiTaggerModelExecutor(CommonSeqTagExecutor):
         allow_labels = []
         for e in self.event_list:
             allow_labels.append([x for x in range(1, 2 * len(self.label_map[e]) + 1)])
-        allow_labels.append([i for i in range(1, len(self.enum_list))])
 
         for pred, true, allow_label in zip(y_pred, y_true, allow_labels):
+#             is_all_zero = True
+#             for i in true:
+#                 if i!=0:
+#                     is_all_zero = False
+#                     break
+#             if is_all_zero:
+#                 continue
             if pred and true:
                 p, r, f = calc_metrics(true, pred, allow_label, average=average)
                 precision.append(p)
                 recall.append(r)
                 f1.append(f)
 
-        precision = sum(precision) / len(precision)
-        recall = sum(recall) / len(recall)
-        f1 = sum(f1) / len(f1)
+#         pre = sum(precision) / len(precision)
+#         re = sum(recall) / len(recall)
+        f1_val = sum(f1) / len(f1)
 
-        metric = f1
+        metric = f1_val
         return precision, recall, f1, metric
 
     def get_result(self, logits, labels, ignore_index=-100):
@@ -136,25 +142,23 @@ class ArtMultiTaggerModelExecutor(CommonSeqTagExecutor):
             # training loop
             bar = tqdm(list(enumerate(train_data_loader)))
             for step, input_data in bar:
-                inputs = input_data[:-3]
-                labels = input_data[-3:]
+                inputs = input_data[:-2]
+                labels = input_data[-2:]
                 # print(input_data)
                 if self.use_gpu:
                     inputs = tuple(x.cuda() for x in inputs)
                     labels = tuple(x.cuda() for x in labels)
 
-                enum_logits, logits = self.model(inputs)
+                logits = self.model(inputs)
 
                 # 取mask
                 sample_flags = labels[0]
-                enum_labels = labels[1]
-                labels = labels[2]
+                labels = labels[1]
                 label_vector = []
                 logit_vector = []
                 for i in range(len(self.event_list)):
                     logit = logits[i]
                     label = labels[:, i, :]
-
                     logit_mask = sample_flags[:, i].unsqueeze(dim=-1).unsqueeze(dim=-1)
                     label_mask = sample_flags[:, i].unsqueeze(dim=-1)
                     logit = torch.masked_select(logit, logit_mask)
@@ -164,11 +168,6 @@ class ArtMultiTaggerModelExecutor(CommonSeqTagExecutor):
                         logit = logit.view(label.size()[0], -1)
                     label_vector.append(label)
                     logit_vector.append(logit)
-
-                enum_labels = enum_labels.view(-1)
-                enum_logits = enum_logits.view(enum_labels.size()[0], -1)
-                logit_vector.append(enum_logits)
-                label_vector.append(enum_labels)
 
                 loss = self.get_loss(logit_vector, label_vector)
                 loss.backward()
@@ -181,7 +180,7 @@ class ArtMultiTaggerModelExecutor(CommonSeqTagExecutor):
                 # calc metric info
                 y_pred, y_true = self.get_result(logit_vector, label_vector)
                 precision, recall, f1, metric = self.get_metric(y_pred, y_true)
-                bar.set_description(f"step:{step}: pre:{round(precision, 3)}, {round(recall, 3)}, {round(f1, 3)} loss:{loss}")
+                bar.set_description(f"step:{step}: f1:{round(metric, 3)} loss:{loss}")
 
             # adjust learning rate
             self.scheduler.step()
@@ -206,44 +205,38 @@ class ArtMultiTaggerModelExecutor(CommonSeqTagExecutor):
         with torch.no_grad():
             model.eval()
             bar = tqdm(list(enumerate(data_loader)))
-            ground_truth = [[], [], [], []]
-            pred_label = [[], [], [], []]
+            ground_truth = [[] for i in range(len(self.event_list)+1)]
+            pred_label = [[] for i in range(len(self.event_list)+1)]
             for step, input_data in bar:
-                inputs = input_data[:-3]
-                labels = input_data[-3:]
+                inputs = input_data[:-2]
+                labels = input_data[-2:]
                 # print(input_data)
                 if self.use_gpu:
                     inputs = tuple(x.cuda() for x in inputs)
                     labels = tuple(x.cuda() for x in labels)
 
-                enum_logits, logits = self.model(inputs)
+                logits = self.model(inputs)
 
-                enum_labels = labels[1]
-                labels = labels[2]
+                labels = labels[1]
                 label_vector = []
                 logit_vector = []
                 for i in range(len(self.event_list)):
                     logit = logits[i]
                     label = labels[:, i, :]
-                    if logit.numel() or label.numel():
-                        label = label.view(-1)
-                        logit = logit.view(label.size()[0], -1)
+
+                    label = label.reshape(-1)
+                    logit = logit.reshape(label.size()[0], -1)
                     label_vector.append(label)
                     logit_vector.append(logit)
 
-                enum_labels = enum_labels.view(-1)
-                enum_logits = enum_logits.view(enum_labels.size()[0], -1)
-                logit_vector.append(enum_logits)
-                label_vector.append(enum_labels)
-
                 y_pred, y_true = self.get_result(logit_vector, label_vector)
 
-                for i in range(10):
+                for i in range(len(y_pred)):
                     ground_truth[i] += y_true[i]
                     pred_label[i] += y_pred[i]
 
             precision, recall, f1, metric = self.get_metric(pred_label, ground_truth)
-            for i, name in enumerate(self.event_list + ['enum']):
+            for i, name in enumerate(self.event_list):
                 logging.info(f"{name}:{self.epoch}: pre:{round(precision[i], 3)} rec:{round(recall[i], 3)} f1:{round(f1[i], 3)}")
             logging.info(f"{mode}:{self.epoch}: {round(metric, 3)}")
         return metric, None
