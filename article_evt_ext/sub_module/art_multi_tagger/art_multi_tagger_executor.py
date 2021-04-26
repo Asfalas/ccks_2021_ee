@@ -19,6 +19,7 @@ class ArtMultiTaggerModelExecutor(CommonSeqTagExecutor):
     def __init__(self, model, train_dataset, dev_dataset, test_dataset, conf):
         super(ArtMultiTaggerModelExecutor, self).__init__(model, train_dataset, dev_dataset, test_dataset, conf)
         self.max_seq_len = conf.get('max_seq_len', 256)
+        self.real_max_seq_len = self.max_seq_len - 4 
         self.pretrained_model_name = conf.get('pretrained_model_name', 'bert-base-chinese')
         # self.tokenizer = BertTokenizer.from_pretrained(self.pretrained_model_name)
         self.max_ent_len = conf.get("max_ent_len", 10)
@@ -31,18 +32,16 @@ class ArtMultiTaggerModelExecutor(CommonSeqTagExecutor):
         self.retrain = conf.get("retrain", 0)
         self.enum_list = conf.get("enum_list", [])
 
-    def get_loss(self, logits, labels, sample_flags):
-        for i in range(len(self.event_list)):
+    def get_loss(self, logits, labels):
+        count = 0
+        loss = 0
+        for i in range(0, len(self.event_list)):            
             logit = logits[i]
-            label = label[i]
-            mask = sample_flags[:, :, i].unsqueeze(dim=-1).expand(-1, -1, logit.size()[-1])
-            logit = torch.mask_select(logit, mask)
-            label = torch.mask_select(label, mask)
-            label = label.view(-1)
-            logit = logit.view(label.size()[0], -1)
-            
-            loss += 0.1 * self.loss_function(logit, label)
-
+            label = labels[i]
+            if logit.numel():
+                loss += self.loss_function(logit, label)
+                count += 1
+        loss /= count
         return loss
     
     def optimize(self):
@@ -56,34 +55,40 @@ class ArtMultiTaggerModelExecutor(CommonSeqTagExecutor):
         recall = []
         f1 = []
         
-        allow_labels = [[x for x in range(1, 2 * len(self.label_map[e]) + 1) for e in self.event_list ]]
-        allow_labels.append([[i for i in range(1, len(self.enum_list))]])
+        allow_labels = []
+        for e in self.event_list:
+            allow_labels.append([x for x in range(1, 2 * len(self.label_map[e]) + 1)])
+        allow_labels.append([i for i in range(1, len(self.enum_list))])
 
         for pred, true, allow_label in zip(y_pred, y_true, allow_labels):
-            p, r, f = calc_metrics(pred, true, allow_label, average=average)
-            precision.append(p)
-            recall.append(r)
-            f1.append(f)
+            if pred and true:
+                p, r, f = calc_metrics(true, pred, allow_label, average=average)
+                precision.append(p)
+                recall.append(r)
+                f1.append(f)
 
         precision = sum(precision) / len(precision)
-        recall = sum(recall) / len(precision)
-        f1 = sum(f1) / len(precision)
+        recall = sum(recall) / len(recall)
+        f1 = sum(f1) / len(f1)
 
         metric = f1
         return precision, recall, f1, metric
 
-    def get_result(self, enum_logits, enum_labels, logits, labels, ignore_index=-100):
+    def get_result(self, logits, labels, ignore_index=-100):
         final_preds = tuple()
         final_labels = tuple()
 
         for pred, label in zip(logits, labels):
-            label = label.view(-1)
-            pred = pred.view(label.size()[0], -1)
-            proba = torch.log_softmax(pred, dim=1)
-            pred_cls = torch.argmax(proba, dim=1)
-            pred_cls = pred_cls.cpu().view(-1).numpy()
-            label = label.cpu().view(-1).numpy()
-
+            if pred.numel():
+                label = label.view(-1)
+                pred = pred.view(label.size()[0], -1)
+                proba = torch.log_softmax(pred, dim=1)
+                pred_cls = torch.argmax(proba, dim=1)
+                pred_cls = pred_cls.cpu().view(-1).numpy()
+                label = label.cpu().numpy()
+            else:
+                pred_cls = []
+                label = []
             tmp_preds, tmp_labels = [], []
             for idx, (p, l) in enumerate(zip(pred_cls, label)):
                 if l == ignore_index:
@@ -144,19 +149,28 @@ class ArtMultiTaggerModelExecutor(CommonSeqTagExecutor):
                 sample_flags = labels[0]
                 enum_labels = labels[1]
                 labels = labels[2]
+                label_vector = []
+                logit_vector = []
                 for i in range(len(self.event_list)):
                     logit = logits[i]
-                    label = label[i]
-                    mask = sample_flags[:, :, i].unsqueeze(dim=-1).expand(-1, -1, logit.size()[-1])
-                    logit = torch.mask_select(logit, mask)
-                    label = torch.mask_select(label, mask)
-                    label = label.view(-1)
-                    logit = logit.view(label.size()[0], -1)
+                    label = labels[:, i, :]
 
-                logits += (enum_logits, )
-                labels += (enum_labels, )
+                    logit_mask = sample_flags[:, i].unsqueeze(dim=-1).unsqueeze(dim=-1)
+                    label_mask = sample_flags[:, i].unsqueeze(dim=-1)
+                    logit = torch.masked_select(logit, logit_mask)
+                    label = torch.masked_select(label, label_mask)
+                    if logit.numel() or label.numel():
+                        label = label.view(-1)
+                        logit = logit.view(label.size()[0], -1)
+                    label_vector.append(label)
+                    logit_vector.append(logit)
 
-                loss = self.get_loss(logits, labels)
+                enum_labels = enum_labels.view(-1)
+                enum_logits = enum_logits.view(enum_labels.size()[0], -1)
+                logit_vector.append(enum_logits)
+                label_vector.append(enum_labels)
+
+                loss = self.get_loss(logit_vector, label_vector)
                 loss.backward()
                 
                 # params optimization
@@ -165,9 +179,9 @@ class ArtMultiTaggerModelExecutor(CommonSeqTagExecutor):
                     self.optimize()
 
                 # calc metric info
-                y_pred, y_true = self.get_result(logits, labels)
+                y_pred, y_true = self.get_result(logit_vector, label_vector)
                 precision, recall, f1, metric = self.get_metric(y_pred, y_true)
-                bar.set_description(f"step:{step}: pre:{round(precision[0], 3)}, {round(precision[1], 3)}, {round(precision[2], 3)} loss:{loss}")
+                bar.set_description(f"step:{step}: pre:{round(precision, 3)}, {round(recall, 3)}, {round(f1, 3)} loss:{loss}")
 
             # adjust learning rate
             self.scheduler.step()
@@ -204,23 +218,25 @@ class ArtMultiTaggerModelExecutor(CommonSeqTagExecutor):
 
                 enum_logits, logits = self.model(inputs)
 
-                # 取mask
-                sample_flags = labels[0]
                 enum_labels = labels[1]
                 labels = labels[2]
+                label_vector = []
+                logit_vector = []
                 for i in range(len(self.event_list)):
                     logit = logits[i]
-                    label = label[i]
-                    mask = sample_flags[:, :, i].unsqueeze(dim=-1).expand(-1, -1, logit.size()[-1])
-                    logit = torch.mask_select(logit, mask)
-                    label = torch.mask_select(label, mask)
-                    label = label.view(-1)
-                    logit = logit.view(label.size()[0], -1)
+                    label = labels[:, i, :]
+                    if logit.numel() or label.numel():
+                        label = label.view(-1)
+                        logit = logit.view(label.size()[0], -1)
+                    label_vector.append(label)
+                    logit_vector.append(logit)
 
-                logits += (enum_logits, )
-                labels += (enum_labels, )
+                enum_labels = enum_labels.view(-1)
+                enum_logits = enum_logits.view(enum_labels.size()[0], -1)
+                logit_vector.append(enum_logits)
+                label_vector.append(enum_labels)
 
-                y_pred, y_true = self.get_result(logits, labels)
+                y_pred, y_true = self.get_result(logit_vector, label_vector)
 
                 for i in range(10):
                     ground_truth[i] += y_true[i]

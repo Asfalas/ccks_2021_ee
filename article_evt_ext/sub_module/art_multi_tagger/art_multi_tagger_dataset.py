@@ -92,12 +92,12 @@ class ArtMultiTaggerDataHandler(CommonSeqTagDataHandler):
             max_len = len(tokens) if len(tokens) > max_len else max_len
             token_ids_0, token_ids_1, att_mask_0, att_mask_1, token_ids = self.sentence_padding(tokens)
             
-            tmp_seq_label = [0 for i in range(self.real_max_seq_len)]
+            tmp_seq_label = [[0 for i in range(self.real_max_seq_len)] for i in range(len(self.event_list)) ]
             tmp_sample_flag = [0] * len(self.label_map)
             for idx, ids in enumerate(token_ids):
                 if ids == pad_id:
-                    seq_label_template[idx] = -100
-            tmp_seq_label = tmp_seq_label * len(self.label_map)
+                    for i in range(len(self.event_list)):
+                        tmp_seq_label[i][idx] = -100
             
             front_tokens_tensor.append(token_ids_0)
             front_att_mask_tensor.append(att_mask_0)
@@ -118,7 +118,7 @@ class ArtMultiTaggerDataHandler(CommonSeqTagDataHandler):
                     for a in evt['arguments']:
                         begs = a['indexs']
                         mention = a['argument']
-                        role_id = self.label_map[event_id].index(a['role'])
+                        role_id = self.label_map[evt_type].index(a['role'])
                         for beg in begs:
                             if beg + len(mention) > self.real_max_seq_len:
                                 offset_err += 1
@@ -132,9 +132,18 @@ class ArtMultiTaggerDataHandler(CommonSeqTagDataHandler):
                     for i in range(len(tmp_sample_flag)):
                         if tmp_sample_flag[i] == 0:
                             if random.random() < 0.125:
-                                tmp_sample_flag = 1
+                                tmp_sample_flag[i] = 1
                 else:
                     tmp_sample_flag = [1] * len(self.label_map)
+                
+                is_all_zero = True
+                for i in tmp_sample_flag:
+                    if i != 0:
+                        is_all_zero = False
+                        break
+                if is_all_zero:
+                    r = int(random.random() * 100) % len(tmp_sample_flag)
+                    tmp_sample_flag[r] = 1
                 
                 arg_seq_labels_tensor.append(tmp_seq_label)
                 sample_flag_tensor.append(tmp_sample_flag)

@@ -37,7 +37,7 @@ class ArtMultiTaggerModel(nn.Module):
             nn.Sequential(
                 nn.Linear(self.tagger_embed_dim, 128),
                 nn.ReLU(),
-                nn.Linear(128, len(self.label_map[self.event_list[i]])),
+                nn.Linear(128, 2 * len(self.label_map[self.event_list[i]]) + 1),
                 nn.ReLU()
             )
             for i in range(len(self.event_list))
@@ -88,7 +88,7 @@ class ArtMultiTaggerModel(nn.Module):
         if self.use_lstm:
             sequence_output, (_, _) = self.lstm_layer(sequence_output)
         
-        logits = (tagger(sequence_output) for tagger in self.tagger_list)
+        logits = [tagger(sequence_output) for tagger in self.tagger_list]
         
         return enum_logits, logits
 

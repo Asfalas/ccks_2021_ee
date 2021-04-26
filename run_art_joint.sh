@@ -2,7 +2,7 @@ cd article_evt_ext/
 pwd
 CUDA_VISIBLE_DEVICES=0 python -u main.py \
     --mode train \
-    --task multi_tagger \
+    --task joint \
     --debug 1 \
     --dataset duee_fin \
     --conf conf/duee_fin_joint.json \

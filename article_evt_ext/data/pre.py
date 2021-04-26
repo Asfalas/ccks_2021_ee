@@ -128,7 +128,7 @@ def generate_multi_tagger_label_list():
 if __name__ == "__main__":
     # statistics()
 #     generate_role_list()
-    # generate_training_data()
-    # generate_training_data("article_evt_ext/data/duee_fin_dev.json", "article_evt_ext/data/duee_fin_joint_dev.json")
-    generate_multi_tagger_label_list()
+    generate_training_data()
+    generate_training_data("article_evt_ext/data/duee_fin_dev.json", "article_evt_ext/data/duee_fin_joint_dev.json")
+    # generate_multi_tagger_label_list()
 
