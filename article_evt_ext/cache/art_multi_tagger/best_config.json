@@ -3,7 +3,7 @@
   "max_evt_len": 6,
   "max_seq_len": 1024,
   "use_lstm": 0,
-  "retrain": 0,
+  "retrain": 1,
   "use_tag_window": 0,
   "pretrained_model_name": "bert-base-chinese",
   "test_output_path": "output/art_multi_tagger_test.json",
@@ -11,7 +11,7 @@
   "merged_embed_dim": 1024,
   "lstm_hidden_size": 1024,
   "use_crf": 0,
-  "lr": 5e-05,
+  "lr": 1e-05,
   "epochs": 20,
   "model_save_path": "cache/art_multi_tagger/{metric}_{epoch}.tar",
   "best_model_save_path": "cache/art_multi_tagger/best.json",
@@ -126,6 +126,7 @@
       "收购完成时间"
     ],
     "公司上市": [
+      "环节",
       "上市公司",
       "证券代码",
       "披露时间",

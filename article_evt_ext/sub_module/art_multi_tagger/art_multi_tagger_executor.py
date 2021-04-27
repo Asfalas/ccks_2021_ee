@@ -31,11 +31,12 @@ class ArtMultiTaggerModelExecutor(CommonSeqTagExecutor):
         self.use_lstm = conf.get('use_lstm', 0)
         self.retrain = conf.get("retrain", 0)
         self.enum_list = conf.get("enum_list", [])
+        self.is_multi_tagger = conf.get("is_multi_tagger", True)
 
     def get_loss(self, logits, labels):
         count = 0
         loss = 0
-        for i in range(0, len(self.event_list)):            
+        for i in range(0, len(self.event_list)):
             logit = logits[i]
             label = labels[i]
             if logit.numel():
@@ -113,7 +114,7 @@ class ArtMultiTaggerModelExecutor(CommonSeqTagExecutor):
         dev_data_loader = torch.utils.data.DataLoader(dataset=self.dev_dataset, batch_size=self.batch_size,
                                                       shuffle=True, num_workers=0)
         # init
-        if self.use_lstm:
+        if self.use_lstm or self.is_multi_tagger:
             logging.info('  锁定bert参数')
             bert_params = self.model.module.bert.parameters() if self.use_gpu else self.model.bert.parameters()
             for i in bert_params:
@@ -265,13 +266,13 @@ class ArtMultiTaggerModelExecutor(CommonSeqTagExecutor):
                 inputs = input_data
                 if self.use_gpu:
                     inputs = tuple(x.cuda() for x in inputs)
-                    result, enum_label = self.model.module.predict(inputs)
+                    result = self.model.module.predict(inputs)
                 else:
-                    result, enum_label = self.model.predict(inputs, use_gpu=False)
+                    result = self.model.predict(inputs, use_gpu=False)
 
                 for i in range(len(result)):
                     test_info = test_contents[offset+i]
-                    event_list = self.handle_result(result[i], test_info, enum_label[i])
+                    event_list = self.handle_result(result[i], test_info)
                     if event_list:
                         test_info['event_list'] = event_list
                 
@@ -286,32 +287,23 @@ class ArtMultiTaggerModelExecutor(CommonSeqTagExecutor):
 #         json.dump(test_contents, open(self.test_output_path, 'w'), indent=2, ensure_ascii=False)
         return True
     
-    def handle_result(self, result, test_info, enum_label):
+    def handle_result(self, result, test_info):
         text = test_info['text']
         event_list = []
         if not result:
             return []
         evt_arg_map = {}
         for k in result:
-            for j in k:
-                evt_ofs, ent_ofs, role_info = j[0], j[1], j[2]
-                if role_info == 0:
-                    continue
-                role_info = self.role_list[role_info]
-                evt_type, role = role_info.split('@#@')[0], role_info.split('@#@')[1]
-                trigger = text[evt_ofs[0]: evt_ofs[1]]
-                if not trigger:
-                    continue
-                argument = text[ent_ofs[0]: ent_ofs[1]]
-                if not argument:
-                    continue
-                if evt_type not in evt_arg_map:
-                    evt_arg_map[evt_type] = set()
-                evt_arg_map[evt_type].add('@#@'.join([argument, role]))
-        if enum_label != 0:
-            if '公司上市' not in evt_arg_map:
-                evt_arg_map['公司上市'] = set()
-            evt_arg_map['公司上市'].add(self.enum_list[enum_label] + '@#@' + "环节")
+            beg, end, evt_id, role_id = k
+            evt_type = self.event_list[evt_id]
+            role = self.label_map[evt_type][role_id]
+            argument = text[beg: end]
+            if not argument:
+                continue
+            if evt_type not in evt_arg_map:
+                evt_arg_map[evt_type] = set()
+            evt_arg_map[evt_type].add('@#@'.join([argument, role]))
+        
         for et, arg_set in evt_arg_map.items():
             arguments = []
             for arg_info in arg_set:
