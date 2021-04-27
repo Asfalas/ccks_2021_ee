@@ -83,11 +83,53 @@ def handle_joint_data():
     with jsonlines.open("./duee.json", mode='w') as writer:
         for i in new_data:
             writer.write(i)
+
             
+def merge():
+    data1 = [line for line in open('sentence_evt_ext/output/joint_fin_test.json')]
+    data2 = [line for line in open("article_evt_ext/output/art_joint_test.json")]
+    res = []
+    for x, y in zip(data1, data2):
+        event_map = {}
+        x = json.loads(x)
+        y = json.loads(y)
+        for e in x.get('event_list', []):
+            et = e['event_type']
+            if et not in event_map:
+                event_map[et] = set()
+            for a in e['arguments']:
+                event_map[et].add(a['argument'] + '@#@' + a['role'])
+        for e in y.get('event_list', []):
+            et = e['event_type']
+            if et not in event_map:
+                event_map[et] = set()
+            for a in e['arguments']:
+                event_map[et].add(a['argument'] + '@#@' + a['role'])
+        el = []
+        for et, ai in event_map.items():
+            args = []
+            for i in ai:
+                args.append({
+                    "argument": i.split("@#@")[0],
+                    "role": i.split("@#@")[1]
+                })
+            ei = {
+                "event_type": et,
+                "arguments": args
+            }
+            el.append(ei)
+        x['event_list'] = el
+        res.append(x)
+    with jsonlines.open("article_evt_ext/output/duee_fin_merge.json", mode='w') as writer:
+        for i in res:
+            writer.write(i)
+        
     
 if __name__ == "__main__":
 #     generate_joint_submit_data()
 #     generate_test_data()
 #     generate_submit_data()
-    handle_joint_data()
-        
+#     handle_joint_data()
+    merge()
+    
+    
