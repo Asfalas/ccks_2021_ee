@@ -1,4 +1,4 @@
-import json
+import json, sys
 
 def statistics():
     data = [line for line in open("article_evt_ext/data/duee_fin_train.json")] + [line for line in open("article_evt_ext/data/duee_fin_dev.json")]
@@ -126,10 +126,115 @@ def generate_multi_tagger_label_list():
             res_map[et].append(r['role'])
     json.dump(res_map, open("article_evt_ext/data/duee_fin_label_map.json", 'w'), indent=2, ensure_ascii=False)
 
+
+def process_title_to_sentence_level(input_file="article_evt_ext/data/duee_fin_train.json", output_file="sentence_evt_ext/data/duee_fin_sent_train.json"):
+    data = [line for line in open(input_file)]
+    new_data = []
+    for line in data:
+        d = json.loads(line)
+        text = d.get("title", '')
+        event_list = d.get("event_list", [])
+        new_event_list = []
+        ent_set = set()
+        enum = 'None'
+        for e in event_list:
+            trigger = e["trigger"]
+            indexs = find_all(trigger, text)
+            if not indexs:
+                continue
+            index = indexs[0]
+            new_e = {
+                "event_type": e['event_type'],
+                "trigger": e["trigger"],
+                "trigger_start_index": index,
+                "arguments": []
+            }
+            new_arguments = []
+            for a in e.get("arguments"):
+                argument = a['argument']
+                ent_set.add(argument)
+                if a['role'] == "环节":
+                    enum = argument
+#                     continue
+                indexs = find_all(argument, text)
+                if not indexs:
+                    continue
+                index = indexs[0]
+                new_a = {
+                    "argument": argument,
+                    "role": a['role'],
+                    "argument_start_index": index
+                }
+                new_arguments.append(new_a)
+            new_e['arguments'] = new_arguments
+            new_event_list.append(new_e)
+        new_ent_list = []
+        for e in ent_set:
+            indexs = find_all(e, text)
+            if not indexs:
+                continue
+            index = indexs[0]
+            new_ent_list.append(str(index) + '@#@' + e)
+        new_d = {
+            "text": text,
+            "id": d['id'],
+            "event_list": new_event_list,
+            "ent_list": new_ent_list,
+            "enum": enum
+        }
+#             "enum": enum
+        
+        new_data.append(new_d)
+    json.dump(new_data, open(output_file, 'w'), indent=2, ensure_ascii=False)
+
+def generate_schema_for_sent():
+    schema = open("article_evt_ext/data/duee_fin_event_schema.json")
+    evt_schema = {}
+    for line in schema:
+        d = json.loads(line)
+        evt_schema[d['event_type']] = ['None']
+        for role in d['role_list']:
+            evt_schema[d['event_type']].append(role['role'])
+    json.dump(evt_schema, sys.stdout, indent=2, ensure_ascii=False)
+    print('')
+    schema = evt_schema
+    # print(list(schema.keys()).index('财经/交易-出售/收购'))
+    event_list = list(schema.keys())
+    json.dump(event_list, sys.stdout, indent=2, ensure_ascii=False)
+    print('')
+    role_list = ['None']
+    for k, v in schema.items():
+        if k == 'None':
+            continue
+        for a in v:
+            if a == 'None':
+                continue
+            role_list.append(k + "@#@" + a)
+    json.dump(role_list, sys.stdout, indent=2, ensure_ascii=False)
+
+def generate_test_sent():
+    data = open("article_evt_ext/data/duee_fin_test1.json")
+    new_data = []
+    for line in data:
+        d = json.loads(line)
+        d['text'] = d['title']
+        del d['title']
+        new_data.append(d)
+
+    import jsonlines
+    with jsonlines.open("sentence_evt_ext/data/duee_fin_test1.json", mode='w') as writer:
+        for i in new_data:
+            writer.write(i)
+    
+
 if __name__ == "__main__":
     # statistics()
 #     generate_role_list()
 #     generate_training_data()
 #     generate_training_data("article_evt_ext/data/duee_fin_dev.json", "article_evt_ext/data/duee_fin_joint_dev.json")
-    generate_multi_tagger_label_list()
+    # generate_multi_tagger_label_list()
+    # process_title_to_sentence_level()
+    # process_title_to_sentence_level("article_evt_ext/data/duee_fin_dev.json", "sentence_evt_ext/data/duee_fin_sent_dev.json")
+    # generate_schema_for_sent()
+    generate_test_sent()
 
