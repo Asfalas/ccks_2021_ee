@@ -1,0 +1,11 @@
+[
+  "None",
+  "SettingFault",
+  "SetMachine",
+  "SoftHardwareFault",
+  "IndexFault",
+  "Check",
+  "Operate",
+  "CollectData",
+  "ExternalFault"
+]

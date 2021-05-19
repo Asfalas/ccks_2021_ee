@@ -1,0 +1,53 @@
+{
+  "SettingFault": [
+    "Object",
+    "Setting",
+    "Subject",
+    "Reference",
+    "State",
+    "Owner",
+    "Owner2"
+  ],
+  "SetMachine": [
+    "Object",
+    "Network",
+    "State",
+    "InitialState",
+    "Owner",
+    "Object2",
+    "FinalState"
+  ],
+  "SoftHardwareFault": [
+    "Sbuject",
+    "Object",
+    "Subject",
+    "Subject2",
+    "State",
+    "Owner",
+    "FinalState",
+    "Owner2"
+  ],
+  "IndexFault": [
+    "Index2",
+    "State",
+    "Owner",
+    "Index"
+  ],
+  "Check": [
+    "Object2",
+    "Object",
+    "Owner"
+  ],
+  "Operate": [
+    "Object",
+    "Owner",
+    "Object2"
+  ],
+  "CollectData": [
+    "Source",
+    "Data"
+  ],
+  "ExternalFault": [
+    "State"
+  ]
+}
