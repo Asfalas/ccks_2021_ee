@@ -4,6 +4,7 @@
   "max_seq_len": 128,
   "pretrained_model_name": "hfl/chinese-roberta-wwm-ext",
   "test_output_path": "output/joint_test.json",
+  "eval_output_path": "output/joint_eval.json",
   "hidden_size": 768,
   "merged_embed_dim": 1024,
   "entity_embed_dim": 8,

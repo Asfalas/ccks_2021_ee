@@ -1,0 +1,1632 @@
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '4、  小区配置核查 通过DSP cell查询小区配置，', 'event_list': [{'trigger': ['Check', 8, '核查'], 'argument': [['Object', 2, '  小区配置']]}, {'trigger': ['Check', 21, '查询'], 'argument': [['Object', 23, '小区配置']]}], 'doc_id': 0}
+答案：{'text': '4、  小区配置核查 通过DSP cell查询小区配置，', 'event_list': [{'trigger': ['Check', 8, '核查'], 'argument': [['Object', 4, '小区配置']]}, {'trigger': ['Check', 21, '查询'], 'argument': [['Object', 23, '小区配置']]}]}
+
+0.4, true_num: 2, pred_num: 5, gt_num: 5
+预测：{'text': '空口加密算法不一致导致用户无法attach', 'event_list': [{'trigger': ['SettingFault', 6, '不一致'], 'argument': [['Setting', 0, '空口加密算法']]}, {'trigger': ['SoftHardwareFault', 15, 'attach'], 'argument': [['Subject', 11, '用户'], ['State', 13, '无法']]}], 'doc_id': 0}
+答案：{'text': '空口加密算法不一致导致用户无法attach', 'event_list': [{'trigger': ['SettingFault', 6, '不一致'], 'argument': [['Setting', 0, '空口加密算法']]}, {'trigger': ['SoftHardwareFault', 15, 'at'], 'argument': [['Subject', 11, '用户'], ['State', 13, '无法']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '“传输带宽PIR不足导致”和“CPE硬件故障”', 'event_list': [{'trigger': ['IndexFault', 8, '不足'], 'argument': [['Index', 1, '传输带宽PIR']]}, {'trigger': ['SoftHardwareFault', 20, '故障'], 'argument': [['Subject', 12, '”和“CPE硬件']]}], 'doc_id': 0}
+答案：{'text': '“传输带宽PIR不足导致”和“CPE硬件故障”', 'event_list': [{'trigger': ['IndexFault', 8, '不足'], 'argument': [['Index', 1, '传输带宽PIR']]}, {'trigger': ['SoftHardwareFault', 20, '故障'], 'argument': [['Subject', 15, 'CPE硬件']]}]}
+
+0.333, true_num: 1, pred_num: 4, gt_num: 2
+预测：{'text': '通过分析BTS3205E 在V100R010C10SPC150和V100R011C10版本上复现相同操作的一键式日志，', 'event_list': [{'trigger': ['Check', 2, '分析'], 'argument': [['Object', 4, 'BTS3205E']]}, {'trigger': ['Operate', 46, '复现'], 'argument': [['Object', 48, '相同操作的一键式日志']]}], 'doc_id': 0}
+答案：{'text': '通过分析BTS3205E 在V100R010C10SPC150和V100R011C10版本上复现相同操作的一键式日志，', 'event_list': [{'trigger': ['Check', 2, '分析'], 'argument': [['Object', 4, 'BTS3205E 在V100R010C10SPC150和V100R011C10版本上复现相同操作的一键式日志']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 2
+预测：{'text': ' 修改为1之后定标正常', 'event_list': [], 'doc_id': 0}
+答案：{'text': ' 修改为1之后定标正常', 'event_list': [{'trigger': ['SetMachine', 1, '修改'], 'argument': [['FinalState', 3, '为1']]}]}
+
+0.667, true_num: 2, pred_num: 2, gt_num: 4
+预测：{'text': '修改天线电下倾角引起VSWR微小变化', 'event_list': [{'trigger': ['SetMachine', 0, '修改'], 'argument': [['Object', 2, '天线电下倾角']]}], 'doc_id': 0}
+答案：{'text': '修改天线电下倾角引起VSWR微小变化', 'event_list': [{'trigger': ['SetMachine', 0, '修改'], 'argument': [['Object', 2, '天线电下倾角']]}, {'trigger': ['SoftHardwareFault', 16, '变化'], 'argument': [['Subject', 10, 'VSWR']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '可见丢包是导致VOIP通话质量差的主要原因。', 'event_list': [{'trigger': ['IndexFault', 15, '差'], 'argument': [['Index', 7, 'VOIP通话质量']]}], 'doc_id': 0}
+答案：{'text': '可见丢包是导致VOIP通话质量差的主要原因。', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '丢包'], 'argument': []}, {'trigger': ['IndexFault', 15, '差'], 'argument': [['Index', 7, 'VOIP通话质量']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 4
+预测：{'text': '解析我方OMC的北向配置文件upload.xml出现乱码现象，', 'event_list': [], 'doc_id': 0}
+答案：{'text': '解析我方OMC的北向配置文件upload.xml出现乱码现象，', 'event_list': [{'trigger': ['Check', 0, '解析'], 'argument': [['Object', 2, '我方OMC的北向配置文件']]}, {'trigger': ['SoftHardwareFault', 26, '乱码'], 'argument': [['Subject', 2, '我方OMC的北向配置文件']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '导致校验失败订阅出错', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '校验'], 'argument': [['State', 4, '失败']]}, {'trigger': ['SoftHardwareFault', 6, '订阅'], 'argument': [['State', 8, '出错']]}], 'doc_id': 0}
+答案：{'text': '导致校验失败订阅出错', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '校验'], 'argument': [['State', 4, '失败']]}, {'trigger': ['SoftHardwareFault', 6, '订阅'], 'argument': [['State', 4, '失败']]}]}
+
+0.875, true_num: 7, pred_num: 8, gt_num: 8
+预测：{'text': '2、CPRI速率配置错误或光模块问题导致CPRI速率协商错误；', 'event_list': [{'trigger': ['SettingFault', 8, '配置'], 'argument': [['State', 10, '错误'], ['Setting', 3, 'PRI速率']]}, {'trigger': ['SoftHardwareFault', 16, '问题'], 'argument': [['Subject', 13, '光模块']]}, {'trigger': ['SoftHardwareFault', 26, '协商'], 'argument': [['Subject', 20, 'CPRI速率'], ['State', 28, '错误']]}], 'doc_id': 0}
+答案：{'text': '2、CPRI速率配置错误或光模块问题导致CPRI速率协商错误；', 'event_list': [{'trigger': ['SettingFault', 8, '配置'], 'argument': [['Setting', 2, 'CPRI速率'], ['State', 10, '错误']]}, {'trigger': ['SoftHardwareFault', 16, '问题'], 'argument': [['Subject', 13, '光模块']]}, {'trigger': ['SoftHardwareFault', 26, '协商'], 'argument': [['Subject', 20, 'CPRI速率'], ['State', 28, '错误']]}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 2
+预测：{'text': '5.  重新下载基站软件版本， 问题解决。', 'event_list': [{'trigger': ['Operate', 4, '重新下载'], 'argument': [['Object', 8, '基站软件版本']]}], 'doc_id': 0}
+答案：{'text': '5.  重新下载基站软件版本， 问题解决。', 'event_list': [{'trigger': ['CollectData', 6, '下载'], 'argument': [['Data', 8, '基站软件版本']]}]}
+
+0.4, true_num: 2, pred_num: 5, gt_num: 5
+预测：{'text': '由于TS产品缺陷导致eNodeB周期MR测量无法获取到采样用户数', 'event_list': [{'trigger': ['SoftHardwareFault', 6, '缺陷'], 'argument': [['Subject', 2, 'TS产品']]}, {'trigger': ['SoftHardwareFault', 24, '获取'], 'argument': [['State', 22, '无法'], ['Object', 27, '采样用户数']]}], 'doc_id': 0}
+答案：{'text': '由于TS产品缺陷导致eNodeB周期MR测量无法获取到采样用户数', 'event_list': [{'trigger': ['SoftHardwareFault', 6, '缺陷'], 'argument': [['Subject', 2, 'TS产品']]}, {'trigger': ['SoftHardwareFault', 24, '获取到'], 'argument': [['State', 22, '无法'], ['Object', 27, '采样用户数']]}]}
+
+0.714, true_num: 5, pred_num: 7, gt_num: 7
+预测：{'text': '   分析TOP切换入站点信令， 存在部分用户连续不断切换准备失败的情况， 切换的目标均为存在传输中断的站点（eNBId=19791）。', 'event_list': [{'trigger': ['Check', 3, '分析'], 'argument': [['Object', 0, '   ']]}, {'trigger': ['SoftHardwareFault', 27, '切换准备'], 'argument': [['State', 31, '失败'], ['Subject', 21, '用户']]}, {'trigger': ['SoftHardwareFault', 47, '传输'], 'argument': [['State', 49, '中断']]}], 'doc_id': 0}
+答案：{'text': '   分析TOP切换入站点信令， 存在部分用户连续不断切换准备失败的情况， 切换的目标均为存在传输中断的站点（eNBId=19791）。', 'event_list': [{'trigger': ['Check', 3, '分析'], 'argument': [['Object', 5, 'TOP切换入站点信令']]}, {'trigger': ['SoftHardwareFault', 27, '切换准备'], 'argument': [['State', 31, '失败']]}, {'trigger': ['SoftHardwareFault', 47, '传输'], 'argument': [['State', 49, '中断'], ['Owner', 52, '站点']]}]}
+
+0.5, true_num: 2, pred_num: 4, gt_num: 4
+预测：{'text': '传输丢包导致LTE TCP下行速率异常', 'event_list': [{'trigger': ['SoftHardwareFault', 0, '传输丢包'], 'argument': [['Subject', 0, '传输']]}, {'trigger': ['IndexFault', 17, '异常'], 'argument': [['Index', 6, 'LTE TCP下行速率']]}], 'doc_id': 0}
+答案：{'text': '传输丢包导致LTE TCP下行速率异常', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '丢包'], 'argument': [['Subject', 0, '传输']]}, {'trigger': ['IndexFault', 17, '异常'], 'argument': [['Index', 6, 'LTE TCP下行速率']]}]}
+
+0.4, true_num: 1, pred_num: 2, gt_num: 3
+预测：{'text': 'SFN小区6有5个扇区设备， 扇区设备8和9绑定到基带板', 'event_list': [{'trigger': ['Operate', 22, '绑定'], 'argument': [['Object', 25, '基带板']]}], 'doc_id': 0}
+答案：{'text': 'SFN小区6有5个扇区设备， 扇区设备8和9绑定到基带板', 'event_list': [{'trigger': ['Operate', 22, '绑定'], 'argument': [['Owner', 15, '扇区设备8和9'], ['Object', 25, '基带板0']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '重启RRN后重新查询，', 'event_list': [{'trigger': ['Operate', 0, '重启'], 'argument': [['Object', 2, 'RRN']]}], 'doc_id': 0}
+答案：{'text': '重启RRN后重新查询，', 'event_list': [{'trigger': ['Operate', 0, '重启'], 'argument': [['Object', 2, 'RRN']]}, {'trigger': ['Check', 8, '查询'], 'argument': []}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': '基带下移配置冲突导致新增G1800 TRX激活失败', 'event_list': [{'trigger': ['SoftHardwareFault', 6, '冲突'], 'argument': [['Subject', 0, '基带下移配置']]}, {'trigger': ['SoftHardwareFault', 21, '激活'], 'argument': [['State', 23, '失败'], ['Subject', 12, 'G1800 TRX']]}], 'doc_id': 0}
+答案：{'text': '基带下移配置冲突导致新增G1800 TRX激活失败', 'event_list': [{'trigger': ['SoftHardwareFault', 6, '冲突'], 'argument': [['Subject', 0, '基带下移配置']]}, {'trigger': ['SoftHardwareFault', 21, '激活'], 'argument': [['Object', 12, 'G1800 TRX'], ['State', 23, '失败']]}]}
+
+0.4, true_num: 1, pred_num: 3, gt_num: 2
+预测：{'text': ' 筛选出现频次在5次及以上的小区共计29个，', 'event_list': [{'trigger': ['Check', 1, '筛选'], 'argument': [['Object', 14, '小区'], ['Object', 4, '现频次']]}], 'doc_id': 0}
+答案：{'text': ' 筛选出现频次在5次及以上的小区共计29个，', 'event_list': [{'trigger': ['Check', 1, '筛选'], 'argument': [['Object', 3, '出现频次在5次及以上的小区']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 2
+预测：{'text': ' 对比两端携带的域名信息，', 'event_list': [], 'doc_id': 0}
+答案：{'text': ' 对比两端携带的域名信息，', 'event_list': [{'trigger': ['Check', 1, '对比'], 'argument': [['Object', 3, '两端携带的域名信息']]}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 3
+预测：{'text': '导致基带因为fftSize变化可能测不出来TA值。', 'event_list': [{'trigger': ['SoftHardwareFault', 17, '测不出'], 'argument': [['Object', 21, 'TA值']]}], 'doc_id': 0}
+答案：{'text': '导致基带因为fftSize变化可能测不出来TA值。', 'event_list': [{'trigger': ['SoftHardwareFault', 17, '测不出来'], 'argument': [['Subject', 2, '基带'], ['Object', 21, 'TA值']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': '一、对新MME入POOL割接站点HA军民商业广场12栋LF-2进行详细分析，', 'event_list': [{'trigger': ['Check', 35, '分析'], 'argument': [['Object', 3, '新MME入POOL割接站点']]}], 'doc_id': 0}
+答案：{'text': '一、对新MME入POOL割接站点HA军民商业广场12栋LF-2进行详细分析，', 'event_list': [{'trigger': ['Check', 35, '分析'], 'argument': [['Object', 8, 'POOL割接站点']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 2
+预测：{'text': '1）UE脱网过程', 'event_list': [], 'doc_id': 0}
+答案：{'text': '1）UE脱网过程', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '脱网'], 'argument': [['Object', 2, 'UE']]}]}
+
+0.889, true_num: 4, pred_num: 5, gt_num: 4
+预测：{'text': '智能水表未实现错峰机制导致NB网络RRC连接成功率恶化问题', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '未实现'], 'argument': [['Subject', 0, '智能水表'], ['Object', 7, '错峰机制']]}, {'trigger': ['IndexFault', 25, '恶化'], 'argument': [['Index', 13, 'NB网络RRC连接成功率']]}], 'doc_id': 0}
+答案：{'text': '智能水表未实现错峰机制导致NB网络RRC连接成功率恶化问题', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '未实现'], 'argument': [['Subject', 0, '智能水表']]}, {'trigger': ['IndexFault', 25, '恶化'], 'argument': [['Index', 13, 'NB网络RRC连接成功率']]}]}
+
+0.833, true_num: 5, pred_num: 6, gt_num: 6
+预测：{'text': '说明终端终端已经没有响应（脱网、移动出覆盖范围等） 1.3 话统原因 ERAB建立失败原因为.MME导致', 'event_list': [{'trigger': ['SoftHardwareFault', 10, '响应'], 'argument': [['Subject', 2, '终端终端'], ['State', 8, '没有']]}, {'trigger': ['SoftHardwareFault', 39, '建立'], 'argument': [['Subject', 34, ' ERAB'], ['State', 41, '失败']]}], 'doc_id': 0}
+答案：{'text': '说明终端终端已经没有响应（脱网、移动出覆盖范围等） 1.3 话统原因 ERAB建立失败原因为.MME导致', 'event_list': [{'trigger': ['SoftHardwareFault', 10, '响应'], 'argument': [['Subject', 2, '终端终端'], ['State', 8, '没有']]}, {'trigger': ['SoftHardwareFault', 39, '建立'], 'argument': [['Subject', 35, 'ERAB'], ['State', 41, '失败']]}]}
+
+0.667, true_num: 2, pred_num: 4, gt_num: 2
+预测：{'text': '终端在TAU未完成时发起INVITE ，', 'event_list': [{'trigger': ['SoftHardwareFault', 6, '未完成'], 'argument': [['Subject', 3, 'TAU']]}, {'trigger': ['Operate', 10, '发起'], 'argument': [['Object', 12, 'INVITE ']]}], 'doc_id': 0}
+答案：{'text': '终端在TAU未完成时发起INVITE ，', 'event_list': [{'trigger': ['SoftHardwareFault', 6, '未完成'], 'argument': [['Subject', 3, 'TAU']]}]}
+
+0.889, true_num: 4, pred_num: 5, gt_num: 4
+预测：{'text': '其中错误码7200705A表示文件不存在. Figure 2 Debug log when LST CERTFILE 因为运营商设备证书文件丢失，', 'event_list': [{'trigger': ['SoftHardwareFault', 17, '不存在'], 'argument': [['Subject', 61, '运营商设备证书文件'], ['Subject', 15, '文件']]}, {'trigger': ['SoftHardwareFault', 70, '丢失'], 'argument': [['Subject', 61, '运营商设备证书文件']]}], 'doc_id': 0}
+答案：{'text': '其中错误码7200705A表示文件不存在. Figure 2 Debug log when LST CERTFILE 因为运营商设备证书文件丢失，', 'event_list': [{'trigger': ['SoftHardwareFault', 17, '不存在'], 'argument': [['Subject', 15, '文件']]}, {'trigger': ['SoftHardwareFault', 70, '丢失'], 'argument': [['Subject', 61, '运营商设备证书文件']]}]}
+
+0.667, true_num: 2, pred_num: 2, gt_num: 4
+预测：{'text': '基带板隐性硬件故障导致所建立的小区KPI异常。', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '故障'], 'argument': [['Subject', 0, '基带板隐性硬件']]}], 'doc_id': 0}
+答案：{'text': '基带板隐性硬件故障导致所建立的小区KPI异常。', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '故障'], 'argument': [['Subject', 0, '基带板隐性硬件']]}, {'trigger': ['SoftHardwareFault', 20, '异常'], 'argument': [['Subject', 15, '小区KPI']]}]}
+
+0.857, true_num: 3, pred_num: 3, gt_num: 4
+预测：{'text': '1、客户端和OMC服务器无法正常连接或是有丢包。', 'event_list': [{'trigger': ['SoftHardwareFault', 16, '连接'], 'argument': [['State', 12, '无法正常'], ['Subject', 2, '客户端和OMC服务器']]}], 'doc_id': 0}
+答案：{'text': '1、客户端和OMC服务器无法正常连接或是有丢包。', 'event_list': [{'trigger': ['SoftHardwareFault', 16, '连接'], 'argument': [['Subject', 2, '客户端和OMC服务器'], ['State', 12, '无法正常']]}, {'trigger': ['SoftHardwareFault', 21, '丢包'], 'argument': []}]}
+
+0.667, true_num: 1, pred_num: 2, gt_num: 1
+预测：{'text': ' 超过基站空口处理能力，', 'event_list': [{'trigger': ['IndexFault', 1, '超过'], 'argument': [['Index', 3, '基站空口处理能力']]}], 'doc_id': 0}
+答案：{'text': ' 超过基站空口处理能力，', 'event_list': [{'trigger': ['IndexFault', 1, '超过'], 'argument': []}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': '可以得到结论为基站以上(核心网或者公网服务器)异常导致向服务器IP 218.204.43.26长时间没有响应客户端的GET请求，', 'event_list': [{'trigger': ['SoftHardwareFault', 23, '异常'], 'argument': [['Subject', 28, '服务器IP ']]}, {'trigger': ['SoftHardwareFault', 52, '响应'], 'argument': [['State', 50, '没有'], ['Object', 54, '客户端的GET请求']]}], 'doc_id': 0}
+答案：{'text': '可以得到结论为基站以上(核心网或者公网服务器)异常导致向服务器IP 218.204.43.26长时间没有响应客户端的GET请求，', 'event_list': [{'trigger': ['SoftHardwareFault', 23, '异常'], 'argument': [['Subject', 28, '服务器IP']]}, {'trigger': ['SoftHardwareFault', 52, '响应'], 'argument': [['State', 50, '没有'], ['Object', 54, '客户端的GET请求']]}]}
+
+0.727, true_num: 4, pred_num: 6, gt_num: 5
+预测：{'text': '7、修改协议类型为TDLIR 复位基站后问题解决', 'event_list': [{'trigger': ['SetMachine', 2, '修改'], 'argument': [['Object', 4, '协议类型'], ['FinalState', 9, 'TDLIR ']]}, {'trigger': ['Operate', 15, '复位'], 'argument': [['Owner', 9, 'TDLIR '], ['Object', 17, '基站']]}], 'doc_id': 0}
+答案：{'text': '7、修改协议类型为TDLIR 复位基站后问题解决', 'event_list': [{'trigger': ['SetMachine', 2, '修改'], 'argument': [['Object', 4, '协议类型'], ['FinalState', 9, 'TDLIR']]}, {'trigger': ['Operate', 15, '复位'], 'argument': [['Object', 17, '基站']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': 'LTE邻区 CELLID配置错误导致特定邻区切换成功率为0', 'event_list': [{'trigger': ['SettingFault', 12, '配置'], 'argument': [['State', 14, '错误'], ['Setting', 0, 'LTE邻区 CELLID']]}, {'trigger': ['IndexFault', 27, '为0'], 'argument': [['Index', 20, '邻区切换成功率']]}], 'doc_id': 0}
+答案：{'text': 'LTE邻区 CELLID配置错误导致特定邻区切换成功率为0', 'event_list': [{'trigger': ['SettingFault', 12, '配置'], 'argument': [['Setting', 0, 'LTE邻区 CELLID'], ['State', 14, '错误']]}, {'trigger': ['IndexFault', 27, '为0'], 'argument': [['Index', 18, '特定邻区切换成功率']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': '把SBC01和SBC02的取位置信息功能关闭，', 'event_list': [{'trigger': ['Operate', 20, '关闭'], 'argument': [['Object', 1, 'SBC01和SBC02的取位置信息功能']]}], 'doc_id': 0}
+答案：{'text': '把SBC01和SBC02的取位置信息功能关闭，', 'event_list': [{'trigger': ['Operate', 20, '关闭'], 'argument': [['Object', 13, '取位置信息功能']]}]}
+
+0.857, true_num: 3, pred_num: 3, gt_num: 4
+预测：{'text': 'ERAB建立失败的主要原因是弱覆盖。', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '建立'], 'argument': [['State', 6, '失败'], ['Subject', 0, 'ERAB']]}], 'doc_id': 0}
+答案：{'text': 'ERAB建立失败的主要原因是弱覆盖。', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '建立'], 'argument': [['Subject', 0, 'ERAB'], ['State', 6, '失败']]}, {'trigger': ['SoftHardwareFault', 14, '弱覆盖'], 'argument': []}]}
+
+0, true_num: 0, pred_num: 4, gt_num: 3
+预测：{'text': '由之前的一前一后连接修改为统一连接到前面板的两侧，', 'event_list': [{'trigger': ['SetMachine', 10, '修改'], 'argument': [['FinalState', 18, '前面板的两侧'], ['FinalState', 13, '统一连接'], ['InitialState', 4, '一前一后连接']]}], 'doc_id': 0}
+答案：{'text': '由之前的一前一后连接修改为统一连接到前面板的两侧，', 'event_list': [{'trigger': ['SetMachine', 10, '修改为'], 'argument': [['InitialState', 4, '一前一后连接'], ['FinalState', 13, '统一连接']]}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 2
+预测：{'text': '3）、  驻波告警在LTE小区建立后GSM小区建立前产生；', 'event_list': [{'trigger': ['SoftHardwareFault', 5, '驻波'], 'argument': [['State', 5, '驻波告警']]}], 'doc_id': 0}
+答案：{'text': '3）、  驻波告警在LTE小区建立后GSM小区建立前产生；', 'event_list': [{'trigger': ['SoftHardwareFault', 4, ' 驻波'], 'argument': [['State', 5, '驻波告警']]}]}
+
+0, true_num: 0, pred_num: 3, gt_num: 3
+预测：{'text': ' 导致E-RAB未完成建立即释放：', 'event_list': [{'trigger': ['SoftHardwareFault', 11, '建立即释放'], 'argument': [['State', 8, '未完成'], ['Subject', 3, 'E-RAB']]}], 'doc_id': 0}
+答案：{'text': ' 导致E-RAB未完成建立即释放：', 'event_list': [{'trigger': ['SoftHardwareFault', 11, '建立'], 'argument': [['Subject', 3, 'E-RAB'], ['State', 8, '未完成']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '源侧eNodeB统计为切换失败导致的掉话。', 'event_list': [{'trigger': ['SoftHardwareFault', 11, '切换'], 'argument': [['State', 13, '失败']]}], 'doc_id': 0}
+答案：{'text': '源侧eNodeB统计为切换失败导致的掉话。', 'event_list': [{'trigger': ['SoftHardwareFault', 11, '切换'], 'argument': [['State', 13, '失败']]}, {'trigger': ['SoftHardwareFault', 18, '掉话'], 'argument': []}]}
+
+0.667, true_num: 2, pred_num: 4, gt_num: 2
+预测：{'text': '提取日志进行分析，', 'event_list': [{'trigger': ['CollectData', 0, '提取'], 'argument': [['Data', 2, '日志']]}, {'trigger': ['Check', 6, '分析'], 'argument': [['Object', 2, '日志']]}], 'doc_id': 0}
+答案：{'text': '提取日志进行分析，', 'event_list': [{'trigger': ['Check', 6, '分析'], 'argument': [['Object', 2, '日志']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 2
+预测：{'text': '修改为-96） 上述指令对无线网络性能的影响：', 'event_list': [], 'doc_id': 0}
+答案：{'text': '修改为-96） 上述指令对无线网络性能的影响：', 'event_list': [{'trigger': ['SetMachine', 0, '修改'], 'argument': [['FinalState', 3, '-96']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '强制升级可能会造成TDS-L双模两侧版本不匹配等问题。', 'event_list': [{'trigger': ['SettingFault', 20, '不匹配'], 'argument': [['Owner', 9, 'TDS-L双模两侧版本']]}], 'doc_id': 0}
+答案：{'text': '强制升级可能会造成TDS-L双模两侧版本不匹配等问题。', 'event_list': [{'trigger': ['SetMachine', 2, '升级'], 'argument': []}, {'trigger': ['SettingFault', 20, '不匹配'], 'argument': [['Owner', 9, 'TDS-L双模两侧版本']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' 由于现场没有对eBL1261基站和eBL1283基站进行标口跟踪，', 'event_list': [{'trigger': ['Check', 31, '跟踪'], 'argument': [['Object', 29, '标口']]}], 'doc_id': 0}
+答案：{'text': ' 由于现场没有对eBL1261基站和eBL1283基站进行标口跟踪，', 'event_list': [{'trigger': ['Check', 31, '跟踪'], 'argument': [['Object', 8, 'eBL1261基站和eBL1283基站']]}]}
+
+0, true_num: 0, pred_num: 3, gt_num: 3
+预测：{'text': ' 老MME由于没有用户上下文，', 'event_list': [{'trigger': ['SoftHardwareFault', 11, '上下文'], 'argument': [['Object', 9, '用户'], ['State', 7, '没有']]}], 'doc_id': 0}
+答案：{'text': ' 老MME由于没有用户上下文，', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '没有'], 'argument': [['Object', 9, '用户上下文'], ['Subject', 1, '老MME']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': ' 通过参数对比与邻区核查， 无发现异常；', 'event_list': [{'trigger': ['Check', 5, '对比'], 'argument': [['Object', 3, '参数']]}, {'trigger': ['Check', 10, '核查'], 'argument': [['Object', 8, '邻区']]}], 'doc_id': 0}
+答案：{'text': ' 通过参数对比与邻区核查， 无发现异常；', 'event_list': [{'trigger': ['Check', 10, '核查'], 'argument': [['Object2', 8, '邻区']]}, {'trigger': ['Check', 5, '对比'], 'argument': [['Object', 3, '参数']]}]}
+
+0.667, true_num: 2, pred_num: 2, gt_num: 4
+预测：{'text': '使用新的电容更换故障电容，', 'event_list': [{'trigger': ['SetMachine', 6, '更换'], 'argument': [['Object', 8, '故障电容']]}], 'doc_id': 0}
+答案：{'text': '使用新的电容更换故障电容，', 'event_list': [{'trigger': ['SetMachine', 6, '更换'], 'argument': [['Object', 8, '故障电容']]}, {'trigger': ['Operate', 0, '使用'], 'argument': [['Object', 4, '电容']]}]}
+
+0.75, true_num: 3, pred_num: 3, gt_num: 5
+预测：{'text': '下行RLC AM模式的BLER恶化就是因为没有收到上行状态报告导致。', 'event_list': [{'trigger': ['SoftHardwareFault', 23, '收到'], 'argument': [['State', 21, '没有'], ['Object', 25, '上行状态报告']]}], 'doc_id': 0}
+答案：{'text': '下行RLC AM模式的BLER恶化就是因为没有收到上行状态报告导致。', 'event_list': [{'trigger': ['IndexFault', 15, '恶化'], 'argument': [['Index', 11, 'BLER']]}, {'trigger': ['SoftHardwareFault', 23, '收到'], 'argument': [['State', 21, '没有'], ['Object', 25, '上行状态报告']]}]}
+
+0.667, true_num: 2, pred_num: 3, gt_num: 3
+预测：{'text': ' CCE分配策略配置为基于覆盖的分配策略：', 'event_list': [{'trigger': ['SetMachine', 8, '配置'], 'argument': [['Object', 0, ' CCE分配策略'], ['FinalState', 11, '基于覆盖的分配策略']]}], 'doc_id': 0}
+答案：{'text': ' CCE分配策略配置为基于覆盖的分配策略：', 'event_list': [{'trigger': ['SetMachine', 8, '配置'], 'argument': [['InitialState', 1, 'CCE分配策略'], ['FinalState', 11, '基于覆盖的分配策略']]}]}
+
+0.5, true_num: 2, pred_num: 4, gt_num: 4
+预测：{'text': '有可能是MCS降阶导致了吞吐率下降。', 'event_list': [{'trigger': ['SetMachine', 7, '降'], 'argument': [['Object', 4, 'MCS']]}, {'trigger': ['IndexFault', 15, '下降'], 'argument': [['Index', 12, '吞吐率']]}], 'doc_id': 0}
+答案：{'text': '有可能是MCS降阶导致了吞吐率下降。', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '降阶'], 'argument': [['Subject', 4, 'MCS']]}, {'trigger': ['IndexFault', 15, '下降'], 'argument': [['Index', 12, '吞吐率']]}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 5
+预测：{'text': 'PCI mod3导致RRC setup failure问题分析', 'event_list': [{'trigger': ['SoftHardwareFault', 3, ' mod3'], 'argument': [['Subject', 0, 'PCI']]}], 'doc_id': 0}
+答案：{'text': 'PCI mod3导致RRC setup failure问题分析', 'event_list': [{'trigger': ['SoftHardwareFault', 14, 'setup'], 'argument': [['State', 20, 'failure'], ['Subject', 10, 'RRC']]}, {'trigger': ['SoftHardwareFault', 4, 'mod3'], 'argument': [['Subject', 0, 'PCI']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': '某基站开通后出现RRU频繁离线，', 'event_list': [{'trigger': ['Operate', 3, '开通'], 'argument': [['Object', 1, '基站']]}, {'trigger': ['SoftHardwareFault', 13, '离线'], 'argument': [['Subject', 8, 'RRU'], ['State', 11, '频繁']]}], 'doc_id': 0}
+答案：{'text': '某基站开通后出现RRU频繁离线，', 'event_list': [{'trigger': ['Operate', 3, '开通'], 'argument': [['Owner', 1, '基站']]}, {'trigger': ['SoftHardwareFault', 13, '离线'], 'argument': [['State', 11, '频繁'], ['Subject', 8, 'RRU']]}]}
+
+0.714, true_num: 5, pred_num: 7, gt_num: 7
+预测：{'text': '3. 射频单元维护链路异常告警除CPRI异常会导致该CPRI链上所有RRU断链外，', 'event_list': [{'trigger': ['SoftHardwareFault', 11, '异常'], 'argument': [['State', 11, '异常告警'], ['Subject', 3, '射频单元维护链路']]}, {'trigger': ['SoftHardwareFault', 20, '异常'], 'argument': [['Subject', 16, 'CPRI']]}, {'trigger': ['SoftHardwareFault', 37, '断链'], 'argument': [['Subject', 26, 'CPRI链上所有RRU']]}], 'doc_id': 0}
+答案：{'text': '3. 射频单元维护链路异常告警除CPRI异常会导致该CPRI链上所有RRU断链外，', 'event_list': [{'trigger': ['SoftHardwareFault', 11, '异常'], 'argument': [['Owner', 3, '射频单元维护链路'], ['State', 11, '异常告警']]}, {'trigger': ['SoftHardwareFault', 20, '异常'], 'argument': [['Subject', 16, 'CPRI']]}, {'trigger': ['SoftHardwareFault', 37, '断链'], 'argument': [['Subject', 34, 'RRU']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '乱序率增加进而发生重传，', 'event_list': [{'trigger': ['IndexFault', 3, '增加'], 'argument': [['Index', 0, '乱序率']]}], 'doc_id': 0}
+答案：{'text': '乱序率增加进而发生重传，', 'event_list': [{'trigger': ['IndexFault', 3, '增加'], 'argument': [['Index', 0, '乱序率']]}, {'trigger': ['SoftHardwareFault', 9, '重传'], 'argument': []}]}
+
+0.6, true_num: 3, pred_num: 4, gt_num: 6
+预测：{'text': ' 确认基带板没有收到主控板送过来的122. 88M时钟，', 'event_list': [{'trigger': ['SoftHardwareFault', 8, '收到'], 'argument': [['State', 6, '没有'], ['Object', 10, '主控板送过来的122. 88M时钟'], ['Subject', 3, '基带板']]}], 'doc_id': 0}
+答案：{'text': ' 确认基带板没有收到主控板送过来的122. 88M时钟，', 'event_list': [{'trigger': ['Check', 1, '确认'], 'argument': [['Object', 3, '基带板']]}, {'trigger': ['SoftHardwareFault', 8, '收到'], 'argument': [['Object', 17, '122. 88M时钟'], ['State', 6, '没有'], ['Subject', 3, '基带板']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' 全文请看doc文档附件） 1）网元版本不配套 很多兄弟定位问题时不太注意这点，', 'event_list': [{'trigger': ['SettingFault', 20, '不配套'], 'argument': [['Owner', 16, '网元版本']]}], 'doc_id': 0}
+答案：{'text': ' 全文请看doc文档附件） 1）网元版本不配套 很多兄弟定位问题时不太注意这点，', 'event_list': [{'trigger': ['SettingFault', 20, '不配套'], 'argument': [['Setting', 16, '网元版本']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' 检查配置数据对接IP均按规划配置无错误，', 'event_list': [{'trigger': ['Check', 1, '检查'], 'argument': [['Object', 3, '配置数据对接IP']]}], 'doc_id': 0}
+答案：{'text': ' 检查配置数据对接IP均按规划配置无错误，', 'event_list': [{'trigger': ['Check', 1, '检查'], 'argument': [['Object', 3, '配置数据']]}]}
+
+0.667, true_num: 2, pred_num: 4, gt_num: 2
+预测：{'text': '接入失败原因值是UE无响应，', 'event_list': [{'trigger': ['SoftHardwareFault', 0, '接入'], 'argument': [['State', 2, '失败']]}, {'trigger': ['SoftHardwareFault', 10, '无响应'], 'argument': [['Subject', 8, 'UE']]}], 'doc_id': 0}
+答案：{'text': '接入失败原因值是UE无响应，', 'event_list': [{'trigger': ['SoftHardwareFault', 10, '无响应'], 'argument': [['Subject', 8, 'UE']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '高铁站间距超远导致弱覆盖', 'event_list': [{'trigger': ['IndexFault', 5, '超远'], 'argument': [['Index', 0, '高铁站间距']]}], 'doc_id': 0}
+答案：{'text': '高铁站间距超远导致弱覆盖', 'event_list': [{'trigger': ['IndexFault', 5, '超远'], 'argument': [['Index', 0, '高铁站间距']]}, {'trigger': ['SoftHardwareFault', 9, '弱覆盖'], 'argument': []}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': 'Z省J市由于室分分布系统问题导致强干扰问题', 'event_list': [{'trigger': ['SoftHardwareFault', 12, '问题'], 'argument': [['Subject', 6, '室分分布系统']]}], 'doc_id': 0}
+答案：{'text': 'Z省J市由于室分分布系统问题导致强干扰问题', 'event_list': [{'trigger': ['SoftHardwareFault', 12, '问题'], 'argument': [['Subject', 6, '室分分布系统']]}, {'trigger': ['SoftHardwareFault', 16, '强干扰'], 'argument': []}]}
+
+0.889, true_num: 4, pred_num: 4, gt_num: 5
+预测：{'text': '某LTE站点因RRU逻辑芯片的CRC或CP异常导致小区服务能力下降', 'event_list': [{'trigger': ['SoftHardwareFault', 21, '异常'], 'argument': [['Subject', 7, 'RRU逻辑芯片的CRC或CP']]}, {'trigger': ['IndexFault', 31, '下降'], 'argument': [['Index', 25, '小区服务能力']]}], 'doc_id': 0}
+答案：{'text': '某LTE站点因RRU逻辑芯片的CRC或CP异常导致小区服务能力下降', 'event_list': [{'trigger': ['SoftHardwareFault', 21, '异常'], 'argument': [['Owner', 0, 'LTE站点'], ['Subject', 7, 'RRU逻辑芯片的CRC或CP']]}, {'trigger': ['IndexFault', 31, '下降'], 'argument': [['Index', 25, '小区服务能力']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': '现场测试速率低点有其他用户再进行调度，', 'event_list': [{'trigger': ['IndexFault', 6, '低'], 'argument': [['Index', 4, '速率']]}], 'doc_id': 0}
+答案：{'text': '现场测试速率低点有其他用户再进行调度，', 'event_list': [{'trigger': ['IndexFault', 6, '低'], 'argument': [['Index', 2, '测试速率']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': '2.  查看成功的切换准备中，', 'event_list': [{'trigger': ['Check', 4, '查看'], 'argument': [['Object', 6, '成功的切换准备中']]}], 'doc_id': 0}
+答案：{'text': '2.  查看成功的切换准备中，', 'event_list': [{'trigger': ['Check', 4, '查看'], 'argument': [['Object', 6, '成功的切换准备']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '由于Ver. B机柜最大只支持2*40W的配置，', 'event_list': [{'trigger': ['SoftHardwareFault', 12, '只支持'], 'argument': [['Subject', 2, 'Ver. B机柜']]}], 'doc_id': 0}
+答案：{'text': '由于Ver. B机柜最大只支持2*40W的配置，', 'event_list': [{'trigger': ['SoftHardwareFault', 12, '只支持'], 'argument': [['Subject', 2, 'Ver. B机柜'], ['Object', 15, '2*40W的配置']]}]}
+
+0.833, true_num: 5, pred_num: 6, gt_num: 6
+预测：{'text': 'LTE最小接入电平修改导致4G边缘的3G用户无法接入4G网络，', 'event_list': [{'trigger': ['SetMachine', 9, '修改'], 'argument': [['Object', 0, 'LTE最小接入电平']]}, {'trigger': ['SoftHardwareFault', 24, '接入'], 'argument': [['State', 22, '无法'], ['Subject', 13, '4G边缘的3G用户'], ['Object', 26, '4G网络']]}], 'doc_id': 0}
+答案：{'text': 'LTE最小接入电平修改导致4G边缘的3G用户无法接入4G网络，', 'event_list': [{'trigger': ['SetMachine', 9, '修改'], 'argument': [['Object', 0, 'LTE最小接入电平']]}, {'trigger': ['SoftHardwareFault', 24, '接入'], 'argument': [['Subject', 18, '3G用户'], ['State', 22, '无法'], ['Object', 26, '4G网络']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '1、 UE无应答主要由于上下行的弱覆盖导致，', 'event_list': [{'trigger': ['SoftHardwareFault', 5, '无应答'], 'argument': [['Subject', 2, ' UE']]}, {'trigger': ['SoftHardwareFault', 16, '弱覆盖'], 'argument': [['Subject', 12, '上下行']]}], 'doc_id': 0}
+答案：{'text': '1、 UE无应答主要由于上下行的弱覆盖导致，', 'event_list': [{'trigger': ['SoftHardwareFault', 5, '无应答'], 'argument': [['Subject', 3, 'UE']]}, {'trigger': ['SoftHardwareFault', 16, '弱覆盖'], 'argument': [['Subject', 12, '上下行']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '会出现由于帧偏置不一致而产生干扰。', 'event_list': [{'trigger': ['SettingFault', 8, '不一致'], 'argument': [['Setting', 5, '帧偏置']]}], 'doc_id': 0}
+答案：{'text': '会出现由于帧偏置不一致而产生干扰。', 'event_list': [{'trigger': ['SettingFault', 8, '不一致'], 'argument': [['Setting', 5, '帧偏置']]}, {'trigger': ['SoftHardwareFault', 14, '干扰'], 'argument': []}]}
+
+0.889, true_num: 4, pred_num: 5, gt_num: 4
+预测：{'text': '原子路由器故障导致VoLTE 无法起呼问题', 'event_list': [{'trigger': ['SoftHardwareFault', 5, '故障'], 'argument': [['Subject', 0, '原子路由器']]}, {'trigger': ['SoftHardwareFault', 17, '起呼'], 'argument': [['State', 15, '无法'], ['Subject', 9, 'VoLTE ']]}], 'doc_id': 0}
+答案：{'text': '原子路由器故障导致VoLTE 无法起呼问题', 'event_list': [{'trigger': ['SoftHardwareFault', 5, '故障'], 'argument': [['Subject', 0, '原子路由器']]}, {'trigger': ['SoftHardwareFault', 17, '起呼'], 'argument': [['State', 15, '无法']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '5月27号再次升级后掉话率再次恶化。', 'event_list': [{'trigger': ['IndexFault', 15, '恶化'], 'argument': [['Index', 10, '掉话率']]}], 'doc_id': 0}
+答案：{'text': '5月27号再次升级后掉话率再次恶化。', 'event_list': [{'trigger': ['SetMachine', 7, '升级'], 'argument': []}, {'trigger': ['IndexFault', 15, '恶化'], 'argument': [['Index', 10, '掉话率']]}]}
+
+0.667, true_num: 3, pred_num: 3, gt_num: 6
+预测：{'text': '由于RRCCONNREL消息UE没有收到导致UE认为其处于连接态发起重建被eNodeB拒绝。', 'event_list': [{'trigger': ['SoftHardwareFault', 18, '收到'], 'argument': [['Subject', 2, 'RRCCONNREL消息UE'], ['State', 16, '没有']]}], 'doc_id': 0}
+答案：{'text': '由于RRCCONNREL消息UE没有收到导致UE认为其处于连接态发起重建被eNodeB拒绝。', 'event_list': [{'trigger': ['SoftHardwareFault', 18, '收到'], 'argument': [['Subject', 2, 'RRCCONNREL消息UE'], ['State', 16, '没有']]}, {'trigger': ['SoftHardwareFault', 32, '发起重建'], 'argument': [['Object', 37, 'eNodeB'], ['State', 43, '拒绝']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': 'RRU与天面之间的馈线头问题导致出现互调干扰，', 'event_list': [{'trigger': ['SoftHardwareFault', 12, '问题'], 'argument': [['Subject', 0, 'RRU与天面之间的馈线头']]}], 'doc_id': 0}
+答案：{'text': 'RRU与天面之间的馈线头问题导致出现互调干扰，', 'event_list': [{'trigger': ['SoftHardwareFault', 12, '问题'], 'argument': [['Subject', 0, 'RRU与天面之间的馈线头']]}, {'trigger': ['SoftHardwareFault', 18, '互调干扰'], 'argument': []}]}
+
+0.667, true_num: 2, pred_num: 4, gt_num: 2
+预测：{'text': ' Group 1 T409 和 T490 Group 2 TQU972 和 TQU985 2 KPI分析 Site T409 和 T490的KPI分析 在5月1日进行操作后，', 'event_list': [{'trigger': ['Check', 50, '分析'], 'argument': [['Object', 47, 'KPI']]}, {'trigger': ['Check', 73, '分析'], 'argument': [['Object', 70, 'KPI']]}], 'doc_id': 0}
+答案：{'text': ' Group 1 T409 和 T490 Group 2 TQU972 和 TQU985 2 KPI分析 Site T409 和 T490的KPI分析 在5月1日进行操作后，', 'event_list': [{'trigger': ['Check', 73, '分析'], 'argument': [['Object', 70, 'KPI']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 5
+预测：{'text': '\\"<TELNET> [Func] NCMRecvDataFromAliveSocket Close Socket 34(MsgQueueID 173) at Port 6007 Because of Socket Error(Len = 0). \\" OM断链的原因是U2000发送的三次握手报文得不到响应。', 'event_list': [], 'doc_id': 0}
+答案：{'text': '\\"<TELNET> [Func] NCMRecvDataFromAliveSocket Close Socket 34(MsgQueueID 173) at Port 6007 Because of Socket Error(Len = 0). \\" OM断链的原因是U2000发送的三次握手报文得不到响应。', 'event_list': [{'trigger': ['SoftHardwareFault', 129, '断链'], 'argument': [['Subject', 127, 'OM']]}, {'trigger': ['SoftHardwareFault', 152, '响应'], 'argument': [['Subject', 135, 'U2000发送的三次握手报文'], ['State', 149, '得不到']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '开启彩铃业务导致ATU设备测试VOLTE业务的MOS统计偏低', 'event_list': [{'trigger': ['Operate', 0, '开启'], 'argument': [['Object', 2, '彩铃业务']]}, {'trigger': ['IndexFault', 28, '偏低'], 'argument': [['Index', 8, 'ATU设备测试VOLTE业务的MOS统计']]}], 'doc_id': 0}
+答案：{'text': '开启彩铃业务导致ATU设备测试VOLTE业务的MOS统计偏低', 'event_list': [{'trigger': ['Operate', 0, '开启'], 'argument': [['Object', 2, '彩铃业务']]}, {'trigger': ['IndexFault', 28, '偏低'], 'argument': [['Index', 23, 'MOS统计']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': ' USN就按照3G的QoS建立承载，', 'event_list': [{'trigger': ['Operate', 13, '建立'], 'argument': [['Object', 15, '承载']]}], 'doc_id': 0}
+答案：{'text': ' USN就按照3G的QoS建立承载，', 'event_list': [{'trigger': ['Operate', 13, '建立'], 'argument': [['Owner', 1, 'USN'], ['Object', 15, '承载']]}]}
+
+0.714, true_num: 5, pred_num: 7, gt_num: 7
+预测：{'text': ' 图 2. 2 3 添加宏站模板 在进行ASP规划添加宏站时需要选择添加的宏站的频段、天线类型，', 'event_list': [{'trigger': ['Operate', 10, '添加'], 'argument': [['Object', 12, '宏站模板']]}, {'trigger': ['Operate', 25, '添加'], 'argument': [['Object', 34, '添加的宏站的频段、天线类型'], ['Object', 27, '宏站']]}, {'trigger': ['Operate', 32, '选择'], 'argument': [['Object', 34, '添加的宏站的频段、天线类型']]}], 'doc_id': 0}
+答案：{'text': ' 图 2. 2 3 添加宏站模板 在进行ASP规划添加宏站时需要选择添加的宏站的频段、天线类型，', 'event_list': [{'trigger': ['Operate', 10, '添加'], 'argument': [['Object', 12, '宏站模板']]}, {'trigger': ['Operate', 32, '选择'], 'argument': [['Object', 37, '宏站的频段、天线类型']]}, {'trigger': ['Operate', 25, '添加'], 'argument': [['Object', 27, '宏站'], ['Owner', 20, 'ASP规划']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': '更换终端测试，', 'event_list': [{'trigger': ['SetMachine', 0, '更换'], 'argument': [['Object', 2, '终端测']]}], 'doc_id': 0}
+答案：{'text': '更换终端测试，', 'event_list': [{'trigger': ['SetMachine', 0, '更换'], 'argument': [['Object', 2, '终端测试']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 2
+预测：{'text': '发现该用户有一次作为被叫的异常呼叫，', 'event_list': [], 'doc_id': 0}
+答案：{'text': '发现该用户有一次作为被叫的异常呼叫，', 'event_list': [{'trigger': ['SoftHardwareFault', 15, '呼叫'], 'argument': [['State', 13, '异常']]}]}
+
+0.333, true_num: 1, pred_num: 4, gt_num: 2
+预测：{'text': '现网部分站点设置的QCI1的切换优先级低于QCI5的切换优先级，', 'event_list': [{'trigger': ['SetMachine', 6, '设置'], 'argument': [['Object', 9, 'QCI1的切换优先级']]}, {'trigger': ['IndexFault', 19, '低于'], 'argument': [['Index', 9, 'QCI1的切换优先级']]}], 'doc_id': 0}
+答案：{'text': '现网部分站点设置的QCI1的切换优先级低于QCI5的切换优先级，', 'event_list': [{'trigger': ['IndexFault', 19, '低于'], 'argument': [['Index', 14, '切换优先级']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '异常终端造成volte 掉话', 'event_list': [{'trigger': ['SoftHardwareFault', 0, '异常'], 'argument': [['Object', 0, '异常终端']]}, {'trigger': ['SoftHardwareFault', 12, '掉话'], 'argument': [['Subject', 6, 'volte ']]}], 'doc_id': 0}
+答案：{'text': '异常终端造成volte 掉话', 'event_list': [{'trigger': ['SoftHardwareFault', 0, '异常'], 'argument': [['Object', 0, '异常终端']]}, {'trigger': ['SoftHardwareFault', 12, '掉话'], 'argument': [['Subject', 6, 'volte']]}]}
+
+0.5, true_num: 3, pred_num: 8, gt_num: 4
+预测：{'text': '调整HC中学东侧绿地HLF1HZ基站所有小区异频切换策略由A2+A4调整为A2+A3。', 'event_list': [{'trigger': ['SetMachine', 0, '调整'], 'argument': [['Object', 20, '小区异频切换策略'], ['InitialState', 29, 'A2+A4'], ['FinalState', 37, 'A2+A3']]}, {'trigger': ['SetMachine', 34, '调整'], 'argument': [['Object', 20, '小区异频切换策略'], ['InitialState', 29, 'A2+A4'], ['FinalState', 37, 'A2+A3']]}], 'doc_id': 0}
+答案：{'text': '调整HC中学东侧绿地HLF1HZ基站所有小区异频切换策略由A2+A4调整为A2+A3。', 'event_list': [{'trigger': ['SetMachine', 0, '调整'], 'argument': [['Object', 2, 'HC中学东侧绿地HLF1HZ基站所有小区异频切换策略'], ['InitialState', 29, 'A2+A4'], ['FinalState', 37, 'A2+A3']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': 'ENODEB IP地址冲突导致同一基站在M2000上经常显示不同拓扑', 'event_list': [{'trigger': ['SoftHardwareFault', 11, '冲突'], 'argument': [['Subject', 0, 'ENODEB IP地址']]}, {'trigger': ['SoftHardwareFault', 28, '显示'], 'argument': [['State', 30, '不同拓扑'], ['Owner', 15, '同']]}], 'doc_id': 0}
+答案：{'text': 'ENODEB IP地址冲突导致同一基站在M2000上经常显示不同拓扑', 'event_list': [{'trigger': ['SoftHardwareFault', 11, '冲突'], 'argument': [['Subject', 0, 'ENODEB IP地址']]}, {'trigger': ['SoftHardwareFault', 28, '显示'], 'argument': [['Subject', 20, 'M2000'], ['State', 30, '不同拓扑']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 1
+预测：{'text': ' 更改后复测正常，', 'event_list': [], 'doc_id': 0}
+答案：{'text': ' 更改后复测正常，', 'event_list': [{'trigger': ['SetMachine', 1, '更改'], 'argument': []}]}
+
+0.5, true_num: 2, pred_num: 3, gt_num: 5
+预测：{'text': 'ATN传输配置错误引起FDD-LTE基站使用新版本远程自开站异常', 'event_list': [{'trigger': ['SettingFault', 5, '配置'], 'argument': [['Owner', 0, 'ATN传输'], ['State', 7, '错误']]}], 'doc_id': 0}
+答案：{'text': 'ATN传输配置错误引起FDD-LTE基站使用新版本远程自开站异常', 'event_list': [{'trigger': ['SettingFault', 5, '配置'], 'argument': [['Owner', 0, 'ATN'], ['State', 7, '错误']]}, {'trigger': ['SoftHardwareFault', 27, '自开站'], 'argument': [['State', 30, '异常']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': '第三方彩光设备未华为认证导致NR基站一个AAU一直启动中', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '未华为认证'], 'argument': [['Subject', 0, '第三方彩光设备']]}, {'trigger': ['SoftHardwareFault', 25, '启动'], 'argument': [['Subject', 20, 'AAU'], ['State', 23, '一直']]}], 'doc_id': 0}
+答案：{'text': '第三方彩光设备未华为认证导致NR基站一个AAU一直启动中', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '未华为认证'], 'argument': [['Subject', 3, '彩光设备']]}, {'trigger': ['SoftHardwareFault', 25, '启动'], 'argument': [['Subject', 20, 'AAU'], ['State', 23, '一直']]}]}
+
+0.615, true_num: 4, pred_num: 6, gt_num: 7
+预测：{'text': '由于手动修改S1自建立的SCTPLNK的对端地址时未同步修改对应的SCTPPEER地址导致S1自建立的S1Interface通过DSP S1无法查询到', 'event_list': [{'trigger': ['SetMachine', 4, '修改'], 'argument': [['Object', 6, 'S1自建立的SCTPLNK的对端地址']]}, {'trigger': ['SoftHardwareFault', 25, '未同步修改'], 'argument': [['Object', 33, 'SCTPPEER地址']]}, {'trigger': ['SoftHardwareFault', 72, '查询'], 'argument': [['State', 70, '无法']]}], 'doc_id': 0}
+答案：{'text': '由于手动修改S1自建立的SCTPLNK的对端地址时未同步修改对应的SCTPPEER地址导致S1自建立的S1Interface通过DSP S1无法查询到', 'event_list': [{'trigger': ['SetMachine', 2, '手动修改'], 'argument': [['Object', 6, 'S1自建立的SCTPLNK的对端地址']]}, {'trigger': ['SoftHardwareFault', 25, '未同步修改'], 'argument': [['Object', 33, 'SCTPPEER地址']]}, {'trigger': ['SoftHardwareFault', 72, '查询'], 'argument': [['Subject', 64, 'DSP S1'], ['State', 70, '无法']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': '新扩容的2个小区覆盖区域为本次保障会议的宴会厅。', 'event_list': [{'trigger': ['SetMachine', 1, '扩容'], 'argument': [['Object', 6, '小区覆盖']]}], 'doc_id': 0}
+答案：{'text': '新扩容的2个小区覆盖区域为本次保障会议的宴会厅。', 'event_list': [{'trigger': ['SetMachine', 1, '扩容'], 'argument': [['Object', 6, '小区覆盖区域']]}]}
+
+0.727, true_num: 4, pred_num: 6, gt_num: 5
+预测：{'text': '导致虚报的具体原因为MLB到U的切换准备失败后CCB表中异系统切换相关信息未完全清空。', 'event_list': [{'trigger': ['SoftHardwareFault', 16, '切换准备'], 'argument': [['Subject', 10, 'MLB到U'], ['State', 20, '失败']]}, {'trigger': ['SoftHardwareFault', 40, '清空'], 'argument': [['Subject', 23, 'CCB表中异系统切换相关信息'], ['State', 37, '未完全']]}], 'doc_id': 0}
+答案：{'text': '导致虚报的具体原因为MLB到U的切换准备失败后CCB表中异系统切换相关信息未完全清空。', 'event_list': [{'trigger': ['SoftHardwareFault', 16, '切换准备'], 'argument': [['State', 20, '失败']]}, {'trigger': ['SoftHardwareFault', 40, '清空'], 'argument': [['Subject', 33, '相关信息'], ['State', 37, '未完全']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 1
+预测：{'text': '若网络中存在窄带干扰，', 'event_list': [], 'doc_id': 0}
+答案：{'text': '若网络中存在窄带干扰，', 'event_list': [{'trigger': ['SoftHardwareFault', 6, '窄带干扰'], 'argument': []}]}
+
+0.5, true_num: 2, pred_num: 4, gt_num: 4
+预测：{'text': '该站点切换入指标差是由于基带板硬件DDR异常导致，', 'event_list': [{'trigger': ['IndexFault', 8, '差'], 'argument': [['Index', 1, '站点切换入指标']]}, {'trigger': ['SoftHardwareFault', 20, '异常'], 'argument': [['Subject', 12, '基带板硬件DDR']]}], 'doc_id': 0}
+答案：{'text': '该站点切换入指标差是由于基带板硬件DDR异常导致，', 'event_list': [{'trigger': ['IndexFault', 8, '差'], 'argument': [['Index', 1, '站点切换入指标']]}, {'trigger': ['SoftHardwareFault', 17, 'DDR异常'], 'argument': [['Subject', 12, '基带板硬件DDR']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': 'C国某局因产品问题导致向诺基亚站点切换成功率低问题分析', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '问题'], 'argument': [['Subject', 5, '产品']]}, {'trigger': ['IndexFault', 22, '低'], 'argument': [['Index', 17, '切换成功率']]}], 'doc_id': 0}
+答案：{'text': 'C国某局因产品问题导致向诺基亚站点切换成功率低问题分析', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '问题'], 'argument': [['Subject', 5, '产品']]}, {'trigger': ['IndexFault', 22, '低'], 'argument': [['Index', 11, '向诺基亚站点切换成功率']]}]}
+
+0.4, true_num: 2, pred_num: 4, gt_num: 6
+预测：{'text': '某局点一个TAC下的基站在11月11日10点出现大量因PCH拥塞导致的寻呼丢弃，', 'event_list': [{'trigger': ['SoftHardwareFault', 30, '拥塞'], 'argument': [['Subject', 27, 'PCH']]}, {'trigger': ['SoftHardwareFault', 35, '寻呼丢'], 'argument': [['State', 37, '丢弃']]}], 'doc_id': 0}
+答案：{'text': '某局点一个TAC下的基站在11月11日10点出现大量因PCH拥塞导致的寻呼丢弃，', 'event_list': [{'trigger': ['SoftHardwareFault', 37, '丢弃'], 'argument': [['Owner', 10, '基站'], ['Subject', 35, '寻呼']]}, {'trigger': ['SoftHardwareFault', 30, '拥塞'], 'argument': [['Subject', 27, 'PCH'], ['Owner', 10, '基站']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': ' 现场的UGW上共配置了6个S-GW IP。', 'event_list': [{'trigger': ['SetMachine', 9, '配置'], 'argument': [['Object', 14, 'S-GW IP']]}], 'doc_id': 0}
+答案：{'text': ' 现场的UGW上共配置了6个S-GW IP。', 'event_list': [{'trigger': ['SetMachine', 9, '配置'], 'argument': [['Network', 4, 'UGW'], ['Object', 14, 'S-GW IP']]}]}
+
+0.667, true_num: 2, pred_num: 2, gt_num: 4
+预测：{'text': '从基站话统观察发现本站的所有的小区的CQI1的弃包率都有比较高', 'event_list': [{'trigger': ['Check', 5, '观察'], 'argument': [['Object', 1, '基站话统']]}], 'doc_id': 0}
+答案：{'text': '从基站话统观察发现本站的所有的小区的CQI1的弃包率都有比较高', 'event_list': [{'trigger': ['Check', 5, '观察'], 'argument': [['Object', 1, '基站话统']]}, {'trigger': ['IndexFault', 28, '比较高'], 'argument': [['Index', 18, 'CQI1的弃包率']]}]}
+
+0.5, true_num: 2, pred_num: 4, gt_num: 4
+预测：{'text': '警用通讯设备二次谐波干扰导致FDD1800底噪抬升', 'event_list': [{'trigger': ['SoftHardwareFault', 10, '干扰'], 'argument': [['Subject', 0, '警用通讯设备二次谐波']]}, {'trigger': ['IndexFault', 23, '抬升'], 'argument': [['Index', 14, 'FDD1800底噪']]}], 'doc_id': 0}
+答案：{'text': '警用通讯设备二次谐波干扰导致FDD1800底噪抬升', 'event_list': [{'trigger': ['SoftHardwareFault', 8, '谐波干扰'], 'argument': [['Subject', 0, '警用通讯设备二次谐波']]}, {'trigger': ['IndexFault', 23, '抬升'], 'argument': [['Index', 14, 'FDD1800底噪']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '发现SY某簇拉网路测出现多处因切换失败导致的掉话，', 'event_list': [{'trigger': ['SoftHardwareFault', 15, '切换'], 'argument': [['State', 17, '失败']]}], 'doc_id': 0}
+答案：{'text': '发现SY某簇拉网路测出现多处因切换失败导致的掉话，', 'event_list': [{'trigger': ['SoftHardwareFault', 15, '切换'], 'argument': [['State', 17, '失败']]}, {'trigger': ['SoftHardwareFault', 22, '掉话'], 'argument': []}]}
+
+0.6, true_num: 3, pred_num: 6, gt_num: 4
+预测：{'text': '2， 或者修改配置 Resolution Details跟客户确认特性不使用， 一线考虑修改配置。', 'event_list': [{'trigger': ['SetMachine', 5, '修改'], 'argument': [['Object', 7, '配置']]}, {'trigger': ['SoftHardwareFault', 35, '不使用'], 'argument': [['Subject', 33, '特性']]}, {'trigger': ['SetMachine', 44, '修改'], 'argument': [['Object', 46, '配置']]}], 'doc_id': 0}
+答案：{'text': '2， 或者修改配置 Resolution Details跟客户确认特性不使用， 一线考虑修改配置。', 'event_list': [{'trigger': ['SetMachine', 5, '修改'], 'argument': [['Object', 7, '配置 Resolution Details']]}, {'trigger': ['SetMachine', 44, '修改'], 'argument': [['Object', 46, '配置']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': '1. 3 PCI排查 问题站点A的本地小区1的PCI=', 'event_list': [{'trigger': ['Check', 8, '排查'], 'argument': [['Object', 5, 'PC']]}], 'doc_id': 0}
+答案：{'text': '1. 3 PCI排查 问题站点A的本地小区1的PCI=', 'event_list': [{'trigger': ['Check', 8, '排查'], 'argument': [['Object', 5, 'PCI']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' 现场从FNO(license. huawei. com)网站申请了6个月有效期、ESN为any的调测license，', 'event_list': [{'trigger': ['Operate', 31, '申请'], 'argument': [['Owner', 4, 'F']]}], 'doc_id': 0}
+答案：{'text': ' 现场从FNO(license. huawei. com)网站申请了6个月有效期、ESN为any的调测license，', 'event_list': [{'trigger': ['Operate', 31, '申请'], 'argument': [['Owner', 4, 'FNO(license. huawei. com)网站']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': ' 然后给U2000上报配置变更。', 'event_list': [{'trigger': ['Operate', 9, '上报'], 'argument': [['Object', 11, '配置变更']]}], 'doc_id': 0}
+答案：{'text': ' 然后给U2000上报配置变更。', 'event_list': [{'trigger': ['Operate', 9, '上报'], 'argument': [['Owner', 4, 'U2000'], ['Object', 11, '配置变更']]}]}
+
+0.889, true_num: 4, pred_num: 5, gt_num: 4
+预测：{'text': '重新修改基带资源绑定关系后射频单元业务不可用告警恢复。', 'event_list': [{'trigger': ['SetMachine', 2, '修改'], 'argument': [['Object', 4, '基带资源绑定关系']]}, {'trigger': ['SoftHardwareFault', 19, '不可用'], 'argument': [['Subject', 13, '射频单元业务'], ['State', 22, '告警']]}], 'doc_id': 0}
+答案：{'text': '重新修改基带资源绑定关系后射频单元业务不可用告警恢复。', 'event_list': [{'trigger': ['SetMachine', 2, '修改'], 'argument': [['Object', 4, '基带资源绑定关系']]}, {'trigger': ['SoftHardwareFault', 19, '不可用'], 'argument': [['Subject', 13, '射频单元业务']]}]}
+
+0.889, true_num: 4, pred_num: 5, gt_num: 4
+预测：{'text': '（1）切换入准备失败的原因other类的准入失败，', 'event_list': [{'trigger': ['SoftHardwareFault', 3, '切换入准备'], 'argument': [['State', 8, '失败']]}, {'trigger': ['SoftHardwareFault', 20, '准入'], 'argument': [['State', 22, '失败'], ['Subject', 13, 'other类']]}], 'doc_id': 0}
+答案：{'text': '（1）切换入准备失败的原因other类的准入失败，', 'event_list': [{'trigger': ['SoftHardwareFault', 3, '切换入准备'], 'argument': [['State', 8, '失败']]}, {'trigger': ['SoftHardwareFault', 20, '准入'], 'argument': [['State', 22, '失败']]}]}
+
+0.889, true_num: 4, pred_num: 5, gt_num: 4
+预测：{'text': '误码突然增加的原因可能为下行业务信道突发干扰，', 'event_list': [{'trigger': ['IndexFault', 4, '增加'], 'argument': [['Index', 0, '误码']]}, {'trigger': ['SoftHardwareFault', 20, '干扰'], 'argument': [['Subject', 12, '下行业务信道'], ['State', 18, '突发']]}], 'doc_id': 0}
+答案：{'text': '误码突然增加的原因可能为下行业务信道突发干扰，', 'event_list': [{'trigger': ['IndexFault', 4, '增加'], 'argument': [['Index', 0, '误码']]}, {'trigger': ['SoftHardwareFault', 20, '干扰'], 'argument': [['Subject', 12, '下行业务信道']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '存在漏配和冗余邻区以及切换不及时的情况；', 'event_list': [{'trigger': ['SoftHardwareFault', 11, '切换'], 'argument': [['State', 13, '不及时']]}], 'doc_id': 0}
+答案：{'text': '存在漏配和冗余邻区以及切换不及时的情况；', 'event_list': [{'trigger': ['SettingFault', 2, '漏配'], 'argument': []}, {'trigger': ['SoftHardwareFault', 11, '切换'], 'argument': [['State', 13, '不及时']]}]}
+
+0.667, true_num: 2, pred_num: 3, gt_num: 3
+预测：{'text': '临时解决措施 修改X2ServedCellType参数配置为 Active Cell，', 'event_list': [{'trigger': ['SetMachine', 7, '修改'], 'argument': [['Object', 9, 'X2ServedCellType参数配置'], ['FinalState', 30, ' Active Cell']]}], 'doc_id': 0}
+答案：{'text': '临时解决措施 修改X2ServedCellType参数配置为 Active Cell，', 'event_list': [{'trigger': ['SetMachine', 7, '修改'], 'argument': [['FinalState', 31, 'Active Cell'], ['Object', 9, 'X2ServedCellType参数配置']]}]}
+
+0.833, true_num: 5, pred_num: 6, gt_num: 6
+预测：{'text': 'Figure 5-2  TOP1小区指标趋势分析 1.4 话统资源类分析 1.4.1 TOP与Non TOP小区流量用户数比对 如下图所示，', 'event_list': [{'trigger': ['Check', 22, '分析'], 'argument': [['Object', 11, ' TOP1小区指标趋势']]}, {'trigger': ['Check', 34, '分析'], 'argument': [['Object', 29, '话统资源类']]}, {'trigger': ['Check', 61, '比对'], 'argument': [['Object', 43, 'TOP与Non TOP小区流量用户数']]}], 'doc_id': 0}
+答案：{'text': 'Figure 5-2  TOP1小区指标趋势分析 1.4 话统资源类分析 1.4.1 TOP与Non TOP小区流量用户数比对 如下图所示，', 'event_list': [{'trigger': ['Check', 22, '分析'], 'argument': [['Object', 12, 'TOP1小区指标趋势']]}, {'trigger': ['Check', 34, '分析'], 'argument': [['Object', 29, '话统资源类']]}, {'trigger': ['Check', 61, '比对'], 'argument': [['Object', 43, 'TOP与Non TOP小区流量用户数']]}]}
+
+0.833, true_num: 5, pred_num: 5, gt_num: 7
+预测：{'text': '由于软体BUG导致异系统邻区超配使得LTE小区无法被激活', 'event_list': [{'trigger': ['SettingFault', 14, '超配'], 'argument': [['Owner', 9, '异系统邻区']]}, {'trigger': ['SoftHardwareFault', 26, '激活'], 'argument': [['State', 23, '无法'], ['Subject', 18, 'LTE小区']]}], 'doc_id': 0}
+答案：{'text': '由于软体BUG导致异系统邻区超配使得LTE小区无法被激活', 'event_list': [{'trigger': ['SoftHardwareFault', 4, 'BUG'], 'argument': [['Subject', 2, '软体']]}, {'trigger': ['SettingFault', 14, '超配'], 'argument': [['Owner', 9, '异系统邻区']]}, {'trigger': ['SoftHardwareFault', 26, '激活'], 'argument': [['Subject', 18, 'LTE小区'], ['State', 23, '无法']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' 我司LTE设备与Z友商的传输设备对接，', 'event_list': [{'trigger': ['Operate', 17, '对接'], 'argument': [['Object', 3, 'LTE设备与Z友商的传输设备']]}], 'doc_id': 0}
+答案：{'text': ' 我司LTE设备与Z友商的传输设备对接，', 'event_list': [{'trigger': ['Operate', 17, '对接'], 'argument': [['Owner', 1, '我司LTE设备与Z友商的传输设备']]}]}
+
+0.833, true_num: 5, pred_num: 6, gt_num: 6
+预测：{'text': '因驻波比告警后处理门限设置不合理导致小区上报RRU配置不一致告警', 'event_list': [{'trigger': ['SettingFault', 11, '设置'], 'argument': [['State', 13, '不合理'], ['Setting', 7, '处理门限']]}, {'trigger': ['SettingFault', 27, '不一致'], 'argument': [['Owner', 18, '小区'], ['State', 30, '告警']]}], 'doc_id': 0}
+答案：{'text': '因驻波比告警后处理门限设置不合理导致小区上报RRU配置不一致告警', 'event_list': [{'trigger': ['SettingFault', 11, '设置'], 'argument': [['Setting', 7, '处理门限'], ['State', 13, '不合理']]}, {'trigger': ['SettingFault', 27, '不一致'], 'argument': [['Setting', 18, '小区上报RRU配置'], ['State', 30, '告警']]}]}
+
+0.857, true_num: 3, pred_num: 3, gt_num: 4
+预测：{'text': '导致出现大量RRC重配置失败导致的重建，', 'event_list': [{'trigger': ['SettingFault', 9, '重配置'], 'argument': [['State', 12, '失败'], ['Owner', 6, 'RRC']]}], 'doc_id': 0}
+答案：{'text': '导致出现大量RRC重配置失败导致的重建，', 'event_list': [{'trigger': ['SettingFault', 9, '重配置'], 'argument': [['Owner', 6, 'RRC'], ['State', 12, '失败']]}, {'trigger': ['SoftHardwareFault', 17, '重建'], 'argument': []}]}
+
+0, true_num: 0, pred_num: 4, gt_num: 4
+预测：{'text': '从楼层测试图可以分析这每层每个天线出口信号都处于较弱水平。', 'event_list': [{'trigger': ['Check', 3, '测试'], 'argument': [['Object', 1, '楼层']]}, {'trigger': ['IndexFault', 22, '处于较弱水平'], 'argument': [['Index', 15, '天线出口信号']]}], 'doc_id': 0}
+答案：{'text': '从楼层测试图可以分析这每层每个天线出口信号都处于较弱水平。', 'event_list': [{'trigger': ['IndexFault', 24, '较弱'], 'argument': [['Index', 15, '天线出口信号']]}, {'trigger': ['Check', 8, '分析'], 'argument': [['Object', 15, '天线出口信号']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' 然后筛选“生产日期”为2012  年', 'event_list': [{'trigger': ['Check', 3, '筛选'], 'argument': [['Object', 6, '生产日期']]}], 'doc_id': 0}
+答案：{'text': ' 然后筛选“生产日期”为2012  年', 'event_list': [{'trigger': ['Check', 3, '筛选'], 'argument': [['Object', 27, '站点']]}]}
+
+0.5, true_num: 3, pred_num: 7, gt_num: 5
+预测：{'text': '2015-11-29 1432 该时间点插入UMPT板，  之后配置冲突和制式间通讯异常告警一直存在。', 'event_list': [{'trigger': ['Operate', 20, '插入'], 'argument': [['Object', 22, 'UMPT板']]}, {'trigger': ['SoftHardwareFault', 34, '冲突'], 'argument': [['Subject', 32, '配置']]}, {'trigger': ['SoftHardwareFault', 42, '异常'], 'argument': [['State', 42, '异常告警'], ['Subject', 37, '制式间通讯']]}], 'doc_id': 0}
+答案：{'text': '2015-11-29 1432 该时间点插入UMPT板，  之后配置冲突和制式间通讯异常告警一直存在。', 'event_list': [{'trigger': ['SoftHardwareFault', 42, '异常'], 'argument': [['Object', 37, '制式间通讯'], ['State', 44, '告警一直存在']]}, {'trigger': ['SoftHardwareFault', 34, '冲突'], 'argument': [['Subject', 32, '配置']]}]}
+
+0.667, true_num: 2, pred_num: 2, gt_num: 4
+预测：{'text': '针对劣质终端导致的bSRVCC失败占比较高问题，', 'event_list': [{'trigger': ['IndexFault', 19, '较高'], 'argument': [['Index', 9, 'bSRVCC失败占比']]}], 'doc_id': 0}
+答案：{'text': '针对劣质终端导致的bSRVCC失败占比较高问题，', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '劣质'], 'argument': [['Object', 2, '劣质终端']]}, {'trigger': ['IndexFault', 19, '较高'], 'argument': [['Index', 9, 'bSRVCC失败占比']]}]}
+
+0.667, true_num: 2, pred_num: 2, gt_num: 4
+预测：{'text': '现场核查该区域确实开通有室分E频段小区、周围宏站D频段/F频段小区，', 'event_list': [{'trigger': ['Operate', 9, '开通'], 'argument': [['Object', 12, '室分E频段小区、周围宏站D频段/F频段小区']]}], 'doc_id': 0}
+答案：{'text': '现场核查该区域确实开通有室分E频段小区、周围宏站D频段/F频段小区，', 'event_list': [{'trigger': ['Check', 2, '核查'], 'argument': [['Object', 5, '区域']]}, {'trigger': ['Operate', 9, '开通'], 'argument': [['Object', 12, '室分E频段小区、周围宏站D频段/F频段小区']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '就需要相互配合通过分段抓包来查找故障点。', 'event_list': [{'trigger': ['Check', 14, '查找'], 'argument': [['Object', 16, '故障点']]}], 'doc_id': 0}
+答案：{'text': '就需要相互配合通过分段抓包来查找故障点。', 'event_list': [{'trigger': ['CollectData', 11, '抓包'], 'argument': []}, {'trigger': ['Check', 14, '查找'], 'argument': [['Object', 16, '故障点']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': 'NR侧与锚点侧流量上报开关设置不一致导致切换过程中流程冲突，', 'event_list': [{'trigger': ['SettingFault', 13, '设置'], 'argument': [['State', 15, '不一致'], ['Setting', 0, 'NR侧与锚点侧流量上报开关']]}, {'trigger': ['SoftHardwareFault', 27, '冲突'], 'argument': [['Subject', 25, '流程']]}], 'doc_id': 0}
+答案：{'text': 'NR侧与锚点侧流量上报开关设置不一致导致切换过程中流程冲突，', 'event_list': [{'trigger': ['SettingFault', 13, '设置'], 'argument': [['Setting', 0, 'NR侧与锚点侧流量上报开关'], ['State', 15, '不一致']]}, {'trigger': ['SoftHardwareFault', 27, '冲突'], 'argument': [['Subject', 20, '切换过程中流程']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': '同步失败错误总是伴随着告警日志中SCTP闪断故障告警。', 'event_list': [{'trigger': ['SoftHardwareFault', 0, '同步'], 'argument': [['State', 2, '失败']]}, {'trigger': ['SoftHardwareFault', 20, '闪断'], 'argument': [['State', 22, '故'], ['Subject', 16, 'SCTP']]}], 'doc_id': 0}
+答案：{'text': '同步失败错误总是伴随着告警日志中SCTP闪断故障告警。', 'event_list': [{'trigger': ['SoftHardwareFault', 0, '同步'], 'argument': [['State', 2, '失败']]}, {'trigger': ['SoftHardwareFault', 20, '闪断'], 'argument': [['Subject', 16, 'SCTP'], ['State', 22, '故障告警']]}]}
+
+0.833, true_num: 5, pred_num: 6, gt_num: 6
+预测：{'text': '则LTE不支持15M/20M小区（如果UMTS小区先激活则LTE小区无法激活）。', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '不支持'], 'argument': [['Object', 7, '15M/20M小区'], ['Subject', 1, 'LTE']]}, {'trigger': ['SoftHardwareFault', 36, '激活'], 'argument': [['State', 34, '无法'], ['Subject', 29, 'LTE小区']]}], 'doc_id': 0}
+答案：{'text': '则LTE不支持15M/20M小区（如果UMTS小区先激活则LTE小区无法激活）。', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '不支持'], 'argument': [['Subject', 1, 'LTE'], ['Object', 14, '小区']]}, {'trigger': ['SoftHardwareFault', 36, '激活'], 'argument': [['Subject', 29, 'LTE小区'], ['State', 34, '无法']]}]}
+
+0.6, true_num: 3, pred_num: 5, gt_num: 5
+预测：{'text': '但由于重配消息处理的measId超过32个而没有下发 quantityConfigUTRA或quantityConfigGERAN。', 'event_list': [{'trigger': ['IndexFault', 16, '超过'], 'argument': [['Index', 3, '重配消息处理的measId']]}, {'trigger': ['SoftHardwareFault', 24, '下发'], 'argument': [['State', 22, '没有'], ['Object', 26, ' quantityConfigUTRA或quantityConfigGERAN']]}], 'doc_id': 0}
+答案：{'text': '但由于重配消息处理的measId超过32个而没有下发 quantityConfigUTRA或quantityConfigGERAN。', 'event_list': [{'trigger': ['IndexFault', 16, '超过'], 'argument': [['Index', 10, 'measId']]}, {'trigger': ['SoftHardwareFault', 24, '下发'], 'argument': [['State', 22, '没有'], ['Object', 26, ' quantityConfigUTRA']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': '基带器件软失效导致上报FPGA工作异常，', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '软失效'], 'argument': [['Subject', 0, '基带器件']]}, {'trigger': ['SoftHardwareFault', 15, '工作'], 'argument': [['State', 17, '异常'], ['Subject', 11, 'FPGA']]}], 'doc_id': 0}
+答案：{'text': '基带器件软失效导致上报FPGA工作异常，', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '软失效'], 'argument': [['Subject', 0, '基带器件']]}, {'trigger': ['SoftHardwareFault', 15, '工作'], 'argument': [['Object', 11, 'FPGA'], ['State', 17, '异常']]}]}
+
+0.8, true_num: 4, pred_num: 6, gt_num: 4
+预测：{'text': '查看单板故障日志， 发现有反复上报FPGA RAM内存软失效的记录 继续对日志分析， 发现错误码为0x', 'event_list': [{'trigger': ['Check', 0, '查看'], 'argument': [['Object', 2, '单板故障日志']]}, {'trigger': ['SoftHardwareFault', 27, '软失效'], 'argument': [['Subject', 17, 'FPGA RAM内存']]}, {'trigger': ['Check', 39, '分析'], 'argument': [['Object', 37, '日志']]}], 'doc_id': 0}
+答案：{'text': '查看单板故障日志， 发现有反复上报FPGA RAM内存软失效的记录 继续对日志分析， 发现错误码为0x', 'event_list': [{'trigger': ['Check', 0, '查看'], 'argument': [['Object', 2, '单板故障日志']]}, {'trigger': ['Check', 39, '分析'], 'argument': [['Object', 37, '日志']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' 大部分配置丢失', 'event_list': [{'trigger': ['SoftHardwareFault', 6, '丢失'], 'argument': [['Subject', 4, '配置']]}], 'doc_id': 0}
+答案：{'text': ' 大部分配置丢失', 'event_list': [{'trigger': ['SoftHardwareFault', 6, '丢失'], 'argument': [['Owner', 4, '配置']]}]}
+
+0.727, true_num: 4, pred_num: 6, gt_num: 5
+预测：{'text': '在CME删除邻区的同时基站基于ANR自动邻区功能重新建立了邻区，', 'event_list': [{'trigger': ['Operate', 4, '删除'], 'argument': [['Object', 6, '邻区']]}, {'trigger': ['Operate', 24, '重'], 'argument': [['Object', 29, '邻区']]}, {'trigger': ['Operate', 26, '建立'], 'argument': [['Object', 29, '邻区']]}], 'doc_id': 0}
+答案：{'text': '在CME删除邻区的同时基站基于ANR自动邻区功能重新建立了邻区，', 'event_list': [{'trigger': ['Operate', 4, '删除'], 'argument': [['Owner', 1, 'CME'], ['Object', 6, '邻区']]}, {'trigger': ['Operate', 26, '建立'], 'argument': [['Object', 29, '邻区']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '1. UE侧数据分析 UE在通话结束后发生了掉话：', 'event_list': [{'trigger': ['Check', 8, '分析'], 'argument': [['Object', 3, 'UE侧数据']]}], 'doc_id': 0}
+答案：{'text': '1. UE侧数据分析 UE在通话结束后发生了掉话：', 'event_list': [{'trigger': ['Check', 8, '分析'], 'argument': [['Object', 3, 'UE侧数据']]}, {'trigger': ['SoftHardwareFault', 22, '掉话'], 'argument': []}]}
+
+0.889, true_num: 4, pred_num: 5, gt_num: 4
+预测：{'text': '因参数设置原因导致VOLTE寻呼时延长问题', 'event_list': [{'trigger': ['SettingFault', 3, '设置'], 'argument': [['State', 5, '原因'], ['Setting', 1, '参数']]}, {'trigger': ['IndexFault', 18, '长'], 'argument': [['Index', 9, 'VOLTE寻呼时延']]}], 'doc_id': 0}
+答案：{'text': '因参数设置原因导致VOLTE寻呼时延长问题', 'event_list': [{'trigger': ['SettingFault', 3, '设置'], 'argument': [['Setting', 1, '参数']]}, {'trigger': ['IndexFault', 18, '长'], 'argument': [['Index', 9, 'VOLTE寻呼时延']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': '从基站侧的调度测试结果看，', 'event_list': [{'trigger': ['Check', 7, '测试'], 'argument': [['Object', 1, '基站侧的调度']]}], 'doc_id': 0}
+答案：{'text': '从基站侧的调度测试结果看，', 'event_list': [{'trigger': ['Check', 7, '测试'], 'argument': [['Object', 5, '调度']]}]}
+
+0.667, true_num: 3, pred_num: 5, gt_num: 4
+预测：{'text': '网元UMPTa及UBBPd配置下产品问题导致LTE切换尝试次数异常', 'event_list': [{'trigger': ['SoftHardwareFault', 18, '问题'], 'argument': [['Subject', 16, '产品'], ['Owner', 0, '网元UMPTa及UBBPd']]}, {'trigger': ['IndexFault', 31, '异常'], 'argument': [['Index', 22, 'LTE切换尝试次数']]}], 'doc_id': 0}
+答案：{'text': '网元UMPTa及UBBPd配置下产品问题导致LTE切换尝试次数异常', 'event_list': [{'trigger': ['SoftHardwareFault', 18, '问题'], 'argument': [['Subject', 0, '网元UMPTa及UBBPd配置下产品']]}, {'trigger': ['IndexFault', 31, '异常'], 'argument': [['Index', 22, 'LTE切换尝试次数']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 4
+预测：{'text': '使用15分析话统细化分析， 失败都发生在连接态UE的CSFB执行过程中， 时间上是随机出现， 且HF1047A和HF1047B小区性能指标正常。', 'event_list': [], 'doc_id': 0}
+答案：{'text': '使用15分析话统细化分析， 失败都发生在连接态UE的CSFB执行过程中， 时间上是随机出现， 且HF1047A和HF1047B小区性能指标正常。', 'event_list': [{'trigger': ['Operate', 0, '使用'], 'argument': [['Object', 2, '15分析话统']]}, {'trigger': ['Check', 8, '细化分析'], 'argument': [['Object', 2, '15分析话统']]}]}
+
+0.133, true_num: 1, pred_num: 9, gt_num: 6
+预测：{'text': 'RRUCHAIN链环号中的配置信息定义错误导致XX局点LTE-FDD的Lampsite站点BBU CPRI线速率协商异常告警处理案例', 'event_list': [{'trigger': ['SoftHardwareFault', 17, '定义'], 'argument': [['State', 19, '错误'], ['Subject', 0, 'RRUCHAIN链环号中的配置信息']]}, {'trigger': ['SoftHardwareFault', 56, '协商'], 'argument': [['Subject', 35, 'Lampsite站点BBU CPRI线速率'], ['State', 58, '异常告警']]}, {'trigger': ['SoftHardwareFault', 58, '异'], 'argument': [['Subject', 35, 'Lampsite站点BBU CPRI线速率'], ['State', 58, '异常告警']]}], 'doc_id': 0}
+答案：{'text': 'RRUCHAIN链环号中的配置信息定义错误导致XX局点LTE-FDD的Lampsite站点BBU CPRI线速率协商异常告警处理案例', 'event_list': [{'trigger': ['SettingFault', 17, '定义'], 'argument': [['State', 19, '错误'], ['Setting', 0, 'RRUCHAIN链环号中的配置信息']]}, {'trigger': ['SoftHardwareFault', 56, '协商'], 'argument': [['Subject', 27, 'LTE-FDD的Lampsite站点BBU CPRI线速率'], ['State', 58, '异常']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': 'DCI漏检一般容易导致掉话，', 'event_list': [{'trigger': ['SoftHardwareFault', 3, '漏检'], 'argument': [['Subject', 0, 'DCI']]}], 'doc_id': 0}
+答案：{'text': 'DCI漏检一般容易导致掉话，', 'event_list': [{'trigger': ['SoftHardwareFault', 3, '漏检'], 'argument': [['Subject', 0, 'DCI']]}, {'trigger': ['SoftHardwareFault', 11, '掉话'], 'argument': []}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '具体原因为配置参数非法，', 'event_list': [{'trigger': ['SettingFault', 5, '配置'], 'argument': [['State', 9, '非法']]}], 'doc_id': 0}
+答案：{'text': '具体原因为配置参数非法，', 'event_list': [{'trigger': ['SettingFault', 5, '配置'], 'argument': [['Setting', 7, '参数'], ['State', 9, '非法']]}]}
+
+0.667, true_num: 1, pred_num: 2, gt_num: 1
+预测：{'text': ' 并且存在乒乓切换。', 'event_list': [{'trigger': ['SoftHardwareFault', 5, '乒乓切换'], 'argument': [['State', 5, '乒乓']]}], 'doc_id': 0}
+答案：{'text': ' 并且存在乒乓切换。', 'event_list': [{'trigger': ['SoftHardwareFault', 5, '乒乓切换'], 'argument': []}]}
+
+0, true_num: 0, pred_num: 3, gt_num: 3
+预测：{'text': '某局点上报一套DBS3900改造为BTS3900后，', 'event_list': [{'trigger': ['SetMachine', 14, '改造为'], 'argument': [['InitialState', 7, 'DBS3900'], ['FinalState', 17, 'BTS3900']]}], 'doc_id': 0}
+答案：{'text': '某局点上报一套DBS3900改造为BTS3900后，', 'event_list': [{'trigger': ['SetMachine', 14, '改造'], 'argument': [['InitialState', 7, 'DBS3900'], ['FinalState', 17, 'BTS3900']]}]}
+
+0.889, true_num: 4, pred_num: 4, gt_num: 5
+预测：{'text': 'Resolution Details1.Problem Summary终端不支持band8导致无法切换，', 'event_list': [{'trigger': ['SoftHardwareFault', 37, '不支持'], 'argument': [['Object', 40, 'band8']]}, {'trigger': ['SoftHardwareFault', 49, '切换'], 'argument': [['State', 47, '无法']]}], 'doc_id': 0}
+答案：{'text': 'Resolution Details1.Problem Summary终端不支持band8导致无法切换，', 'event_list': [{'trigger': ['SoftHardwareFault', 37, '不支持'], 'argument': [['Subject', 21, 'roblem Summary终端'], ['Object', 40, 'band8']]}, {'trigger': ['SoftHardwareFault', 49, '切换'], 'argument': [['State', 47, '无法']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': '3、硬件安装错误导致数据不一致', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '安装'], 'argument': [['Subject', 2, '硬件'], ['State', 6, '错误']]}, {'trigger': ['SettingFault', 12, '不一致'], 'argument': [['Setting', 10, '数据']]}], 'doc_id': 0}
+答案：{'text': '3、硬件安装错误导致数据不一致', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '安装'], 'argument': [['Owner', 2, '硬件'], ['State', 6, '错误']]}, {'trigger': ['SettingFault', 12, '不一致'], 'argument': [['Setting', 10, '数据']]}]}
+
+0.4, true_num: 2, pred_num: 6, gt_num: 4
+预测：{'text': '因此非参数修改导致指标突然恶化 核心网恶化当天有操作，', 'event_list': [{'trigger': ['SetMachine', 5, '修改'], 'argument': [['Object', 2, '非参数']]}, {'trigger': ['IndexFault', 13, '恶化'], 'argument': [['Index', 9, '指标']]}, {'trigger': ['IndexFault', 19, '恶化'], 'argument': [['Index', 16, '核心网']]}], 'doc_id': 0}
+答案：{'text': '因此非参数修改导致指标突然恶化 核心网恶化当天有操作，', 'event_list': [{'trigger': ['IndexFault', 13, '恶化'], 'argument': [['Index', 9, '指标']]}, {'trigger': ['IndexFault', 18, '恶化'], 'argument': [['Index', 15, '核心网']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 2
+预测：{'text': '形成因缺站引发的真实的弱覆盖，', 'event_list': [], 'doc_id': 0}
+答案：{'text': '形成因缺站引发的真实的弱覆盖，', 'event_list': [{'trigger': ['SoftHardwareFault', 3, '缺站'], 'argument': []}, {'trigger': ['SoftHardwareFault', 11, '弱覆盖'], 'argument': []}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': ' 初步分析是由于切换失败导致的掉话，', 'event_list': [{'trigger': ['SoftHardwareFault', 8, '切换'], 'argument': [['State', 10, '失败']]}], 'doc_id': 0}
+答案：{'text': ' 初步分析是由于切换失败导致的掉话，', 'event_list': [{'trigger': ['SoftHardwareFault', 15, '掉话'], 'argument': []}, {'trigger': ['SoftHardwareFault', 8, '切换'], 'argument': [['State', 10, '失败']]}]}
+
+0.833, true_num: 5, pred_num: 6, gt_num: 6
+预测：{'text': '中心频点配置不合理导致LTE CA业务建立异常', 'event_list': [{'trigger': ['SettingFault', 4, '配置'], 'argument': [['State', 6, '不合理'], ['Setting', 0, '中心频点']]}, {'trigger': ['SoftHardwareFault', 19, '建立'], 'argument': [['Subject', 11, 'LTE CA业务'], ['State', 21, '异常']]}], 'doc_id': 0}
+答案：{'text': '中心频点配置不合理导致LTE CA业务建立异常', 'event_list': [{'trigger': ['SettingFault', 4, '配置'], 'argument': [['State', 6, '不合理'], ['Owner', 0, '中心频点']]}, {'trigger': ['SoftHardwareFault', 19, '建立'], 'argument': [['Subject', 11, 'LTE CA业务'], ['State', 21, '异常']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '1、4槽位背板路由不通导致建立在两个基带板上的小区载波聚合后上报“小区服务能力下降”告警', 'event_list': [{'trigger': ['SoftHardwareFault', 9, '不通'], 'argument': [['Subject', 3, '槽位背板路由']]}, {'trigger': ['IndexFault', 39, '下降'], 'argument': [['Index', 33, '小区服务能力']]}], 'doc_id': 0}
+答案：{'text': '1、4槽位背板路由不通导致建立在两个基带板上的小区载波聚合后上报“小区服务能力下降”告警', 'event_list': [{'trigger': ['SoftHardwareFault', 9, '不通'], 'argument': [['Subject', 2, '4槽位背板路由']]}, {'trigger': ['IndexFault', 39, '下降'], 'argument': [['Index', 33, '小区服务能力']]}]}
+
+0.667, true_num: 2, pred_num: 2, gt_num: 4
+预测：{'text': '1、单基带板内最大用户数超过150（L.Traffic.Board.User.Max）或者单站RRC连接平均用户数超过450（L.Traffic.User.Avg）；', 'event_list': [{'trigger': ['IndexFault', 57, '超过'], 'argument': [['Index', 45, '单站RRC连接平均用户数']]}], 'doc_id': 0}
+答案：{'text': '1、单基带板内最大用户数超过150（L.Traffic.Board.User.Max）或者单站RRC连接平均用户数超过450（L.Traffic.User.Avg）；', 'event_list': [{'trigger': ['IndexFault', 12, '超过'], 'argument': [['Index', 2, '单基带板内最大用户数']]}, {'trigger': ['IndexFault', 57, '超过'], 'argument': [['Index', 45, '单站RRC连接平均用户数']]}]}
+
+0.667, true_num: 2, pred_num: 3, gt_num: 3
+预测：{'text': '进而导致基站侧释放部分用户或是全部用户，', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '释放'], 'argument': [['Object', 11, '用户'], ['Subject', 4, '基站侧']]}], 'doc_id': 0}
+答案：{'text': '进而导致基站侧释放部分用户或是全部用户，', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '释放'], 'argument': [['Subject', 4, '基站侧'], ['Object', 11, '用户或是全部用户']]}]}
+
+0.5, true_num: 3, pred_num: 6, gt_num: 6
+预测：{'text': '由于主基带板绑定错误导致小区不可用告警', 'event_list': [{'trigger': ['SoftHardwareFault', 6, '绑定'], 'argument': [['State', 8, '错误'], ['Subject', 2, '主基带板']]}, {'trigger': ['SoftHardwareFault', 14, '不可用'], 'argument': [['Subject', 12, '小区'], ['State', 17, '告警']]}], 'doc_id': 0}
+答案：{'text': '由于主基带板绑定错误导致小区不可用告警', 'event_list': [{'trigger': ['SettingFault', 6, '绑定'], 'argument': [['Owner', 2, '主基带板'], ['State', 8, '错误']]}, {'trigger': ['SoftHardwareFault', 14, '不可用'], 'argument': [['Subject', 12, '小区'], ['State', 17, '告警']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '因此H市速率高的主要原因是因为话务模型的差异，', 'event_list': [{'trigger': ['IndexFault', 6, '高'], 'argument': [['Index', 4, '速率']]}, {'trigger': ['SettingFault', 20, '差异'], 'argument': [['Setting', 15, '话务模型']]}], 'doc_id': 0}
+答案：{'text': '因此H市速率高的主要原因是因为话务模型的差异，', 'event_list': [{'trigger': ['IndexFault', 6, '高'], 'argument': [['Index', 4, '速率']]}, {'trigger': ['SettingFault', 20, '差异'], 'argument': [['Owner', 15, '话务模型']]}]}
+
+0.5, true_num: 2, pred_num: 4, gt_num: 4
+预测：{'text': '由于License限制导致速率低', 'event_list': [{'trigger': ['SettingFault', 9, '限制'], 'argument': [['Owner', 2, 'License']]}, {'trigger': ['IndexFault', 15, '低'], 'argument': [['Index', 13, '速率']]}], 'doc_id': 0}
+答案：{'text': '由于License限制导致速率低', 'event_list': [{'trigger': ['SoftHardwareFault', 9, '限制'], 'argument': [['Subject', 2, 'License']]}, {'trigger': ['IndexFault', 15, '低'], 'argument': [['Index', 13, '速率']]}]}
+
+0.5, true_num: 2, pred_num: 4, gt_num: 4
+预测：{'text': '请现场反馈S1/X2/UU口消息跟踪及一键式日志分析：', 'event_list': [{'trigger': ['Check', 16, '跟'], 'argument': [['Object', 5, 'S1/X2/UU口消息']]}, {'trigger': ['Check', 24, '分析'], 'argument': [['Object', 19, '一键式日志']]}], 'doc_id': 0}
+答案：{'text': '请现场反馈S1/X2/UU口消息跟踪及一键式日志分析：', 'event_list': [{'trigger': ['Check', 16, '跟踪'], 'argument': [['Object', 5, 'S1/X2/UU口消息']]}, {'trigger': ['Check', 24, '分析'], 'argument': [['Object', 19, '一键式日志']]}]}
+
+0.833, true_num: 5, pred_num: 6, gt_num: 6
+预测：{'text': '微波传输MSS最大协商配置错误导致终端无法上网处理案例', 'event_list': [{'trigger': ['SettingFault', 11, '配置'], 'argument': [['Setting', 0, '微波传输MSS最大'], ['State', 13, '错误']]}, {'trigger': ['SoftHardwareFault', 21, '上网'], 'argument': [['State', 19, '无法'], ['Subject', 17, '终端']]}], 'doc_id': 0}
+答案：{'text': '微波传输MSS最大协商配置错误导致终端无法上网处理案例', 'event_list': [{'trigger': ['SettingFault', 11, '配置'], 'argument': [['Setting', 0, '微波传输MSS最大协商'], ['State', 13, '错误']]}, {'trigger': ['SoftHardwareFault', 21, '上网'], 'argument': [['Subject', 17, '终端'], ['State', 19, '无法']]}]}
+
+0.8, true_num: 4, pred_num: 4, gt_num: 6
+预测：{'text': '而2.1G用户速率由于用户数的增多导致的RB减少和CQI的降低也同步下降。', 'event_list': [{'trigger': ['IndexFault', 22, '减少'], 'argument': [['Index', 20, 'RB']]}, {'trigger': ['IndexFault', 29, '降低'], 'argument': [['Index', 25, 'CQI']]}], 'doc_id': 0}
+答案：{'text': '而2.1G用户速率由于用户数的增多导致的RB减少和CQI的降低也同步下降。', 'event_list': [{'trigger': ['IndexFault', 15, '增多'], 'argument': [['Index', 5, '用户速率']]}, {'trigger': ['IndexFault', 22, '减少'], 'argument': [['Index', 20, 'RB']]}, {'trigger': ['IndexFault', 29, '降低'], 'argument': [['Index', 25, 'CQI']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': '2G邻区参数配置错误导致eSRVCC不触发', 'event_list': [{'trigger': ['SettingFault', 6, '配置'], 'argument': [['State', 8, '错误'], ['Setting', 0, '2']]}, {'trigger': ['SoftHardwareFault', 18, '不触发'], 'argument': [['Subject', 12, 'eSRVCC']]}], 'doc_id': 0}
+答案：{'text': '2G邻区参数配置错误导致eSRVCC不触发', 'event_list': [{'trigger': ['SettingFault', 6, '配置'], 'argument': [['Setting', 0, '2G邻区参数'], ['State', 8, '错误']]}, {'trigger': ['SoftHardwareFault', 18, '不触发'], 'argument': [['Subject', 12, 'eSRVCC']]}]}
+
+0.571, true_num: 2, pred_num: 3, gt_num: 4
+预测：{'text': ' 4个数据核均检测到大量ECC中断计数信息，', 'event_list': [{'trigger': ['SoftHardwareFault', 15, '中断'], 'argument': [['Object', 17, '计数信息'], ['Subject', 12, 'ECC']]}], 'doc_id': 0}
+答案：{'text': ' 4个数据核均检测到大量ECC中断计数信息，', 'event_list': [{'trigger': ['Check', 7, '检测'], 'argument': [['Object', 3, '数据核']]}, {'trigger': ['SoftHardwareFault', 15, '中断'], 'argument': [['Subject', 12, 'ECC']]}]}
+
+0.889, true_num: 4, pred_num: 5, gt_num: 4
+预测：{'text': '进一步分析为基站内部处理异常导致。', 'event_list': [{'trigger': ['Check', 3, '分析'], 'argument': [['Object', 6, '基站内部']]}, {'trigger': ['SoftHardwareFault', 10, '处理'], 'argument': [['Subject', 6, '基站内部'], ['State', 12, '异常']]}], 'doc_id': 0}
+答案：{'text': '进一步分析为基站内部处理异常导致。', 'event_list': [{'trigger': ['Check', 3, '分析'], 'argument': []}, {'trigger': ['SoftHardwareFault', 10, '处理'], 'argument': [['Subject', 6, '基站内部'], ['State', 12, '异常']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '核心网Online计费服务异常导致丢包，', 'event_list': [{'trigger': ['SoftHardwareFault', 13, '异常'], 'argument': [['Subject', 0, '核心网Online计费服务']]}], 'doc_id': 0}
+答案：{'text': '核心网Online计费服务异常导致丢包，', 'event_list': [{'trigger': ['SoftHardwareFault', 13, '异常'], 'argument': [['Subject', 0, '核心网Online计费服务']]}, {'trigger': ['SoftHardwareFault', 17, '丢包'], 'argument': []}]}
+
+0.667, true_num: 2, pred_num: 2, gt_num: 4
+预测：{'text': '主要表现为下行信道质量较差及弱覆盖导致掉话。', 'event_list': [{'trigger': ['IndexFault', 11, '较差'], 'argument': [['Index', 5, '下行信道质量']]}], 'doc_id': 0}
+答案：{'text': '主要表现为下行信道质量较差及弱覆盖导致掉话。', 'event_list': [{'trigger': ['IndexFault', 11, '较差'], 'argument': [['Index', 5, '下行信道质量']]}, {'trigger': ['SoftHardwareFault', 14, '弱覆盖'], 'argument': []}, {'trigger': ['SoftHardwareFault', 19, '掉话'], 'argument': []}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 2
+预测：{'text': '1、重新生成调测license，', 'event_list': [{'trigger': ['Operate', 2, '重新生成'], 'argument': [['Object', 6, '调测license']]}], 'doc_id': 0}
+答案：{'text': '1、重新生成调测license，', 'event_list': [{'trigger': ['Operate', 4, '生成'], 'argument': [['Object', 6, '调测license']]}]}
+
+0.833, true_num: 5, pred_num: 6, gt_num: 6
+预测：{'text': 'JX室分小区接入容量限制导致新增用户无法接入该小区，', 'event_list': [{'trigger': ['SettingFault', 10, '限制'], 'argument': [['Setting', 0, 'JX室分小区接入容量']]}, {'trigger': ['SoftHardwareFault', 20, '接入'], 'argument': [['State', 18, '无法'], ['Object', 23, '小区'], ['Subject', 14, '新增用户']]}], 'doc_id': 0}
+答案：{'text': 'JX室分小区接入容量限制导致新增用户无法接入该小区，', 'event_list': [{'trigger': ['SettingFault', 10, '限制'], 'argument': [['Setting', 2, '室分小区接入容量']]}, {'trigger': ['SoftHardwareFault', 20, '接入'], 'argument': [['Subject', 14, '新增用户'], ['State', 18, '无法'], ['Object', 23, '小区']]}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 2
+预测：{'text': ' 工程师现场测试发现占用XX医学院宿舍楼3-FHL时下载速率较低且不稳定，', 'event_list': [{'trigger': ['IndexFault', 30, '较低'], 'argument': [['Index', 26, '下载速率']]}], 'doc_id': 0}
+答案：{'text': ' 工程师现场测试发现占用XX医学院宿舍楼3-FHL时下载速率较低且不稳定，', 'event_list': [{'trigger': ['IndexFault', 30, '较低且不稳定'], 'argument': [['Index', 26, '下载速率']]}]}
+
+0.889, true_num: 4, pred_num: 5, gt_num: 4
+预测：{'text': '炎强平台升级导致 由于服务器更换故障硬盘，', 'event_list': [{'trigger': ['SetMachine', 4, '升级'], 'argument': [['Object', 0, '炎强平台']]}, {'trigger': ['SetMachine', 14, '更换'], 'argument': [['Owner', 11, '服务器'], ['Object', 16, '故障硬盘']]}], 'doc_id': 0}
+答案：{'text': '炎强平台升级导致 由于服务器更换故障硬盘，', 'event_list': [{'trigger': ['SetMachine', 4, '升级'], 'argument': [['Object', 0, '炎强平台']]}, {'trigger': ['SetMachine', 14, '更换'], 'argument': [['Object', 16, '故障硬盘']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' U2000用天馈检查无异常 ', 'event_list': [{'trigger': ['Check', 9, '检查'], 'argument': [['Object', 7, '天馈']]}], 'doc_id': 0}
+答案：{'text': ' U2000用天馈检查无异常 ', 'event_list': [{'trigger': ['Check', 9, '检查'], 'argument': [['Object', 1, 'U2000用天馈']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': 'A市E小区PCI设置导致切换成功率恶化，', 'event_list': [{'trigger': ['SettingFault', 8, '设置'], 'argument': [['Setting', 2, 'E小区PCI']]}, {'trigger': ['IndexFault', 17, '恶化'], 'argument': [['Index', 12, '切换成功率']]}], 'doc_id': 0}
+答案：{'text': 'A市E小区PCI设置导致切换成功率恶化，', 'event_list': [{'trigger': ['SettingFault', 8, '设置'], 'argument': [['Owner', 3, '小区PCI']]}, {'trigger': ['IndexFault', 17, '恶化'], 'argument': [['Index', 12, '切换成功率']]}]}
+
+0.75, true_num: 3, pred_num: 3, gt_num: 5
+预测：{'text': '某站点微波传输MTU配置导致对端站点X2链路上报SCTP链路拥塞告警', 'event_list': [{'trigger': ['SoftHardwareFault', 30, '拥塞'], 'argument': [['Subject', 24, 'SCTP链路'], ['State', 32, '告警']]}], 'doc_id': 0}
+答案：{'text': '某站点微波传输MTU配置导致对端站点X2链路上报SCTP链路拥塞告警', 'event_list': [{'trigger': ['SettingFault', 10, '配置'], 'argument': [['Owner', 0, '某站点微波传输MTU']]}, {'trigger': ['SoftHardwareFault', 30, '拥塞'], 'argument': [['Subject', 24, 'SCTP链路'], ['State', 32, '告警']]}]}
+
+0.833, true_num: 5, pred_num: 6, gt_num: 6
+预测：{'text': '1) 胥口环卫站CRHFD 1与苏州吴中区电信胥口文胥路NR 3添加外部邻区频点配置错误导致邻区关系无法添加，', 'event_list': [{'trigger': ['SettingFault', 40, '配置'], 'argument': [['State', 42, '错误'], ['Setting', 34, '外部邻区频点']]}, {'trigger': ['SoftHardwareFault', 52, '添加'], 'argument': [['Subject', 46, '邻区关系'], ['State', 50, '无法']]}], 'doc_id': 0}
+答案：{'text': '1) 胥口环卫站CRHFD 1与苏州吴中区电信胥口文胥路NR 3添加外部邻区频点配置错误导致邻区关系无法添加，', 'event_list': [{'trigger': ['SettingFault', 40, '配置'], 'argument': [['Owner', 34, '外部邻区频点'], ['State', 42, '错误']]}, {'trigger': ['SoftHardwareFault', 52, '添加'], 'argument': [['Subject', 46, '邻区关系'], ['State', 50, '无法']]}]}
+
+0.889, true_num: 4, pred_num: 5, gt_num: 4
+预测：{'text': '干扰排查 通过提取当前小区干扰，', 'event_list': [{'trigger': ['Check', 2, '排查'], 'argument': [['Object', 0, '干扰']]}, {'trigger': ['CollectData', 7, '提取'], 'argument': [['Data', 11, '小区干扰'], ['Data', 9, '当前']]}], 'doc_id': 0}
+答案：{'text': '干扰排查 通过提取当前小区干扰，', 'event_list': [{'trigger': ['Check', 2, '排查'], 'argument': [['Object', 0, '干扰']]}, {'trigger': ['CollectData', 7, '提取'], 'argument': [['Data', 11, '小区干扰']]}]}
+
+0.333, true_num: 1, pred_num: 4, gt_num: 2
+预测：{'text': ' 从拓扑图上看PRRU频繁与rHUB连接出现闪断', 'event_list': [{'trigger': ['SoftHardwareFault', 18, '连接'], 'argument': [['Subject', 14, 'rHUB']]}, {'trigger': ['SoftHardwareFault', 22, '闪断'], 'argument': [['Subject', 14, 'rHUB']]}], 'doc_id': 0}
+答案：{'text': ' 从拓扑图上看PRRU频繁与rHUB连接出现闪断', 'event_list': [{'trigger': ['SoftHardwareFault', 22, '闪断'], 'argument': [['Subject', 7, 'PRRU频繁与rHUB连接']]}]}
+
+0.5, true_num: 3, pred_num: 6, gt_num: 6
+预测：{'text': '尾纤更换错误导致出现小区未建立告警案例', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '更换'], 'argument': [['Subject', 0, '尾纤'], ['State', 4, '错误']]}, {'trigger': ['SoftHardwareFault', 12, '未建立'], 'argument': [['State', 15, '告警'], ['Subject', 10, '小区']]}], 'doc_id': 0}
+答案：{'text': '尾纤更换错误导致出现小区未建立告警案例', 'event_list': [{'trigger': ['SettingFault', 2, '更换'], 'argument': [['Owner', 0, '尾纤'], ['State', 4, '错误']]}, {'trigger': ['SoftHardwareFault', 12, '未建立'], 'argument': [['Subject', 10, '小区'], ['State', 15, '告警']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '排障过程 使用MML命令LST RRU查看设置的驻波告警产生门限，', 'event_list': [{'trigger': ['Operate', 5, '使用'], 'argument': [['Object', 7, 'MML命令LST RRU']]}, {'trigger': ['Check', 19, '查看'], 'argument': [['Object', 21, '设置的驻波告警产生门限']]}], 'doc_id': 0}
+答案：{'text': '排障过程 使用MML命令LST RRU查看设置的驻波告警产生门限，', 'event_list': [{'trigger': ['Operate', 5, '使用'], 'argument': [['Object', 7, 'MML命令LST RRU']]}, {'trigger': ['Check', 19, '查看'], 'argument': [['Object', 24, '驻波告警产生门限']]}]}
+
+0.75, true_num: 3, pred_num: 5, gt_num: 3
+预测：{'text': ' 核查该处没有收到网管服务器响应的DHCP报文并送往基站，', 'event_list': [{'trigger': ['Check', 1, '核查'], 'argument': [['Object', 9, '网管服务器响应的DHCP报文']]}, {'trigger': ['SoftHardwareFault', 7, '收到'], 'argument': [['State', 5, '没有'], ['Object', 9, '网管服务器响应的DHCP报文']]}], 'doc_id': 0}
+答案：{'text': ' 核查该处没有收到网管服务器响应的DHCP报文并送往基站，', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '收到'], 'argument': [['Object', 9, '网管服务器响应的DHCP报文'], ['State', 5, '没有']]}]}
+
+0.889, true_num: 4, pred_num: 4, gt_num: 5
+预测：{'text': '在7月30日升级以后切换失败导致的重建次数大大减少。', 'event_list': [{'trigger': ['SoftHardwareFault', 10, '切换'], 'argument': [['State', 12, '失败']]}, {'trigger': ['IndexFault', 23, '减少'], 'argument': [['Index', 17, '重建次数']]}], 'doc_id': 0}
+答案：{'text': '在7月30日升级以后切换失败导致的重建次数大大减少。', 'event_list': [{'trigger': ['SetMachine', 6, '升级'], 'argument': []}, {'trigger': ['SoftHardwareFault', 10, '切换'], 'argument': [['State', 12, '失败']]}, {'trigger': ['IndexFault', 23, '减少'], 'argument': [['Index', 17, '重建次数']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': 'SRI扩张期Caps受限导致Msg3流控。', 'event_list': [{'trigger': ['SettingFault', 10, '受限'], 'argument': [['Owner', 0, 'SRI扩张期Caps']]}, {'trigger': ['SoftHardwareFault', 18, '流控'], 'argument': [['Subject', 14, 'Msg3']]}], 'doc_id': 0}
+答案：{'text': 'SRI扩张期Caps受限导致Msg3流控。', 'event_list': [{'trigger': ['SettingFault', 10, '受限'], 'argument': [['Owner', 6, 'Caps']]}, {'trigger': ['SoftHardwareFault', 18, '流控'], 'argument': [['Subject', 14, 'Msg3']]}]}
+
+0, true_num: 0, pred_num: 4, gt_num: 3
+预测：{'text': ' 在尝试附着C网LTE时被LTE核心网拒绝，', 'event_list': [{'trigger': ['Operate', 4, '附着'], 'argument': [['Object', 6, 'C网LTE']]}, {'trigger': ['SoftHardwareFault', 19, '拒绝'], 'argument': [['Subject', 13, 'LTE核心网']]}], 'doc_id': 0}
+答案：{'text': ' 在尝试附着C网LTE时被LTE核心网拒绝，', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '附着'], 'argument': [['Object', 6, 'C网LTE'], ['State', 19, '拒绝']]}]}
+
+0.667, true_num: 4, pred_num: 6, gt_num: 6
+预测：{'text': 'LTE配置GSM邻区数据错误导致eSRVCC L2G失败', 'event_list': [{'trigger': ['SettingFault', 3, '配置'], 'argument': [['Setting', 5, 'GSM邻区数据'], ['State', 12, '错误'], ['Owner', 0, 'LTE']]}, {'trigger': ['SoftHardwareFault', 16, 'eSRVCC L2G'], 'argument': [['State', 26, '失败']]}], 'doc_id': 0}
+答案：{'text': 'LTE配置GSM邻区数据错误导致eSRVCC L2G失败', 'event_list': [{'trigger': ['SettingFault', 3, '配置'], 'argument': [['Owner', 0, 'LTE'], ['Setting', 5, 'GSM邻区数据'], ['State', 12, '错误']]}, {'trigger': ['SoftHardwareFault', 16, 'eSRVCC L2'], 'argument': [['State', 26, '失败']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '基于X2接口的邻区自管理算法参数配置错误，', 'event_list': [{'trigger': ['SettingFault', 16, '配置'], 'argument': [['State', 18, '错误']]}], 'doc_id': 0}
+答案：{'text': '基于X2接口的邻区自管理算法参数配置错误，', 'event_list': [{'trigger': ['SettingFault', 16, '配置'], 'argument': [['Setting', 2, 'X2接口的邻区自管理算法参数'], ['State', 18, '错误']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 2
+预测：{'text': ' PCI12(GREENBELT4F-1)PCI82(RIZALDRVF-3) PCI78(GBELTRDEV2F-1)PCI82(RIZALDRVF-3) 由此可见， 同频邻区是已经成功配置的了， 但是只配置了同频邻区的情况下， 还不能确定一定会顺利发生切换， 还要额外检查一下外部小区情况。', 'event_list': [], 'doc_id': 0}
+答案：{'text': ' PCI12(GREENBELT4F-1)PCI82(RIZALDRVF-3) PCI78(GBELTRDEV2F-1)PCI82(RIZALDRVF-3) 由此可见， 同频邻区是已经成功配置的了， 但是只配置了同频邻区的情况下， 还不能确定一定会顺利发生切换， 还要额外检查一下外部小区情况。', 'event_list': [{'trigger': ['Check', 136, '检查'], 'argument': [['Object', 140, '外部小区']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 2
+预测：{'text': '重叠覆盖造成的干扰：', 'event_list': [], 'doc_id': 0}
+答案：{'text': '重叠覆盖造成的干扰：', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '覆盖'], 'argument': []}, {'trigger': ['SoftHardwareFault', 7, '干扰'], 'argument': []}]}
+
+0.333, true_num: 1, pred_num: 3, gt_num: 3
+预测：{'text': '联系代维对现场进行简单改造--取掉RRU之后的2G合路设备，', 'event_list': [{'trigger': ['Operate', 15, '取掉'], 'argument': [['Object', 17, 'RRU之'], ['Object', 23, '2G合路设备']]}], 'doc_id': 0}
+答案：{'text': '联系代维对现场进行简单改造--取掉RRU之后的2G合路设备，', 'event_list': [{'trigger': ['SetMachine', 11, '改造'], 'argument': []}, {'trigger': ['Operate', 15, '取掉'], 'argument': [['Object', 17, 'RRU之后的2G合路设备']]}]}
+
+0.5, true_num: 2, pred_num: 4, gt_num: 4
+预测：{'text': '只提示RRU功率不足导致小区不可用', 'event_list': [{'trigger': ['IndexFault', 8, '不足'], 'argument': [['Index', 3, 'RRU功率']]}, {'trigger': ['SoftHardwareFault', 14, '不可用'], 'argument': [['Subject', 12, '小区']]}], 'doc_id': 0}
+答案：{'text': '只提示RRU功率不足导致小区不可用', 'event_list': [{'trigger': ['SettingFault', 8, '不足'], 'argument': [['Setting', 3, 'RRU功率']]}, {'trigger': ['SoftHardwareFault', 14, '不可用'], 'argument': [['Subject', 12, '小区']]}]}
+
+0.667, true_num: 3, pred_num: 5, gt_num: 4
+预测：{'text': 'a.用FMAExpert软件工具导入XML文档进行关键参数核查：', 'event_list': [{'trigger': ['Operate', 16, '导入'], 'argument': [['Owner', 3, 'FMAExpert软件工具'], ['Object', 18, 'XML文档']]}, {'trigger': ['Check', 29, '核查'], 'argument': [['Object', 25, '关键参数']]}], 'doc_id': 0}
+答案：{'text': 'a.用FMAExpert软件工具导入XML文档进行关键参数核查：', 'event_list': [{'trigger': ['Operate', 16, '导入'], 'argument': [['Object', 18, 'XML文档进']]}, {'trigger': ['Check', 29, '核查'], 'argument': [['Object', 25, '关键参数']]}]}
+
+0.833, true_num: 5, pred_num: 5, gt_num: 7
+预测：{'text': '通过提取COUNTER发现由于RRC重配置失败导致的RRC重建比例较高。', 'event_list': [{'trigger': ['SettingFault', 18, '重配置'], 'argument': [['State', 21, '失败'], ['Owner', 15, 'RRC']]}, {'trigger': ['IndexFault', 33, '较高'], 'argument': [['Index', 26, 'RRC重建比例']]}], 'doc_id': 0}
+答案：{'text': '通过提取COUNTER发现由于RRC重配置失败导致的RRC重建比例较高。', 'event_list': [{'trigger': ['CollectData', 2, '提取'], 'argument': [['Data', 4, 'COUNTER']]}, {'trigger': ['SettingFault', 18, '重配置'], 'argument': [['Owner', 15, 'RRC'], ['State', 21, '失败']]}, {'trigger': ['IndexFault', 33, '较高'], 'argument': [['Index', 26, 'RRC重建比例']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': 'C到A每次都是终端信号变差后掉网，', 'event_list': [{'trigger': ['IndexFault', 11, '变差'], 'argument': [['Index', 7, '终端信号']]}], 'doc_id': 0}
+答案：{'text': 'C到A每次都是终端信号变差后掉网，', 'event_list': [{'trigger': ['IndexFault', 11, '变差'], 'argument': [['Index', 7, '终端信号']]}, {'trigger': ['SoftHardwareFault', 14, '掉网'], 'argument': []}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': '图3.1 WTCOR站各小区的E-RAB建立成功率 关联话统分析 1. E-RAB建立失败的主要原因是L.E-RAB.FailEst.MME。', 'event_list': [{'trigger': ['Check', 30, '分析'], 'argument': [['Object', 26, '关联话统']]}, {'trigger': ['SoftHardwareFault', 41, '建立'], 'argument': [['Subject', 36, 'E-RAB'], ['State', 43, '失败']]}], 'doc_id': 0}
+答案：{'text': '图3.1 WTCOR站各小区的E-RAB建立成功率 关联话统分析 1. E-RAB建立失败的主要原因是L.E-RAB.FailEst.MME。', 'event_list': [{'trigger': ['Check', 30, '分析'], 'argument': [['Object', 15, 'E-RAB建立成功率 关联话统']]}, {'trigger': ['SoftHardwareFault', 41, '建立'], 'argument': [['Subject', 36, 'E-RAB'], ['State', 43, '失败']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': 'XX运营商NR邻降功能未成功开启导致下行速率掉坑', 'event_list': [{'trigger': ['SoftHardwareFault', 14, '开启'], 'argument': [['Owner', 0, 'XX运营商NR邻降功能'], ['State', 11, '未成功']]}, {'trigger': ['IndexFault', 22, '掉坑'], 'argument': [['Index', 18, '下行速率']]}], 'doc_id': 0}
+答案：{'text': 'XX运营商NR邻降功能未成功开启导致下行速率掉坑', 'event_list': [{'trigger': ['SoftHardwareFault', 14, '开启'], 'argument': [['Subject', 5, 'NR邻降功能'], ['State', 11, '未成功']]}, {'trigger': ['IndexFault', 22, '掉坑'], 'argument': [['Index', 18, '下行速率']]}]}
+
+0.333, true_num: 2, pred_num: 5, gt_num: 7
+预测：{'text': '建立失败原因为“[0]配置数据生效失败(错误码 = 1973485696)无可用的RRU载波资源”但根据产品文档，', 'event_list': [{'trigger': ['SoftHardwareFault', 0, '建立'], 'argument': [['State', 2, '失败']]}, {'trigger': ['SoftHardwareFault', 15, '生效'], 'argument': [['State', 17, '失败'], ['Subject', 11, '配置数据']]}], 'doc_id': 0}
+答案：{'text': '建立失败原因为“[0]配置数据生效失败(错误码 = 1973485696)无可用的RRU载波资源”但根据产品文档，', 'event_list': [{'trigger': ['SoftHardwareFault', 0, '建立'], 'argument': [['State', 2, '失败']]}, {'trigger': ['IndexFault', 15, '生效'], 'argument': [['Index', 11, '配置数据'], ['State', 17, '失败']]}, {'trigger': ['SoftHardwareFault', 37, '无可用'], 'argument': [['Object', 41, 'RRU载波资源']]}]}
+
+0.6, true_num: 3, pred_num: 3, gt_num: 7
+预测：{'text': ' 模块3网口连接器附近也存在白色膏装腐蚀物， 导致模块内部器件被腐蚀短路失效， pRRU模块无法正常上电 模块3的屏蔽盖、天线上还存在明显的水痕， 水痕尚未干透 ', 'event_list': [{'trigger': ['SoftHardwareFault', 50, '上电'], 'argument': [['State', 46, '无法正常'], ['Subject', 40, 'pRRU模块']]}], 'doc_id': 0}
+答案：{'text': ' 模块3网口连接器附近也存在白色膏装腐蚀物， 导致模块内部器件被腐蚀短路失效， pRRU模块无法正常上电 模块3的屏蔽盖、天线上还存在明显的水痕， 水痕尚未干透 ', 'event_list': [{'trigger': ['SoftHardwareFault', 50, '上电'], 'argument': [['Subject', 40, 'pRRU模块'], ['State', 46, '无法正常']]}, {'trigger': ['SoftHardwareFault', 31, '被腐蚀'], 'argument': [['Subject', 25, '模块内部器件'], ['State', 34, '短路失效']]}, {'trigger': ['ExternalFault', 12, '存在白色膏装腐蚀物'], 'argument': []}]}
+
+0.857, true_num: 3, pred_num: 4, gt_num: 3
+预测：{'text': '部分参数优化 对于不符合指标考核要求的业务进行剔除，', 'event_list': [{'trigger': ['SetMachine', 4, '优化'], 'argument': [['Object', 2, '参数']]}, {'trigger': ['Operate', 23, '剔除'], 'argument': [['Object', 19, '业务']]}], 'doc_id': 0}
+答案：{'text': '部分参数优化 对于不符合指标考核要求的业务进行剔除，', 'event_list': [{'trigger': ['SetMachine', 4, '优化'], 'argument': [['Object', 2, '参数']]}, {'trigger': ['Operate', 23, '剔除'], 'argument': []}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '发现三星Note9终端仅在站点153发生频繁重选，', 'event_list': [{'trigger': ['SoftHardwareFault', 22, '重选'], 'argument': [['State', 20, '频繁']]}], 'doc_id': 0}
+答案：{'text': '发现三星Note9终端仅在站点153发生频繁重选，', 'event_list': [{'trigger': ['SoftHardwareFault', 22, '重选'], 'argument': [['Subject', 2, '三星Note9终端'], ['State', 20, '频繁']]}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 2
+预测：{'text': ' 会导致较大的多普勒频率偏移，', 'event_list': [{'trigger': ['IndexFault', 12, '偏移'], 'argument': [['Index', 7, '多普勒频率']]}], 'doc_id': 0}
+答案：{'text': ' 会导致较大的多普勒频率偏移，', 'event_list': [{'trigger': ['IndexFault', 4, '较大'], 'argument': [['Index', 7, '多普勒频率偏移']]}]}
+
+0.857, true_num: 3, pred_num: 4, gt_num: 3
+预测：{'text': '以5S为单位来检测小区不可用，', 'event_list': [{'trigger': ['Check', 7, '检测'], 'argument': [['Object', 9, '小区']]}, {'trigger': ['SoftHardwareFault', 11, '不可用'], 'argument': [['Subject', 9, '小区']]}], 'doc_id': 0}
+答案：{'text': '以5S为单位来检测小区不可用，', 'event_list': [{'trigger': ['Check', 7, '检测'], 'argument': [['Object', 9, '小区']]}, {'trigger': ['SoftHardwareFault', 11, '不可用'], 'argument': []}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 2
+预测：{'text': '1)如果是乱序引起的重传，', 'event_list': [], 'doc_id': 0}
+答案：{'text': '1)如果是乱序引起的重传，', 'event_list': [{'trigger': ['SoftHardwareFault', 5, '乱序'], 'argument': []}, {'trigger': ['SoftHardwareFault', 10, '重传'], 'argument': []}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '2、MR测量数据分析 通过对该基站下3个小区MR数据分析发现，', 'event_list': [{'trigger': ['Check', 8, '分析'], 'argument': [['Object', 4, '测量数据']]}, {'trigger': ['Check', 26, '分析'], 'argument': [['Object', 20, '小区MR数据']]}], 'doc_id': 0}
+答案：{'text': '2、MR测量数据分析 通过对该基站下3个小区MR数据分析发现，', 'event_list': [{'trigger': ['Check', 8, '分析'], 'argument': [['Object', 2, 'MR测量数据']]}, {'trigger': ['Check', 26, '分析'], 'argument': [['Object', 20, '小区MR数据']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': 'a、重配置失败导致重建；', 'event_list': [{'trigger': ['SettingFault', 2, '重配置'], 'argument': [['State', 5, '失败']]}], 'doc_id': 0}
+答案：{'text': 'a、重配置失败导致重建；', 'event_list': [{'trigger': ['SettingFault', 2, '重配置'], 'argument': [['State', 5, '失败']]}, {'trigger': ['SoftHardwareFault', 9, '重建'], 'argument': []}]}
+
+0, true_num: 0, pred_num: 4, gt_num: 2
+预测：{'text': ' 然后保存、关闭配置文件，', 'event_list': [{'trigger': ['Operate', 3, '保存'], 'argument': [['Object', 8, '配置文件']]}, {'trigger': ['Operate', 6, '关闭'], 'argument': [['Object', 8, '配置文件']]}], 'doc_id': 0}
+答案：{'text': ' 然后保存、关闭配置文件，', 'event_list': [{'trigger': ['Operate', 3, '保存、关闭'], 'argument': [['Object', 8, '配置文件']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 1
+预测：{'text': '37出现开路：', 'event_list': [], 'doc_id': 0}
+答案：{'text': '37出现开路：', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '开路'], 'argument': []}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': '该问题是由于一线帧偏置配置错误导致TDD系统内干扰 Resolution DetailsSolution Analysis', 'event_list': [{'trigger': ['SettingFault', 11, '配置'], 'argument': [['Setting', 8, '帧偏置'], ['State', 13, '错误']]}, {'trigger': ['SoftHardwareFault', 23, '干扰'], 'argument': [['Subject', 17, 'TDD系统']]}], 'doc_id': 0}
+答案：{'text': '该问题是由于一线帧偏置配置错误导致TDD系统内干扰 Resolution DetailsSolution Analysis', 'event_list': [{'trigger': ['SettingFault', 11, '配置'], 'argument': [['Setting', 6, '一线帧偏置'], ['State', 13, '错误']]}, {'trigger': ['SoftHardwareFault', 23, '干扰'], 'argument': [['Subject', 17, 'TDD系统']]}]}
+
+0.857, true_num: 3, pred_num: 4, gt_num: 3
+预测：{'text': '更换设备后再次进行了业务验证，', 'event_list': [{'trigger': ['SetMachine', 0, '更换'], 'argument': [['Object', 2, '设备']]}, {'trigger': ['Check', 12, '验证'], 'argument': [['Object', 10, '业务']]}], 'doc_id': 0}
+答案：{'text': '更换设备后再次进行了业务验证，', 'event_list': [{'trigger': ['SetMachine', 0, '更换'], 'argument': [['Object', 2, '设备']]}, {'trigger': ['Check', 12, '验证'], 'argument': []}]}
+
+0, true_num: 0, pred_num: 3, gt_num: 2
+预测：{'text': '因UE不支持UM模式，', 'event_list': [{'trigger': ['SoftHardwareFault', 3, '不支持'], 'argument': [['Subject', 1, 'UE'], ['Object', 6, 'UM模式']]}], 'doc_id': 0}
+答案：{'text': '因UE不支持UM模式，', 'event_list': [{'trigger': ['SettingFault', 3, '不支持'], 'argument': [['Owner', 1, 'UE']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' 干扰在网元重新启动后消失。', 'event_list': [{'trigger': ['Operate', 6, '重新启动'], 'argument': [['Owner', 4, '网元']]}], 'doc_id': 0}
+答案：{'text': ' 干扰在网元重新启动后消失。', 'event_list': [{'trigger': ['Operate', 6, '重新启动'], 'argument': [['Object', 4, '网元']]}]}
+
+0.4, true_num: 2, pred_num: 5, gt_num: 5
+预测：{'text': '且问题都是UE无应答而导致RRC连接建立失败，', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '无应答'], 'argument': [['Subject', 5, 'UE']]}, {'trigger': ['SoftHardwareFault', 16, '连接建立'], 'argument': [['State', 20, '失败'], ['Subject', 13, 'RRC连接']]}], 'doc_id': 0}
+答案：{'text': '且问题都是UE无应答而导致RRC连接建立失败，', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '无应答'], 'argument': [['Subject', 5, 'UE']]}, {'trigger': ['SoftHardwareFault', 18, '建立'], 'argument': [['Subject', 13, 'RRC连接'], ['State', 20, '失败']]}]}
+
+0.889, true_num: 4, pred_num: 5, gt_num: 4
+预测：{'text': '但是切换未成功导致源小区20s超时异常释放。', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '切换'], 'argument': [['State', 4, '未成功']]}, {'trigger': ['SoftHardwareFault', 19, '释放'], 'argument': [['State', 17, '异常'], ['Subject', 9, '源小区']]}], 'doc_id': 0}
+答案：{'text': '但是切换未成功导致源小区20s超时异常释放。', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '切换'], 'argument': [['State', 4, '未成功']]}, {'trigger': ['SoftHardwareFault', 19, '释放'], 'argument': [['State', 17, '异常']]}]}
+
+0.25, true_num: 1, pred_num: 4, gt_num: 4
+预测：{'text': '修改为4M 因为应用程序都是在启动时读取配置文件，', 'event_list': [{'trigger': ['SetMachine', 0, '修改'], 'argument': [['FinalState', 3, '4M']]}, {'trigger': ['Operate', 18, '读'], 'argument': [['Object', 20, '配置文件']]}], 'doc_id': 0}
+答案：{'text': '修改为4M 因为应用程序都是在启动时读取配置文件，', 'event_list': [{'trigger': ['SetMachine', 0, '修改'], 'argument': [['FinalState', 2, '为4M']]}, {'trigger': ['Operate', 18, '读取'], 'argument': [['Object', 20, '配置文件']]}]}
+
+0.667, true_num: 2, pred_num: 3, gt_num: 3
+预测：{'text': ' 用户接入会出现无线资源分配失败，', 'event_list': [{'trigger': ['SettingFault', 12, '分配'], 'argument': [['State', 14, '失败'], ['Setting', 8, '无线资源']]}], 'doc_id': 0}
+答案：{'text': ' 用户接入会出现无线资源分配失败，', 'event_list': [{'trigger': ['SettingFault', 12, '分配'], 'argument': [['Setting', 8, '无线'], ['State', 14, '失败']]}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 2
+预测：{'text': ' 也可以发现此确实有导出配置文件的操作：', 'event_list': [{'trigger': ['Operate', 10, '导出'], 'argument': [['Object', 12, '配置文件']]}], 'doc_id': 0}
+答案：{'text': ' 也可以发现此确实有导出配置文件的操作：', 'event_list': [{'trigger': ['CollectData', 10, '导出'], 'argument': [['Data', 12, '配置文件']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' 对影响下载速率的几个关键参数进行核查没有发现异常，', 'event_list': [{'trigger': ['Check', 17, '核查'], 'argument': [['Object', 11, '关键参数']]}], 'doc_id': 0}
+答案：{'text': ' 对影响下载速率的几个关键参数进行核查没有发现异常，', 'event_list': [{'trigger': ['Check', 17, '核查'], 'argument': [['Object', 4, '下载速率的几个关键参数']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '由于公安伪基站导致切换入成功率低问题', 'event_list': [{'trigger': ['IndexFault', 15, '低'], 'argument': [['Index', 9, '切换入成功率']]}], 'doc_id': 0}
+答案：{'text': '由于公安伪基站导致切换入成功率低问题', 'event_list': [{'trigger': ['IndexFault', 15, '低'], 'argument': [['Index', 9, '切换入成功率']]}, {'trigger': ['SoftHardwareFault', 4, '伪基站'], 'argument': []}]}
+
+0.727, true_num: 4, pred_num: 4, gt_num: 7
+预测：{'text': '现场排查发现RHUB掉电且重新上电无法启动。', 'event_list': [{'trigger': ['SoftHardwareFault', 10, '掉电'], 'argument': [['Subject', 6, 'RHUB']]}, {'trigger': ['SoftHardwareFault', 19, '启动'], 'argument': [['State', 17, '无法']]}], 'doc_id': 0}
+答案：{'text': '现场排查发现RHUB掉电且重新上电无法启动。', 'event_list': [{'trigger': ['SoftHardwareFault', 10, '掉电'], 'argument': [['Subject', 6, 'RHUB']]}, {'trigger': ['SoftHardwareFault', 19, '启动'], 'argument': [['State', 17, '无法'], ['Owner', 6, 'RHUB']]}, {'trigger': ['Operate', 13, '重新上电'], 'argument': [['Owner', 6, 'RHUB']]}]}
+
+0.8, true_num: 2, pred_num: 3, gt_num: 2
+预测：{'text': ' 重配消息处理的MeasId超过32个，', 'event_list': [{'trigger': ['IndexFault', 14, '超过'], 'argument': [['Index', 8, 'MeasId'], ['Index', 1, '重配']]}], 'doc_id': 0}
+答案：{'text': ' 重配消息处理的MeasId超过32个，', 'event_list': [{'trigger': ['IndexFault', 14, '超过'], 'argument': [['Index', 8, 'MeasId']]}]}
+
+0.889, true_num: 4, pred_num: 4, gt_num: 5
+预测：{'text': '由于IMS异常发送BYE消息导致释放。', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '发送'], 'argument': [['State', 5, '异常'], ['Object', 9, 'BYE消息'], ['Subject', 2, 'IMS']]}], 'doc_id': 0}
+答案：{'text': '由于IMS异常发送BYE消息导致释放。', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '发送'], 'argument': [['Subject', 2, 'IMS'], ['State', 5, '异常'], ['Object', 9, 'BYE消息']]}, {'trigger': ['SoftHardwareFault', 16, '释放'], 'argument': []}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '微波传输设备受限导致大于1446Byte的包传输过程中存在丢包。', 'event_list': [{'trigger': ['SettingFault', 6, '受限'], 'argument': [['Owner', 0, '微波传输设备']]}], 'doc_id': 0}
+答案：{'text': '微波传输设备受限导致大于1446Byte的包传输过程中存在丢包。', 'event_list': [{'trigger': ['SettingFault', 6, '受限'], 'argument': [['Owner', 0, '微波传输设备']]}, {'trigger': ['SoftHardwareFault', 29, '丢包'], 'argument': []}]}
+
+0.5, true_num: 2, pred_num: 4, gt_num: 4
+预测：{'text': 'SFN小区物理小区数量配置与实际不符导致小区异常', 'event_list': [{'trigger': ['SettingFault', 16, '不符'], 'argument': [['Setting', 0, 'SFN小区物理小区数量配置']]}, {'trigger': ['SoftHardwareFault', 22, '异常'], 'argument': [['Subject', 20, '小区']]}], 'doc_id': 0}
+答案：{'text': 'SFN小区物理小区数量配置与实际不符导致小区异常', 'event_list': [{'trigger': ['SettingFault', 14, '实际不符'], 'argument': [['Setting', 0, 'SFN小区物理小区数量配置']]}, {'trigger': ['SoftHardwareFault', 22, '异常'], 'argument': [['Subject', 20, '小区']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': ' 从配置分析可以看到上报告警的16个pRRU分别配置在246和247框RHUB， 在3号链上：', 'event_list': [{'trigger': ['Check', 4, '分析'], 'argument': [['Object', 2, '配置']]}, {'trigger': ['SetMachine', 24, '配置'], 'argument': [['Object', 18, 'p']]}], 'doc_id': 0}
+答案：{'text': ' 从配置分析可以看到上报告警的16个pRRU分别配置在246和247框RHUB， 在3号链上：', 'event_list': [{'trigger': ['Check', 4, '分析'], 'argument': [['Object', 2, '配置']]}, {'trigger': ['SetMachine', 24, '配置'], 'argument': [['Object', 18, 'pRRU']]}]}
+
+0.857, true_num: 6, pred_num: 7, gt_num: 7
+预测：{'text': '该基站没有打开2G的csfb和配置2G配置 终端能力不支持3G：', 'event_list': [{'trigger': ['SoftHardwareFault', 5, '打开'], 'argument': [['Object', 7, '2G的csfb'], ['Subject', 1, '基站'], ['State', 3, '没有']]}, {'trigger': ['SoftHardwareFault', 26, '不支持'], 'argument': [['Subject', 22, '终端能力'], ['Object', 29, '3G']]}], 'doc_id': 0}
+答案：{'text': '该基站没有打开2G的csfb和配置2G配置 终端能力不支持3G：', 'event_list': [{'trigger': ['SoftHardwareFault', 5, '打开'], 'argument': [['Subject', 1, '基站'], ['State', 3, '没有'], ['Object', 7, '2G的csfb和配置2G配置']]}, {'trigger': ['SoftHardwareFault', 26, '不支持'], 'argument': [['Subject', 22, '终端能力'], ['Object', 29, '3G']]}]}
+
+0.857, true_num: 3, pred_num: 3, gt_num: 4
+预测：{'text': ' 3. 1UE只能回落GSM，', 'event_list': [{'trigger': ['SoftHardwareFault', 9, '回落'], 'argument': [['State', 7, '只能'], ['Object', 11, 'GSM']]}], 'doc_id': 0}
+答案：{'text': ' 3. 1UE只能回落GSM，', 'event_list': [{'trigger': ['SoftHardwareFault', 9, '回落'], 'argument': [['Object', 11, 'GSM'], ['Subject', 5, 'UE'], ['State', 7, '只能']]}]}
+
+0.4, true_num: 1, pred_num: 3, gt_num: 2
+预测：{'text': '4、该定时器180s即感知延时大小， 查看不同终端该参数有所差别， 延时感知与该参数配置相关。', 'event_list': [{'trigger': ['Check', 19, '查看'], 'argument': [['Object', 23, '终端'], ['Object', 26, '参数']]}], 'doc_id': 0}
+答案：{'text': '4、该定时器180s即感知延时大小， 查看不同终端该参数有所差别， 延时感知与该参数配置相关。', 'event_list': [{'trigger': ['Check', 19, '查看'], 'argument': [['Object', 21, '不同终端该参数']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' UE进行MR测量后，', 'event_list': [{'trigger': ['Check', 7, '测量'], 'argument': [['Object', 5, 'MR']]}], 'doc_id': 0}
+答案：{'text': ' UE进行MR测量后，', 'event_list': [{'trigger': ['Check', 7, '测量'], 'argument': [['Object', 1, 'UE']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': ' 终端占用D频段老干部活动中心进行VOLTE通话，', 'event_list': [{'trigger': ['SoftHardwareFault', 3, '占用'], 'argument': [['Subject', 1, '终端']]}], 'doc_id': 0}
+答案：{'text': ' 终端占用D频段老干部活动中心进行VOLTE通话，', 'event_list': [{'trigger': ['SoftHardwareFault', 3, '占用'], 'argument': [['Subject', 1, '终端'], ['Object', 5, 'D频段老干部活动中心']]}]}
+
+0.667, true_num: 2, pred_num: 3, gt_num: 3
+预测：{'text': 'CSFB回落到3G，', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '回落'], 'argument': [['Object', 7, '3G'], ['Subject', 1, 'SFB']]}], 'doc_id': 0}
+答案：{'text': 'CSFB回落到3G，', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '回落'], 'argument': [['Subject', 0, 'CSFB'], ['Object', 7, '3G']]}]}
+
+0.833, true_num: 5, pred_num: 6, gt_num: 6
+预测：{'text': 'DHCPRelay到基站的路由配置异常导致DHCPRelay开站失败', 'event_list': [{'trigger': ['SettingFault', 15, '配置'], 'argument': [['Owner', 10, '基站的路由'], ['State', 17, '异常']]}, {'trigger': ['SoftHardwareFault', 30, '开站'], 'argument': [['State', 32, '失败'], ['Subject', 21, 'DHCPRelay']]}], 'doc_id': 0}
+答案：{'text': 'DHCPRelay到基站的路由配置异常导致DHCPRelay开站失败', 'event_list': [{'trigger': ['SettingFault', 15, '配置'], 'argument': [['Owner', 0, 'DHCPRelay到基站的路由'], ['State', 17, '异常']]}, {'trigger': ['SoftHardwareFault', 30, '开站'], 'argument': [['Subject', 21, 'DHCPRelay'], ['State', 32, '失败']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '有可能因为数据粒度过大的原因而出现漏采的现象，', 'event_list': [{'trigger': ['IndexFault', 9, '过大'], 'argument': [['Index', 5, '数据粒度']]}], 'doc_id': 0}
+答案：{'text': '有可能因为数据粒度过大的原因而出现漏采的现象，', 'event_list': [{'trigger': ['IndexFault', 9, '过大'], 'argument': [['Index', 5, '数据粒度']]}, {'trigger': ['SoftHardwareFault', 17, '漏采'], 'argument': []}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': '1、2小区RRU下直连蘑菇头天线测试， 测试结果：', 'event_list': [{'trigger': ['Check', 16, '测试'], 'argument': [['Object', 9, '直连蘑菇头天线']]}], 'doc_id': 0}
+答案：{'text': '1、2小区RRU下直连蘑菇头天线测试， 测试结果：', 'event_list': [{'trigger': ['Check', 16, '测试'], 'argument': [['Object', 11, '蘑菇头天线']]}]}
+
+0.75, true_num: 3, pred_num: 3, gt_num: 5
+预测：{'text': '测量频点下发问题导致的不切换进而导致弱覆盖。', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '下发'], 'argument': [['Subject', 0, '测量频点'], ['State', 6, '问题']]}], 'doc_id': 0}
+答案：{'text': '测量频点下发问题导致的不切换进而导致弱覆盖。', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '下发'], 'argument': [['Subject', 0, '测量频点'], ['State', 6, '问题']]}, {'trigger': ['SoftHardwareFault', 11, '不切换'], 'argument': []}, {'trigger': ['SoftHardwareFault', 18, '弱覆盖'], 'argument': []}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': '小区功率配置不规范导致出现本地小区能力下降告警', 'event_list': [{'trigger': ['SettingFault', 4, '配置'], 'argument': [['State', 6, '不规范'], ['Setting', 0, '小区功率']]}, {'trigger': ['IndexFault', 19, '下降'], 'argument': [['Index', 13, '本地小区能力']]}], 'doc_id': 0}
+答案：{'text': '小区功率配置不规范导致出现本地小区能力下降告警', 'event_list': [{'trigger': ['SettingFault', 4, '配置'], 'argument': [['Setting', 0, '小区功率'], ['State', 6, '不规范']]}, {'trigger': ['IndexFault', 19, '下降'], 'argument': [['Index', 15, '小区能力']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': '小区半径设置过小导致临湘市定湖新湖小区2切换入成功率低；', 'event_list': [{'trigger': ['SettingFault', 4, '设置'], 'argument': [['State', 6, '过小'], ['Setting', 0, '小区半径']]}, {'trigger': ['IndexFault', 26, '低'], 'argument': [['Index', 17, '小区']]}], 'doc_id': 0}
+答案：{'text': '小区半径设置过小导致临湘市定湖新湖小区2切换入成功率低；', 'event_list': [{'trigger': ['SettingFault', 4, '设置'], 'argument': [['Setting', 0, '小区半径'], ['State', 6, '过小']]}, {'trigger': ['IndexFault', 26, '低'], 'argument': [['Index', 17, '小区2切换入成功率']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': 'M2000主从部署导致开站失败', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '部署'], 'argument': [['Owner', 0, 'M2000主从']]}, {'trigger': ['SoftHardwareFault', 11, '开站'], 'argument': [['State', 13, '失败']]}], 'doc_id': 0}
+答案：{'text': 'M2000主从部署导致开站失败', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '部署'], 'argument': [['Subject', 0, 'M2000']]}, {'trigger': ['SoftHardwareFault', 11, '开站'], 'argument': [['State', 13, '失败']]}]}
+
+0.571, true_num: 2, pred_num: 4, gt_num: 3
+预测：{'text': '需要将BBU的电源模块和风扇模块升级为2块UPEUc+1块FANc。', 'event_list': [{'trigger': ['SetMachine', 16, '升级'], 'argument': [['Object', 3, 'BBU的电源模块和风扇模块'], ['FinalState', 21, 'UPEUc+1块FANc'], ['FinalState', 19, '2']]}], 'doc_id': 0}
+答案：{'text': '需要将BBU的电源模块和风扇模块升级为2块UPEUc+1块FANc。', 'event_list': [{'trigger': ['SetMachine', 16, '升级'], 'argument': [['Object', 3, 'BBU的电源模块和风扇模块'], ['FinalState', 19, '2块UPEUc+1块FANc']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 2
+预测：{'text': '发生掉话导致断流；', 'event_list': [], 'doc_id': 0}
+答案：{'text': '发生掉话导致断流；', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '掉话'], 'argument': []}, {'trigger': ['SoftHardwareFault', 6, '断流'], 'argument': []}]}
+
+0.333, true_num: 1, pred_num: 2, gt_num: 4
+预测：{'text': '核心网侧修改了一个 VPLMN的参数，', 'event_list': [{'trigger': ['SetMachine', 4, '修改'], 'argument': [['Object', 9, ' VPLMN的参数']]}], 'doc_id': 0}
+答案：{'text': '核心网侧修改了一个 VPLMN的参数，', 'event_list': [{'trigger': ['SetMachine', 4, '修改'], 'argument': [['Object', 10, 'VPLMN的参数'], ['InitialState', 22, 'TRUE'], ['FinalState', 30, 'FALSE']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '3. 在网络侧删除C网络3G小区的P网LTE邻频点，', 'event_list': [{'trigger': ['Operate', 7, '删除'], 'argument': [['Object', 9, 'C网络3G小区的P网LTE邻频点']]}], 'doc_id': 0}
+答案：{'text': '3. 在网络侧删除C网络3G小区的P网LTE邻频点，', 'event_list': [{'trigger': ['Operate', 7, '删除'], 'argument': [['Owner', 4, '网络侧'], ['Object', 9, 'C网络3G小区的P网LTE邻频点']]}]}
+
+0.8, true_num: 4, pred_num: 4, gt_num: 6
+预测：{'text': '7、 下行速率掉0与TAU reject强相关， 尝试更换MIFI终端复现问题。', 'event_list': [{'trigger': ['IndexFault', 7, '掉0'], 'argument': [['Index', 3, '下行速率']]}, {'trigger': ['SetMachine', 27, '更换'], 'argument': [['Object', 29, 'MIFI终端']]}], 'doc_id': 0}
+答案：{'text': '7、 下行速率掉0与TAU reject强相关， 尝试更换MIFI终端复现问题。', 'event_list': [{'trigger': ['IndexFault', 7, '掉0'], 'argument': [['Index', 3, '下行速率']]}, {'trigger': ['SoftHardwareFault', 14, 'rejec'], 'argument': [['Subject', 10, 'TAU']]}, {'trigger': ['SetMachine', 27, '更换'], 'argument': [['Object', 29, 'MIFI终端']]}]}
+
+0.667, true_num: 4, pred_num: 6, gt_num: 6
+预测：{'text': 'USN 不响应HO 导致CSFB准备失败', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '不响应'], 'argument': [['Object', 7, 'HO '], ['Subject', 0, 'USN ']]}, {'trigger': ['SoftHardwareFault', 16, '准备'], 'argument': [['Subject', 12, 'CSFB'], ['State', 18, '失败']]}], 'doc_id': 0}
+答案：{'text': 'USN 不响应HO 导致CSFB准备失败', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '不响应'], 'argument': [['Subject', 0, 'USN'], ['Object', 7, 'HO']]}, {'trigger': ['SoftHardwareFault', 16, '准备'], 'argument': [['Subject', 12, 'CSFB'], ['State', 18, '失败']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '防止异常TOP终端导致KPI指标恶化。', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '异常'], 'argument': [['Object', 4, 'TOP终端']]}, {'trigger': ['IndexFault', 16, '恶化'], 'argument': [['Index', 11, 'KPI指标']]}], 'doc_id': 0}
+答案：{'text': '防止异常TOP终端导致KPI指标恶化。', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '异常'], 'argument': [['Object', 2, '异常TOP终端']]}, {'trigger': ['IndexFault', 16, '恶化'], 'argument': [['Index', 11, 'KPI指标']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': '核查爱立信基站数据，', 'event_list': [{'trigger': ['Check', 0, '核查'], 'argument': [['Object', 2, '爱立信基站数据']]}], 'doc_id': 0}
+答案：{'text': '核查爱立信基站数据，', 'event_list': [{'trigger': ['Check', 0, '核查'], 'argument': [['Object', 5, '基站数据']]}]}
+
+0, true_num: 0, pred_num: 4, gt_num: 4
+预测：{'text': '3、将站点从12.1版本升级到13.1版本', 'event_list': [{'trigger': ['SetMachine', 12, '升级'], 'argument': [['InitialState', 6, '12.1版本'], ['Object', 3, '站点'], ['FinalState', 15, '13.1版本']]}], 'doc_id': 0}
+答案：{'text': '3、将站点从12.1版本升级到13.1版本', 'event_list': [{'trigger': ['SetMachine', 12, '升级到'], 'argument': [['Object', 3, '站点'], ['InitialState', 6, '12.1版本'], ['FinalState', 15, '13.1版本']]}]}
+
+0.444, true_num: 2, pred_num: 6, gt_num: 3
+预测：{'text': 'C国A局点个别基站的X2链路频繁sctp闪断，', 'event_list': [{'trigger': ['SoftHardwareFault', 16, 'sctp'], 'argument': [['State', 14, '频繁'], ['Owner', 7, '基站的X2链路']]}, {'trigger': ['SoftHardwareFault', 20, '闪断'], 'argument': [['State', 14, '频繁'], ['Subject', 7, '基站的X2链路']]}], 'doc_id': 0}
+答案：{'text': 'C国A局点个别基站的X2链路频繁sctp闪断，', 'event_list': [{'trigger': ['SoftHardwareFault', 20, '闪断'], 'argument': [['Subject', 10, 'X2链路'], ['State', 14, '频繁']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': 'M2000主备方式组网导致IFTS日志无法采集', 'event_list': [{'trigger': ['SoftHardwareFault', 9, '组网'], 'argument': [['Subject', 0, 'M2000主备方式']]}, {'trigger': ['SoftHardwareFault', 21, '采集'], 'argument': [['State', 19, '无法'], ['Subject', 13, 'IFTS日志']]}], 'doc_id': 0}
+答案：{'text': 'M2000主备方式组网导致IFTS日志无法采集', 'event_list': [{'trigger': ['SoftHardwareFault', 9, '组网'], 'argument': [['Subject', 0, 'M2000主备方式']]}, {'trigger': ['SoftHardwareFault', 21, '采集'], 'argument': [['Object', 13, 'IFTS日志'], ['State', 19, '无法']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': ' MME无法找到该PLMN对应的RNC，', 'event_list': [{'trigger': ['SoftHardwareFault', 6, '找到'], 'argument': [['State', 4, '无法'], ['Object', 9, 'PLMN对应的RNC'], ['Subject', 1, 'MME']]}], 'doc_id': 0}
+答案：{'text': ' MME无法找到该PLMN对应的RNC，', 'event_list': [{'trigger': ['SoftHardwareFault', 6, '找到'], 'argument': [['Subject', 1, 'MME'], ['State', 4, '无法'], ['Object', 16, 'RNC']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': 'RRC连接拒绝原因为等待超时。', 'event_list': [{'trigger': ['SoftHardwareFault', 3, '连接'], 'argument': [['Subject', 0, 'RRC'], ['State', 5, '拒绝']]}, {'trigger': ['SoftHardwareFault', 10, '等待'], 'argument': [['State', 12, '超时']]}], 'doc_id': 0}
+答案：{'text': 'RRC连接拒绝原因为等待超时。', 'event_list': [{'trigger': ['SoftHardwareFault', 3, '连接'], 'argument': [['Subject', 0, 'RRC连接'], ['State', 5, '拒绝']]}, {'trigger': ['SoftHardwareFault', 10, '等待'], 'argument': [['State', 12, '超时']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '5、执行DSP CPRILBR查询5号小区所在的CPRI链路上的速率能力，', 'event_list': [{'trigger': ['Operate', 2, '执行'], 'argument': [['Object', 4, 'DSP CPRILB']]}, {'trigger': ['Check', 15, '查询'], 'argument': [['Object', 24, 'CPRI链路上的速率能力']]}], 'doc_id': 0}
+答案：{'text': '5、执行DSP CPRILBR查询5号小区所在的CPRI链路上的速率能力，', 'event_list': [{'trigger': ['Operate', 2, '执行'], 'argument': [['Object', 4, 'DSP CPRILBR']]}, {'trigger': ['Check', 15, '查询'], 'argument': [['Object', 24, 'CPRI链路上的速率能力']]}]}
+
+0.571, true_num: 2, pred_num: 4, gt_num: 3
+预测：{'text': ' 相当于此天线的能量配置极低，', 'event_list': [{'trigger': ['SettingFault', 10, '配置'], 'argument': [['Setting', 5, '天线的能量']]}, {'trigger': ['SettingFault', 12, '极低'], 'argument': [['Setting', 5, '天线的能量']]}], 'doc_id': 0}
+答案：{'text': ' 相当于此天线的能量配置极低，', 'event_list': [{'trigger': ['SettingFault', 10, '配置'], 'argument': [['Setting', 5, '天线的能量'], ['State', 12, '极低']]}]}
+
+0.714, true_num: 5, pred_num: 7, gt_num: 7
+预测：{'text': '由于高铁高返特性开启后软件缺陷导致低速用户被误返至高铁专网小区', 'event_list': [{'trigger': ['SetMachine', 8, '开'], 'argument': [['Object', 2, '高铁高返特性']]}, {'trigger': ['SoftHardwareFault', 13, '缺陷'], 'argument': [['Subject', 11, '软件']]}, {'trigger': ['SoftHardwareFault', 22, '误返'], 'argument': [['Subject', 17, '低速用户'], ['Object', 25, '高铁专网小区']]}], 'doc_id': 0}
+答案：{'text': '由于高铁高返特性开启后软件缺陷导致低速用户被误返至高铁专网小区', 'event_list': [{'trigger': ['SetMachine', 8, '开启'], 'argument': [['Object', 2, '高铁高返特性']]}, {'trigger': ['SoftHardwareFault', 13, '缺陷'], 'argument': [['Subject', 11, '软件']]}, {'trigger': ['SoftHardwareFault', 22, '误返'], 'argument': [['Subject', 17, '低速用户'], ['Object', 25, '高铁专网小区']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 2
+预测：{'text': ' 确认激活起来中，', 'event_list': [], 'doc_id': 0}
+答案：{'text': ' 确认激活起来中，', 'event_list': [{'trigger': ['Check', 1, '确认'], 'argument': [['Object', 3, '激活起来中']]}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 2
+预测：{'text': '2、后台统计分析 邻区对统计发现舞蹈学校灯杆-HLHA切往恒胜摩托灯杆-HLHA/B/C小区无切换请求次数， 如下表所示：', 'event_list': [{'trigger': ['Check', 6, '分析'], 'argument': [['Object', 2, '后台统计']]}], 'doc_id': 0}
+答案：{'text': '2、后台统计分析 邻区对统计发现舞蹈学校灯杆-HLHA切往恒胜摩托灯杆-HLHA/B/C小区无切换请求次数， 如下表所示：', 'event_list': [{'trigger': ['Check', 4, '统计分析'], 'argument': [['Object', 2, '后台']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': '发现所有的失败均为“UE无应答而导致RRC连接建立失败”：', 'event_list': [{'trigger': ['SoftHardwareFault', 12, '无应答'], 'argument': [['Subject', 9, '“UE']]}, {'trigger': ['SoftHardwareFault', 21, '连接建立'], 'argument': [['State', 25, '失败'], ['Subject', 18, 'RRC连接']]}], 'doc_id': 0}
+答案：{'text': '发现所有的失败均为“UE无应答而导致RRC连接建立失败”：', 'event_list': [{'trigger': ['SoftHardwareFault', 12, '无应答'], 'argument': [['Subject', 10, 'UE']]}, {'trigger': ['SoftHardwareFault', 21, '连接建立'], 'argument': [['Subject', 18, 'RRC连接'], ['State', 25, '失败']]}]}
+
+0.857, true_num: 3, pred_num: 3, gt_num: 4
+预测：{'text': '也说明MME异常释放是现网导致掉话的第一原因：', 'event_list': [{'trigger': ['SoftHardwareFault', 8, '释放'], 'argument': [['State', 6, '异常'], ['Subject', 3, 'MME']]}], 'doc_id': 0}
+答案：{'text': '也说明MME异常释放是现网导致掉话的第一原因：', 'event_list': [{'trigger': ['SoftHardwareFault', 8, '释放'], 'argument': [['Subject', 3, 'MME'], ['State', 6, '异常']]}, {'trigger': ['SoftHardwareFault', 15, '掉话'], 'argument': []}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 2
+预测：{'text': ' 掉话大幅减少，', 'event_list': [], 'doc_id': 0}
+答案：{'text': ' 掉话大幅减少，', 'event_list': [{'trigger': ['SoftHardwareFault', 1, '掉话'], 'argument': [['State', 5, '减少']]}]}
+
+0.833, true_num: 5, pred_num: 5, gt_num: 7
+预测：{'text': '对命令参数理解错误造成配置设备到U2000路由命令下发失败', 'event_list': [{'trigger': ['SoftHardwareFault', 5, '理解'], 'argument': [['State', 7, '错误']]}, {'trigger': ['SoftHardwareFault', 25, '下发'], 'argument': [['Subject', 16, 'U2000路由命令'], ['State', 27, '失败']]}], 'doc_id': 0}
+答案：{'text': '对命令参数理解错误造成配置设备到U2000路由命令下发失败', 'event_list': [{'trigger': ['SoftHardwareFault', 5, '理解'], 'argument': [['Subject', 1, '命令参数'], ['State', 7, '错误'], ['Owner', 11, '配置设备']]}, {'trigger': ['SoftHardwareFault', 25, '下发'], 'argument': [['Subject', 16, 'U2000路由命令'], ['State', 27, '失败']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' 空口比较差。', 'event_list': [{'trigger': ['IndexFault', 3, '比较差'], 'argument': [['Index', 1, '空口']]}], 'doc_id': 0}
+答案：{'text': ' 空口比较差。', 'event_list': [{'trigger': ['IndexFault', 3, '比较差'], 'argument': [['Index', 1, '空口比']]}]}
+
+0.857, true_num: 3, pred_num: 3, gt_num: 4
+预测：{'text': '或者其他参数配置错误导致的拥塞。', 'event_list': [{'trigger': ['SettingFault', 6, '配置'], 'argument': [['Setting', 4, '参数'], ['State', 8, '错误']]}], 'doc_id': 0}
+答案：{'text': '或者其他参数配置错误导致的拥塞。', 'event_list': [{'trigger': ['SettingFault', 6, '配置'], 'argument': [['Setting', 4, '参数'], ['State', 8, '错误']]}, {'trigger': ['SoftHardwareFault', 13, '拥塞'], 'argument': []}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '终端兼容性问题导致 VOLTE QCI1拆话率高', 'event_list': [{'trigger': ['SettingFault', 5, '问题'], 'argument': [['Setting', 0, '终端兼容性']]}, {'trigger': ['IndexFault', 23, '高'], 'argument': [['Index', 9, ' VOLTE QCI1拆话率']]}], 'doc_id': 0}
+答案：{'text': '终端兼容性问题导致 VOLTE QCI1拆话率高', 'event_list': [{'trigger': ['SettingFault', 5, '问题'], 'argument': [['Setting', 0, '终端兼容性']]}, {'trigger': ['IndexFault', 23, '高'], 'argument': [['Index', 10, 'VOLTE QCI1拆话率']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': '    查询站点License分配情况，', 'event_list': [{'trigger': ['Check', 4, '查询'], 'argument': [['Object', 6, '站点License分配情况']]}], 'doc_id': 0}
+答案：{'text': '    查询站点License分配情况，', 'event_list': [{'trigger': ['Check', 4, '查询'], 'argument': [['Object', 6, '站点License']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '5、此时怀疑是由于X2口基站的小区未激活导致该告警，', 'event_list': [{'trigger': ['SoftHardwareFault', 17, '未激活'], 'argument': [['Subject', 9, 'X2口基站的小区']]}], 'doc_id': 0}
+答案：{'text': '5、此时怀疑是由于X2口基站的小区未激活导致该告警，', 'event_list': [{'trigger': ['Check', 4, '怀疑'], 'argument': []}, {'trigger': ['SoftHardwareFault', 17, '未激活'], 'argument': [['Subject', 9, 'X2口基站的小区']]}]}
+
+0.667, true_num: 2, pred_num: 2, gt_num: 4
+预测：{'text': 'Problem Summary 空口多指标差引起CSSR SDR指标差问题定位', 'event_list': [{'trigger': ['IndexFault', 34, '差'], 'argument': [['Index', 24, 'CSSR SDR指标']]}], 'doc_id': 0}
+答案：{'text': 'Problem Summary 空口多指标差引起CSSR SDR指标差问题定位', 'event_list': [{'trigger': ['IndexFault', 21, '差'], 'argument': [['Index', 16, '空口多指标']]}, {'trigger': ['IndexFault', 34, '差'], 'argument': [['Index', 24, 'CSSR SDR指标']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' 发起异频切换，', 'event_list': [{'trigger': ['Operate', 1, '发起'], 'argument': [['Owner', 3, '异频切换']]}], 'doc_id': 0}
+答案：{'text': ' 发起异频切换，', 'event_list': [{'trigger': ['Operate', 1, '发起'], 'argument': [['Object', 3, '异频切换']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 2
+预测：{'text': '并产生了微弱的干扰，', 'event_list': [], 'doc_id': 0}
+答案：{'text': '并产生了微弱的干扰，', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '干扰'], 'argument': [['State', 4, '微弱']]}]}
+
+0.889, true_num: 4, pred_num: 5, gt_num: 4
+预测：{'text': '请求消息被核心网侧丢弃导致附着失败。', 'event_list': [{'trigger': ['SoftHardwareFault', 9, '丢弃'], 'argument': [['Subject', 5, '核心网侧'], ['Subject', 0, '请求消息']]}, {'trigger': ['SoftHardwareFault', 13, '附着'], 'argument': [['State', 15, '失败']]}], 'doc_id': 0}
+答案：{'text': '请求消息被核心网侧丢弃导致附着失败。', 'event_list': [{'trigger': ['SoftHardwareFault', 9, '丢弃'], 'argument': [['Subject', 5, '核心网侧']]}, {'trigger': ['SoftHardwareFault', 13, '附着'], 'argument': [['State', 15, '失败']]}]}
+
+0.667, true_num: 2, pred_num: 2, gt_num: 4
+预测：{'text': 'DNS交互 来水量分析 从问题时间段占据主要流量的TCP流均存在丢包，', 'event_list': [{'trigger': ['Check', 9, '分析'], 'argument': [['Object', 0, 'DNS交互 来水量']]}], 'doc_id': 0}
+答案：{'text': 'DNS交互 来水量分析 从问题时间段占据主要流量的TCP流均存在丢包，', 'event_list': [{'trigger': ['Check', 9, '分析'], 'argument': [['Object', 0, 'DNS交互 来水量']]}, {'trigger': ['SoftHardwareFault', 32, '丢包'], 'argument': [['Subject', 25, 'TCP流']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 2
+预测：{'text': '不符合合法性，', 'event_list': [], 'doc_id': 0}
+答案：{'text': '不符合合法性，', 'event_list': [{'trigger': ['SettingFault', 0, '不符合'], 'argument': [['Setting', 3, '合法性']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': 'CA业务异常（对应故障问题SRIO链路断链） 从故障来看，', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '异常'], 'argument': [['Subject', 0, 'CA业务']]}, {'trigger': ['SoftHardwareFault', 19, '断链'], 'argument': [['Subject', 14, 'RIO链路']]}], 'doc_id': 0}
+答案：{'text': 'CA业务异常（对应故障问题SRIO链路断链） 从故障来看，', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '异常'], 'argument': [['Subject', 0, 'CA业务']]}, {'trigger': ['SoftHardwareFault', 19, '断链'], 'argument': [['Subject', 13, 'SRIO链路']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': '由于41频带的异频频点漏配导致CA配置分布不均', 'event_list': [{'trigger': ['SettingFault', 11, '漏配'], 'argument': [['Owner', 2, '41频带的异频频点']]}, {'trigger': ['SoftHardwareFault', 19, '分布'], 'argument': [['State', 21, '不均'], ['Subject', 15, 'CA配置']]}], 'doc_id': 0}
+答案：{'text': '由于41频带的异频频点漏配导致CA配置分布不均', 'event_list': [{'trigger': ['SettingFault', 11, '漏配'], 'argument': [['Setting', 2, '41频带的异频频点']]}, {'trigger': ['SoftHardwareFault', 19, '分布'], 'argument': [['State', 21, '不均'], ['Subject', 15, 'CA配置']]}]}
+
+0.667, true_num: 1, pred_num: 2, gt_num: 1
+预测：{'text': ' 最终导致那曲VOLTE用户业务出现异常，', 'event_list': [{'trigger': ['SoftHardwareFault', 18, '异常'], 'argument': [['Subject', 7, 'VOLTE用户业务']]}], 'doc_id': 0}
+答案：{'text': ' 最终导致那曲VOLTE用户业务出现异常，', 'event_list': [{'trigger': ['SoftHardwareFault', 18, '异常'], 'argument': []}]}
+
+0.8, true_num: 4, pred_num: 6, gt_num: 4
+预测：{'text': '3、怀疑是软件版本太低导致无法增补，', 'event_list': [{'trigger': ['Check', 2, '怀疑'], 'argument': [['Object', 5, '软件版本']]}, {'trigger': ['IndexFault', 9, '太低'], 'argument': [['Index', 5, '软件版本']]}, {'trigger': ['SoftHardwareFault', 15, '增补'], 'argument': [['State', 13, '无法']]}], 'doc_id': 0}
+答案：{'text': '3、怀疑是软件版本太低导致无法增补，', 'event_list': [{'trigger': ['Check', 2, '怀疑'], 'argument': [['Object', 5, '软件版本']]}, {'trigger': ['SoftHardwareFault', 15, '增补'], 'argument': [['State', 13, '无法']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '导致华为区域站点的上行被干扰引起掉话率抬升。', 'event_list': [{'trigger': ['SoftHardwareFault', 11, '被干扰'], 'argument': [['Subject', 6, '站点的上行']]}, {'trigger': ['IndexFault', 19, '抬升'], 'argument': [['Index', 16, '掉话率']]}], 'doc_id': 0}
+答案：{'text': '导致华为区域站点的上行被干扰引起掉话率抬升。', 'event_list': [{'trigger': ['SoftHardwareFault', 11, '被干扰'], 'argument': [['Subject', 2, '华为区域站点的上行']]}, {'trigger': ['IndexFault', 19, '抬升'], 'argument': [['Index', 16, '掉话率']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' 后台提取本站点和周边站点干扰正常。', 'event_list': [{'trigger': ['CollectData', 3, '提取'], 'argument': [['Data', 6, '站点和周边站点干扰']]}], 'doc_id': 0}
+答案：{'text': ' 后台提取本站点和周边站点干扰正常。', 'event_list': [{'trigger': ['CollectData', 3, '提取'], 'argument': [['Data', 5, '本站点和周边站点']]}]}
+
+0.667, true_num: 2, pred_num: 4, gt_num: 2
+预测：{'text': '1)、用户在NSA非锚点接入， 基站下发A5测量控制， 测量NSA锚点。', 'event_list': [{'trigger': ['Operate', 18, '下发'], 'argument': [['Object', 20, 'A5测量控制']]}, {'trigger': ['Check', 28, '测量'], 'argument': [['Object', 30, 'NSA锚点']]}], 'doc_id': 0}
+答案：{'text': '1)、用户在NSA非锚点接入， 基站下发A5测量控制， 测量NSA锚点。', 'event_list': [{'trigger': ['Check', 28, '测量'], 'argument': [['Object', 30, 'NSA锚点']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': '但看不到1小区（PCI为208）的消息', 'event_list': [{'trigger': ['SoftHardwareFault', 1, '看不到'], 'argument': [['Object', 5, '小区']]}], 'doc_id': 0}
+答案：{'text': '但看不到1小区（PCI为208）的消息', 'event_list': [{'trigger': ['SoftHardwareFault', 1, '看不到'], 'argument': [['Object', 5, '小区（PCI为208）的消息']]}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 2
+预测：{'text': '4.  删除错误的路由，', 'event_list': [{'trigger': ['Operate', 4, '删除'], 'argument': [['Object', 6, '错误的路由']]}], 'doc_id': 0}
+答案：{'text': '4.  删除错误的路由，', 'event_list': [{'trigger': ['SetMachine', 4, '删除'], 'argument': [['Object', 6, '错误的路由']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': '由于忙时L800小区拥塞导致1. 4M小区无法上网问题分析', 'event_list': [{'trigger': ['SoftHardwareFault', 10, '拥塞'], 'argument': [['Subject', 4, 'L800小区']]}, {'trigger': ['SoftHardwareFault', 23, '上网'], 'argument': [['Subject', 14, '1. 4M小区'], ['State', 21, '无法']]}], 'doc_id': 0}
+答案：{'text': '由于忙时L800小区拥塞导致1. 4M小区无法上网问题分析', 'event_list': [{'trigger': ['SoftHardwareFault', 23, '上网'], 'argument': [['State', 21, '无法'], ['Subject', 19, '小区']]}, {'trigger': ['SoftHardwareFault', 10, '拥塞'], 'argument': [['Subject', 4, 'L800小区']]}]}
+
+0, true_num: 0, pred_num: 3, gt_num: 3
+预测：{'text': ' 但是被叫未回落到3G，', 'event_list': [{'trigger': ['SoftHardwareFault', 5, '未回落'], 'argument': [['Object', 9, '3G'], ['Subject', 3, '被叫']]}], 'doc_id': 0}
+答案：{'text': ' 但是被叫未回落到3G，', 'event_list': [{'trigger': ['SoftHardwareFault', 5, '未回落到'], 'argument': [['Subject', 3, '被叫'], ['Object', 9, '3G']]}]}
+
+0.4, true_num: 1, pred_num: 3, gt_num: 2
+预测：{'text': ' DCU的1号端口与60号Rhub光衰过大，', 'event_list': [{'trigger': ['IndexFault', 19, '过大'], 'argument': [['Index', 17, '光衰'], ['Index', 13, 'Rhub']]}], 'doc_id': 0}
+答案：{'text': ' DCU的1号端口与60号Rhub光衰过大，', 'event_list': [{'trigger': ['IndexFault', 19, '过大'], 'argument': [['Index', 1, 'DCU的1号端口与60号Rhub光衰']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '主要是重配置失败导致的重建；', 'event_list': [{'trigger': ['SettingFault', 3, '重配置'], 'argument': [['State', 6, '失败']]}], 'doc_id': 0}
+答案：{'text': '主要是重配置失败导致的重建；', 'event_list': [{'trigger': ['SettingFault', 3, '重配置'], 'argument': [['State', 6, '失败']]}, {'trigger': ['SoftHardwareFault', 11, '重建'], 'argument': []}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '图20 ERAB建立成功率差的原因是弱覆盖 步骤 5', 'event_list': [{'trigger': ['IndexFault', 13, '差'], 'argument': [['Index', 4, 'ERAB建立成功率']]}], 'doc_id': 0}
+答案：{'text': '图20 ERAB建立成功率差的原因是弱覆盖 步骤 5', 'event_list': [{'trigger': ['IndexFault', 13, '差'], 'argument': [['Index', 4, 'ERAB建立成功率']]}, {'trigger': ['SoftHardwareFault', 18, '弱覆盖'], 'argument': []}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' GTMU会定期复位，', 'event_list': [{'trigger': ['Operate', 8, '复位'], 'argument': [['Owner', 1, 'GTMU']]}], 'doc_id': 0}
+答案：{'text': ' GTMU会定期复位，', 'event_list': [{'trigger': ['Operate', 8, '复位'], 'argument': [['Object', 1, 'GTMU']]}]}
+
+0, true_num: 0, pred_num: 3, gt_num: 3
+预测：{'text': '问题概述东南非某国运营商客户反馈一LTE站点下CPE接入上网困难；', 'event_list': [{'trigger': ['SoftHardwareFault', 26, '接入上网'], 'argument': [['Subject', 23, 'CPE'], ['State', 30, '困难']]}], 'doc_id': 0}
+答案：{'text': '问题概述东南非某国运营商客户反馈一LTE站点下CPE接入上网困难；', 'event_list': [{'trigger': ['SoftHardwareFault', 26, '接入'], 'argument': [['Subject', 17, 'LTE站点下CPE'], ['State', 30, '困难']]}]}
+
+0.571, true_num: 4, pred_num: 8, gt_num: 6
+预测：{'text': '3、  检查配置核查结果文件， 确定为增加ETHTRKLNK配置不生效， 详细命令如下：', 'event_list': [{'trigger': ['Check', 4, '检查'], 'argument': [['Object', 10, '结果文件'], ['Object', 6, '配置']]}, {'trigger': ['Check', 8, '核查'], 'argument': [['Object', 10, '结果文件'], ['Object', 6, '配置']]}, {'trigger': ['SetMachine', 19, '增'], 'argument': [['Object', 21, 'ETHTRKLNK配置']]}], 'doc_id': 0}
+答案：{'text': '3、  检查配置核查结果文件， 确定为增加ETHTRKLNK配置不生效， 详细命令如下：', 'event_list': [{'trigger': ['Check', 8, '核查'], 'argument': [['Object', 10, '结果文件']]}, {'trigger': ['Check', 4, '检查'], 'argument': [['Object', 6, '配置']]}, {'trigger': ['SettingFault', 32, '不生效'], 'argument': [['Setting', 21, 'ETHTRKLNK配置']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '（2）小区帧偏置不一致导致的干扰 这种问题常见于单模RRU和双模RRU同频组网的方式，', 'event_list': [{'trigger': ['SettingFault', 8, '不一致'], 'argument': [['Setting', 3, '小区帧偏置']]}], 'doc_id': 0}
+答案：{'text': '（2）小区帧偏置不一致导致的干扰 这种问题常见于单模RRU和双模RRU同频组网的方式，', 'event_list': [{'trigger': ['SettingFault', 8, '不一致'], 'argument': [['Setting', 3, '小区帧偏置']]}, {'trigger': ['SoftHardwareFault', 14, '干扰'], 'argument': []}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': '其次区分是同频还是异频，', 'event_list': [{'trigger': ['Check', 2, '区分'], 'argument': [['Object', 5, '同频']]}], 'doc_id': 0}
+答案：{'text': '其次区分是同频还是异频，', 'event_list': [{'trigger': ['Check', 2, '区分'], 'argument': [['Object', 5, '同频还是异频']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '考虑到异频参数修改后导致的掉话，', 'event_list': [{'trigger': ['SetMachine', 7, '修改'], 'argument': [['Object', 3, '异频参数']]}], 'doc_id': 0}
+答案：{'text': '考虑到异频参数修改后导致的掉话，', 'event_list': [{'trigger': ['SetMachine', 7, '修改'], 'argument': [['Object', 3, '异频参数']]}, {'trigger': ['SoftHardwareFault', 13, '掉话'], 'argument': []}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 2
+预测：{'text': '8、删除开站记录后，', 'event_list': [{'trigger': ['Operate', 2, '删除'], 'argument': [['Object', 4, '开站记录']]}], 'doc_id': 0}
+答案：{'text': '8、删除开站记录后，', 'event_list': [{'trigger': ['SetMachine', 2, '删除'], 'argument': [['Object', 4, '开站记录']]}]}
+
+0.667, true_num: 4, pred_num: 5, gt_num: 7
+预测：{'text': '3、 核查DSP License结果， 确认一线只申请了一个RRC Connected User License， 所以导致只能存在一台CPE能够接入', 'event_list': [{'trigger': ['Check', 3, '核查'], 'argument': [['Object', 5, 'DSP License结果']]}, {'trigger': ['SoftHardwareFault', 73, '接入'], 'argument': [['State', 62, '只能'], ['Subject', 68, 'CPE']]}], 'doc_id': 0}
+答案：{'text': '3、 核查DSP License结果， 确认一线只申请了一个RRC Connected User License， 所以导致只能存在一台CPE能够接入', 'event_list': [{'trigger': ['Check', 3, '核查'], 'argument': [['Object', 5, 'DSP License']]}, {'trigger': ['Check', 20, '确认'], 'argument': [['Object', 30, 'RRC Connected User License']]}, {'trigger': ['SoftHardwareFault', 73, '接入'], 'argument': [['Subject', 68, 'CPE'], ['State', 62, '只能']]}]}
+
+0.571, true_num: 2, pred_num: 4, gt_num: 3
+预测：{'text': 'RNC侧执行命令DSP IPPM;', 'event_list': [{'trigger': ['Operate', 4, '执行'], 'argument': [['Owner', 0, 'R'], ['Owner', 1, 'NC侧'], ['Object', 6, '命令DSP IPPM']]}], 'doc_id': 0}
+答案：{'text': 'RNC侧执行命令DSP IPPM;', 'event_list': [{'trigger': ['Operate', 4, '执行'], 'argument': [['Object', 6, '命令DSP IPPM'], ['Owner', 0, 'RNC侧']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': '由于SGW维护通道带宽的限制导致这种方式获取的业务报文丢弃严重，', 'event_list': [{'trigger': ['SettingFault', 12, '限制'], 'argument': [['Setting', 2, 'SGW维护通道带宽']]}, {'trigger': ['SoftHardwareFault', 27, '丢弃'], 'argument': [['State', 29, '严重'], ['Subject', 23, '业务报文']]}], 'doc_id': 0}
+答案：{'text': '由于SGW维护通道带宽的限制导致这种方式获取的业务报文丢弃严重，', 'event_list': [{'trigger': ['SettingFault', 12, '限制'], 'argument': [['Setting', 2, 'SGW维护通道带宽']]}, {'trigger': ['SoftHardwareFault', 27, '丢弃'], 'argument': [['Object', 23, '业务报文'], ['State', 29, '严重']]}]}
+
+0.667, true_num: 2, pred_num: 2, gt_num: 4
+预测：{'text': '开站数据有错误导致基站三个小区RRU都不可用', 'event_list': [{'trigger': ['SoftHardwareFault', 19, '不可用'], 'argument': [['Subject', 13, '小区RRU']]}], 'doc_id': 0}
+答案：{'text': '开站数据有错误导致基站三个小区RRU都不可用', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '有错误'], 'argument': [['Subject', 0, '开站数据']]}, {'trigger': ['SoftHardwareFault', 19, '不可用'], 'argument': [['Subject', 13, '小区RRU']]}]}
+
+0.4, true_num: 2, pred_num: 4, gt_num: 6
+预测：{'text': '   整体指标分析 统计分析连续七天RZ移动网管eSRVCC指标， RZ移动eSRVCC失败主要是切换准备阶段。', 'event_list': [{'trigger': ['Check', 7, '分析'], 'argument': [['Object', 0, '   整体指标']]}, {'trigger': ['Check', 10, '统计分析'], 'argument': [['Object', 18, 'RZ移动网管eSRVCC指标']]}], 'doc_id': 0}
+答案：{'text': '   整体指标分析 统计分析连续七天RZ移动网管eSRVCC指标， RZ移动eSRVCC失败主要是切换准备阶段。', 'event_list': [{'trigger': ['Check', 7, '分析'], 'argument': [['Object', 3, '整体指标']]}, {'trigger': ['Check', 10, '统计分析'], 'argument': [['Object', 20, '移动网管eSRVCC指标']]}, {'trigger': ['SoftHardwareFault', 44, '失败'], 'argument': [['Subject', 36, '移动eSRVCC']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '关闭预调度和智能预调度 关闭预调度：', 'event_list': [{'trigger': ['Operate', 0, '关闭'], 'argument': [['Object', 2, '预调度和智能预调度']]}, {'trigger': ['Operate', 12, '关闭'], 'argument': [['Object', 14, '预调度']]}], 'doc_id': 0}
+答案：{'text': '关闭预调度和智能预调度 关闭预调度：', 'event_list': [{'trigger': ['Operate', 0, '关闭'], 'argument': [['Object', 2, '预调度和智能预调度']]}, {'trigger': ['Operate', 12, '关闭'], 'argument': [['Object', 2, '预调度和智能预调度']]}]}
+
+0.727, true_num: 4, pred_num: 7, gt_num: 4
+预测：{'text': '3.  传输问题 4.  FTP、测试卡等问题 通过之前的网优初步测试，', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '传输'], 'argument': [['State', 6, '问题']]}, {'trigger': ['SoftHardwareFault', 21, '问题'], 'argument': [['Subject', 12, ' FTP、测试卡']]}, {'trigger': ['Check', 33, '测试'], 'argument': [['Object', 12, ' FTP、测试卡'], ['Object', 29, '网优']]}], 'doc_id': 0}
+答案：{'text': '3.  传输问题 4.  FTP、测试卡等问题 通过之前的网优初步测试，', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '传输'], 'argument': [['State', 6, '问题']]}, {'trigger': ['Check', 33, '测试'], 'argument': [['Object', 29, '网优']]}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 2
+预测：{'text': '然后将对应的跳纤和光模块改插过去。', 'event_list': [{'trigger': ['SetMachine', 12, '改'], 'argument': [['Object', 6, '跳纤和光模块']]}], 'doc_id': 0}
+答案：{'text': '然后将对应的跳纤和光模块改插过去。', 'event_list': [{'trigger': ['SetMachine', 12, '改插'], 'argument': [['Object', 6, '跳纤和光模块']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '存在弱覆盖的情况导致CRC误码大，', 'event_list': [{'trigger': ['IndexFault', 15, '大'], 'argument': [['Index', 10, 'CRC误码']]}], 'doc_id': 0}
+答案：{'text': '存在弱覆盖的情况导致CRC误码大，', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '弱覆盖'], 'argument': []}, {'trigger': ['IndexFault', 15, '大'], 'argument': [['Index', 10, 'CRC误码']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': '检查传输和BBU收发光均正常 ，', 'event_list': [{'trigger': ['Check', 0, '检查'], 'argument': [['Object', 2, '传输和BBU收发光']]}], 'doc_id': 0}
+答案：{'text': '检查传输和BBU收发光均正常 ，', 'event_list': [{'trigger': ['Check', 0, '检查'], 'argument': [['Object', 2, '传输和BBU']]}]}
+
+0.667, true_num: 2, pred_num: 3, gt_num: 3
+预测：{'text': ' 导致在新的网管同步测量失败，', 'event_list': [{'trigger': ['SoftHardwareFault', 8, '同步测量'], 'argument': [['Subject', 6, '网管'], ['State', 12, '失败']]}], 'doc_id': 0}
+答案：{'text': ' 导致在新的网管同步测量失败，', 'event_list': [{'trigger': ['SoftHardwareFault', 8, '同步测量'], 'argument': [['State', 12, '失败'], ['Subject', 4, '新的网管']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' 主叫于153408. 903主动挂机，', 'event_list': [{'trigger': ['SoftHardwareFault', 17, '挂机'], 'argument': [['State', 15, '主动']]}], 'doc_id': 0}
+答案：{'text': ' 主叫于153408. 903主动挂机，', 'event_list': [{'trigger': ['SoftHardwareFault', 17, '挂机'], 'argument': [['Subject', 1, '主叫']]}]}
+
+0.833, true_num: 5, pred_num: 6, gt_num: 6
+预测：{'text': '用户未触发切换导致Nastar上获取用户无线信号信息失败', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '未触发切换'], 'argument': [['Subject', 0, '用户']]}, {'trigger': ['SoftHardwareFault', 16, '获取'], 'argument': [['Object', 18, '用户无线信号信息'], ['State', 26, '失败'], ['Subject', 9, 'Nastar上']]}], 'doc_id': 0}
+答案：{'text': '用户未触发切换导致Nastar上获取用户无线信号信息失败', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '未触发切换'], 'argument': [['Subject', 0, '用户'], ['Object', 5, '切换']]}, {'trigger': ['SoftHardwareFault', 16, '获取'], 'argument': [['Object', 18, '用户无线信号信息'], ['State', 26, '失败']]}]}
+
+0.667, true_num: 5, pred_num: 8, gt_num: 7
+预测：{'text': '修改子帧配比导致E频段小区受到干扰 Resolution DetailsSolution Analysis 现场将SA2改为SA', 'event_list': [{'trigger': ['SetMachine', 0, '修改'], 'argument': [['Object', 2, '子帧配比']]}, {'trigger': ['SoftHardwareFault', 15, '干扰'], 'argument': [['Subject', 8, 'E频段小区'], ['Subject', 62, 'SA']]}, {'trigger': ['SetMachine', 60, '改为'], 'argument': [['FinalState', 62, 'SA'], ['InitialState', 57, 'SA2']]}], 'doc_id': 0}
+答案：{'text': '修改子帧配比导致E频段小区受到干扰 Resolution DetailsSolution Analysis 现场将SA2改为SA', 'event_list': [{'trigger': ['SetMachine', 0, '修改'], 'argument': [['Object', 2, '子帧配比']]}, {'trigger': ['SoftHardwareFault', 13, '受到干扰'], 'argument': [['Subject', 8, 'E频段小区']]}, {'trigger': ['SetMachine', 60, '改为'], 'argument': [['InitialState', 57, 'SA2'], ['FinalState', 62, 'SA']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '最后怀疑是软失效导致了M001站的1025核异常，', 'event_list': [{'trigger': ['Check', 2, '怀疑'], 'argument': [['Object', 5, '软失效']]}, {'trigger': ['SoftHardwareFault', 22, '异常'], 'argument': [['Subject', 11, 'M001站的1025核']]}], 'doc_id': 0}
+答案：{'text': '最后怀疑是软失效导致了M001站的1025核异常，', 'event_list': [{'trigger': ['Check', 2, '怀疑'], 'argument': [['Object', 5, '软失效']]}, {'trigger': ['SoftHardwareFault', 22, '异常'], 'argument': [['Subject', 17, '1025核']]}]}
+
+0.833, true_num: 5, pred_num: 6, gt_num: 6
+预测：{'text': '传输侧漏配VLAN导致基站配置激活到90%多显示基站开站异常失败', 'event_list': [{'trigger': ['SettingFault', 3, '漏配'], 'argument': [['Owner', 0, '传输侧'], ['Owner', 5, 'VLAN']]}, {'trigger': ['SoftHardwareFault', 26, '开站'], 'argument': [['Subject', 24, '基站'], ['State', 28, '异常失败']]}], 'doc_id': 0}
+答案：{'text': '传输侧漏配VLAN导致基站配置激活到90%多显示基站开站异常失败', 'event_list': [{'trigger': ['SettingFault', 3, '漏配'], 'argument': [['Owner', 0, '传输侧'], ['Reference', 5, 'VLAN']]}, {'trigger': ['SoftHardwareFault', 26, '开站'], 'argument': [['Subject', 24, '基站'], ['State', 28, '异常失败']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '通过话单查看确实存在未接通问题。', 'event_list': [{'trigger': ['Check', 4, '查看'], 'argument': [['Object', 2, '话单']]}], 'doc_id': 0}
+答案：{'text': '通过话单查看确实存在未接通问题。', 'event_list': [{'trigger': ['Check', 4, '查看'], 'argument': [['Object', 2, '话单']]}, {'trigger': ['SoftHardwareFault', 10, '未接通'], 'argument': []}]}
+
+0.667, true_num: 2, pred_num: 2, gt_num: 4
+预测：{'text': '传输中断而断站。', 'event_list': [{'trigger': ['SoftHardwareFault', 0, '传输'], 'argument': [['State', 2, '中断']]}], 'doc_id': 0}
+答案：{'text': '传输中断而断站。', 'event_list': [{'trigger': ['SoftHardwareFault', 0, '传输'], 'argument': [['State', 2, '中断']]}, {'trigger': ['SoftHardwareFault', 5, '断站'], 'argument': [['State', 2, '中断']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '从而排除X2对端IP配错原因定位 2.6 进一步核查配置，', 'event_list': [{'trigger': ['Check', 2, '排除'], 'argument': [['Object', 4, 'X2对端IP配错']]}, {'trigger': ['Check', 24, '核查'], 'argument': [['Object', 26, '配置']]}], 'doc_id': 0}
+答案：{'text': '从而排除X2对端IP配错原因定位 2.6 进一步核查配置，', 'event_list': [{'trigger': ['Check', 2, '排除'], 'argument': [['Object', 4, 'X2对端IP配错原因']]}, {'trigger': ['Check', 24, '核查'], 'argument': [['Object', 26, '配置']]}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 2
+预测：{'text': ' 用频谱仪测试屏蔽机房，', 'event_list': [{'trigger': ['Check', 5, '测试屏'], 'argument': [['Object', 9, '机房']]}], 'doc_id': 0}
+答案：{'text': ' 用频谱仪测试屏蔽机房，', 'event_list': [{'trigger': ['Check', 5, '测试'], 'argument': [['Object', 7, '屏蔽机房']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': '某局点新建TDL实验站，', 'event_list': [{'trigger': ['Operate', 3, '新建'], 'argument': [['Object', 5, 'TDL实']]}], 'doc_id': 0}
+答案：{'text': '某局点新建TDL实验站，', 'event_list': [{'trigger': ['Operate', 3, '新建'], 'argument': [['Object', 5, 'TDL实验站']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': 'Speedtest出现了5次由于丢包导致的TCP窗口Size陡降的情况，', 'event_list': [{'trigger': ['IndexFault', 30, '陡降'], 'argument': [['Index', 21, 'TCP窗口Size']]}], 'doc_id': 0}
+答案：{'text': 'Speedtest出现了5次由于丢包导致的TCP窗口Size陡降的情况，', 'event_list': [{'trigger': ['SoftHardwareFault', 16, '丢包'], 'argument': []}, {'trigger': ['IndexFault', 30, '陡降'], 'argument': [['Index', 21, 'TCP窗口Size']]}]}
+
+0.667, true_num: 2, pred_num: 2, gt_num: 4
+预测：{'text': '1、L1.8设备弱覆盖导致4G信号差', 'event_list': [{'trigger': ['IndexFault', 17, '差'], 'argument': [['Index', 13, '4G信号']]}], 'doc_id': 0}
+答案：{'text': '1、L1.8设备弱覆盖导致4G信号差', 'event_list': [{'trigger': ['SoftHardwareFault', 8, '弱覆盖'], 'argument': [['Subject', 2, 'L1.8设备']]}, {'trigger': ['IndexFault', 17, '差'], 'argument': [['Index', 13, '4G信号']]}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 2
+预测：{'text': ' 因此导致释放后将异频邻区的频点信息及优先级信息下发，', 'event_list': [{'trigger': ['Operate', 24, '下发'], 'argument': [['Object', 9, '异频邻区的频点信息及优先级信息']]}], 'doc_id': 0}
+答案：{'text': ' 因此导致释放后将异频邻区的频点信息及优先级信息下发，', 'event_list': [{'trigger': ['SoftHardwareFault', 24, '下发'], 'argument': [['Subject', 9, '异频邻区的频点信息及优先级信息']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' 且新增分裂小区的上行低阶占比也较差，', 'event_list': [{'trigger': ['IndexFault', 16, '较差'], 'argument': [['Index', 9, '上行低阶占比']]}], 'doc_id': 0}
+答案：{'text': ' 且新增分裂小区的上行低阶占比也较差，', 'event_list': [{'trigger': ['IndexFault', 16, '较差'], 'argument': [['Index', 2, '新增分裂小区的上行低阶占比']]}]}
+
+0.4, true_num: 2, pred_num: 5, gt_num: 5
+预测：{'text': '由于S1链路漏配导致MME POOL内切换准备失败问题', 'event_list': [{'trigger': ['SettingFault', 6, '漏配'], 'argument': [['Owner', 2, 'S1链路']]}, {'trigger': ['SoftHardwareFault', 19, '切换准备'], 'argument': [['State', 23, '失败'], ['Subject', 10, 'MME POOL']]}], 'doc_id': 0}
+答案：{'text': '由于S1链路漏配导致MME POOL内切换准备失败问题', 'event_list': [{'trigger': ['SettingFault', 6, '漏配'], 'argument': [['Owner', 2, 'S1链路']]}, {'trigger': ['SoftHardwareFault', 18, '内切换准备'], 'argument': [['Subject', 10, 'MME POOL'], ['State', 23, '失败']]}]}
+
+0.444, true_num: 2, pred_num: 5, gt_num: 4
+预测：{'text': '6、BTS3900 SDR改造， 需要将机柜升级为Ver. D版本机柜， 与督导核实是否按照升级要求进行完成升级， 督导告知由于该站前后左右都有阻挡物， 未跟换风扇， 同时由于升级发货为ver. BD升级包， 而现场机柜为Ver. A, 缺少ELU升级所需假面板以及信号线。', 'event_list': [{'trigger': ['SetMachine', 22, '升级'], 'argument': [['Object', 20, '机柜'], ['FinalState', 25, 'Ver. D版本机柜']]}, {'trigger': ['SoftHardwareFault', 119, '缺少'], 'argument': [['Object', 121, 'ELU']]}], 'doc_id': 0}
+答案：{'text': '6、BTS3900 SDR改造， 需要将机柜升级为Ver. D版本机柜， 与督导核实是否按照升级要求进行完成升级， 督导告知由于该站前后左右都有阻挡物， 未跟换风扇， 同时由于升级发货为ver. BD升级包， 而现场机柜为Ver. A, 缺少ELU升级所需假面板以及信号线。', 'event_list': [{'trigger': ['SetMachine', 22, '升级'], 'argument': [['Object', 20, '机柜']]}, {'trigger': ['SettingFault', 119, '缺少'], 'argument': [['Owner', 128, '假面板以及信号线']]}]}
+
+0.5, true_num: 2, pred_num: 3, gt_num: 5
+预测：{'text': ' 发现PLMN判断结果为错误的PLMN导致终端无法接入。', 'event_list': [{'trigger': ['SoftHardwareFault', 25, '接入'], 'argument': [['Subject', 21, '终端'], ['State', 23, '无法']]}], 'doc_id': 0}
+答案：{'text': ' 发现PLMN判断结果为错误的PLMN导致终端无法接入。', 'event_list': [{'trigger': ['SoftHardwareFault', 25, '接入'], 'argument': [['Object', 21, '终端'], ['State', 23, '无法']]}, {'trigger': ['SoftHardwareFault', 12, '错误'], 'argument': [['Object', 15, 'PLMN']]}]}
+
+0.667, true_num: 2, pred_num: 3, gt_num: 3
+预测：{'text': '在阶段3 IP over E1探测不能成功的原因是，', 'event_list': [{'trigger': ['SoftHardwareFault', 15, '探测'], 'argument': [['Subject', 3, '3 IP over E1'], ['State', 17, '不能成功']]}], 'doc_id': 0}
+答案：{'text': '在阶段3 IP over E1探测不能成功的原因是，', 'event_list': [{'trigger': ['SoftHardwareFault', 15, '探测'], 'argument': [['Subject', 5, 'IP over E1'], ['State', 17, '不能成功']]}]}
+
+0.667, true_num: 2, pred_num: 4, gt_num: 2
+预测：{'text': ' 导致一个小区拥挤而同覆盖异频的另一小区空闲的情况，', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '拥挤'], 'argument': [['Subject', 5, '小区']]}, {'trigger': ['SoftHardwareFault', 20, '空闲'], 'argument': [['Subject', 18, '小区']]}], 'doc_id': 0}
+答案：{'text': ' 导致一个小区拥挤而同覆盖异频的另一小区空闲的情况，', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '拥挤'], 'argument': [['Subject', 5, '小区']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 4
+预测：{'text': '后台X2口跟踪到的信令及MME跟踪的信令，', 'event_list': [], 'doc_id': 0}
+答案：{'text': '后台X2口跟踪到的信令及MME跟踪的信令，', 'event_list': [{'trigger': ['Check', 5, '跟踪'], 'argument': [['Object', 9, '信令及MME跟踪的信令']]}, {'trigger': ['Check', 15, '跟踪'], 'argument': [['Object', 9, '信令及MME跟踪的信令']]}]}
+
+0, true_num: 0, pred_num: 4, gt_num: 2
+预测：{'text': ' 新的脚本并未下发成功。', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '下发'], 'argument': [['State', 9, '成功'], ['Subject', 3, '脚本'], ['State', 5, '并未']]}], 'doc_id': 0}
+答案：{'text': ' 新的脚本并未下发成功。', 'event_list': [{'trigger': ['SoftHardwareFault', 6, '未下发'], 'argument': [['Subject', 1, '新的脚本']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': ' 所以基本排除是因为门限导致的不切换；', 'event_list': [{'trigger': ['Check', 5, '排除'], 'argument': [['Object', 10, '门限']]}], 'doc_id': 0}
+答案：{'text': ' 所以基本排除是因为门限导致的不切换；', 'event_list': [{'trigger': ['Check', 5, '排除'], 'argument': [['Object', 10, '门限']]}, {'trigger': ['SoftHardwareFault', 15, '不切换'], 'argument': []}]}
+
+0.889, true_num: 4, pred_num: 5, gt_num: 4
+预测：{'text': '2.3 操作日志排查 14号凌晨修改了SriPeriodAdaptive相关数值（设为OFF),', 'event_list': [{'trigger': ['Check', 8, '排查'], 'argument': [['Object', 4, '操作日志']]}, {'trigger': ['SetMachine', 16, '修改'], 'argument': [['FinalState', 43, 'OFF'], ['Object', 19, 'SriPeriodAdaptive相关数值']]}], 'doc_id': 0}
+答案：{'text': '2.3 操作日志排查 14号凌晨修改了SriPeriodAdaptive相关数值（设为OFF),', 'event_list': [{'trigger': ['Check', 8, '排查'], 'argument': [['Object', 4, '操作日志']]}, {'trigger': ['SetMachine', 16, '修改'], 'argument': [['Object', 19, 'SriPeriodAdaptive相关数值']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 1
+预测：{'text': '2、  S1口信令跟踪分析：', 'event_list': [], 'doc_id': 0}
+答案：{'text': '2、  S1口信令跟踪分析：', 'event_list': [{'trigger': ['Check', 9, '跟踪分析'], 'argument': []}]}
+
+0.833, true_num: 5, pred_num: 7, gt_num: 5
+预测：{'text': '2. 发现该小区对应RRU曾经出现过RRU软件运用异常告警， 通过复位RRU， 小区服务能力下降的告警消除了几分钟 ', 'event_list': [{'trigger': ['SoftHardwareFault', 23, '运用'], 'argument': [['Subject', 18, 'RRU软件'], ['State', 25, '异常']]}, {'trigger': ['Operate', 33, '复位'], 'argument': [['Object', 35, 'RRU']]}, {'trigger': ['IndexFault', 46, '下降'], 'argument': [['Index', 40, '小区服务能力']]}], 'doc_id': 0}
+答案：{'text': '2. 发现该小区对应RRU曾经出现过RRU软件运用异常告警， 通过复位RRU， 小区服务能力下降的告警消除了几分钟 ', 'event_list': [{'trigger': ['SoftHardwareFault', 23, '运用'], 'argument': [['Subject', 18, 'RRU软件'], ['State', 25, '异常']]}, {'trigger': ['Operate', 33, '复位'], 'argument': [['Object', 35, 'RRU']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': 'LTE天线过低导致近距离（约200M）弱覆盖。', 'event_list': [{'trigger': ['IndexFault', 5, '过低'], 'argument': [['Index', 0, 'LTE天线']]}], 'doc_id': 0}
+答案：{'text': 'LTE天线过低导致近距离（约200M）弱覆盖。', 'event_list': [{'trigger': ['IndexFault', 5, '过低'], 'argument': [['Index', 0, 'LTE天线']]}, {'trigger': ['SoftHardwareFault', 19, '弱覆盖'], 'argument': []}]}
+
+0.5, true_num: 2, pred_num: 4, gt_num: 4
+预测：{'text': '结合MO日志分析推断MMTEL AS启动IMS域放音定时器在6s左右。', 'event_list': [{'trigger': ['Check', 6, '分析'], 'argument': [['Object', 2, 'MO日志']]}, {'trigger': ['Operate', 18, '启动'], 'argument': [['Object', 20, 'IMS域放音定时器']]}], 'doc_id': 0}
+答案：{'text': '结合MO日志分析推断MMTEL AS启动IMS域放音定时器在6s左右。', 'event_list': [{'trigger': ['Check', 6, '分析推断'], 'argument': [['Object', 2, 'MO日志']]}, {'trigger': ['Operate', 18, '启动'], 'argument': [['Object', 20, 'IMS域放音定时器']]}]}
+
+0.8, true_num: 4, pred_num: 6, gt_num: 4
+预测：{'text': '进一步分析内部任务发现是一个读取6601寄存器任务反复进行引起了CPU上升。', 'event_list': [{'trigger': ['Check', 3, '分析'], 'argument': [['Object', 5, '内部任务']]}, {'trigger': ['SoftHardwareFault', 14, '读'], 'argument': [['Object', 16, '66']]}, {'trigger': ['IndexFault', 35, '上升'], 'argument': [['Index', 32, 'CPU']]}], 'doc_id': 0}
+答案：{'text': '进一步分析内部任务发现是一个读取6601寄存器任务反复进行引起了CPU上升。', 'event_list': [{'trigger': ['Check', 3, '分析'], 'argument': [['Object', 5, '内部任务']]}, {'trigger': ['IndexFault', 35, '上升'], 'argument': [['Index', 32, 'CPU']]}]}
+
+0.889, true_num: 8, pred_num: 9, gt_num: 9
+预测：{'text': '且原因为安全模式配置失败导致E-RAB建立失败 时间 eNodeB名称 小区名称 E-RAB建立成功率-TP(%) 安全模式配置失败导致E-RAB建立失败次数 2019-06-20 10 00 yyy yyy 2 100 0 2019-06-20 11 00 yyy yyy 2 100 0 2019-06-20 12 00 yyy yyy 2 94.7195 16 2019-06-20 13 00 yyy yyy 2 95.3157 23 2019-06-20 14 00 yyy yyy 2 95.5882 18 4.3', 'event_list': [{'trigger': ['SettingFault', 8, '配置'], 'argument': [['Setting', 4, '安全模式'], ['State', 10, '失败']]}, {'trigger': ['SoftHardwareFault', 19, '建立'], 'argument': [['Subject', 14, 'E-RAB']]}, {'trigger': ['SettingFault', 62, '配置'], 'argument': [['State', 21, '失败'], ['State', 64, '失败'], ['Setting', 58, '安全模式']]}], 'doc_id': 0}
+答案：{'text': '且原因为安全模式配置失败导致E-RAB建立失败 时间 eNodeB名称 小区名称 E-RAB建立成功率-TP(%) 安全模式配置失败导致E-RAB建立失败次数 2019-06-20 10 00 yyy yyy 2 100 0 2019-06-20 11 00 yyy yyy 2 100 0 2019-06-20 12 00 yyy yyy 2 94.7195 16 2019-06-20 13 00 yyy yyy 2 95.3157 23 2019-06-20 14 00 yyy yyy 2 95.5882 18 4.3', 'event_list': [{'trigger': ['SettingFault', 8, '配置'], 'argument': [['Setting', 4, '安全模式'], ['State', 10, '失败']]}, {'trigger': ['SoftHardwareFault', 19, '建立'], 'argument': [['Subject', 14, 'E-RAB'], ['State', 21, '失败']]}, {'trigger': ['SettingFault', 62, '配置'], 'argument': [['Setting', 58, '安全模式'], ['State', 64, '失败']]}]}
+
+0.667, true_num: 2, pred_num: 2, gt_num: 4
+预测：{'text': '与华为基站高版本R10协议不兼容导致部分R10终端切换失败次数多。', 'event_list': [{'trigger': ['IndexFault', 31, '多'], 'argument': [['Index', 20, 'R10终端切换失败次数']]}], 'doc_id': 0}
+答案：{'text': '与华为基站高版本R10协议不兼容导致部分R10终端切换失败次数多。', 'event_list': [{'trigger': ['SoftHardwareFault', 13, '不兼容'], 'argument': [['Subject', 3, '基站高版本R10协议']]}, {'trigger': ['IndexFault', 31, '多'], 'argument': [['Index', 20, 'R10终端切换失败次数']]}]}
+
+0.889, true_num: 4, pred_num: 4, gt_num: 5
+预测：{'text': '驻波测试的方法不对导致驻波测试值和DSP VSWR的值不一致', 'event_list': [{'trigger': ['SettingFault', 7, '不对'], 'argument': [['Owner', 0, '驻波测试的方法']]}, {'trigger': ['SettingFault', 27, '不一致'], 'argument': [['Setting', 11, '驻波测试值和DSP VSWR的值']]}], 'doc_id': 0}
+答案：{'text': '驻波测试的方法不对导致驻波测试值和DSP VSWR的值不一致', 'event_list': [{'trigger': ['SettingFault', 7, '不对'], 'argument': [['Owner', 0, '驻波测试的方法'], ['Setting', 11, '驻波测试值和DSP VSWR的值']]}, {'trigger': ['SettingFault', 27, '不一致'], 'argument': [['Setting', 11, '驻波测试值和DSP VSWR的值']]}]}
+
+0.667, true_num: 2, pred_num: 3, gt_num: 3
+预测：{'text': 'MRO文件中2G邻区信息异常记录', 'event_list': [{'trigger': ['SoftHardwareFault', 12, '异常'], 'argument': [['Subject', 0, 'MRO文件中'], ['Subject', 6, '2G邻区信息']]}], 'doc_id': 0}
+答案：{'text': 'MRO文件中2G邻区信息异常记录', 'event_list': [{'trigger': ['SoftHardwareFault', 12, '异常'], 'argument': [['Subject', 6, '2G邻区信息'], ['State', 12, '异常记']]}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 4
+预测：{'text': ' 造成锚点切换链路异常', 'event_list': [{'trigger': ['SoftHardwareFault', 9, '异常'], 'argument': [['Subject', 3, '锚点切换链路']]}], 'doc_id': 0}
+答案：{'text': ' 造成锚点切换链路异常', 'event_list': [{'trigger': ['SoftHardwareFault', 5, '切换'], 'argument': [['Subject', 3, '锚点'], ['Object', 7, '链路'], ['State', 9, '异常']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 1
+预测：{'text': ' 同时发生流控导致RRC建立失败次数，', 'event_list': [], 'doc_id': 0}
+答案：{'text': ' 同时发生流控导致RRC建立失败次数，', 'event_list': [{'trigger': ['SoftHardwareFault', 5, '流控'], 'argument': []}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 2
+预测：{'text': ' 占比高达96. 2%。', 'event_list': [{'trigger': ['IndexFault', 3, '高达96.'], 'argument': [['Index', 1, '占比']]}], 'doc_id': 0}
+答案：{'text': ' 占比高达96. 2%。', 'event_list': [{'trigger': ['IndexFault', 3, '高达'], 'argument': [['Index', 1, '占比']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' 选取这些E-RAB失败的某个CALL ID在UU口进行进一步分析，', 'event_list': [{'trigger': ['Check', 31, '分析'], 'argument': [['Object', 23, 'UU口']]}], 'doc_id': 0}
+答案：{'text': ' 选取这些E-RAB失败的某个CALL ID在UU口进行进一步分析，', 'event_list': [{'trigger': ['Check', 31, '分析'], 'argument': [['Object', 3, '这些E-RAB失败的某个CALL ID在UU口']]}]}
+
+0.667, true_num: 1, pred_num: 2, gt_num: 1
+预测：{'text': ' 在无线弱覆盖特殊环境下，', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '弱覆盖'], 'argument': [['Subject', 2, '无线']]}], 'doc_id': 0}
+答案：{'text': ' 在无线弱覆盖特殊环境下，', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '弱覆盖'], 'argument': []}]}
+
+0.857, true_num: 3, pred_num: 4, gt_num: 3
+预测：{'text': '3.修改Pattern后下发引起  掉话问题 ：', 'event_list': [{'trigger': ['SetMachine', 2, '修改'], 'argument': [['Object', 4, 'Pattern']]}, {'trigger': ['SoftHardwareFault', 18, '掉话'], 'argument': [['Subject', 16, '  ']]}], 'doc_id': 0}
+答案：{'text': '3.修改Pattern后下发引起  掉话问题 ：', 'event_list': [{'trigger': ['SetMachine', 2, '修改'], 'argument': [['Object', 4, 'Pattern']]}, {'trigger': ['SoftHardwareFault', 18, '掉话'], 'argument': []}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 3
+预测：{'text': '配置文件的版本低于基站软件版本，', 'event_list': [{'trigger': ['IndexFault', 7, '低于'], 'argument': [['Index', 0, '配置文件的版本']]}], 'doc_id': 0}
+答案：{'text': '配置文件的版本低于基站软件版本，', 'event_list': [{'trigger': ['SettingFault', 7, '低于'], 'argument': [['Setting', 0, '配置文件的版本'], ['Reference', 9, '基站软件版本']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 2
+预测：{'text': 'PDCCH符号自适应算法将失效。', 'event_list': [], 'doc_id': 0}
+答案：{'text': 'PDCCH符号自适应算法将失效。', 'event_list': [{'trigger': ['SoftHardwareFault', 13, '失效'], 'argument': [['Subject', 0, 'PDCCH符号自适应算法']]}, {'trigger': ['SoftHardwareFault', 13, '失效'], 'argument': [['Subject', 0, 'PDCCH符号自适应算法']]}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 2
+预测：{'text': ' UE与HSGW的PPP协商时延达到3. 5s，', 'event_list': [{'trigger': ['IndexFault', 16, '达到3. 5s'], 'argument': [['Index', 0, ' UE与HSGW的PPP协商时延']]}], 'doc_id': 0}
+答案：{'text': ' UE与HSGW的PPP协商时延达到3. 5s，', 'event_list': [{'trigger': ['IndexFault', 16, '达到'], 'argument': [['Index', 1, 'UE与HSGW的PPP协商时延']]}]}
+
+0.4, true_num: 1, pred_num: 3, gt_num: 2
+预测：{'text': ' 确认故障发生在CN2侧。', 'event_list': [{'trigger': ['Check', 1, '确认'], 'argument': [['Object', 8, 'CN'], ['Object', 3, '故障']]}], 'doc_id': 0}
+答案：{'text': ' 确认故障发生在CN2侧。', 'event_list': [{'trigger': ['Check', 1, '确认'], 'argument': [['Object', 3, '故障发生在CN2侧']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '三、参数优化 在问题站点对参数TddAckFbModeCfgOptSwitch进行了验证，', 'event_list': [{'trigger': ['SetMachine', 4, '优化'], 'argument': [['Object', 2, '参数']]}, {'trigger': ['Check', 42, '验证'], 'argument': [['Object', 13, '参数TddAckFbModeCfgOptSwitch']]}], 'doc_id': 0}
+答案：{'text': '三、参数优化 在问题站点对参数TddAckFbModeCfgOptSwitch进行了验证，', 'event_list': [{'trigger': ['SetMachine', 4, '优化'], 'argument': [['Object', 2, '参数']]}, {'trigger': ['Check', 42, '验证'], 'argument': [['Owner', 13, '参数TddAckFbModeCfgOptSwitch']]}]}
+
+0.6, true_num: 3, pred_num: 4, gt_num: 6
+预测：{'text': 'XXXX小区干扰原因为天面设备出现故障导致本小区的天线端口0和1干扰噪声功率值相差甚大不平衡，', 'event_list': [{'trigger': ['SoftHardwareFault', 6, '干扰'], 'argument': [['Subject', 0, 'XXXX小区']]}, {'trigger': ['SoftHardwareFault', 17, '故障'], 'argument': [['Subject', 11, '天面设备']]}], 'doc_id': 0}
+答案：{'text': 'XXXX小区干扰原因为天面设备出现故障导致本小区的天线端口0和1干扰噪声功率值相差甚大不平衡，', 'event_list': [{'trigger': ['IndexFault', 39, '相差甚大不平衡'], 'argument': [['Index', 21, '本小区的天线端口0和1干扰噪声功率值']]}, {'trigger': ['SoftHardwareFault', 17, '故障'], 'argument': [['Subject', 11, '天面设备']]}, {'trigger': ['SoftHardwareFault', 6, '干扰'], 'argument': [['Subject', 4, '小区']]}]}
+
+0.4, true_num: 1, pred_num: 3, gt_num: 2
+预测：{'text': '8月6日广州全网准备阶段同频切换成功率持续恶化，', 'event_list': [{'trigger': ['IndexFault', 21, '恶化'], 'argument': [['State', 19, '持续'], ['Index', 6, '全网准备阶段同频切换成功率']]}], 'doc_id': 0}
+答案：{'text': '8月6日广州全网准备阶段同频切换成功率持续恶化，', 'event_list': [{'trigger': ['IndexFault', 21, '恶化'], 'argument': [['Index', 12, '同频切换成功率']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' 是内部CHR中最后10条信令中的码流查看UE上下文释放消息的原因值列表说明的部分截图，', 'event_list': [{'trigger': ['Check', 19, '查看'], 'argument': [['Object', 21, 'UE上下文释放消息的原因值列表说明']]}], 'doc_id': 0}
+答案：{'text': ' 是内部CHR中最后10条信令中的码流查看UE上下文释放消息的原因值列表说明的部分截图，', 'event_list': [{'trigger': ['Check', 19, '查看'], 'argument': [['Object', 21, 'UE上下文释放消息的原因值']]}]}
+
+0.333, true_num: 1, pred_num: 4, gt_num: 2
+预测：{'text': '经过全网PCI冲突告警分析处理后，', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '冲突'], 'argument': [['Subject', 2, '全网PCI']]}, {'trigger': ['Check', 11, '分析'], 'argument': [['Object', 2, '全网PCI']]}], 'doc_id': 0}
+答案：{'text': '经过全网PCI冲突告警分析处理后，', 'event_list': [{'trigger': ['Check', 11, '分析'], 'argument': [['Object', 2, '全网PCI冲突告警']]}]}
+
+0.444, true_num: 2, pred_num: 4, gt_num: 5
+预测：{'text': '8s后R15.1及以后版本可用 这将防止eNB在处理旧的寻呼信息和价位时累积地引起拥塞问题。', 'event_list': [{'trigger': ['SoftHardwareFault', 24, '处理'], 'argument': [['Owner', 20, 'eNB']]}, {'trigger': ['SoftHardwareFault', 41, '拥塞'], 'argument': [['Subject', 20, 'eNB']]}], 'doc_id': 0}
+答案：{'text': '8s后R15.1及以后版本可用 这将防止eNB在处理旧的寻呼信息和价位时累积地引起拥塞问题。', 'event_list': [{'trigger': ['SoftHardwareFault', 24, '处理'], 'argument': [['Subject', 20, 'eNB'], ['Object', 26, '旧的寻呼信息和价位']]}, {'trigger': ['SoftHardwareFault', 41, '拥塞'], 'argument': [['State', 43, '问题']]}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 2
+预测：{'text': '选择分拆Log选项Segment（如下图所示）后，', 'event_list': [{'trigger': ['Operate', 2, '分拆'], 'argument': [['Object', 4, 'Log选项']]}], 'doc_id': 0}
+答案：{'text': '选择分拆Log选项Segment（如下图所示）后，', 'event_list': [{'trigger': ['Operate', 0, '选择'], 'argument': [['Object', 2, '分拆Log选项Segment']]}]}
+
+0, true_num: 0, pred_num: 1, gt_num: 2
+预测：{'text': ' 也会导致出现统计结果不理想。', 'event_list': [{'trigger': ['IndexFault', 11, '不理想'], 'argument': []}], 'doc_id': 0}
+答案：{'text': ' 也会导致出现统计结果不理想。', 'event_list': [{'trigger': ['SoftHardwareFault', 11, '不理想'], 'argument': [['Subject', 7, '统计结果']]}]}
+
+0.444, true_num: 2, pred_num: 3, gt_num: 6
+预测：{'text': 'eNodeB在发送了SNSTATUSTRANSFER消息后收到了eRAB释放命令并且进行了释放响应。', 'event_list': [{'trigger': ['Operate', 7, '发送'], 'argument': [['Owner', 0, 'e'], ['Object', 10, 'SNSTATUSTRANSFER消息']]}], 'doc_id': 0}
+答案：{'text': 'eNodeB在发送了SNSTATUSTRANSFER消息后收到了eRAB释放命令并且进行了释放响应。', 'event_list': [{'trigger': ['Operate', 45, '释放'], 'argument': [['Owner', 0, 'eNodeB'], ['Object', 47, '响应']]}, {'trigger': ['Operate', 7, '发送'], 'argument': [['Owner', 0, 'eNodeB'], ['Object', 10, 'SNSTATUSTRANSFER消息']]}]}
+
+0, true_num: 0, pred_num: 3, gt_num: 3
+预测：{'text': '由原来的100ms修改到1s，', 'event_list': [{'trigger': ['SetMachine', 9, '修改'], 'argument': [['InitialState', 4, '100ms'], ['FinalState', 12, '1s']]}], 'doc_id': 0}
+答案：{'text': '由原来的100ms修改到1s，', 'event_list': [{'trigger': ['SetMachine', 9, '修改到'], 'argument': [['InitialState', 1, '原来的100ms'], ['FinalState', 12, '1s']]}]}
+
+0.25, true_num: 1, pred_num: 6, gt_num: 2
+预测：{'text': ' 基站配置2块UBBP基带板 小区配置为高铁场景（2个2T2R的RRU双拼成1个2T4R小区，', 'event_list': [{'trigger': ['SetMachine', 3, '配置'], 'argument': [['FinalState', 20, '高铁场景'], ['Object', 7, 'UBBP基带板 小区']]}, {'trigger': ['SetMachine', 17, '配置'], 'argument': [['FinalState', 20, '高铁场景'], ['Object', 7, 'UBBP基带板 小区']]}], 'doc_id': 0}
+答案：{'text': ' 基站配置2块UBBP基带板 小区配置为高铁场景（2个2T2R的RRU双拼成1个2T4R小区，', 'event_list': [{'trigger': ['SetMachine', 3, '配置'], 'argument': [['Object', 7, 'UBBP基带板']]}]}
+
+0.667, true_num: 2, pred_num: 4, gt_num: 2
+预测：{'text': '但是这一次无法向XX-市区-粮食局-HFTA-448297-52 PCI=113小区切换时，', 'event_list': [{'trigger': ['SoftHardwareFault', 42, '切换'], 'argument': [['State', 5, '无'], ['Subject', 33, 'PCI='], ['Object', 40, '小区']]}], 'doc_id': 0}
+答案：{'text': '但是这一次无法向XX-市区-粮食局-HFTA-448297-52 PCI=113小区切换时，', 'event_list': [{'trigger': ['SoftHardwareFault', 42, '切换'], 'argument': [['Object', 40, '小区']]}]}
+
+0.571, true_num: 2, pred_num: 3, gt_num: 4
+预测：{'text': '3G RF条件差导致路测CSFB成功率低', 'event_list': [{'trigger': ['IndexFault', 7, '差'], 'argument': []}, {'trigger': ['IndexFault', 19, '低'], 'argument': [['Index', 10, '路测CSFB成功率']]}], 'doc_id': 0}
+答案：{'text': '3G RF条件差导致路测CSFB成功率低', 'event_list': [{'trigger': ['SoftHardwareFault', 7, '差'], 'argument': [['Subject', 0, '3G RF条件']]}, {'trigger': ['IndexFault', 19, '低'], 'argument': [['Index', 10, '路测CSFB成功率']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '协议分析 按照3GPP的36331协议分析，', 'event_list': [{'trigger': ['Check', 2, '分析'], 'argument': [['Object', 0, '协议']]}, {'trigger': ['Check', 19, '分析'], 'argument': [['Object', 12, '36331协议']]}], 'doc_id': 0}
+答案：{'text': '协议分析 按照3GPP的36331协议分析，', 'event_list': [{'trigger': ['Check', 2, '分析'], 'argument': [['Object', 0, '协议']]}, {'trigger': ['Check', 19, '分析'], 'argument': [['Object', 7, '3GPP的36331协议']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': ' 但在SEQ多维度查询“SV SRVCC切换失败次数”在170143后仍然显示有SRVCC切换失败，', 'event_list': [{'trigger': ['Check', 9, '查询'], 'argument': [['Object', 11, '“SV SRVCC切换失败次数']]}, {'trigger': ['SoftHardwareFault', 45, '切换'], 'argument': [['State', 47, '失败'], ['Subject', 40, 'SRVCC']]}], 'doc_id': 0}
+答案：{'text': ' 但在SEQ多维度查询“SV SRVCC切换失败次数”在170143后仍然显示有SRVCC切换失败，', 'event_list': [{'trigger': ['SoftHardwareFault', 45, '切换'], 'argument': [['Subject', 40, 'SRVCC'], ['State', 47, '失败']]}, {'trigger': ['Check', 9, '查询'], 'argument': [['Object', 12, 'SV SRVCC切换失败次数']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 3
+预测：{'text': 'X2白名单指定本端eNodeB与对端eNodeB建立的X2链路不能自动删除。', 'event_list': [], 'doc_id': 0}
+答案：{'text': 'X2白名单指定本端eNodeB与对端eNodeB建立的X2链路不能自动删除。', 'event_list': [{'trigger': ['SoftHardwareFault', 33, '自动删除'], 'argument': [['State', 31, '不能'], ['Subject', 0, 'X2白名单指定本端eNodeB与对端eNodeB建立的X2链路']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '1、 RRC建立成功率低的原因是弱覆盖导致', 'event_list': [{'trigger': ['IndexFault', 11, '低'], 'argument': [['Index', 3, 'RRC建立成功率']]}], 'doc_id': 0}
+答案：{'text': '1、 RRC建立成功率低的原因是弱覆盖导致', 'event_list': [{'trigger': ['IndexFault', 11, '低'], 'argument': [['Index', 3, 'RRC建立成功率']]}, {'trigger': ['SoftHardwareFault', 16, '弱覆盖'], 'argument': []}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 1
+预测：{'text': ' 90%时完全禁止。', 'event_list': [], 'doc_id': 0}
+答案：{'text': ' 90%时完全禁止。', 'event_list': [{'trigger': ['Operate', 7, '禁止'], 'argument': []}]}
+
+0.857, true_num: 3, pred_num: 3, gt_num: 4
+预测：{'text': 'RRU类型配置错误导致干扰', 'event_list': [{'trigger': ['SettingFault', 5, '配置'], 'argument': [['Setting', 0, 'RRU类型'], ['State', 7, '错误']]}], 'doc_id': 0}
+答案：{'text': 'RRU类型配置错误导致干扰', 'event_list': [{'trigger': ['SettingFault', 5, '配置'], 'argument': [['Setting', 0, 'RRU类型'], ['State', 7, '错误']]}, {'trigger': ['SoftHardwareFault', 11, '干扰'], 'argument': []}]}
+
+0.4, true_num: 1, pred_num: 3, gt_num: 2
+预测：{'text': '可见中间传输设置有限制，', 'event_list': [{'trigger': ['SettingFault', 6, '设置'], 'argument': [['State', 8, '有限制'], ['Owner', 2, '中间传输']]}], 'doc_id': 0}
+答案：{'text': '可见中间传输设置有限制，', 'event_list': [{'trigger': ['SettingFault', 6, '设置'], 'argument': [['Owner', 4, '传输']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 2
+预测：{'text': '覆盖等级由参数Cell.CoverageLevelType指定，', 'event_list': [], 'doc_id': 0}
+答案：{'text': '覆盖等级由参数Cell.CoverageLevelType指定，', 'event_list': [{'trigger': ['SetMachine', 29, '指定'], 'argument': [['InitialState', 5, '参数Cell.CoverageLevelType']]}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 3
+预测：{'text': '但模块信息的RRU能力仅支持2T4R，', 'event_list': [{'trigger': ['IndexFault', 11, '仅支持'], 'argument': [['Index', 1, '模块信息的RRU能力']]}], 'doc_id': 0}
+答案：{'text': '但模块信息的RRU能力仅支持2T4R，', 'event_list': [{'trigger': ['SoftHardwareFault', 11, '仅支持'], 'argument': [['Subject', 1, '模块信息的RRU能力'], ['Object', 14, '2T4R']]}]}
+
+0.667, true_num: 2, pred_num: 3, gt_num: 3
+预测：{'text': ' license管理组件没有启用导致。', 'event_list': [{'trigger': ['SoftHardwareFault', 14, '启用'], 'argument': [['State', 12, '没有'], ['Subject', 0, ' license管理组件']]}], 'doc_id': 0}
+答案：{'text': ' license管理组件没有启用导致。', 'event_list': [{'trigger': ['SoftHardwareFault', 14, '启用'], 'argument': [['State', 12, '没有'], ['Subject', 1, 'license管理组件']]}]}
+
+0.667, true_num: 2, pred_num: 2, gt_num: 4
+预测：{'text': ' 由于XTQID1754王庄村AAU-HLWD在割接前出现故障，', 'event_list': [{'trigger': ['SoftHardwareFault', 29, '故障'], 'argument': [['Subject', 15, 'AAU-HLWD']]}], 'doc_id': 0}
+答案：{'text': ' 由于XTQID1754王庄村AAU-HLWD在割接前出现故障，', 'event_list': [{'trigger': ['SoftHardwareFault', 29, '故障'], 'argument': [['Subject', 15, 'AAU-HLWD']]}, {'trigger': ['Operate', 24, '割接'], 'argument': [['Object', 15, 'AAU-HLWD']]}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 2
+预测：{'text': '关闭软劈裂特性', 'event_list': [{'trigger': ['Operate', 0, '关闭'], 'argument': [['Object', 2, '软劈裂特性']]}], 'doc_id': 0}
+答案：{'text': '关闭软劈裂特性', 'event_list': [{'trigger': ['SetMachine', 0, '关闭'], 'argument': [['Object', 2, '软劈裂特性']]}]}
+
+0.714, true_num: 5, pred_num: 6, gt_num: 8
+预测：{'text': '我司及E厂家MME无eNodeB SON信息传递license导致X2链路无法自建立信令对比', 'event_list': [{'trigger': ['SoftHardwareFault', 22, '传递'], 'argument': [['State', 24, 'license']]}, {'trigger': ['SoftHardwareFault', 39, '自建立'], 'argument': [['Subject', 33, 'X2链路'], ['Object', 42, '信令'], ['State', 37, '无法']]}], 'doc_id': 0}
+答案：{'text': '我司及E厂家MME无eNodeB SON信息传递license导致X2链路无法自建立信令对比', 'event_list': [{'trigger': ['SoftHardwareFault', 9, '无e'], 'argument': [['Subject', 6, 'MME无eNodeB SON信息']]}, {'trigger': ['SoftHardwareFault', 22, '传递'], 'argument': [['Object', 24, 'license']]}, {'trigger': ['SoftHardwareFault', 39, '自建立'], 'argument': [['Subject', 33, 'X2链路'], ['State', 37, '无法'], ['Object', 42, '信令']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 1
+预测：{'text': ' 那么当存在大量弱覆盖用户接入时，', 'event_list': [], 'doc_id': 0}
+答案：{'text': ' 那么当存在大量弱覆盖用户接入时，', 'event_list': [{'trigger': ['SoftHardwareFault', 8, '弱覆盖'], 'argument': []}]}
+
+0.571, true_num: 2, pred_num: 4, gt_num: 3
+预测：{'text': '而此时邻区关系又被删除导致重建失败', 'event_list': [{'trigger': ['SoftHardwareFault', 9, '删除'], 'argument': [['Subject', 3, '邻区关系']]}, {'trigger': ['SoftHardwareFault', 13, '重建'], 'argument': [['State', 15, '失败']]}], 'doc_id': 0}
+答案：{'text': '而此时邻区关系又被删除导致重建失败', 'event_list': [{'trigger': ['Operate', 9, '删除'], 'argument': []}, {'trigger': ['SoftHardwareFault', 13, '重建'], 'argument': [['State', 15, '失败']]}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 2
+预测：{'text': '3、导出ESDP里面的纯商用永久部分，', 'event_list': [{'trigger': ['Operate', 2, '导出'], 'argument': [['Object', 4, 'ESDP里面的纯商用永久部分']]}], 'doc_id': 0}
+答案：{'text': '3、导出ESDP里面的纯商用永久部分，', 'event_list': [{'trigger': ['CollectData', 2, '导出'], 'argument': [['Data', 4, 'ESDP里面的纯商用永久部分']]}]}
+
+0.5, true_num: 2, pred_num: 4, gt_num: 4
+预测：{'text': '减少边缘用户由于GSM电平达不到而没有及时eSRVCC，', 'event_list': [{'trigger': ['IndexFault', 13, '达不到'], 'argument': [['Index', 8, 'GSM电平']]}, {'trigger': ['SoftHardwareFault', 21, 'eSRVC'], 'argument': [['State', 17, '没有及时']]}], 'doc_id': 0}
+答案：{'text': '减少边缘用户由于GSM电平达不到而没有及时eSRVCC，', 'event_list': [{'trigger': ['IndexFault', 13, '达不到'], 'argument': [['Index', 8, 'GSM电平']]}, {'trigger': ['SoftHardwareFault', 21, 'eSRVCC'], 'argument': [['State', 17, '没有及时']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': ' 1块基带板配置3个10MHz小区。', 'event_list': [{'trigger': ['SetMachine', 6, '配置'], 'argument': [['Object', 10, '10MHz小区']]}], 'doc_id': 0}
+答案：{'text': ' 1块基带板配置3个10MHz小区。', 'event_list': [{'trigger': ['SetMachine', 6, '配置'], 'argument': [['Network', 3, '基带板'], ['Object', 10, '10MHz小区']]}]}
+
+0.75, true_num: 3, pred_num: 3, gt_num: 5
+预测：{'text': '用户在注册过程中失败， I-CSCF返回500响应给P-CSCF， Warning头域中提示“Server Internal error”(服务器内部错误)。', 'event_list': [{'trigger': ['SoftHardwareFault', 3, '注册'], 'argument': [['State', 8, '失败'], ['Subject', 0, '用户']]}], 'doc_id': 0}
+答案：{'text': '用户在注册过程中失败， I-CSCF返回500响应给P-CSCF， Warning头域中提示“Server Internal error”(服务器内部错误)。', 'event_list': [{'trigger': ['SoftHardwareFault', 3, '注册'], 'argument': [['State', 8, '失败'], ['Subject', 0, '用户']]}, {'trigger': ['SoftHardwareFault', 75, '错误'], 'argument': [['Subject', 70, '服务器内部']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': ' 收缩F站点覆盖，', 'event_list': [{'trigger': ['Operate', 1, '收缩'], 'argument': [['Object', 4, '站点覆盖']]}], 'doc_id': 0}
+答案：{'text': ' 收缩F站点覆盖，', 'event_list': [{'trigger': ['Operate', 1, '收缩'], 'argument': [['Object', 3, 'F站点覆盖']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': '优化3G侧干扰问题，', 'event_list': [{'trigger': ['SetMachine', 0, '优化'], 'argument': [['Object', 2, '3G侧干扰']]}], 'doc_id': 0}
+答案：{'text': '优化3G侧干扰问题，', 'event_list': [{'trigger': ['SetMachine', 0, '优化'], 'argument': [['Object', 2, '3G侧干扰问题']]}]}
+
+0.667, true_num: 2, pred_num: 3, gt_num: 3
+预测：{'text': '建议将CCE分配策略修改为基于容量的分配策略', 'event_list': [{'trigger': ['SetMachine', 10, '修改'], 'argument': [['Object', 3, 'CCE分配策略'], ['FinalState', 13, '基于容量的分配策略']]}], 'doc_id': 0}
+答案：{'text': '建议将CCE分配策略修改为基于容量的分配策略', 'event_list': [{'trigger': ['SetMachine', 10, '修改'], 'argument': [['InitialState', 3, 'CCE分配策略'], ['FinalState', 13, '基于容量的分配策略']]}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 2
+预测：{'text': '   合路器互换对比（1小区弱场方向） 将', 'event_list': [{'trigger': ['Check', 8, '对比'], 'argument': [['Object', 0, '   合路器互换']]}], 'doc_id': 0}
+答案：{'text': '   合路器互换对比（1小区弱场方向） 将', 'event_list': [{'trigger': ['SetMachine', 6, '互换'], 'argument': [['Object', 3, '合路器']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': 'O国核心网未响应导致释放', 'event_list': [{'trigger': ['SoftHardwareFault', 5, '未响应'], 'argument': [['Subject', 2, '核心网']]}], 'doc_id': 0}
+答案：{'text': 'O国核心网未响应导致释放', 'event_list': [{'trigger': ['SoftHardwareFault', 5, '未响应'], 'argument': [['Subject', 2, '核心网']]}, {'trigger': ['SoftHardwareFault', 10, '释放'], 'argument': []}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': '由于单板部分软件未配置导致UBBP单板启动失败', 'event_list': [{'trigger': ['SettingFault', 8, '未配置'], 'argument': [['Owner', 6, '软件']]}, {'trigger': ['SoftHardwareFault', 19, '启动'], 'argument': [['State', 21, '失败'], ['Subject', 13, 'UBBP单板']]}], 'doc_id': 0}
+答案：{'text': '由于单板部分软件未配置导致UBBP单板启动失败', 'event_list': [{'trigger': ['SettingFault', 8, '未配置'], 'argument': [['Owner', 2, '单板部分软件']]}, {'trigger': ['SoftHardwareFault', 19, '启动'], 'argument': [['Subject', 13, 'UBBP单板'], ['State', 21, '失败']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': 'a、重配置失败导致重建；', 'event_list': [{'trigger': ['SettingFault', 2, '重配置'], 'argument': [['State', 5, '失败']]}], 'doc_id': 0}
+答案：{'text': 'a、重配置失败导致重建；', 'event_list': [{'trigger': ['SettingFault', 2, '重配置'], 'argument': [['State', 5, '失败']]}, {'trigger': ['SoftHardwareFault', 9, '重建'], 'argument': []}]}
+
+0.667, true_num: 3, pred_num: 6, gt_num: 3
+预测：{'text': '由于弱覆盖及重叠覆盖过多导致切换不及时问题的RF优化调整案例', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '弱覆盖'], 'argument': [['State', 10, '过多']]}, {'trigger': ['SoftHardwareFault', 8, '覆盖'], 'argument': [['State', 10, '过多']]}, {'trigger': ['SoftHardwareFault', 14, '切换'], 'argument': [['State', 16, '不及时']]}], 'doc_id': 0}
+答案：{'text': '由于弱覆盖及重叠覆盖过多导致切换不及时问题的RF优化调整案例', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '弱覆盖'], 'argument': []}, {'trigger': ['SoftHardwareFault', 14, '切换'], 'argument': [['State', 16, '不及时']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 2
+预测：{'text': ' 说明MR文件中RSRP有值的字段统计结果正常。', 'event_list': [], 'doc_id': 0}
+答案：{'text': ' 说明MR文件中RSRP有值的字段统计结果正常。', 'event_list': [{'trigger': ['Check', 17, '统计'], 'argument': [['Object', 3, 'MR文件中RSRP有值的字段']]}]}
+
+0, true_num: 0, pred_num: 3, gt_num: 5
+预测：{'text': ' X2黑名单指定本端eNodeB不能与指定的对端eNodeB之间自动建立X2链路。', 'event_list': [{'trigger': ['SoftHardwareFault', 34, '建立'], 'argument': [['Subject', 22, '对端eNodeB'], ['Object', 36, 'X2链路']]}], 'doc_id': 0}
+答案：{'text': ' X2黑名单指定本端eNodeB不能与指定的对端eNodeB之间自动建立X2链路。', 'event_list': [{'trigger': ['SoftHardwareFault', 32, '自动建立'], 'argument': [['Owner', 8, '本端eNodeB'], ['Subject', 22, '对端eNodeB'], ['Object', 36, 'X2链路'], ['State', 16, '不能']]}]}
+
+0.5, true_num: 1, pred_num: 2, gt_num: 2
+预测：{'text': '3、通过日志查看主要掉线原因为无线空口原因。', 'event_list': [{'trigger': ['Check', 6, '查看'], 'argument': [['Object', 4, '日志']]}], 'doc_id': 0}
+答案：{'text': '3、通过日志查看主要掉线原因为无线空口原因。', 'event_list': [{'trigger': ['Check', 6, '查看'], 'argument': [['Object', 10, '掉线原因']]}]}
+
+0.889, true_num: 4, pred_num: 4, gt_num: 5
+预测：{'text': '此时应重点关注是否由于天线点位不足、设计方案不合理、建筑室内结构布局复杂，', 'event_list': [{'trigger': ['IndexFault', 15, '不足'], 'argument': [['Index', 11, '天线点位']]}, {'trigger': ['SoftHardwareFault', 22, '不合理'], 'argument': [['Subject', 18, '设计方案']]}], 'doc_id': 0}
+答案：{'text': '此时应重点关注是否由于天线点位不足、设计方案不合理、建筑室内结构布局复杂，', 'event_list': [{'trigger': ['IndexFault', 15, '不足'], 'argument': [['Index', 11, '天线点位']]}, {'trigger': ['SoftHardwareFault', 22, '不合理'], 'argument': [['Subject', 18, '设计方案'], ['Owner', 26, '建筑室内结构']]}]}
+
+0.364, true_num: 2, pred_num: 5, gt_num: 6
+预测：{'text': 'RET电调配置问题导致天线设备维护链路异常故障', 'event_list': [{'trigger': ['SettingFault', 5, '配置'], 'argument': [['Owner', 0, 'RET电调'], ['State', 7, '问题']]}, {'trigger': ['SoftHardwareFault', 19, '异常故障'], 'argument': [['Subject', 11, '天线设备维护链路']]}], 'doc_id': 0}
+答案：{'text': 'RET电调配置问题导致天线设备维护链路异常故障', 'event_list': [{'trigger': ['SettingFault', 5, '配置'], 'argument': [['Setting', 0, 'RET电调'], ['State', 7, '问题']]}, {'trigger': ['SoftHardwareFault', 21, '故障'], 'argument': [['Subject', 11, '天线设备维护链路'], ['State', 19, '异常']]}]}
+
+0.833, true_num: 5, pred_num: 6, gt_num: 6
+预测：{'text': '修改下行最大层数为Layer8或者增加License到24个（48流）', 'event_list': [{'trigger': ['SetMachine', 0, '修改'], 'argument': [['FinalState', 9, 'Layer8'], ['Object', 2, '下行最大层数']]}, {'trigger': ['SetMachine', 17, '增加'], 'argument': [['FinalState', 9, 'Layer8'], ['Object', 2, '下行最大层数']]}], 'doc_id': 0}
+答案：{'text': '修改下行最大层数为Layer8或者增加License到24个（48流）', 'event_list': [{'trigger': ['SetMachine', 0, '修改'], 'argument': [['Object', 2, '下行最大层数'], ['FinalState', 9, 'Layer8']]}, {'trigger': ['SetMachine', 17, '增加'], 'argument': [['FinalState', 9, 'Layer8'], ['Object', 19, 'License']]}]}
+
+0.364, true_num: 2, pred_num: 5, gt_num: 6
+预测：{'text': '让UE回落到3G的原因是由于SRLTE开关没有打开。', 'event_list': [{'trigger': ['SoftHardwareFault', 3, '回落'], 'argument': [['Subject', 1, 'UE']]}, {'trigger': ['SettingFault', 23, '打开'], 'argument': [['State', 21, '没有'], ['Setting', 14, 'SRLTE开关']]}], 'doc_id': 0}
+答案：{'text': '让UE回落到3G的原因是由于SRLTE开关没有打开。', 'event_list': [{'trigger': ['SoftHardwareFault', 3, '回落'], 'argument': [['Subject', 1, 'UE'], ['Object', 6, '3G']]}, {'trigger': ['SoftHardwareFault', 23, '打开'], 'argument': [['Object', 14, 'SRLTE开关'], ['State', 21, '没有']]}]}
+
+0.667, true_num: 2, pred_num: 2, gt_num: 4
+预测：{'text': '4、  核心网排查 SEQ侧Gx和Gy接口消息丢失，', 'event_list': [{'trigger': ['Check', 7, '排查'], 'argument': [['Object', 4, '核心网']]}], 'doc_id': 0}
+答案：{'text': '4、  核心网排查 SEQ侧Gx和Gy接口消息丢失，', 'event_list': [{'trigger': ['Check', 7, '排查'], 'argument': [['Object', 4, '核心网']]}, {'trigger': ['SoftHardwareFault', 23, '丢失'], 'argument': [['Subject', 10, 'SEQ侧Gx和Gy接口消息']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 4
+预测：{'text': 'ping不通 说明网关侧到基站的网络（L3VPN+L2VPN）存在问题。', 'event_list': [], 'doc_id': 0}
+答案：{'text': 'ping不通 说明网关侧到基站的网络（L3VPN+L2VPN）存在问题。', 'event_list': [{'trigger': ['SoftHardwareFault', 0, 'ping不通'], 'argument': [['Subject', 9, '网关侧到基站的网络']]}, {'trigger': ['SoftHardwareFault', 31, '存在问题'], 'argument': [['Owner', 13, '基站的网络']]}]}
+
+0.857, true_num: 3, pred_num: 3, gt_num: 4
+预测：{'text': 'NR基站帧偏置设置不合理导致高干扰问题分析', 'event_list': [{'trigger': ['SettingFault', 7, '设置'], 'argument': [['Setting', 0, 'NR基站帧偏置'], ['State', 9, '不合理']]}], 'doc_id': 0}
+答案：{'text': 'NR基站帧偏置设置不合理导致高干扰问题分析', 'event_list': [{'trigger': ['SettingFault', 7, '设置'], 'argument': [['Setting', 0, 'NR基站帧偏置'], ['State', 9, '不合理']]}, {'trigger': ['SoftHardwareFault', 14, '高干扰'], 'argument': []}]}
+
+0.667, true_num: 3, pred_num: 3, gt_num: 6
+预测：{'text': '被叫做CSFB导致VoLTE接入失败', 'event_list': [{'trigger': ['SoftHardwareFault', 14, '接入'], 'argument': [['Subject', 9, 'VoLTE'], ['State', 16, '失败']]}], 'doc_id': 0}
+答案：{'text': '被叫做CSFB导致VoLTE接入失败', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '被叫做'], 'argument': [['Subject', 0, '被叫'], ['Object', 3, 'CSFB']]}, {'trigger': ['SoftHardwareFault', 14, '接入'], 'argument': [['Subject', 9, 'VoLTE'], ['State', 16, '失败']]}]}
+
+0.667, true_num: 2, pred_num: 2, gt_num: 4
+预测：{'text': '1. 1 PDCP分析 网络侧133跟踪记录了下行从服务器端接收到的字节数，', 'event_list': [{'trigger': ['Check', 9, '分析'], 'argument': [['Object', 5, 'PDCP']]}], 'doc_id': 0}
+答案：{'text': '1. 1 PDCP分析 网络侧133跟踪记录了下行从服务器端接收到的字节数，', 'event_list': [{'trigger': ['Check', 9, '分析'], 'argument': [['Object', 5, 'PDCP']]}, {'trigger': ['CollectData', 18, '跟踪记录'], 'argument': [['Data', 23, '下行从服务器端接收到的字节数']]}]}
+
+0.6, true_num: 3, pred_num: 5, gt_num: 5
+预测：{'text': '我司与A厂家相邻基站QCI9的RLC模式不一致导致小区间切换失败。', 'event_list': [{'trigger': ['SettingFault', 20, '不一致'], 'argument': [['Setting', 8, '基站QCI9的RLC模式']]}, {'trigger': ['SoftHardwareFault', 28, '切换'], 'argument': [['Subject', 25, '小区间'], ['State', 30, '失败']]}], 'doc_id': 0}
+答案：{'text': '我司与A厂家相邻基站QCI9的RLC模式不一致导致小区间切换失败。', 'event_list': [{'trigger': ['SettingFault', 20, '不一致'], 'argument': [['Setting', 6, '相邻基站QCI9的RLC模式']]}, {'trigger': ['SoftHardwareFault', 28, '切换'], 'argument': [['Subject', 25, '小区'], ['State', 30, '失败']]}]}
+
+0.4, true_num: 1, pred_num: 2, gt_num: 3
+预测：{'text': '1、XX亚父路口与和平大道交口-1小区添加居巢沸泉路与半汤路交口-', 'event_list': [{'trigger': ['Operate', 19, '添加'], 'argument': [['Object', 17, '小区']]}], 'doc_id': 0}
+答案：{'text': '1、XX亚父路口与和平大道交口-1小区添加居巢沸泉路与半汤路交口-', 'event_list': [{'trigger': ['Operate', 19, '添加'], 'argument': [['Owner', 17, '小区'], ['Object', 21, '居巢沸泉路与半汤路交口']]}]}
+
+0.4, true_num: 1, pred_num: 2, gt_num: 3
+预测：{'text': ' 小区通过SI消息给终端重配PRACH偏置为', 'event_list': [{'trigger': ['SetMachine', 12, '重配'], 'argument': [['Object', 14, 'PRACH偏置']]}], 'doc_id': 0}
+答案：{'text': ' 小区通过SI消息给终端重配PRACH偏置为', 'event_list': [{'trigger': ['SetMachine', 12, '重配'], 'argument': [['Object', 10, '终端'], ['FinalState', 14, 'PRACH偏置为8']]}]}
+
+0.667, true_num: 2, pred_num: 2, gt_num: 4
+预测：{'text': '2.2.3.2.3 来水量分析 从问题时间段占据主要流量的TCP流均存在丢包，', 'event_list': [{'trigger': ['Check', 13, '分析'], 'argument': [['Object', 10, '来水量']]}], 'doc_id': 0}
+答案：{'text': '2.2.3.2.3 来水量分析 从问题时间段占据主要流量的TCP流均存在丢包，', 'event_list': [{'trigger': ['Check', 13, '分析'], 'argument': [['Object', 10, '来水量']]}, {'trigger': ['SoftHardwareFault', 36, '丢包'], 'argument': [['Subject', 29, 'TCP流']]}]}
+
+0.462, true_num: 3, pred_num: 7, gt_num: 6
+预测：{'text': '此时， 在面对SRVCC流程中切换准备阶段与QCI=1专载释放流程冲突时， 诺基亚MME响应了去激活专载， 并向ENB回复HANDOVER PREPARATION FAILURE（切换准备失败）， 同时给EMSC发送SRVCC PS TO CS CANCEL NOTIFICATION， 接着指示释放专载。', 'event_list': [{'trigger': ['SoftHardwareFault', 33, '冲突'], 'argument': [['Subject', 15, '切换准备阶段与QCI=1专载释放流程']]}, {'trigger': ['Operate', 47, '去激活'], 'argument': [['Object', 50, '专载']]}, {'trigger': ['Operate', 106, '发送'], 'argument': [['Object', 108, 'SRVCC PS TO CS CAN'], ['Owner', 102, 'EMSC']]}], 'doc_id': 0}
+答案：{'text': '此时， 在面对SRVCC流程中切换准备阶段与QCI=1专载释放流程冲突时， 诺基亚MME响应了去激活专载， 并向ENB回复HANDOVER PREPARATION FAILURE（切换准备失败）， 同时给EMSC发送SRVCC PS TO CS CANCEL NOTIFICATION， 接着指示释放专载。', 'event_list': [{'trigger': ['Operate', 148, '释放'], 'argument': [['Object', 150, '专载']]}, {'trigger': ['Operate', 47, '去激活'], 'argument': [['Object', 50, '专载']]}, {'trigger': ['SoftHardwareFault', 33, '冲突'], 'argument': [['Subject', 7, 'SRVCC流程中切换准备阶段与QCI=1专载释放流程']]}]}
+
+0.429, true_num: 3, pred_num: 7, gt_num: 7
+预测：{'text': 'MSC没有配置EPLMN导致CSFB后概率性无法重选回4G', 'event_list': [{'trigger': ['SettingFault', 5, '配置'], 'argument': [['Owner', 0, 'MSC'], ['Setting', 7, 'EPLMN'], ['State', 3, '没有']]}, {'trigger': ['SoftHardwareFault', 24, '重选'], 'argument': [['State', 22, '无法'], ['Object', 27, '4G']]}], 'doc_id': 0}
+答案：{'text': 'MSC没有配置EPLMN导致CSFB后概率性无法重选回4G', 'event_list': [{'trigger': ['SettingFault', 5, '配置'], 'argument': [['Owner', 0, 'MSC'], ['State', 3, '没有'], ['Reference', 7, 'EPLMN']]}, {'trigger': ['SoftHardwareFault', 24, '重选回'], 'argument': [['State', 22, '无法'], ['Object', 27, '4G']]}]}
+
+0.5, true_num: 2, pred_num: 5, gt_num: 3
+预测：{'text': 'UE通话过程中 IMS重注册更换SBC地址导致掉话的案例', 'event_list': [{'trigger': ['SoftHardwareFault', 11, '重注册'], 'argument': [['Subject', 7, ' IMS'], ['Object', 16, 'SBC地址']]}, {'trigger': ['SetMachine', 14, '更换'], 'argument': [['Object', 16, 'SBC地址']]}], 'doc_id': 0}
+答案：{'text': 'UE通话过程中 IMS重注册更换SBC地址导致掉话的案例', 'event_list': [{'trigger': ['SetMachine', 14, '更换'], 'argument': [['Object', 16, 'SBC地址']]}, {'trigger': ['SoftHardwareFault', 23, '掉话'], 'argument': []}]}
+
+0, true_num: 0, pred_num: 2, gt_num: 3
+预测：{'text': 'L新华兆龙站点只配置了134', 'event_list': [{'trigger': ['SettingFault', 7, '只配置'], 'argument': [['Owner', 1, '新华兆龙站点']]}], 'doc_id': 0}
+答案：{'text': 'L新华兆龙站点只配置了134', 'event_list': [{'trigger': ['SettingFault', 8, '配置'], 'argument': [['Owner', 5, '站点'], ['Reference', 11, '134']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': 'SR虚警导致的UL-GRANT调度失败会拉升IBLER；', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '虚警'], 'argument': [['Subject', 0, 'SR']]}, {'trigger': ['SoftHardwareFault', 15, '调度'], 'argument': [['Subject', 7, 'UL-GRANT'], ['State', 17, '失败']]}], 'doc_id': 0}
+答案：{'text': 'SR虚警导致的UL-GRANT调度失败会拉升IBLER；', 'event_list': [{'trigger': ['SoftHardwareFault', 2, '虚警'], 'argument': [['Subject', 0, 'SR']]}, {'trigger': ['SoftHardwareFault', 15, '调度'], 'argument': [['Owner', 7, 'UL-GRANT'], ['State', 17, '失败']]}]}
+
+0.833, true_num: 5, pred_num: 6, gt_num: 6
+预测：{'text': '发现“RRU组网拓扑类型与配置不一致告警”和“射频单元业务不可用告警”恢复时间是一致，', 'event_list': [{'trigger': ['SettingFault', 15, '不一致'], 'argument': [['State', 18, '告警'], ['Setting', 2, '“RRU组网拓扑类型与配置']]}, {'trigger': ['SoftHardwareFault', 29, '不可用'], 'argument': [['Subject', 23, '射频单元业务'], ['State', 32, '告警']]}], 'doc_id': 0}
+答案：{'text': '发现“RRU组网拓扑类型与配置不一致告警”和“射频单元业务不可用告警”恢复时间是一致，', 'event_list': [{'trigger': ['SettingFault', 15, '不一致'], 'argument': [['Setting', 3, 'RRU组网拓扑类型与配置'], ['State', 18, '告警']]}, {'trigger': ['SoftHardwareFault', 29, '不可用'], 'argument': [['Subject', 23, '射频单元业务'], ['State', 32, '告警']]}]}
+
+0.533, true_num: 4, pred_num: 7, gt_num: 8
+预测：{'text': '跨RNC迁移后无法识别为CSFB呼叫导致不能快速返回4G的故障分析', 'event_list': [{'trigger': ['SoftHardwareFault', 9, '识别'], 'argument': [['Subject', 0, '跨RNC'], ['Object', 12, 'CSFB呼叫'], ['State', 7, '无法']]}, {'trigger': ['SoftHardwareFault', 24, '返回'], 'argument': [['State', 20, '不能快速'], ['Object', 26, '4G']]}], 'doc_id': 0}
+答案：{'text': '跨RNC迁移后无法识别为CSFB呼叫导致不能快速返回4G的故障分析', 'event_list': [{'trigger': ['SoftHardwareFault', 9, '识别'], 'argument': [['Object', 12, 'CSFB呼叫'], ['State', 7, '无法']]}, {'trigger': ['Operate', 4, '迁移'], 'argument': [['Owner', 1, 'RNC']]}, {'trigger': ['SoftHardwareFault', 24, '返回'], 'argument': [['State', 20, '不能'], ['Owner', 26, '4G']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '具体问题=底层链路故障产生 SCTP链路故障：', 'event_list': [{'trigger': ['SoftHardwareFault', 9, '故障'], 'argument': [['Subject', 5, '底层链路']]}, {'trigger': ['SoftHardwareFault', 20, '故障'], 'argument': [['Subject', 13, ' SCTP链路']]}], 'doc_id': 0}
+答案：{'text': '具体问题=底层链路故障产生 SCTP链路故障：', 'event_list': [{'trigger': ['SoftHardwareFault', 9, '故障'], 'argument': [['Subject', 5, '底层链路']]}, {'trigger': ['SoftHardwareFault', 20, '故障'], 'argument': [['Subject', 14, 'SCTP链路']]}]}
+
+0.857, true_num: 6, pred_num: 7, gt_num: 7
+预测：{'text': '传输单板故障导致SIP丢包引起VoLTE被叫概率性失败问题', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '故障'], 'argument': [['Subject', 0, '传输单板']]}, {'trigger': ['SoftHardwareFault', 11, '丢包'], 'argument': [['Subject', 8, 'SIP']]}, {'trigger': ['SoftHardwareFault', 20, '被叫'], 'argument': [['Subject', 15, 'VoLTE'], ['State', 22, '概率性失败']]}], 'doc_id': 0}
+答案：{'text': '传输单板故障导致SIP丢包引起VoLTE被叫概率性失败问题', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '故障'], 'argument': [['Subject', 0, '传输单板']]}, {'trigger': ['SoftHardwareFault', 11, '丢包'], 'argument': [['Subject', 8, 'SIP']]}, {'trigger': ['SoftHardwareFault', 20, '被叫'], 'argument': [['Subject', 15, 'VoLTE被叫'], ['State', 22, '概率性失败']]}]}
+
+0.727, true_num: 4, pred_num: 4, gt_num: 7
+预测：{'text': '由于站点license被人为回退导致ESDP网站申请license时提示签名失败', 'event_list': [{'trigger': ['SoftHardwareFault', 14, '回退'], 'argument': [['Subject', 2, '站点license']]}, {'trigger': ['SoftHardwareFault', 36, '签名'], 'argument': [['State', 38, '失败']]}], 'doc_id': 0}
+答案：{'text': '由于站点license被人为回退导致ESDP网站申请license时提示签名失败', 'event_list': [{'trigger': ['SoftHardwareFault', 14, '回退'], 'argument': [['Subject', 2, '站点license']]}, {'trigger': ['SoftHardwareFault', 24, '申请'], 'argument': [['Subject', 18, 'ESDP网站'], ['Object', 26, 'license']]}, {'trigger': ['SoftHardwareFault', 36, '签名'], 'argument': [['State', 38, '失败']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '2、网优侧核实邻区数据，', 'event_list': [{'trigger': ['Check', 5, '核实'], 'argument': [['Object', 7, '邻区数据']]}], 'doc_id': 0}
+答案：{'text': '2、网优侧核实邻区数据，', 'event_list': [{'trigger': ['Check', 5, '核实'], 'argument': [['Object', 7, '邻区数据'], ['Owner', 2, '网优侧']]}]}
+
+0.889, true_num: 4, pred_num: 5, gt_num: 4
+预测：{'text': 'CPRI链路不稳定会导致RRU短时间不可用，', 'event_list': [{'trigger': ['SoftHardwareFault', 6, '不稳定'], 'argument': [['Subject', 0, 'CPRI链路']]}, {'trigger': ['SoftHardwareFault', 18, '不可用'], 'argument': [['Subject', 12, 'RRU'], ['State', 15, '短时间']]}], 'doc_id': 0}
+答案：{'text': 'CPRI链路不稳定会导致RRU短时间不可用，', 'event_list': [{'trigger': ['SoftHardwareFault', 6, '不稳定'], 'argument': [['Subject', 0, 'CPRI链路']]}, {'trigger': ['SoftHardwareFault', 18, '不可用'], 'argument': [['Subject', 12, 'RRU']]}]}
+
+0.667, true_num: 3, pred_num: 3, gt_num: 6
+预测：{'text': '网络侧并未下发RRC Connection Release导致终端无法回落：', 'event_list': [{'trigger': ['SoftHardwareFault', 35, '回落'], 'argument': [['State', 33, '无法'], ['Subject', 31, '终端']]}], 'doc_id': 0}
+答案：{'text': '网络侧并未下发RRC Connection Release导致终端无法回落：', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '未下发'], 'argument': [['Subject', 0, '网络侧'], ['Object', 7, 'RRC Connection Release']]}, {'trigger': ['SoftHardwareFault', 35, '回落'], 'argument': [['Subject', 31, '终端'], ['State', 33, '无法']]}]}
+
+0.8, true_num: 2, pred_num: 2, gt_num: 3
+预测：{'text': '在 900到 945是由于MSG3上行弱覆盖导致top 用户(TMSI F04790CE) 掉话。', 'event_list': [{'trigger': ['SoftHardwareFault', 19, '弱覆盖'], 'argument': [['Subject', 13, 'MSG3上行']]}], 'doc_id': 0}
+答案：{'text': '在 900到 945是由于MSG3上行弱覆盖导致top 用户(TMSI F04790CE) 掉话。', 'event_list': [{'trigger': ['SoftHardwareFault', 19, '弱覆盖'], 'argument': [['Subject', 13, 'MSG3上行']]}, {'trigger': ['SoftHardwareFault', 46, '掉话'], 'argument': []}]}
+
+0.545, true_num: 3, pred_num: 5, gt_num: 6
+预测：{'text': '由于切换流程中用户在不上报TMSI信息导致在基站侧按TMSI来跟踪用户吞吐量失败', 'event_list': [{'trigger': ['SoftHardwareFault', 10, '不上报'], 'argument': [['Object', 13, 'TMSI信息'], ['Subject', 7, '用户']]}, {'trigger': ['Check', 31, '跟踪'], 'argument': [['Object', 33, '用户吞吐量']]}], 'doc_id': 0}
+答案：{'text': '由于切换流程中用户在不上报TMSI信息导致在基站侧按TMSI来跟踪用户吞吐量失败', 'event_list': [{'trigger': ['SoftHardwareFault', 10, '不上报'], 'argument': [['Subject', 7, '用户'], ['Object', 13, 'TMSI信息']]}, {'trigger': ['SoftHardwareFault', 31, '跟踪'], 'argument': [['Object', 33, '用户吞吐量'], ['State', 38, '失败']]}]}
+
+0.667, true_num: 2, pred_num: 2, gt_num: 4
+预测：{'text': '1.基站以上传输丢包导致调度不足，', 'event_list': [{'trigger': ['IndexFault', 14, '不足'], 'argument': [['Index', 12, '调度']]}], 'doc_id': 0}
+答案：{'text': '1.基站以上传输丢包导致调度不足，', 'event_list': [{'trigger': ['SoftHardwareFault', 8, '丢包'], 'argument': [['Subject', 6, '传输']]}, {'trigger': ['IndexFault', 14, '不足'], 'argument': [['Index', 12, '调度']]}]}
+
+0.6, true_num: 3, pred_num: 5, gt_num: 5
+预测：{'text': ' 分析发现E-RAB建立失败主要原因为MME Initial context setup超时，', 'event_list': [{'trigger': ['SoftHardwareFault', 10, '建立'], 'argument': [['State', 12, '失败'], ['Subject', 5, 'E-RAB']]}, {'trigger': ['SoftHardwareFault', 44, '超时'], 'argument': [['Subject', 19, 'MME Initial context setup']]}], 'doc_id': 0}
+答案：{'text': ' 分析发现E-RAB建立失败主要原因为MME Initial context setup超时，', 'event_list': [{'trigger': ['SoftHardwareFault', 10, '建立'], 'argument': [['Subject', 5, 'E-RAB'], ['State', 12, '失败']]}, {'trigger': ['IndexFault', 44, '超时'], 'argument': [['Index', 19, 'MME Initial context setup']]}]}
+
+0.4, true_num: 1, pred_num: 3, gt_num: 2
+预测：{'text': ' 由此导致上行丢包、上行重传率等上行业务信道指标均出现下降；', 'event_list': [{'trigger': ['IndexFault', 27, '下降'], 'argument': [['Index', 10, '上行重传率等'], ['Index', 16, '上行业务信道指标']]}], 'doc_id': 0}
+答案：{'text': ' 由此导致上行丢包、上行重传率等上行业务信道指标均出现下降；', 'event_list': [{'trigger': ['IndexFault', 27, '下降'], 'argument': [['Index', 5, '上行丢包、上行重传率等上行业务信道指标']]}]}
+
+0.667, true_num: 2, pred_num: 3, gt_num: 3
+预测：{'text': ' 没有配置数据，', 'event_list': [{'trigger': ['SettingFault', 3, '配置'], 'argument': [['Setting', 5, '数据'], ['State', 1, '没有']]}], 'doc_id': 0}
+答案：{'text': ' 没有配置数据，', 'event_list': [{'trigger': ['SettingFault', 3, '配置'], 'argument': [['Setting', 3, '配置数据'], ['State', 1, '没有']]}]}
+
+0.333, true_num: 2, pred_num: 6, gt_num: 6
+预测：{'text': '丢包率达8. 2%， 丢包率较高， 初步推断为传输问题。', 'event_list': [{'trigger': ['IndexFault', 3, '达8'], 'argument': [['Index', 0, '丢包率']]}, {'trigger': ['IndexFault', 14, '较高'], 'argument': [['Index', 11, '丢包率']]}, {'trigger': ['SoftHardwareFault', 23, '传输'], 'argument': [['State', 25, '问题']]}], 'doc_id': 0}
+答案：{'text': '丢包率达8. 2%， 丢包率较高， 初步推断为传输问题。', 'event_list': [{'trigger': ['IndexFault', 4, '8. 2%'], 'argument': [['Index', 0, '丢包率']]}, {'trigger': ['IndexFault', 14, '较高'], 'argument': [['Index', 11, '丢包率']]}, {'trigger': ['Check', 20, '推断'], 'argument': [['Object', 23, '传输']]}]}
+
+0.333, true_num: 1, pred_num: 4, gt_num: 2
+预测：{'text': '图2 1. 2  RRU增益值异常原因分析 1.', 'event_list': [{'trigger': ['IndexFault', 15, '异常'], 'argument': [['Index', 8, ' RRU增益值']]}, {'trigger': ['Check', 19, '分析'], 'argument': [['Object', 8, ' RRU增益值']]}], 'doc_id': 0}
+答案：{'text': '图2 1. 2  RRU增益值异常原因分析 1.', 'event_list': [{'trigger': ['Check', 19, '分析'], 'argument': [['Object', 9, 'RRU增益值异常原因']]}]}
+
+0.8, true_num: 4, pred_num: 5, gt_num: 5
+预测：{'text': '由于上行弱覆盖导致了很多用户的RRC接入失败，', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '弱覆盖'], 'argument': [['Subject', 2, '上行']]}, {'trigger': ['SoftHardwareFault', 18, '接入'], 'argument': [['State', 20, '失败'], ['Subject', 12, '用户的RRC']]}], 'doc_id': 0}
+答案：{'text': '由于上行弱覆盖导致了很多用户的RRC接入失败，', 'event_list': [{'trigger': ['SoftHardwareFault', 4, '弱覆盖'], 'argument': [['Subject', 2, '上行']]}, {'trigger': ['SoftHardwareFault', 18, '接入'], 'argument': [['Subject', 15, 'RRC'], ['State', 20, '失败']]}]}
+
+0.75, true_num: 3, pred_num: 4, gt_num: 4
+预测：{'text': '可以初步确认该小区的上行干扰的抬升主要是由于同频邻区干扰造成，', 'event_list': [{'trigger': ['IndexFault', 15, '抬升'], 'argument': [['Index', 7, '小区的上行干扰']]}, {'trigger': ['SoftHardwareFault', 26, '干扰'], 'argument': [['Subject', 22, '同频邻区']]}], 'doc_id': 0}
+答案：{'text': '可以初步确认该小区的上行干扰的抬升主要是由于同频邻区干扰造成，', 'event_list': [{'trigger': ['IndexFault', 15, '抬升'], 'argument': [['Index', 10, '上行干扰']]}, {'trigger': ['SoftHardwareFault', 26, '干扰'], 'argument': [['Subject', 22, '同频邻区']]}]}
+
+0.714, true_num: 5, pred_num: 7, gt_num: 7
+预测：{'text': '5、 UE能力检查 UE能力不支持也会导致激活CA失败。', 'event_list': [{'trigger': ['Check', 7, '检查'], 'argument': [['Object', 2, ' UE能力']]}, {'trigger': ['SoftHardwareFault', 14, '不支持'], 'argument': [['Subject', 9, ' UE能力']]}, {'trigger': ['SoftHardwareFault', 21, '激活'], 'argument': [['State', 25, '失败'], ['Object', 23, 'CA']]}], 'doc_id': 0}
+答案：{'text': '5、 UE能力检查 UE能力不支持也会导致激活CA失败。', 'event_list': [{'trigger': ['Check', 7, '检查'], 'argument': [['Object', 3, 'UE能力']]}, {'trigger': ['SoftHardwareFault', 14, '不支持'], 'argument': [['Subject', 10, 'UE能力']]}, {'trigger': ['SoftHardwareFault', 21, '激活'], 'argument': [['Object', 23, 'CA'], ['State', 25, '失败']]}]}
+
+0, true_num: 0, pred_num: 0, gt_num: 3
+预测：{'text': ' 即是由MME发起的承载释放。', 'event_list': [], 'doc_id': 0}
+答案：{'text': ' 即是由MME发起的承载释放。', 'event_list': [{'trigger': ['Operate', 7, '发起'], 'argument': [['Owner', 4, 'MME'], ['Object', 10, '承载释放']]}]}
+

@@ -1166,21 +1166,9 @@
     "entity_list": [
       {
         "entity_type": "None",
-        "entity_content": "为2",
-        "beg": -50,
-        "end": -48
-      },
-      {
-        "entity_type": "None",
         "entity_content": "为1",
         "beg": 3,
         "end": 5
-      },
-      {
-        "entity_type": "None",
-        "entity_content": "端口个数",
-        "beg": -9,
-        "end": -5
       }
     ],
     "event_list": [
@@ -1191,22 +1179,10 @@
         "end": 3,
         "argument_list": [
           {
-            "argument_role": "InitialState",
-            "argument_content": "为2",
-            "beg": -50,
-            "end": -48
-          },
-          {
             "argument_role": "FinalState",
             "argument_content": "为1",
             "beg": 3,
             "end": 5
-          },
-          {
-            "argument_role": "Object",
-            "argument_content": "端口个数",
-            "beg": -9,
-            "end": -5
           }
         ]
       }
@@ -5215,28 +5191,14 @@
   },
   {
     "text": " 超过基站空口处理能力，",
-    "entity_list": [
-      {
-        "entity_type": "None",
-        "entity_content": "基站S1接收的寻呼消息",
-        "beg": -16,
-        "end": -5
-      }
-    ],
+    "entity_list": [],
     "event_list": [
       {
         "event_type": "IndexFault",
         "event_content": "超过",
         "beg": 1,
         "end": 3,
-        "argument_list": [
-          {
-            "argument_role": "Index",
-            "argument_content": "基站S1接收的寻呼消息",
-            "beg": -16,
-            "end": -5
-          }
-        ]
+        "argument_list": []
       }
     ]
   },
@@ -33108,28 +33070,14 @@
   },
   {
     "text": "37出现开路：",
-    "entity_list": [
-      {
-        "entity_type": "None",
-        "entity_content": "GPS天线",
-        "beg": -12,
-        "end": -7
-      }
-    ],
+    "entity_list": [],
     "event_list": [
       {
         "event_type": "SoftHardwareFault",
         "event_content": "开路",
         "beg": 4,
         "end": 6,
-        "argument_list": [
-          {
-            "argument_role": "Subject",
-            "argument_content": "GPS天线",
-            "beg": -12,
-            "end": -7
-          }
-        ]
+        "argument_list": []
       }
     ]
   },
@@ -59420,28 +59368,14 @@
   },
   {
     "text": " 90%时完全禁止。",
-    "entity_list": [
-      {
-        "entity_type": "None",
-        "entity_content": "用户接入",
-        "beg": -5,
-        "end": -1
-      }
-    ],
+    "entity_list": [],
     "event_list": [
       {
         "event_type": "Operate",
         "event_content": "禁止",
         "beg": 7,
         "end": 9,
-        "argument_list": [
-          {
-            "argument_role": "Object",
-            "argument_content": "用户接入",
-            "beg": -5,
-            "end": -1
-          }
-        ]
+        "argument_list": []
       }
     ]
   },

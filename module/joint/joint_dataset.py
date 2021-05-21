@@ -83,7 +83,6 @@ class JointDataHandler(CommonDataHandler):
                         ent_seq_label[i] = 2
                     ent_seq_label[beg + 1] -= 1
                     ent_seq_mention_mask_unit.append(tmp_mask)
-                    # +1, 0作为pad id
 
                 ent_seq_mention_mask_unit = ent_seq_mention_mask_unit[:self.max_ent_len]
                 for i in range(len(ent_seq_mention_mask_unit), self.max_ent_len):
@@ -119,8 +118,6 @@ class JointDataHandler(CommonDataHandler):
 
                     tmp_role_label = []
                     for ent in info['entity_list']:
-                        if ent['entity_type'] == '字符串': 
-                            continue
                         ent_str = str(ent['beg']) + '@#@' + info['text'][ent['beg']: ent['end']]
                         if ent_str in arg_role_map:
                             tmp_role_label.append(self.role_list.index(arg_role_map[ent_str]))

@@ -62,6 +62,8 @@ def transform_format():
             new_argument_list = []
             for a in arguments:
                 role, a_beg, a_content = a[0], a[1], a[2]
+                if a[1] < 0:
+                    continue
                 if role[0] == 'o':
                     role = 'O' + role[1:]
                 new_argument_list.append({
@@ -117,9 +119,9 @@ def eda():
 
 if __name__ == "__main__":
     # generate_source_event_schema()
-    generate_event_schema()
-    generate_role_list()
-    generate_possible_role_list()
-    eda()
+#     generate_event_schema()
+#     generate_role_list()
+#     generate_possible_role_list()
+#     eda()
 
-    # transform_format()
+    transform_format()

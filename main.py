@@ -91,9 +91,9 @@ def main(args):
     else:
         conf.update(json.load(open(conf.get('best_model_config_path', "cache/evt_men/best_config.json"))))
         train_dataset = None
-        dev_dataset = None
         conf['batch_size'] = 64
         test_dataset = Dataset(args.dataset, Handler, conf.get("test_path"), conf, debug=args.debug)
+        dev_dataset = Dataset(args.dataset, Handler, conf.get("dev_path"), conf, debug=args.debug)
     
     model = Model(conf)
 
@@ -110,6 +110,7 @@ def main(args):
         # model_processor.test()
     else:
         model_processor.test()
+        model_processor.test(input_path=conf.get("dev_path"), output_path=conf.get("eval_output_path"), dataset=dev_dataset)
         pass
     return
 
