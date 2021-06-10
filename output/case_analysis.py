@@ -40,8 +40,8 @@ def generate_cases(pred_path, ground_truth_path):
         
         if f1 < 0.9:
             output.write(str(f'{str(round(f1, 3))}, true_num: {str(true_num)}, pred_num: {str(pred_num)}, gt_num: {str(gt_num)}') + '\n')
-            output.write("预测：" + str(p) + '\n')
-            output.write("答案：" + str(gt) + '\n')
+            output.write("预测：" + json.dumps(p, ensure_ascii=False) + '\n')
+            output.write("答案：" + json.dumps(gt, ensure_ascii=False) + '\n')
             output.write('\n')
     output.close()
             
